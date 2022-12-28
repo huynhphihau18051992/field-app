@@ -1,0 +1,113 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rl_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/imb_ic_save"
+                android:layout_toRightOf="@+id/imb_ic_back"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    style="@style/Toolbar_Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Ghi chú"
+                    android:textSize="@dimen/_16ssp" />
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/imb_ic_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:background="@null"
+                android:padding="16dp"
+                android:src="@drawable/ic_back" />
+
+            <ImageView
+                android:id="@+id/imb_ic_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:background="@null"
+                android:clickable="false"
+                android:padding="16dp"
+                android:src="@drawable/ic_save"
+                android:textColor="@color/white"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_toolbar">
+
+            <LinearLayout
+                android:id="@+id/Everything"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white">
+
+                    <EditText
+                        android:id="@+id/edtNote"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_16sdp"
+                        android:background="@drawable/background_rectangle_gray"
+                        android:gravity="top|start"
+                        android:hint="Thêm ghi chú, tối đa 128 kí tự"
+                        android:inputType="textMultiLine"
+                        android:lines="3"
+                        android:maxLength="128"
+                        android:maxLines="5"
+                        android:minLines="2"
+                        android:padding="@dimen/_8sdp"
+                        android:scrollbars="vertical" />
+
+                    <com.github.chrisbanes.photoview.PhotoView
+                        android:id="@+id/photo_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/edtNote"
+                        android:layout_centerInParent="true"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

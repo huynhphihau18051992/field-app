@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "750592648975",
+    "project_id": "field-app-2bb48",
+    "storage_bucket": "field-app-2bb48.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:750592648975:android:c935f26c72a5358714807a",
+        "android_client_info": {
+          "package_name": "com.crayon.fieldapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "750592648975-jm3i6rmb75mr8uelkk431lqamth5otvl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSDGPMMiLlFjNXUaBlvTMM91QZSAlguf4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "750592648975-jm3i6rmb75mr8uelkk431lqamth5otvl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

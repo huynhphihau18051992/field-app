@@ -1,0 +1,338 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="MTS" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
+        <item name="android:buttonStyle">@style/RobotoButtonStyle</item>
+    </style>
+
+    <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/my_custom_font</item>
+    </style>
+
+    <style name="RobotoButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">@font/my_custom_font</item>
+    </style>
+
+    <style name="MTS.Launcher">
+        <item name="android:windowBackground">@color/colorPrimary</item>
+    </style>
+
+    <style name="YogoButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="YogoProfileItem">
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="YogoProfileItemValue">
+        <item name="android:textColor">@color/colorGray2</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="YogoProfileItemValue.Number">
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="YogoProfileItemValue.Image">
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="YogoProfileContainer">
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="YogoSettingTitle">
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:textColor">@color/colorGray</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="JobTitle">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="JobSubTitle">
+        <item name="android:textColor">@color/colorGray</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="JobButtonItem">
+        <item name="android:background">@null</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:enabled">false</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+
+
+    <style name="YogoSubText">
+        <item name="android:padding">5dp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">8sp</item>
+    </style>
+
+    <style name="YogoTitleText">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
+    <style name="TextViewUserName">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+
+    <style name="TextViewUserInfo">
+        <item name="android:textColor">@color/colorGray2</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="ButtonFollowing">
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@drawable/background_rectangle_gray</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="TextViewFollowingSort">
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextView_Friend_Sub">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorGray</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextView_Friend_Title">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextViewTabSeleted">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextViewTabNonSeleted">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextView_Friend_Name">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Toolbar_Title">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextFollow">
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextBalanceGift">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorOrange</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextBalancePrice">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextDialogSetting">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextLanguageSetting">
+        <item name="android:padding">16dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="alphabetTextView">
+        <item name="android:onClick">quickScroll</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+
+    <style name="TextMessageOfFriend">
+        <item name="android:gravity">left</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:background">@drawable/bg_message_of_friend</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="TextMyMessage">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:gravity">left</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:background">@drawable/bg_my_message</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="YoloSearch" parent="@android:style/Widget.EditText">
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@drawable/bg_sv_rounded</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:backgroundTint">@null</item>
+        <item name="android:focusable">false</item>
+    </style>
+
+    <style name="CustomEdittextWhile">
+        <item name="colorAccent">#ffffff</item>
+        <item name="android:textColorHint">#ffffff</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">14sp</item>
+        <item name="colorControlNormal">#ffffff</item>
+        <item name="colorControlActivated">#ffffff</item>
+        <item name="colorControlHighlight">#ffffff</item>
+    </style>
+
+    <style name="ReportTitle">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_width">170dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
+
+
+    <style name="NewJobItem">
+        <item name="android:padding">16dp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="ThemeSpinner">
+        <item name="android:padding">16dp</item>
+        <item name="colorAccent">#ffa000</item>
+        <item name="colorControlNormal">#ffc107</item>
+    </style>
+
+    <style name="DialogStyle" parent="android:Theme.Translucent">
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.7</item>
+    </style>
+
+    <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/white</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:colorAccent">@color/black</item>
+        <item name="android:textAppearanceSmall">@style/RobotoTextViewStyle</item>
+        <item name="android:textAppearanceLarge">@style/RobotoTextViewStyle</item>
+        <item name="android:textAppearanceMedium">@style/RobotoTextViewStyle</item>
+    </style>
+
+    <style name="DatePickerTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="CustomTextInput" parent="android:Theme.Translucent">
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:background">@drawable/boarder</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="CustomTextInputDisable" parent="android:Theme.Translucent">
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:background">@drawable/boarder_gray</item>
+        <item name="android:enabled">false</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textColor">@color/colorGrayDisable</item>
+    </style>
+
+    <style name="CustomTextInputTitle" parent="android:Theme.Translucent">
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginTop">7dp</item>
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="CustomTextInputTitleDisable" parent="android:Theme.Translucent">
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginTop">7dp</item>
+        <item name="android:enabled">false</item>
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textColor">@color/colorGrayDisable</item>
+    </style>
+
+    <style name="DatePicker" parent="@android:style/Theme.Holo.Light">
+        <item name="android:datePickerStyle">@android:style/Widget.DatePicker</item>
+    </style>
+
+</resources>

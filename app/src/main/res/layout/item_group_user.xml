@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.crayon.fieldapp.data.model.GroupUser" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="5dp"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="5dp">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/colorWhite">
+
+
+            <TextView
+                android:id="@+id/txt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/img_remove"
+                android:text="@{item.name}"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/img_remove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="8dp"
+                android:src="@drawable/ic_black_trash" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
