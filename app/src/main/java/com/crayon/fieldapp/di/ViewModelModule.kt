@@ -29,6 +29,7 @@ import com.crayon.fieldapp.ui.screen.detailProject.createTask.CreateTaskViewMode
 import com.crayon.fieldapp.ui.screen.detailProject.manageJob.ManageJobProjectViewModel
 import com.crayon.fieldapp.ui.screen.detailProject.member.MemberProjectViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.base.DetailTaskViewModel
+import com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel
 import com.crayon.fieldapp.ui.screen.detailUser.DetailUserViewModel
 import com.crayon.fieldapp.ui.screen.forgot.ForgotPasswordViewModel
 import com.crayon.fieldapp.ui.screen.home.HomeViewModel
@@ -144,4 +145,5 @@ val viewModelModule = module {
     viewModel { DetailUpdateStatusAtStoreViewModel(get(), get()) }
     viewModel { ListUpdateStatusAtStoreViewModel(get(), get()) }
     viewModel { ManageUpdateStatusViewModel(get(), get(), get()) }
+    viewModel { ChangeGiftViewModel() }
 }

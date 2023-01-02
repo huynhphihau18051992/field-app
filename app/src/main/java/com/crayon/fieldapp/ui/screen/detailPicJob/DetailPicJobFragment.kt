@@ -99,6 +99,12 @@ class DetailPicJobFragment : BaseFragment<FragmentDetailPicJobBinding, DetailPic
                 R.id.action_detailPicJobFragment_to_reportUpdateStatusFragment,
                 bundel
             )
+        } else if (type == TaskType.CHANGE_GIFT.value) {
+            val bundel = bundleOf("taskId" to taskId)
+            findNavController().navigate(
+                R.id.action_detailPicJobFragment_to_changeGiftFragment,
+                bundel
+            )
         } else {
             val bundel = bundleOf("taskId" to taskId)
             findNavController().navigate(R.id.action_detailPicJob_to_detailTask, bundel)

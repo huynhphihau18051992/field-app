@@ -202,6 +202,10 @@
             android:id="@+id/action_detailPicJobFragment_to_reportUpdateStatusFragment"
             app:destination="@id/reportUpdateStatusFragment" />
 
+        <action
+            android:id="@+id/action_detailPicJobFragment_to_changeGiftFragment"
+            app:destination="@id/changeGiftFragment" />
+
     </fragment>
 
     <fragment
@@ -578,12 +582,28 @@
     </fragment>
 
     <fragment
+        android:id="@+id/changeGiftFragment"
+        android:name="com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftFragment"
+        android:label="ChangeGiftFragment" >
+        <action
+            android:id="@+id/action_changeGiftFragment_to_addCustomerFragment"
+            app:destination="@id/addCustomerFragment" />
+    </fragment>
+
+    <fragment
         android:id="@+id/resetPasswordFragment"
         android:name="com.crayon.fieldapp.ui.screen.resetPassword.ResetPasswordFragment"
         android:label="ResetPasswordFragment" >
         <action
             android:id="@+id/action_resetPasswordFragment_to_main"
             app:destination="@id/main" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addCustomerFragment"
+        android:name="com.crayon.fieldapp.ui.screen.detailTask.changeGift.addCustomer.AddCustomerFragment"
+        android:label="AddCustomerFragment" >
+
     </fragment>
 
 </navigation>

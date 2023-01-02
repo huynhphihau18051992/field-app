@@ -1,0 +1,610 @@
+[
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/dialog_select_agency.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/dialog_select_agency.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/control_calendar.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/control_calendar.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_splash.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_splash.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_report_time.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_report_time.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_list_employee.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_list_employee.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_notification.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_notification.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_management_task.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_management_task.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/dialog_video.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/dialog_video.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_list_management_applications.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_list_management_applications.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_feedback.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_feedback.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/job_load_state_footer_view_item.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/job_load_state_footer_view_item.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_detail_attendance.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_detail_attendance.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_select_project.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_select_project.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_group_timekeeping.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_group_timekeeping.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_manage_application.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_manage_application.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_forgot.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_forgot.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_detail_notification.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_detail_notification.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_list_attributes.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_list_attributes.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_notification.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_notification.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_avatar.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_avatar.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_job_container.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_job_container.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_list_product.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_list_product.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_monitor.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_monitor.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_media.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_media.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_group_user.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_group_user.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_store_project.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_store_project.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/custom_datepicker.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/custom_datepicker.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_product.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_product.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_pic_application.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_pic_application.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_simple_spinner.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_simple_spinner.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_add_member_to_project.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_add_member_to_project.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_report_endshift.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_report_endshift.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_login.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_login.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_add_member_project.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_add_member_project.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_select_user.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_select_user.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_detail_update_status_at_store.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_detail_update_status_at_store.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_manage_project.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_manage_project.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_camerax.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_camerax.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_report_update_status.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_report_update_status.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_home.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_home.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_detail_task_attendance.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_detail_task_attendance.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_filter.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_filter.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_manage_employee.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_manage_employee.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_select_store.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_select_store.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_list_store.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_list_store.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/dialog_filter_role.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/dialog_filter_role.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_store.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_store.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_privacy.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_privacy.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_list_my_job.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_list_my_job.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_list_pic_notification.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_list_pic_notification.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/dialog_filter_store.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/dialog_filter_store.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_project_in_progress.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_project_in_progress.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_loadmore_refresh.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_loadmore_refresh.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_profile.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_profile.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_term.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_term.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_profile_container.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_profile_container.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_list_update_status_at_store.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_list_update_status_at_store.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_store_group_store.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_store_group_store.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/custom_main_tab.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/custom_main_tab.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_today_shift.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_today_shift.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_detail_user.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_detail_user.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_manage_job.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_manage_job.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_reset_password.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_reset_password.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_cutomer.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_cutomer.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_project.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_project.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_application_approved.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_application_approved.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_verify_otp_step2.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_verify_otp_step2.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_contact.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_contact.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_today_job.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_today_job.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_detail_task.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_detail_task.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_report_product.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_report_product.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_list_project.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_list_project.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_require_login.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_require_login.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_job_request_list.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_job_request_list.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_detail_pic_job.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_detail_pic_job.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_job.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_job.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_add_customer.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_add_customer.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_attendance.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_attendance.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_list_image.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_list_image.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_detail_attendance_at_store.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_detail_attendance_at_store.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_attributes.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_attributes.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_main.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_main.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_task.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_task.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_list_attendance_at_store.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_list_attendance_at_store.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_detail_group_user.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_detail_group_user.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_member_request.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_member_request.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_list_job_request.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_list_job_request.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_notification_container.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_notification_container.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_input_bill.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_input_bill.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/control_calendar_day.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/control_calendar_day.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_filter_job.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_filter_job.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_create_task.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_create_task.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_manage_store.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_manage_store.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_detail_attachment.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_detail_attachment.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/dialog_timekeeping.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/dialog_timekeeping.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_select.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_select.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_select_project.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_select_project.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_list_group_employee.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_list_group_employee.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/layout_loading_dialog.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/layout_loading_dialog.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/dialog_select_project.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/dialog_select_project.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_manage_store.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_manage_store.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_user.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_user.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_report.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_report.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/dialog_pick_photo.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/dialog_pick_photo.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_detail_group.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_detail_group.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_my_attendance.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_my_attendance.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_manage_attendance.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_manage_attendance.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_bank.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_bank.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/dialog_image.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/dialog_image.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_create_job.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_create_job.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_list_pic_applications.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_list_pic_applications.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_management_application.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_management_application.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_info.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_info.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_manage_update_status.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_manage_update_status.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_job_project.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_job_project.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_detail_group_store.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_detail_group_store.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_manage_notification.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_manage_notification.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_update_status.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_update_status.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_member_project.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_member_project.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_change_gift.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_change_gift.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_simple.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_simple.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_report_project.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_report_project.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_job_monitor_attendance.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_job_monitor_attendance.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_select_member.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_select_member.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_report_feedback.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_report_feedback.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_job.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_job.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_register.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_register.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_group_job_request.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_group_job_request.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_input_name.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_input_name.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_calendar.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_calendar.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_select_promotion.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_select_promotion.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_attendance.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_attendance.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_detail_store.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_detail_store.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_notification_sent.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_notification_sent.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_detail_management_job.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_detail_management_job.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_grid_menu.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_grid_menu.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_create_application.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_create_application.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_detail_project.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_detail_project.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_member.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_member.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_home_container.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_home_container.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_list_group.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_list_group.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_verify_otp.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_verify_otp.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_city.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_city.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/dialog_add_note.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/dialog_add_note.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_application.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_application.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_group_store.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_group_store.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_filter_store.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_filter_store.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_member_group_user.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_member_group_user.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_switch_shift_request.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_switch_shift_request.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_add_store_to_project.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_add_store_to_project.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_loadmore_refresh_toolbar.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_loadmore_refresh_toolbar.xml"
+    }
+]

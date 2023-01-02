@@ -5,6 +5,13 @@
         AIzaSyCNOT6mTANnQnlWtl0omSQ1viKIAQiUyUw
     </string>
 
+    <string-array name="stepLabels">
+        <item>Điền thông tin</item>
+        <item>Xác thực OTP</item>
+        <item>Ảnh hoá đơn</item>
+        <item>Gói khuyến mãi</item>
+    </string-array>
+
     <!--Login Start-->
     <string name="txt_login_sign_in">Đăng nhập</string>
     <string name="txt_login_reset_pass">Đổi mật khẩu</string>

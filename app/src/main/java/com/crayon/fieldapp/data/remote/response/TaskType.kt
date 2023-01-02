@@ -15,5 +15,6 @@ enum class TaskType(var value: Int, var text: String) {
     COUNT(11, "Kiểm đếm"),
     UPDATE_PRICE(12, "Cập nhật giá"),
     TIME_KEEPING(13, "Chấm công"),
-    COMPLETE_FIX(14, "Báo cáo hoàn thành sửa chửa")
+    COMPLETE_FIX(14, "Báo cáo hoàn thành sửa chửa"),
+    CHANGE_GIFT(15, "Đổi quà")
 }
