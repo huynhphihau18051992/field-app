@@ -93,6 +93,30 @@ class ListProjectFragment(private var mode: Int? = FROM_PROJECT_MODE) :
                 "agencyId" to agencyId
             )
             findNavController().navigate(R.id.action_updateStatus_to_list_updateStatus, bundel)
+        } else if (mode == FROM_REPORT_COMPETITOR_MODE) {
+            val bundel = bundleOf(
+                "projectId" to project.id,
+                "projectName" to project.name,
+                "agencyId" to agencyId
+            )
+            findNavController().navigate(
+                R.id.action_reportCompetitor_to_list_reportCompetitor,
+                bundel
+            )
+        } else if (mode == FROM_REPORT_SALES_MODE) {
+            val bundel = bundleOf(
+                "projectId" to project.id,
+                "projectName" to project.name,
+                "agencyId" to agencyId
+            )
+            findNavController().navigate(R.id.action_reportSales_to_list_reportSales, bundel)
+        } else if (mode == FROM_REPORT_TRACKING_MODE) {
+            val bundel = bundleOf(
+                "projectId" to project.id,
+                "projectName" to project.name,
+                "agencyId" to agencyId
+            )
+            findNavController().navigate(R.id.action_reportTracking_to_list_reportTracking, bundel)
         } else {
             val bundel = bundleOf(
                 "projectId" to project.id,
@@ -138,6 +162,9 @@ class ListProjectFragment(private var mode: Int? = FROM_PROJECT_MODE) :
     companion object {
         const val FROM_ATTENDANCE_MODE = 1
         const val FROM_UPDATE_STATUS_MODE = 2
+        const val FROM_REPORT_COMPETITOR_MODE = 3
+        const val FROM_REPORT_SALES_MODE = 4
+        const val FROM_REPORT_TRACKING_MODE = 5
         const val FROM_PROJECT_MODE = 0
     }
 

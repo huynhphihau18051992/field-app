@@ -120,6 +120,30 @@ class MonitorFragment : BaseFragment<FragmentMonitorBinding, MonitorViewModel>()
         )
         menu.add(
             GridMenu(
+                REPORT_SALES,
+                R.drawable.icon_sales,
+                resources.getString(R.string.txt_sales),
+                R.color.bgReportSales
+            )
+        )
+        menu.add(
+            GridMenu(
+                REPORT_COMPITETOR,
+                R.drawable.icon_competitor,
+                resources.getString(R.string.txt_competitor),
+                R.color.bgReportCompetitor
+            )
+        )
+        menu.add(
+            GridMenu(
+                TRACKING,
+                R.drawable.icon_map,
+                resources.getString(R.string.txt_tracking),
+                R.color.bgTracking
+            )
+        )
+        menu.add(
+            GridMenu(
                 EMPLOYEE_AGENCY,
                 R.drawable.ic_white_people,
                 resources.getString(R.string.txt_employee),
@@ -179,6 +203,9 @@ class MonitorFragment : BaseFragment<FragmentMonitorBinding, MonitorViewModel>()
         val NOTIFICAITON: Int = 4
         val STORE: Int = 5
         val PROJECT: Int = 6
+        val REPORT_SALES: Int = 7
+        val REPORT_COMPITETOR: Int = 8
+        val TRACKING: Int = 9
     }
 
     override fun onMenuItemClicked(id: Int) {
@@ -196,7 +223,24 @@ class MonitorFragment : BaseFragment<FragmentMonitorBinding, MonitorViewModel>()
                     bundle
                 )
             }
-
+            REPORT_COMPITETOR -> {
+                findNavController().navigate(
+                    R.id.action_monitorFragment_to_manageReportCompetitorFragment,
+                    bundle
+                )
+            }
+            TRACKING -> {
+                findNavController().navigate(
+                    R.id.action_monitorFragment_to_manageReportTrackingFragment,
+                    bundle
+                )
+            }
+            REPORT_SALES -> {
+                findNavController().navigate(
+                    R.id.action_monitorFragment_to_manageReportSalesFragment,
+                    bundle
+                )
+            }
             EMPLOYEE_AGENCY -> {
                 findNavController().navigate(
                     R.id.action_monitorFragment_to_manageEmployeeFragment,

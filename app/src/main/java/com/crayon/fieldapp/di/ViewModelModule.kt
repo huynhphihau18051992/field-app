@@ -13,8 +13,8 @@ import com.crayon.fieldapp.ui.screen.calendar.CalendarViewModel
 import com.crayon.fieldapp.ui.screen.contact.ContactViewModel
 import com.crayon.fieldapp.ui.screen.createApplication.CreateApplicationViewModel
 import com.crayon.fieldapp.ui.screen.detailAttachment.DetailAttachmentViewModel
-import com.crayon.fieldapp.ui.screen.detailAttachment.product.ListProductViewModel
 import com.crayon.fieldapp.ui.screen.detailAttachment.image.ListImageViewModel
+import com.crayon.fieldapp.ui.screen.detailAttachment.product.ListProductViewModel
 import com.crayon.fieldapp.ui.screen.detailAttendance.DetailAttendanceViewModel
 import com.crayon.fieldapp.ui.screen.detailGroupStore.DetailGroupStoreViewModel
 import com.crayon.fieldapp.ui.screen.detailGroupUser.DetailGroupUserViewModel
@@ -30,6 +30,8 @@ import com.crayon.fieldapp.ui.screen.detailProject.manageJob.ManageJobProjectVie
 import com.crayon.fieldapp.ui.screen.detailProject.member.MemberProjectViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.base.DetailTaskViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel
+import com.crayon.fieldapp.ui.screen.detailTask.reportCompetitor.ReportCompetitorViewModel
+import com.crayon.fieldapp.ui.screen.detailTask.reportSales.ReportSalesViewModel
 import com.crayon.fieldapp.ui.screen.detailUser.DetailUserViewModel
 import com.crayon.fieldapp.ui.screen.forgot.ForgotPasswordViewModel
 import com.crayon.fieldapp.ui.screen.home.HomeViewModel
@@ -47,10 +49,19 @@ import com.crayon.fieldapp.ui.screen.monitor.attendance.listTask.ListAttendanceA
 import com.crayon.fieldapp.ui.screen.monitor.employee.ManageEmployeeViewModel
 import com.crayon.fieldapp.ui.screen.monitor.employee.listGroupMember.ListGroupEmployeeViewModel
 import com.crayon.fieldapp.ui.screen.monitor.employee.listMembers.ListEmployeeViewModel
+import com.crayon.fieldapp.ui.screen.monitor.listProject.ListProjectViewModel
 import com.crayon.fieldapp.ui.screen.monitor.notification.ManageNotificationViewModel
 import com.crayon.fieldapp.ui.screen.monitor.notification.sent.NotificationSentViewModel
 import com.crayon.fieldapp.ui.screen.monitor.project.ManageProjectViewModel
-import com.crayon.fieldapp.ui.screen.monitor.listProject.ListProjectViewModel
+import com.crayon.fieldapp.ui.screen.monitor.reportCompetitor.ManageReportCompetitorViewModel
+import com.crayon.fieldapp.ui.screen.monitor.reportCompetitor.detailTask.DetailReportCompetitorAtStoreViewModel
+import com.crayon.fieldapp.ui.screen.monitor.reportCompetitor.listTask.ListReportCompetitorAtStoreViewModel
+import com.crayon.fieldapp.ui.screen.monitor.reportSales.ManageReportSalesViewModel
+import com.crayon.fieldapp.ui.screen.monitor.reportSales.detailTask.DetailReportSalesAtStoreViewModel
+import com.crayon.fieldapp.ui.screen.monitor.reportSales.listTask.ListReportSalesAtStoreViewModel
+import com.crayon.fieldapp.ui.screen.monitor.reportTracking.ManageReportTrackingViewModel
+import com.crayon.fieldapp.ui.screen.monitor.reportTracking.detailTask.DetailReportTrackingAtStoreViewModel
+import com.crayon.fieldapp.ui.screen.monitor.reportTracking.listTask.ListReportTrackingAtStoreViewModel
 import com.crayon.fieldapp.ui.screen.monitor.store.ManageStoreViewModel
 import com.crayon.fieldapp.ui.screen.monitor.store.listGroup.ListGroupViewModel
 import com.crayon.fieldapp.ui.screen.monitor.store.listStore.ListStoreViewModel
@@ -145,5 +156,16 @@ val viewModelModule = module {
     viewModel { DetailUpdateStatusAtStoreViewModel(get(), get()) }
     viewModel { ListUpdateStatusAtStoreViewModel(get(), get()) }
     viewModel { ManageUpdateStatusViewModel(get(), get(), get()) }
+    viewModel { ManageReportCompetitorViewModel(get(), get(), get()) }
+    viewModel { ManageReportSalesViewModel(get(), get(), get()) }
+    viewModel { ManageReportTrackingViewModel(get(), get(), get()) }
     viewModel { ChangeGiftViewModel() }
+    viewModel { ReportCompetitorViewModel() }
+    viewModel { ReportSalesViewModel() }
+    viewModel { ListReportCompetitorAtStoreViewModel(get(), get()) }
+    viewModel { ListReportSalesAtStoreViewModel(get(), get()) }
+    viewModel { ListReportTrackingAtStoreViewModel(get(), get()) }
+    viewModel { DetailReportCompetitorAtStoreViewModel(get(), get()) }
+    viewModel { DetailReportSalesAtStoreViewModel(get(), get()) }
+    viewModel { DetailReportTrackingAtStoreViewModel(get(), get()) }
 }

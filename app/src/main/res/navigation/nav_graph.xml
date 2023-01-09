@@ -206,12 +206,20 @@
             android:id="@+id/action_detailPicJobFragment_to_changeGiftFragment"
             app:destination="@id/changeGiftFragment" />
 
+        <action
+            android:id="@+id/action_detailPicJobFragment_to_reportCompetitorFragment"
+            app:destination="@id/reportCompetitorFragment" />
+
+        <action
+            android:id="@+id/action_detailPicJobFragment_to_reportSalesFragment"
+            app:destination="@id/reportSalesFragment" />
+
     </fragment>
 
     <fragment
         android:id="@+id/detailTaskFragment"
         android:name="com.crayon.fieldapp.ui.screen.detailTask.DetailTaskFragment"
-        android:label="DetailTaskFragment" >
+        android:label="DetailTaskFragment">
         <action
             android:id="@+id/action_detailTaskFragment_to_detailAttachmentFragment"
             app:destination="@id/detailAttachmentFragment" />
@@ -279,6 +287,15 @@
             android:id="@+id/action_monitorFragment_to_manageUpdateStatusFragment"
             app:destination="@id/manageUpdateStatusFragment" />
         <action
+            android:id="@+id/action_monitorFragment_to_manageReportTrackingFragment"
+            app:destination="@id/manageReportTrackingFragment" />
+        <action
+            android:id="@+id/action_monitorFragment_to_manageReportSalesFragment"
+            app:destination="@id/manageReportSalesFragment" />
+        <action
+            android:id="@+id/action_monitorFragment_to_manageReportCompetitorFragment"
+            app:destination="@id/manageReportCompetitorFragment" />
+        <action
             android:id="@+id/action_monitorFragment_to_manageApplicationFragment"
             app:destination="@id/manageApplicationFragment" />
         <action
@@ -341,6 +358,33 @@
     </fragment>
 
     <fragment
+        android:id="@+id/manageReportTrackingFragment"
+        android:name="com.crayon.fieldapp.ui.screen.monitor.reportTracking.ManageReportTrackingFragment"
+        android:label="ManageReportTrackingFragment">
+        <action
+            android:id="@+id/action_reportTracking_to_list_reportTracking"
+            app:destination="@id/listReportTrackingFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/manageReportSalesFragment"
+        android:name="com.crayon.fieldapp.ui.screen.monitor.reportSales.ManageReportSalesFragment"
+        android:label="ManageReportSalesFragment">
+        <action
+            android:id="@+id/action_reportSales_to_list_reportSales"
+            app:destination="@id/listReportSalesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/manageReportCompetitorFragment"
+        android:name="com.crayon.fieldapp.ui.screen.monitor.reportCompetitor.ManageReportCompetitorFragment"
+        android:label="ManageReportCompetitorFragment">
+        <action
+            android:id="@+id/action_reportCompetitor_to_list_reportCompetitor"
+            app:destination="@id/listReportCompetitorFragment" />
+    </fragment>
+
+    <fragment
         android:id="@+id/listAttendanceFragment"
         android:name="com.crayon.fieldapp.ui.screen.monitor.attendance.listTask.ListAttendanceAtStoreFragment"
         android:label="listAttendanceFragment">
@@ -363,6 +407,39 @@
     </fragment>
 
     <fragment
+        android:id="@+id/listReportTrackingFragment"
+        android:name="com.crayon.fieldapp.ui.screen.monitor.reportTracking.listTask.ListReportTrackingAtStoreFragment"
+        android:label="listReportTrackingFragment">
+
+        <action
+            android:id="@+id/action_list_reportTracking_to_detail_reportTracking"
+            app:destination="@id/DetailReportTrackingFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/listReportCompetitorFragment"
+        android:name="com.crayon.fieldapp.ui.screen.monitor.reportCompetitor.listTask.ListReportCompetitorAtStoreFragment"
+        android:label="listReportCompetitorFragment">
+
+        <action
+            android:id="@+id/action_list_reportCompetitor_to_detail_reportCompetitor"
+            app:destination="@id/DetailReportCompetitorFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/listReportSalesFragment"
+        android:name="com.crayon.fieldapp.ui.screen.monitor.reportSales.listTask.ListReportSalesAtStoreFragment"
+        android:label="listReportSalesFragment">
+
+        <action
+            android:id="@+id/action_list_reportSales_to_detail_reportSales"
+            app:destination="@id/DetailReportSalesFragment" />
+
+    </fragment>
+
+    <fragment
         android:id="@+id/DetailAttendanceFragment"
         android:name="com.crayon.fieldapp.ui.screen.monitor.attendance.detailTask.DetailAttendanceAtStoreFragment"
         android:label="listAttendanceFragment">
@@ -373,6 +450,27 @@
         android:id="@+id/DetailUpdateStatusFragment"
         android:name="com.crayon.fieldapp.ui.screen.monitor.updateStatus.detailTask.DetailUpdateStatusAtStoreFragment"
         android:label="DetailUpdateStatusFragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/DetailReportTrackingFragment"
+        android:name="com.crayon.fieldapp.ui.screen.monitor.reportTracking.detailTask.DetailReportTrackingAtStoreFragment"
+        android:label="DetailReportTrackingFragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/DetailReportCompetitorFragment"
+        android:name="com.crayon.fieldapp.ui.screen.monitor.reportCompetitor.detailTask.DetailReportCompetitorAtStoreFragment"
+        android:label="DetailReportCompetitorFragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/DetailReportSalesFragment"
+        android:name="com.crayon.fieldapp.ui.screen.monitor.reportSales.detailTask.DetailReportSalesAtStoreFragment"
+        android:label="DetailReportSalesFragment">
 
     </fragment>
 
@@ -548,7 +646,7 @@
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="com.crayon.fieldapp.ui.screen.forgot.ForgotPasswordFragment"
-        android:label="ForgotPasswordFragment" >
+        android:label="ForgotPasswordFragment">
         <action
             android:id="@+id/action_forgotPasswordFragment_to_verify"
             app:destination="@id/verify" />
@@ -557,7 +655,7 @@
     <fragment
         android:id="@+id/reportEndShiftFragment"
         android:name="com.crayon.fieldapp.ui.screen.detailTask.endShift.ReportEndShiftFragment"
-        android:label="ReportEndShiftFragment" >
+        android:label="ReportEndShiftFragment">
         <action
             android:id="@+id/action_reportEndShiftFragment_to_detailAttachmentFragment"
             app:destination="@id/detailAttachmentFragment" />
@@ -566,7 +664,7 @@
     <fragment
         android:id="@+id/reportAttendanceFragment"
         android:name="com.crayon.fieldapp.ui.screen.detailTask.attendance.AttendanceFragment"
-        android:label="ReportAttendanceFragment" >
+        android:label="ReportAttendanceFragment">
         <action
             android:id="@+id/action_reportAttendanceFragment_to_detailAttachmentFragment"
             app:destination="@id/detailAttachmentFragment" />
@@ -575,7 +673,7 @@
     <fragment
         android:id="@+id/reportUpdateStatusFragment"
         android:name="com.crayon.fieldapp.ui.screen.detailTask.updateStatus.ReportUpdateStatusFragment"
-        android:label="ReportUpdateStatusFragment" >
+        android:label="ReportUpdateStatusFragment">
         <action
             android:id="@+id/action_reportUpdateStatusFragment_to_detailAttachmentFragment"
             app:destination="@id/detailAttachmentFragment" />
@@ -584,16 +682,34 @@
     <fragment
         android:id="@+id/changeGiftFragment"
         android:name="com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftFragment"
-        android:label="ChangeGiftFragment" >
+        android:label="ChangeGiftFragment">
         <action
             android:id="@+id/action_changeGiftFragment_to_addCustomerFragment"
             app:destination="@id/addCustomerFragment" />
     </fragment>
 
     <fragment
+        android:id="@+id/reportCompetitorFragment"
+        android:name="com.crayon.fieldapp.ui.screen.detailTask.reportCompetitor.ReportCompetitorFragment"
+        android:label="reportCompetitorFragment">
+        <action
+            android:id="@+id/action_reportCompetitorFragment_to_addReportCompetitorFragment"
+            app:destination="@id/addReportCompetitorFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/reportSalesFragment"
+        android:name="com.crayon.fieldapp.ui.screen.detailTask.reportSales.ReportSalesFragment"
+        android:label="reportSalesFragment">
+        <action
+            android:id="@+id/action_reportSalesFragment_to_addOrderFragment"
+            app:destination="@id/addOrderFragment" />
+    </fragment>
+
+    <fragment
         android:id="@+id/resetPasswordFragment"
         android:name="com.crayon.fieldapp.ui.screen.resetPassword.ResetPasswordFragment"
-        android:label="ResetPasswordFragment" >
+        android:label="ResetPasswordFragment">
         <action
             android:id="@+id/action_resetPasswordFragment_to_main"
             app:destination="@id/main" />
@@ -602,8 +718,21 @@
     <fragment
         android:id="@+id/addCustomerFragment"
         android:name="com.crayon.fieldapp.ui.screen.detailTask.changeGift.addCustomer.AddCustomerFragment"
-        android:label="AddCustomerFragment" >
+        android:label="AddCustomerFragment">
 
     </fragment>
+
+    <fragment
+        android:id="@+id/addReportCompetitorFragment"
+        android:name="com.crayon.fieldapp.ui.screen.detailTask.reportCompetitor.addReport.AddReportFragment"
+        android:label="addReportCompetitorFragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/addOrderFragment"
+        android:name="com.crayon.fieldapp.ui.screen.detailTask.reportSales.addOrder.AddOrderFragment"
+        android:label="addOrderFragment"></fragment>
+
 
 </navigation>

@@ -6,10 +6,18 @@
     </string>
 
     <string-array name="stepLabels">
-        <item>Điền thông tin</item>
-        <item>Xác thực OTP</item>
-        <item>Ảnh hoá đơn</item>
-        <item>Gói khuyến mãi</item>
+        <item>Điền \n thông tin</item>
+        <item>Xác thực \n OTP</item>
+        <item>Ảnh \n hoá đơn</item>
+        <item>Gói \n khuyến mãi</item>
+    </string-array>
+
+    <string-array name="arr_activity">
+        <item>Sampling</item>
+        <item>Inline</item>
+        <item>Hoạt náo</item>
+        <item>Trưng bày POSM</item>
+        <item>Khác</item>
     </string-array>
 
     <!--Login Start-->
@@ -283,6 +291,9 @@
 
     <!--Menu Grid Text-->
     <string name="txt_timekeeping">Chấm công</string>
+    <string name="txt_sales">Bán hàng</string>
+    <string name="txt_competitor">Đối thủ</string>
+    <string name="txt_tracking">Định vị</string>
     <string name="txt_update_status">Tình hình</string>
     <string name="txt_manage_timekeeping">Quản lý Chấm công</string>
     <string name="txt_application">Đơn từ</string>

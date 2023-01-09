@@ -105,9 +105,25 @@ class DetailPicJobFragment : BaseFragment<FragmentDetailPicJobBinding, DetailPic
                 R.id.action_detailPicJobFragment_to_changeGiftFragment,
                 bundel
             )
+        } else if (type == TaskType.REPORT_COMPITETOR.value) {
+            val bundel = bundleOf("taskId" to taskId)
+            findNavController().navigate(
+                R.id.action_detailPicJobFragment_to_reportCompetitorFragment,
+                bundel
+            )
+        } else if (type == TaskType.REPORT_SALES.value) {
+            val bundel = bundleOf("taskId" to taskId)
+            findNavController().navigate(
+                R.id.action_detailPicJobFragment_to_reportSalesFragment,
+                bundel
+            )
         } else {
             val bundel = bundleOf("taskId" to taskId)
-            findNavController().navigate(R.id.action_detailPicJob_to_detailTask, bundel)
+//            findNavController().navigate(R.id.action_detailPicJob_to_detailTask, bundel)
+            findNavController().navigate(
+                R.id.action_detailPicJobFragment_to_reportSalesFragment,
+                bundel
+            )
         }
 
     }
