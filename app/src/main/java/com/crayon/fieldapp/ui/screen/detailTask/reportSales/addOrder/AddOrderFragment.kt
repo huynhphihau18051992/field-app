@@ -9,6 +9,7 @@ import com.crayon.fieldapp.databinding.FragmentContactBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.reportSales.adapter.SelectProductRVAdapter
+import com.crayon.fieldapp.ui.screen.detailTask.reportSales.addOrder.dialog.EditPriceProductDialog
 import com.crayon.fieldapp.utils.setSingleClick
 import kotlinx.android.synthetic.main.fragment_add_order.*
 import kotlinx.android.synthetic.main.fragment_contact.imb_ic_back
@@ -42,7 +43,11 @@ class AddOrderFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewMode
                     "Sữa chua Vinamilk",
                     "Dầu xả Sunsilk"
                 ), requireContext(), {
-                    // Item
+                    // Price click
+                    val dialog = EditPriceProductDialog()
+                    dialog.show(requireActivity().supportFragmentManager, dialog.tag)
+                }, {
+                    // Item click
                 })
 
         rv_product.apply {

@@ -61,7 +61,7 @@
                 android:padding="16dp"
                 android:src="@drawable/ic_black_more"
                 android:tint="@color/colorWhite"
-                android:visibility="visible" />
+                android:visibility="invisible" />
 
         </RelativeLayout>
 

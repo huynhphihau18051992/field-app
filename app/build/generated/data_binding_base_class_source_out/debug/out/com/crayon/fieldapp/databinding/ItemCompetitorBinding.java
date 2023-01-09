@@ -30,7 +30,13 @@ public final class ItemCompetitorBinding implements ViewBinding {
   public final CardView cvImage3;
 
   @NonNull
-  public final ImageView icUser;
+  public final ImageView img1;
+
+  @NonNull
+  public final ImageView img2;
+
+  @NonNull
+  public final ImageView img3;
 
   @NonNull
   public final TextView txtCustomerNum;
@@ -60,15 +66,18 @@ public final class ItemCompetitorBinding implements ViewBinding {
   public final TextView txtTypeTitle;
 
   private ItemCompetitorBinding(@NonNull LinearLayout rootView, @NonNull CardView cvImage1,
-      @NonNull CardView cvImage2, @NonNull CardView cvImage3, @NonNull ImageView icUser,
-      @NonNull TextView txtCustomerNum, @NonNull TextView txtDate, @NonNull TextView txtDateTitle,
-      @NonNull TextView txtName, @NonNull TextView txtNameTitle, @NonNull TextView txtNote,
-      @NonNull TextView txtNoteTitle, @NonNull TextView txtType, @NonNull TextView txtTypeTitle) {
+      @NonNull CardView cvImage2, @NonNull CardView cvImage3, @NonNull ImageView img1,
+      @NonNull ImageView img2, @NonNull ImageView img3, @NonNull TextView txtCustomerNum,
+      @NonNull TextView txtDate, @NonNull TextView txtDateTitle, @NonNull TextView txtName,
+      @NonNull TextView txtNameTitle, @NonNull TextView txtNote, @NonNull TextView txtNoteTitle,
+      @NonNull TextView txtType, @NonNull TextView txtTypeTitle) {
     this.rootView = rootView;
     this.cvImage1 = cvImage1;
     this.cvImage2 = cvImage2;
     this.cvImage3 = cvImage3;
-    this.icUser = icUser;
+    this.img1 = img1;
+    this.img2 = img2;
+    this.img3 = img3;
     this.txtCustomerNum = txtCustomerNum;
     this.txtDate = txtDate;
     this.txtDateTitle = txtDateTitle;
@@ -125,9 +134,21 @@ public final class ItemCompetitorBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.ic_user;
-      ImageView icUser = rootView.findViewById(id);
-      if (icUser == null) {
+      id = R.id.img_1;
+      ImageView img1 = rootView.findViewById(id);
+      if (img1 == null) {
+        break missingId;
+      }
+
+      id = R.id.img_2;
+      ImageView img2 = rootView.findViewById(id);
+      if (img2 == null) {
+        break missingId;
+      }
+
+      id = R.id.img_3;
+      ImageView img3 = rootView.findViewById(id);
+      if (img3 == null) {
         break missingId;
       }
 
@@ -185,8 +206,8 @@ public final class ItemCompetitorBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemCompetitorBinding((LinearLayout) rootView, cvImage1, cvImage2, cvImage3,
-          icUser, txtCustomerNum, txtDate, txtDateTitle, txtName, txtNameTitle, txtNote,
+      return new ItemCompetitorBinding((LinearLayout) rootView, cvImage1, cvImage2, cvImage3, img1,
+          img2, img3, txtCustomerNum, txtDate, txtDateTitle, txtName, txtNameTitle, txtNote,
           txtNoteTitle, txtType, txtTypeTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);

@@ -8,6 +8,7 @@ import com.crayon.fieldapp.R
 import com.crayon.fieldapp.databinding.FragmentReportCompetitorBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.screen.detailTask.reportCompetitor.adapter.ReportCompetitorRVAdapter
+import com.crayon.fieldapp.ui.screen.imageDialog.ImageDialog
 import com.crayon.fieldapp.utils.setSingleClick
 import kotlinx.android.synthetic.main.fragment_change_gift.*
 import kotlinx.android.synthetic.main.fragment_contact.imb_ic_back
@@ -42,6 +43,13 @@ class ReportCompetitorFragment :
         mCompetitorAdapter =
             ReportCompetitorRVAdapter(arrayListOf("1", "2", "3"), requireContext(), {
                 // Item
+            }, {
+                // Image
+                val imageDialog = ImageDialog(
+                    title =  "",
+                    imageUrl = ""
+                )
+                imageDialog.show(childFragmentManager, imageDialog.tag)
             })
 
         rv_customer.apply {

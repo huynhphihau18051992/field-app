@@ -704,6 +704,10 @@
         <action
             android:id="@+id/action_reportSalesFragment_to_addOrderFragment"
             app:destination="@id/addOrderFragment" />
+
+        <action
+            android:id="@+id/action_reportSalesFragment_to_detailOrderFragment"
+            app:destination="@id/detailOrderFragment" />
     </fragment>
 
     <fragment
@@ -733,6 +737,11 @@
         android:id="@+id/addOrderFragment"
         android:name="com.crayon.fieldapp.ui.screen.detailTask.reportSales.addOrder.AddOrderFragment"
         android:label="addOrderFragment"></fragment>
+
+    <fragment
+        android:id="@+id/detailOrderFragment"
+        android:name="com.crayon.fieldapp.ui.screen.detailTask.reportSales.detailOrder.DetailOrderFragment"
+        android:label="detailOrderFragment"></fragment>
 
 
 </navigation>

@@ -2823,6 +2823,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable dialog_bg
 drawable fab_bg_mini
 drawable fab_bg_normal
 drawable googleg_disabled_color_18
@@ -3210,6 +3211,7 @@ id action_reportCompetitorFragment_to_addReportCompetitorFragment
 id action_reportCompetitor_to_list_reportCompetitor
 id action_reportEndShiftFragment_to_detailAttachmentFragment
 id action_reportSalesFragment_to_addOrderFragment
+id action_reportSalesFragment_to_detailOrderFragment
 id action_reportSales_to_list_reportSales
 id action_reportTracking_to_list_reportTracking
 id action_reportUpdateStatusFragment_to_detailAttachmentFragment
@@ -3342,6 +3344,7 @@ id detailGroupUserFragment
 id detailJobFragment2
 id detailManagementJobFragment
 id detailNotificationFragment
+id detailOrderFragment
 id detailPicJobFragment
 id detailProjectFragment
 id detailStoreFragment
@@ -3377,6 +3380,7 @@ id edt_otp
 id edt_pass
 id edt_password
 id edt_phone
+id edt_price
 id edt_quality
 id edt_reason
 id edt_tax
@@ -3465,6 +3469,9 @@ id imb_ic_save
 id imgIcon
 id imgRegister
 id imgSave
+id img_1
+id img_2
+id img_3
 id img_address
 id img_avatar
 id img_bg
@@ -3926,6 +3933,7 @@ id txt_phone_title
 id txt_pic
 id txt_pic_name
 id txt_price
+id txt_price_default
 id txt_product_name
 id txt_project
 id txt_project_name
@@ -4075,6 +4083,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dialog_add_note
+layout dialog_edit_price
 layout dialog_filter_role
 layout dialog_filter_store
 layout dialog_image
@@ -4110,6 +4119,7 @@ layout fragment_detail_group_store
 layout fragment_detail_group_user
 layout fragment_detail_management_job
 layout fragment_detail_notification
+layout fragment_detail_order
 layout fragment_detail_pic_job
 layout fragment_detail_project
 layout fragment_detail_report_competitor_at_store

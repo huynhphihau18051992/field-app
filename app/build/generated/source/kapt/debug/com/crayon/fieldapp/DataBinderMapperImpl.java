@@ -31,6 +31,7 @@ import com.crayon.fieldapp.databinding.FragmentDetailGroupStoreBindingImpl;
 import com.crayon.fieldapp.databinding.FragmentDetailGroupUserBindingImpl;
 import com.crayon.fieldapp.databinding.FragmentDetailManagementJobBindingImpl;
 import com.crayon.fieldapp.databinding.FragmentDetailNotificationBindingImpl;
+import com.crayon.fieldapp.databinding.FragmentDetailOrderBindingImpl;
 import com.crayon.fieldapp.databinding.FragmentDetailPicJobBindingImpl;
 import com.crayon.fieldapp.databinding.FragmentDetailProjectBindingImpl;
 import com.crayon.fieldapp.databinding.FragmentDetailReportCompetitorAtStoreBindingImpl;
@@ -195,213 +196,215 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_FRAGMENTDETAILNOTIFICATION = 25;
 
-  private static final int LAYOUT_FRAGMENTDETAILPICJOB = 26;
+  private static final int LAYOUT_FRAGMENTDETAILORDER = 26;
 
-  private static final int LAYOUT_FRAGMENTDETAILPROJECT = 27;
+  private static final int LAYOUT_FRAGMENTDETAILPICJOB = 27;
 
-  private static final int LAYOUT_FRAGMENTDETAILREPORTCOMPETITORATSTORE = 28;
+  private static final int LAYOUT_FRAGMENTDETAILPROJECT = 28;
 
-  private static final int LAYOUT_FRAGMENTDETAILREPORTSALESATSTORE = 29;
+  private static final int LAYOUT_FRAGMENTDETAILREPORTCOMPETITORATSTORE = 29;
 
-  private static final int LAYOUT_FRAGMENTDETAILREPORTTRACKINGATSTORE = 30;
+  private static final int LAYOUT_FRAGMENTDETAILREPORTSALESATSTORE = 30;
 
-  private static final int LAYOUT_FRAGMENTDETAILSTORE = 31;
+  private static final int LAYOUT_FRAGMENTDETAILREPORTTRACKINGATSTORE = 31;
 
-  private static final int LAYOUT_FRAGMENTDETAILTASK = 32;
+  private static final int LAYOUT_FRAGMENTDETAILSTORE = 32;
 
-  private static final int LAYOUT_FRAGMENTDETAILTASKATTENDANCE = 33;
+  private static final int LAYOUT_FRAGMENTDETAILTASK = 33;
 
-  private static final int LAYOUT_FRAGMENTDETAILUPDATESTATUSATSTORE = 34;
+  private static final int LAYOUT_FRAGMENTDETAILTASKATTENDANCE = 34;
 
-  private static final int LAYOUT_FRAGMENTDETAILUSER = 35;
+  private static final int LAYOUT_FRAGMENTDETAILUPDATESTATUSATSTORE = 35;
 
-  private static final int LAYOUT_FRAGMENTEXPORTGIFT = 36;
+  private static final int LAYOUT_FRAGMENTDETAILUSER = 36;
 
-  private static final int LAYOUT_FRAGMENTFILTERJOB = 37;
+  private static final int LAYOUT_FRAGMENTEXPORTGIFT = 37;
 
-  private static final int LAYOUT_FRAGMENTFORGOT = 38;
+  private static final int LAYOUT_FRAGMENTFILTERJOB = 38;
 
-  private static final int LAYOUT_FRAGMENTHOME = 39;
+  private static final int LAYOUT_FRAGMENTFORGOT = 39;
 
-  private static final int LAYOUT_FRAGMENTHOMECONTAINER = 40;
+  private static final int LAYOUT_FRAGMENTHOME = 40;
 
-  private static final int LAYOUT_FRAGMENTIMPORTGIFT = 41;
+  private static final int LAYOUT_FRAGMENTHOMECONTAINER = 41;
 
-  private static final int LAYOUT_FRAGMENTINFO = 42;
+  private static final int LAYOUT_FRAGMENTIMPORTGIFT = 42;
 
-  private static final int LAYOUT_FRAGMENTINPUTBILL = 43;
+  private static final int LAYOUT_FRAGMENTINFO = 43;
 
-  private static final int LAYOUT_FRAGMENTINPUTNAME = 44;
+  private static final int LAYOUT_FRAGMENTINPUTBILL = 44;
 
-  private static final int LAYOUT_FRAGMENTJOB = 45;
+  private static final int LAYOUT_FRAGMENTINPUTNAME = 45;
 
-  private static final int LAYOUT_FRAGMENTJOBCONTAINER = 46;
+  private static final int LAYOUT_FRAGMENTJOB = 46;
 
-  private static final int LAYOUT_FRAGMENTJOBPROJECT = 47;
+  private static final int LAYOUT_FRAGMENTJOBCONTAINER = 47;
 
-  private static final int LAYOUT_FRAGMENTLISTATTENDANCEATSTORE = 48;
+  private static final int LAYOUT_FRAGMENTJOBPROJECT = 48;
 
-  private static final int LAYOUT_FRAGMENTLISTATTRIBUTES = 49;
+  private static final int LAYOUT_FRAGMENTLISTATTENDANCEATSTORE = 49;
 
-  private static final int LAYOUT_FRAGMENTLISTEMPLOYEE = 50;
+  private static final int LAYOUT_FRAGMENTLISTATTRIBUTES = 50;
 
-  private static final int LAYOUT_FRAGMENTLISTGROUP = 51;
+  private static final int LAYOUT_FRAGMENTLISTEMPLOYEE = 51;
 
-  private static final int LAYOUT_FRAGMENTLISTGROUPEMPLOYEE = 52;
+  private static final int LAYOUT_FRAGMENTLISTGROUP = 52;
 
-  private static final int LAYOUT_FRAGMENTLISTIMAGE = 53;
+  private static final int LAYOUT_FRAGMENTLISTGROUPEMPLOYEE = 53;
 
-  private static final int LAYOUT_FRAGMENTLISTJOBREQUEST = 54;
+  private static final int LAYOUT_FRAGMENTLISTIMAGE = 54;
 
-  private static final int LAYOUT_FRAGMENTLISTMANAGEMENTAPPLICATIONS = 55;
+  private static final int LAYOUT_FRAGMENTLISTJOBREQUEST = 55;
 
-  private static final int LAYOUT_FRAGMENTLISTMYJOB = 56;
+  private static final int LAYOUT_FRAGMENTLISTMANAGEMENTAPPLICATIONS = 56;
 
-  private static final int LAYOUT_FRAGMENTLISTPICAPPLICATIONS = 57;
+  private static final int LAYOUT_FRAGMENTLISTMYJOB = 57;
 
-  private static final int LAYOUT_FRAGMENTLISTPICNOTIFICATION = 58;
+  private static final int LAYOUT_FRAGMENTLISTPICAPPLICATIONS = 58;
 
-  private static final int LAYOUT_FRAGMENTLISTPRODUCT = 59;
+  private static final int LAYOUT_FRAGMENTLISTPICNOTIFICATION = 59;
 
-  private static final int LAYOUT_FRAGMENTLISTPROJECT = 60;
+  private static final int LAYOUT_FRAGMENTLISTPRODUCT = 60;
 
-  private static final int LAYOUT_FRAGMENTLISTREPORTCOMPETITORATSTORE = 61;
+  private static final int LAYOUT_FRAGMENTLISTPROJECT = 61;
 
-  private static final int LAYOUT_FRAGMENTLISTREPORTSALESATSTORE = 62;
+  private static final int LAYOUT_FRAGMENTLISTREPORTCOMPETITORATSTORE = 62;
 
-  private static final int LAYOUT_FRAGMENTLISTREPORTTRACKINGATSTORE = 63;
+  private static final int LAYOUT_FRAGMENTLISTREPORTSALESATSTORE = 63;
 
-  private static final int LAYOUT_FRAGMENTLISTSTORE = 64;
+  private static final int LAYOUT_FRAGMENTLISTREPORTTRACKINGATSTORE = 64;
 
-  private static final int LAYOUT_FRAGMENTLISTUPDATESTATUSATSTORE = 65;
+  private static final int LAYOUT_FRAGMENTLISTSTORE = 65;
 
-  private static final int LAYOUT_FRAGMENTLOADMOREREFRESH = 66;
+  private static final int LAYOUT_FRAGMENTLISTUPDATESTATUSATSTORE = 66;
 
-  private static final int LAYOUT_FRAGMENTLOADMOREREFRESHTOOLBAR = 67;
+  private static final int LAYOUT_FRAGMENTLOADMOREREFRESH = 67;
 
-  private static final int LAYOUT_FRAGMENTLOGIN = 68;
+  private static final int LAYOUT_FRAGMENTLOADMOREREFRESHTOOLBAR = 68;
 
-  private static final int LAYOUT_FRAGMENTMAIN = 69;
+  private static final int LAYOUT_FRAGMENTLOGIN = 69;
 
-  private static final int LAYOUT_FRAGMENTMANAGEAPPLICATION = 70;
+  private static final int LAYOUT_FRAGMENTMAIN = 70;
 
-  private static final int LAYOUT_FRAGMENTMANAGEATTENDANCE = 71;
+  private static final int LAYOUT_FRAGMENTMANAGEAPPLICATION = 71;
 
-  private static final int LAYOUT_FRAGMENTMANAGEEMPLOYEE = 72;
+  private static final int LAYOUT_FRAGMENTMANAGEATTENDANCE = 72;
 
-  private static final int LAYOUT_FRAGMENTMANAGENOTIFICATION = 73;
+  private static final int LAYOUT_FRAGMENTMANAGEEMPLOYEE = 73;
 
-  private static final int LAYOUT_FRAGMENTMANAGEPROJECT = 74;
+  private static final int LAYOUT_FRAGMENTMANAGENOTIFICATION = 74;
 
-  private static final int LAYOUT_FRAGMENTMANAGEREPORTCOMPETITOR = 75;
+  private static final int LAYOUT_FRAGMENTMANAGEPROJECT = 75;
 
-  private static final int LAYOUT_FRAGMENTMANAGEREPORTSALES = 76;
+  private static final int LAYOUT_FRAGMENTMANAGEREPORTCOMPETITOR = 76;
 
-  private static final int LAYOUT_FRAGMENTMANAGEREPORTTRACKING = 77;
+  private static final int LAYOUT_FRAGMENTMANAGEREPORTSALES = 77;
 
-  private static final int LAYOUT_FRAGMENTMANAGESTORE = 78;
+  private static final int LAYOUT_FRAGMENTMANAGEREPORTTRACKING = 78;
 
-  private static final int LAYOUT_FRAGMENTMANAGEUPDATESTATUS = 79;
+  private static final int LAYOUT_FRAGMENTMANAGESTORE = 79;
 
-  private static final int LAYOUT_FRAGMENTMEMBERGROUPUSER = 80;
+  private static final int LAYOUT_FRAGMENTMANAGEUPDATESTATUS = 80;
 
-  private static final int LAYOUT_FRAGMENTMEMBERPROJECT = 81;
+  private static final int LAYOUT_FRAGMENTMEMBERGROUPUSER = 81;
 
-  private static final int LAYOUT_FRAGMENTMONITOR = 82;
+  private static final int LAYOUT_FRAGMENTMEMBERPROJECT = 82;
 
-  private static final int LAYOUT_FRAGMENTNOTIFICATION = 83;
+  private static final int LAYOUT_FRAGMENTMONITOR = 83;
 
-  private static final int LAYOUT_FRAGMENTNOTIFICATIONCONTAINER = 84;
+  private static final int LAYOUT_FRAGMENTNOTIFICATION = 84;
 
-  private static final int LAYOUT_FRAGMENTNOTIFICATIONSENT = 85;
+  private static final int LAYOUT_FRAGMENTNOTIFICATIONCONTAINER = 85;
 
-  private static final int LAYOUT_FRAGMENTPRIVACY = 86;
+  private static final int LAYOUT_FRAGMENTNOTIFICATIONSENT = 86;
 
-  private static final int LAYOUT_FRAGMENTPROFILE = 87;
+  private static final int LAYOUT_FRAGMENTPRIVACY = 87;
 
-  private static final int LAYOUT_FRAGMENTPROFILECONTAINER = 88;
+  private static final int LAYOUT_FRAGMENTPROFILE = 88;
 
-  private static final int LAYOUT_FRAGMENTPROJECTINPROGRESS = 89;
+  private static final int LAYOUT_FRAGMENTPROFILECONTAINER = 89;
 
-  private static final int LAYOUT_FRAGMENTREGISTER = 90;
+  private static final int LAYOUT_FRAGMENTPROJECTINPROGRESS = 90;
 
-  private static final int LAYOUT_FRAGMENTREPORT = 91;
+  private static final int LAYOUT_FRAGMENTREGISTER = 91;
 
-  private static final int LAYOUT_FRAGMENTREPORTCOMPETITOR = 92;
+  private static final int LAYOUT_FRAGMENTREPORT = 92;
 
-  private static final int LAYOUT_FRAGMENTREPORTENDSHIFT = 93;
+  private static final int LAYOUT_FRAGMENTREPORTCOMPETITOR = 93;
 
-  private static final int LAYOUT_FRAGMENTREPORTPROJECT = 94;
+  private static final int LAYOUT_FRAGMENTREPORTENDSHIFT = 94;
 
-  private static final int LAYOUT_FRAGMENTREPORTSALES = 95;
+  private static final int LAYOUT_FRAGMENTREPORTPROJECT = 95;
 
-  private static final int LAYOUT_FRAGMENTREPORTTIME = 96;
+  private static final int LAYOUT_FRAGMENTREPORTSALES = 96;
 
-  private static final int LAYOUT_FRAGMENTREPORTUPDATESTATUS = 97;
+  private static final int LAYOUT_FRAGMENTREPORTTIME = 97;
 
-  private static final int LAYOUT_FRAGMENTREQUIRELOGIN = 98;
+  private static final int LAYOUT_FRAGMENTREPORTUPDATESTATUS = 98;
 
-  private static final int LAYOUT_FRAGMENTRESETPASSWORD = 99;
+  private static final int LAYOUT_FRAGMENTREQUIRELOGIN = 99;
 
-  private static final int LAYOUT_FRAGMENTSELECTPROJECT = 100;
+  private static final int LAYOUT_FRAGMENTRESETPASSWORD = 100;
 
-  private static final int LAYOUT_FRAGMENTSELECTPROMOTION = 101;
+  private static final int LAYOUT_FRAGMENTSELECTPROJECT = 101;
 
-  private static final int LAYOUT_FRAGMENTSPLASH = 102;
+  private static final int LAYOUT_FRAGMENTSELECTPROMOTION = 102;
 
-  private static final int LAYOUT_FRAGMENTSTOREPROJECT = 103;
+  private static final int LAYOUT_FRAGMENTSPLASH = 103;
 
-  private static final int LAYOUT_FRAGMENTTERM = 104;
+  private static final int LAYOUT_FRAGMENTSTOREPROJECT = 104;
 
-  private static final int LAYOUT_FRAGMENTVERIFYOTP = 105;
+  private static final int LAYOUT_FRAGMENTTERM = 105;
 
-  private static final int LAYOUT_FRAGMENTVERIFYOTPSTEP2 = 106;
+  private static final int LAYOUT_FRAGMENTVERIFYOTP = 106;
 
-  private static final int LAYOUT_ITEMADDMEMBERTOPROJECT = 107;
+  private static final int LAYOUT_FRAGMENTVERIFYOTPSTEP2 = 107;
 
-  private static final int LAYOUT_ITEMATTENDANCE = 108;
+  private static final int LAYOUT_ITEMADDMEMBERTOPROJECT = 108;
 
-  private static final int LAYOUT_ITEMDETAILGROUP = 109;
+  private static final int LAYOUT_ITEMATTENDANCE = 109;
 
-  private static final int LAYOUT_ITEMFILTERSTORE = 110;
+  private static final int LAYOUT_ITEMDETAILGROUP = 110;
 
-  private static final int LAYOUT_ITEMGROUPSTORE = 111;
+  private static final int LAYOUT_ITEMFILTERSTORE = 111;
 
-  private static final int LAYOUT_ITEMGROUPUSER = 112;
+  private static final int LAYOUT_ITEMGROUPSTORE = 112;
 
-  private static final int LAYOUT_ITEMMANAGEMENTAPPLICATION = 113;
+  private static final int LAYOUT_ITEMGROUPUSER = 113;
 
-  private static final int LAYOUT_ITEMMANAGEMENTTASK = 114;
+  private static final int LAYOUT_ITEMMANAGEMENTAPPLICATION = 114;
 
-  private static final int LAYOUT_ITEMMEMBER = 115;
+  private static final int LAYOUT_ITEMMANAGEMENTTASK = 115;
 
-  private static final int LAYOUT_ITEMMEMBERREQUEST = 116;
+  private static final int LAYOUT_ITEMMEMBER = 116;
 
-  private static final int LAYOUT_ITEMNOTIFICATION = 117;
+  private static final int LAYOUT_ITEMMEMBERREQUEST = 117;
 
-  private static final int LAYOUT_ITEMORDER = 118;
+  private static final int LAYOUT_ITEMNOTIFICATION = 118;
 
-  private static final int LAYOUT_ITEMPICAPPLICATION = 119;
+  private static final int LAYOUT_ITEMORDER = 119;
 
-  private static final int LAYOUT_ITEMPROJECT = 120;
+  private static final int LAYOUT_ITEMPICAPPLICATION = 120;
 
-  private static final int LAYOUT_ITEMSELECTPRODUCT = 121;
+  private static final int LAYOUT_ITEMPROJECT = 121;
 
-  private static final int LAYOUT_ITEMSELECTSTORE = 122;
+  private static final int LAYOUT_ITEMSELECTPRODUCT = 122;
 
-  private static final int LAYOUT_ITEMSELECTUSER = 123;
+  private static final int LAYOUT_ITEMSELECTSTORE = 123;
 
-  private static final int LAYOUT_ITEMSTORE = 124;
+  private static final int LAYOUT_ITEMSELECTUSER = 124;
 
-  private static final int LAYOUT_ITEMSTOREGROUPSTORE = 125;
+  private static final int LAYOUT_ITEMSTORE = 125;
 
-  private static final int LAYOUT_ITEMSWITCHSHIFTREQUEST = 126;
+  private static final int LAYOUT_ITEMSTOREGROUPSTORE = 126;
 
-  private static final int LAYOUT_ITEMTODAYJOB = 127;
+  private static final int LAYOUT_ITEMSWITCHSHIFTREQUEST = 127;
 
-  private static final int LAYOUT_ITEMUSER = 128;
+  private static final int LAYOUT_ITEMTODAYJOB = 128;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(128);
+  private static final int LAYOUT_ITEMUSER = 129;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(129);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.crayon.fieldapp.R.layout.activity_main, LAYOUT_ACTIVITYMAIN);
@@ -429,6 +432,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.crayon.fieldapp.R.layout.fragment_detail_group_user, LAYOUT_FRAGMENTDETAILGROUPUSER);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.crayon.fieldapp.R.layout.fragment_detail_management_job, LAYOUT_FRAGMENTDETAILMANAGEMENTJOB);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.crayon.fieldapp.R.layout.fragment_detail_notification, LAYOUT_FRAGMENTDETAILNOTIFICATION);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.crayon.fieldapp.R.layout.fragment_detail_order, LAYOUT_FRAGMENTDETAILORDER);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.crayon.fieldapp.R.layout.fragment_detail_pic_job, LAYOUT_FRAGMENTDETAILPICJOB);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.crayon.fieldapp.R.layout.fragment_detail_project, LAYOUT_FRAGMENTDETAILPROJECT);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.crayon.fieldapp.R.layout.fragment_detail_report_competitor_at_store, LAYOUT_FRAGMENTDETAILREPORTCOMPETITORATSTORE);
@@ -687,6 +691,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
         }
         throw new IllegalArgumentException("The tag for fragment_detail_notification is invalid. Received: " + tag);
       }
+      case  LAYOUT_FRAGMENTDETAILORDER: {
+        if ("layout/fragment_detail_order_0".equals(tag)) {
+          return new FragmentDetailOrderBindingImpl(component, view);
+        }
+        throw new IllegalArgumentException("The tag for fragment_detail_order is invalid. Received: " + tag);
+      }
       case  LAYOUT_FRAGMENTDETAILPICJOB: {
         if ("layout/fragment_detail_pic_job_0".equals(tag)) {
           return new FragmentDetailPicJobBindingImpl(component, view);
@@ -831,12 +841,6 @@ public class DataBinderMapperImpl extends DataBinderMapper {
         }
         throw new IllegalArgumentException("The tag for fragment_list_attributes is invalid. Received: " + tag);
       }
-      case  LAYOUT_FRAGMENTLISTEMPLOYEE: {
-        if ("layout/fragment_list_employee_0".equals(tag)) {
-          return new FragmentListEmployeeBindingImpl(component, view);
-        }
-        throw new IllegalArgumentException("The tag for fragment_list_employee is invalid. Received: " + tag);
-      }
     }
     return null;
   }
@@ -844,6 +848,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   private final ViewDataBinding internalGetViewDataBinding1(DataBindingComponent component,
       View view, int internalId, Object tag) {
     switch(internalId) {
+      case  LAYOUT_FRAGMENTLISTEMPLOYEE: {
+        if ("layout/fragment_list_employee_0".equals(tag)) {
+          return new FragmentListEmployeeBindingImpl(component, view);
+        }
+        throw new IllegalArgumentException("The tag for fragment_list_employee is invalid. Received: " + tag);
+      }
       case  LAYOUT_FRAGMENTLISTGROUP: {
         if ("layout/fragment_list_group_0".equals(tag)) {
           return new FragmentListGroupBindingImpl(component, view);
@@ -1138,12 +1148,6 @@ public class DataBinderMapperImpl extends DataBinderMapper {
         }
         throw new IllegalArgumentException("The tag for fragment_reset_password is invalid. Received: " + tag);
       }
-      case  LAYOUT_FRAGMENTSELECTPROJECT: {
-        if ("layout/fragment_select_project_0".equals(tag)) {
-          return new FragmentSelectProjectBindingImpl(component, view);
-        }
-        throw new IllegalArgumentException("The tag for fragment_select_project is invalid. Received: " + tag);
-      }
     }
     return null;
   }
@@ -1151,6 +1155,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   private final ViewDataBinding internalGetViewDataBinding2(DataBindingComponent component,
       View view, int internalId, Object tag) {
     switch(internalId) {
+      case  LAYOUT_FRAGMENTSELECTPROJECT: {
+        if ("layout/fragment_select_project_0".equals(tag)) {
+          return new FragmentSelectProjectBindingImpl(component, view);
+        }
+        throw new IllegalArgumentException("The tag for fragment_select_project is invalid. Received: " + tag);
+      }
       case  LAYOUT_FRAGMENTSELECTPROMOTION: {
         if ("layout/fragment_select_promotion_0".equals(tag)) {
           return new FragmentSelectPromotionBindingImpl(component, view);
@@ -1398,7 +1408,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(128);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(129);
 
     static {
       sKeys.put("layout/activity_main_0", com.crayon.fieldapp.R.layout.activity_main);
@@ -1426,6 +1436,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put("layout/fragment_detail_group_user_0", com.crayon.fieldapp.R.layout.fragment_detail_group_user);
       sKeys.put("layout/fragment_detail_management_job_0", com.crayon.fieldapp.R.layout.fragment_detail_management_job);
       sKeys.put("layout/fragment_detail_notification_0", com.crayon.fieldapp.R.layout.fragment_detail_notification);
+      sKeys.put("layout/fragment_detail_order_0", com.crayon.fieldapp.R.layout.fragment_detail_order);
       sKeys.put("layout/fragment_detail_pic_job_0", com.crayon.fieldapp.R.layout.fragment_detail_pic_job);
       sKeys.put("layout/fragment_detail_project_0", com.crayon.fieldapp.R.layout.fragment_detail_project);
       sKeys.put("layout/fragment_detail_report_competitor_at_store_0", com.crayon.fieldapp.R.layout.fragment_detail_report_competitor_at_store);

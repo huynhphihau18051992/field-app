@@ -84,7 +84,7 @@ class DetailPicJobFragment : BaseFragment<FragmentDetailPicJobBinding, DetailPic
         if (type == TaskType.REPORT_END_SHIFT.value) {
             val bundel = bundleOf("taskId" to taskId)
             findNavController().navigate(
-                R.id.action_detailPicJobFragment_to_reportEndShiftFragment,
+                R.id.action_detailPicJobFragment_to_reportSalesFragment,
                 bundel
             )
         } else if (type == TaskType.TIME_KEEPING.value) {
@@ -99,7 +99,7 @@ class DetailPicJobFragment : BaseFragment<FragmentDetailPicJobBinding, DetailPic
                 R.id.action_detailPicJobFragment_to_reportUpdateStatusFragment,
                 bundel
             )
-        } else if (type == TaskType.CHANGE_GIFT.value) {
+        } else if (type == TaskType.REPORT_CUSTOMER.value) {
             val bundel = bundleOf("taskId" to taskId)
             findNavController().navigate(
                 R.id.action_detailPicJobFragment_to_changeGiftFragment,
@@ -111,7 +111,7 @@ class DetailPicJobFragment : BaseFragment<FragmentDetailPicJobBinding, DetailPic
                 R.id.action_detailPicJobFragment_to_reportCompetitorFragment,
                 bundel
             )
-        } else if (type == TaskType.REPORT_SALES.value) {
+        } else if (type == TaskType.REPORT_END_SHIFT.value) {
             val bundel = bundleOf("taskId" to taskId)
             findNavController().navigate(
                 R.id.action_detailPicJobFragment_to_reportSalesFragment,
@@ -119,11 +119,11 @@ class DetailPicJobFragment : BaseFragment<FragmentDetailPicJobBinding, DetailPic
             )
         } else {
             val bundel = bundleOf("taskId" to taskId)
-//            findNavController().navigate(R.id.action_detailPicJob_to_detailTask, bundel)
-            findNavController().navigate(
-                R.id.action_detailPicJobFragment_to_reportSalesFragment,
-                bundel
-            )
+            findNavController().navigate(R.id.action_detailPicJob_to_detailTask, bundel)
+//            findNavController().navigate(
+//                R.id.action_detailPicJobFragment_to_changeGiftFragment,
+//                bundel
+//            )
         }
 
     }

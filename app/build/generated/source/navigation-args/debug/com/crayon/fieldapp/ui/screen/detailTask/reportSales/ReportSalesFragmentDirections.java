@@ -16,6 +16,11 @@ public class ReportSalesFragmentDirections {
   }
 
   @NonNull
+  public static NavDirections actionReportSalesFragmentToDetailOrderFragment() {
+    return new ActionOnlyNavDirections(R.id.action_reportSalesFragment_to_detailOrderFragment);
+  }
+
+  @NonNull
   public static NavDirections actionGlobalLoginFragment() {
     return MainNavDirections.actionGlobalLoginFragment();
   }

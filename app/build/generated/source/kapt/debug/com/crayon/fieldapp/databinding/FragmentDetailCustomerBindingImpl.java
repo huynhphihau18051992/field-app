@@ -18,6 +18,9 @@ public class FragmentDetailCustomerBindingImpl extends FragmentDetailCustomerBin
         sViewsWithIds.put(R.id.tv_title, 2);
         sViewsWithIds.put(R.id.imb_ic_back, 3);
         sViewsWithIds.put(R.id.imb_ic_filter, 4);
+        sViewsWithIds.put(R.id.rv_images, 5);
+        sViewsWithIds.put(R.id.rv_promotion, 6);
+        sViewsWithIds.put(R.id.rv_gift, 7);
     }
     // views
     @NonNull
@@ -28,13 +31,16 @@ public class FragmentDetailCustomerBindingImpl extends FragmentDetailCustomerBin
     // Inverse Binding Event Handlers
 
     public FragmentDetailCustomerBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 5, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 8, sIncludes, sViewsWithIds));
     }
     private FragmentDetailCustomerBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
             , (android.widget.ImageButton) bindings[3]
             , (android.widget.ImageButton) bindings[4]
             , (android.widget.RelativeLayout) bindings[1]
+            , (androidx.recyclerview.widget.RecyclerView) bindings[7]
+            , (androidx.recyclerview.widget.RecyclerView) bindings[5]
+            , (androidx.recyclerview.widget.RecyclerView) bindings[6]
             , (android.widget.TextView) bindings[2]
             );
         this.mboundView0 = (android.widget.LinearLayout) bindings[0];

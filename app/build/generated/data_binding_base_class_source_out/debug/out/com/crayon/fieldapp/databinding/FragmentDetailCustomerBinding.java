@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+import androidx.recyclerview.widget.RecyclerView;
 import com.crayon.fieldapp.R;
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel;
 import java.lang.Deprecated;
@@ -28,6 +29,15 @@ public abstract class FragmentDetailCustomerBinding extends ViewDataBinding {
   public final RelativeLayout rlToolbar;
 
   @NonNull
+  public final RecyclerView rvGift;
+
+  @NonNull
+  public final RecyclerView rvImages;
+
+  @NonNull
+  public final RecyclerView rvPromotion;
+
+  @NonNull
   public final TextView tvTitle;
 
   @Bindable
@@ -35,11 +45,15 @@ public abstract class FragmentDetailCustomerBinding extends ViewDataBinding {
 
   protected FragmentDetailCustomerBinding(Object _bindingComponent, View _root,
       int _localFieldCount, ImageButton imbIcBack, ImageButton imbIcFilter,
-      RelativeLayout rlToolbar, TextView tvTitle) {
+      RelativeLayout rlToolbar, RecyclerView rvGift, RecyclerView rvImages,
+      RecyclerView rvPromotion, TextView tvTitle) {
     super(_bindingComponent, _root, _localFieldCount);
     this.imbIcBack = imbIcBack;
     this.imbIcFilter = imbIcFilter;
     this.rlToolbar = rlToolbar;
+    this.rvGift = rvGift;
+    this.rvImages = rvImages;
+    this.rvPromotion = rvPromotion;
     this.tvTitle = tvTitle;
   }
 

@@ -11,9 +11,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_14sdp"
         android:layout_marginTop="@dimen/_14sdp"
         android:layout_marginRight="@dimen/_14sdp"
-        android:layout_marginLeft="@dimen/_14sdp"
         android:background="@drawable/background_order"
         android:orientation="vertical">
 
@@ -37,7 +37,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@+id/txt_customer_num"
+                android:layout_below="@+id/txt_order_id"
                 android:layout_marginLeft="@dimen/_14sdp"
                 android:layout_marginRight="@dimen/_14sdp"
                 android:background="@color/colorGrayLigth" />
@@ -115,7 +115,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_14sdp"
             android:layout_marginTop="@dimen/_7sdp"
-            android:layout_marginRight="@dimen/_14sdp">
+            android:layout_marginRight="@dimen/_14sdp"
+            android:layout_marginBottom="@dimen/_7sdp">
 
             <TextView
                 android:id="@+id/txt_toal_title"
@@ -155,8 +156,6 @@
             android:textAlignment="center"
             android:textColor="#8E8E8E"
             android:textSize="@dimen/_12ssp" />
-
-
     </LinearLayout>
 
 

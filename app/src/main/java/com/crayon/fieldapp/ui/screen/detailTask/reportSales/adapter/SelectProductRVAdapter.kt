@@ -14,6 +14,7 @@ import com.crayon.fieldapp.utils.setSingleClick
 class SelectProductRVAdapter constructor(
     val items: ArrayList<String>,
     val context: Context,
+    val onPriceClick: (String) -> Unit = {},
     val onItemClick: (String) -> Unit = {}
 ) :
     RecyclerView.Adapter<SelectProductRVAdapter.GroupViewHolder>() {
@@ -32,23 +33,21 @@ class SelectProductRVAdapter constructor(
             onItemClick(data)
         }
 
+        holder.txtProductPrice?.setSingleClick {
+            onPriceClick(data)
+        }
+
     }
 
     inner class GroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var cbProduct: CheckBox
         var txtProductName: TextView
         var txtProductPrice: TextView
-        var imgMinus: ImageView
-        var imgPlus: ImageView
-        var txtNumber: TextView
 
         init {
             cbProduct = itemView.findViewById(R.id.cb_product)
             txtProductName = itemView.findViewById(R.id.txt_product_name)
             txtProductPrice = itemView.findViewById(R.id.txt_price)
-            txtNumber = itemView.findViewById(R.id.txt_number)
-            imgMinus = itemView.findViewById(R.id.img_minus)
-            imgPlus = itemView.findViewById(R.id.img_plus)
         }
     }
 

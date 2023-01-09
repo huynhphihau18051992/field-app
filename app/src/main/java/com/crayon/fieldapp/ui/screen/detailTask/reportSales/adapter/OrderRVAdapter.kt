@@ -25,7 +25,7 @@ class OrderRVAdapter constructor(
 
     override fun onBindViewHolder(holder: GroupViewHolder, position: Int) {
         val data = items[position]
-        holder.txtOrderId.text = (position + 1).toString()
+        holder.txtOrderId.text = "Đơn hàng " + (position + 1).toString()
         holder.itemView.setSingleClick {
             onItemClick(data)
         }

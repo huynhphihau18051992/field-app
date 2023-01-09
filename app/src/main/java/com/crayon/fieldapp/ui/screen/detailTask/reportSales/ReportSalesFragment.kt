@@ -40,7 +40,9 @@ class ReportSalesFragment :
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mOrderAdatper = OrderRVAdapter(arrayListOf("1", "2", "3"), requireContext(), {
-
+            findNavController().navigate(
+                R.id.action_reportSalesFragment_to_detailOrderFragment
+            )
         })
 
         rv_customer.apply {

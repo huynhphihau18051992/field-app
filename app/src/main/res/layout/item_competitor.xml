@@ -10,24 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-        <ImageView
-            android:id="@+id/ic_user"
-            android:layout_width="@dimen/_15sdp"
-            android:layout_height="@dimen/_15sdp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/_14sdp"
-            android:layout_marginTop="@dimen/_14sdp"
-            android:src="@drawable/ic_gray_profile"
-            android:tint="#8E8E8E" />
-
         <TextView
             android:id="@+id/txt_customer_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/_7sdp"
-            android:layout_toRightOf="@+id/ic_user"
+            android:layout_marginLeft="@dimen/_14sdp"
+            android:layout_marginBottom="@dimen/_14sdp"
             android:fontFamily="@font/inter_semi_bold"
             android:text="HD01"
             android:textColor="@color/colorBlack"
@@ -36,7 +25,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_below="@+id/ic_user"
+            android:layout_below="@+id/txt_customer_num"
             android:layout_marginLeft="@dimen/_14sdp"
             android:layout_marginRight="@dimen/_14sdp"
             android:background="#E9E9E9" />
@@ -197,6 +186,7 @@
             app:cardCornerRadius="@dimen/_8sdp">
 
             <ImageView
+                android:id="@+id/img_1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -216,6 +206,7 @@
             app:cardCornerRadius="@dimen/_8sdp">
 
             <ImageView
+                android:id="@+id/img_2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -235,6 +226,7 @@
             app:cardCornerRadius="@dimen/_8sdp">
 
             <ImageView
+                android:id="@+id/img_3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.utils.setSingleClick
@@ -12,7 +13,8 @@ import com.crayon.fieldapp.utils.setSingleClick
 class ReportCompetitorRVAdapter constructor(
     val items: ArrayList<String>,
     val context: Context,
-    val onItemClick: (String) -> Unit = {}
+    val onItemClick: (String) -> Unit = {},
+    val onImageClick: (String) -> Unit = {}
 ) :
     RecyclerView.Adapter<ReportCompetitorRVAdapter.GroupViewHolder>() {
 
@@ -25,10 +27,14 @@ class ReportCompetitorRVAdapter constructor(
 
     override fun onBindViewHolder(holder: GroupViewHolder, position: Int) {
         val data = items[position]
-        holder.txtCustomerId.text = "HD" + position + 1
+        holder.txtCustomerId.text = "Hoạt động " + (position + 1)
 
         holder.itemView.setSingleClick {
             onItemClick(data)
+        }
+
+        holder.cvImage1?.setSingleClick {
+            onImageClick(data)
         }
 
     }
@@ -39,6 +45,9 @@ class ReportCompetitorRVAdapter constructor(
         var txtType: TextView
         var txtDate: TextView
         var txtGift: TextView
+        var cvImage1: CardView
+        var cvImage2: CardView
+        var cvImage3: CardView
 
         init {
             txtCustomerId = itemView.findViewById(R.id.txt_customer_num)
@@ -46,6 +55,9 @@ class ReportCompetitorRVAdapter constructor(
             txtType = itemView.findViewById(R.id.txt_type)
             txtDate = itemView.findViewById(R.id.txt_date)
             txtGift = itemView.findViewById(R.id.txt_note)
+            cvImage1 = itemView.findViewById(R.id.cv_image1)
+            cvImage2 = itemView.findViewById(R.id.cv_image2)
+            cvImage3 = itemView.findViewById(R.id.cv_image3)
         }
     }
 

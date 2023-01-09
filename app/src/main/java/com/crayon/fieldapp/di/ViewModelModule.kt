@@ -32,6 +32,7 @@ import com.crayon.fieldapp.ui.screen.detailTask.base.DetailTaskViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.reportCompetitor.ReportCompetitorViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.reportSales.ReportSalesViewModel
+import com.crayon.fieldapp.ui.screen.detailTask.reportSales.detailOrder.DetailOrderViewModel
 import com.crayon.fieldapp.ui.screen.detailUser.DetailUserViewModel
 import com.crayon.fieldapp.ui.screen.forgot.ForgotPasswordViewModel
 import com.crayon.fieldapp.ui.screen.home.HomeViewModel
@@ -168,4 +169,5 @@ val viewModelModule = module {
     viewModel { DetailReportCompetitorAtStoreViewModel(get(), get()) }
     viewModel { DetailReportSalesAtStoreViewModel(get(), get()) }
     viewModel { DetailReportTrackingAtStoreViewModel(get(), get()) }
+    viewModel { DetailOrderViewModel() }
 }

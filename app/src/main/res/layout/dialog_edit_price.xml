@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txt_product_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_14sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:ellipsize="end"
+        android:fontFamily="@font/inter_semi_bold"
+        android:maxLines="1"
+        android:text="Sữa chua Vinamilk"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_14ssp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/_14sdp"
+        android:layout_marginRight="@dimen/_14sdp"
+        android:background="@color/colorGray" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginRight="@dimen/_14sdp">
+
+        <TextView
+            android:id="@+id/txt_price_default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/inter_semi_bold"
+            android:text="Giá đề xuất: "
+            android:textColor="#8E8E8E"
+            android:textSize="@dimen/_12ssp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/txt_price_default"
+            android:fontFamily="@font/inter_semi_bold"
+            android:text="128,000vnđ"
+            android:textAlignment="textEnd"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_12ssp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_14sdp"
+        android:fontFamily="@font/inter_semi_bold"
+        android:text="Giá hiện tại"
+        android:textColor="#8E8E8E"
+        android:textSize="@dimen/_12ssp" />
+
+    <EditText
+        android:id="@+id/edt_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginRight="@dimen/_14sdp"
+        android:background="@drawable/background_button_selector"
+        android:fontFamily="@font/inter_light"
+        android:hint="Nhập giá hiện tại"
+        android:imeOptions="actionNext"
+        android:inputType="numberDecimal"
+        android:maxLines="1"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingTop="@dimen/_12ssp"
+        android:paddingRight="@dimen/_10sdp"
+        android:paddingBottom="@dimen/_12sdp"
+        android:textSize="@dimen/_12ssp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/background_button_active"
+            android:clickable="false"
+            android:fontFamily="@font/inter_medium"
+            android:text="Huỷ"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_12ssp" />
+
+        <Button
+            android:id="@+id/btn_update"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/background_rectangle_blue_round_corner"
+            android:clickable="false"
+            android:fontFamily="@font/inter_medium"
+            android:text="Cập nhật"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp" />
+
+    </LinearLayout>
+
+</LinearLayout>
