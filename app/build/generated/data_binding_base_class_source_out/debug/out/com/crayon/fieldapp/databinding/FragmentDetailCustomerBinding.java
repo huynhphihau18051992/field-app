@@ -29,13 +29,7 @@ public abstract class FragmentDetailCustomerBinding extends ViewDataBinding {
   public final RelativeLayout rlToolbar;
 
   @NonNull
-  public final RecyclerView rvGift;
-
-  @NonNull
-  public final RecyclerView rvImages;
-
-  @NonNull
-  public final RecyclerView rvPromotion;
+  public final RecyclerView rvPage;
 
   @NonNull
   public final TextView tvTitle;
@@ -45,15 +39,12 @@ public abstract class FragmentDetailCustomerBinding extends ViewDataBinding {
 
   protected FragmentDetailCustomerBinding(Object _bindingComponent, View _root,
       int _localFieldCount, ImageButton imbIcBack, ImageButton imbIcFilter,
-      RelativeLayout rlToolbar, RecyclerView rvGift, RecyclerView rvImages,
-      RecyclerView rvPromotion, TextView tvTitle) {
+      RelativeLayout rlToolbar, RecyclerView rvPage, TextView tvTitle) {
     super(_bindingComponent, _root, _localFieldCount);
     this.imbIcBack = imbIcBack;
     this.imbIcFilter = imbIcFilter;
     this.rlToolbar = rlToolbar;
-    this.rvGift = rvGift;
-    this.rvImages = rvImages;
-    this.rvPromotion = rvPromotion;
+    this.rvPage = rvPage;
     this.tvTitle = tvTitle;
   }
 

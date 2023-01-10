@@ -12,10 +12,10 @@ import androidx.annotation.Nullable;
 import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
-import androidx.viewpager.widget.ViewPager;
 import com.badoualy.stepperindicator.StepperIndicator;
 import com.crayon.fieldapp.R;
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel;
+import com.crayon.fieldapp.ui.widgets.NonSwipeViewPager;
 import java.lang.Deprecated;
 import java.lang.Object;
 
@@ -27,7 +27,7 @@ public abstract class FragmentAddCustomerBinding extends ViewDataBinding {
   public final ImageButton imbIcFilter;
 
   @NonNull
-  public final ViewPager pagger;
+  public final NonSwipeViewPager pagger;
 
   @NonNull
   public final RelativeLayout rlToolbar;
@@ -42,8 +42,8 @@ public abstract class FragmentAddCustomerBinding extends ViewDataBinding {
   protected ChangeGiftViewModel mViewModel;
 
   protected FragmentAddCustomerBinding(Object _bindingComponent, View _root, int _localFieldCount,
-      ImageButton imbIcBack, ImageButton imbIcFilter, ViewPager pagger, RelativeLayout rlToolbar,
-      StepperIndicator stepperIndicator, TextView tvTitle) {
+      ImageButton imbIcBack, ImageButton imbIcFilter, NonSwipeViewPager pagger,
+      RelativeLayout rlToolbar, StepperIndicator stepperIndicator, TextView tvTitle) {
     super(_bindingComponent, _root, _localFieldCount);
     this.imbIcBack = imbIcBack;
     this.imbIcFilter = imbIcFilter;

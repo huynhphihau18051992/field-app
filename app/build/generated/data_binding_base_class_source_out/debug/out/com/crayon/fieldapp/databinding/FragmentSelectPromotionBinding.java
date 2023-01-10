@@ -5,8 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ScrollView;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.Bindable;
@@ -23,33 +21,16 @@ public abstract class FragmentSelectPromotionBinding extends ViewDataBinding {
   public final Button btnComplete;
 
   @NonNull
-  public final RecyclerView rvGift;
-
-  @NonNull
-  public final RecyclerView rvPromotion;
-
-  @NonNull
-  public final ScrollView svContent;
-
-  @NonNull
-  public final TextView txtGift;
-
-  @NonNull
-  public final TextView txtPromtion;
+  public final RecyclerView rvPage;
 
   @Bindable
   protected ChangeGiftViewModel mViewModel;
 
   protected FragmentSelectPromotionBinding(Object _bindingComponent, View _root,
-      int _localFieldCount, Button btnComplete, RecyclerView rvGift, RecyclerView rvPromotion,
-      ScrollView svContent, TextView txtGift, TextView txtPromtion) {
+      int _localFieldCount, Button btnComplete, RecyclerView rvPage) {
     super(_bindingComponent, _root, _localFieldCount);
     this.btnComplete = btnComplete;
-    this.rvGift = rvGift;
-    this.rvPromotion = rvPromotion;
-    this.svContent = svContent;
-    this.txtGift = txtGift;
-    this.txtPromtion = txtPromtion;
+    this.rvPage = rvPage;
   }
 
   public abstract void setViewModel(@Nullable ChangeGiftViewModel viewModel);

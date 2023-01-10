@@ -14,12 +14,8 @@ public class FragmentSelectPromotionBindingImpl extends FragmentSelectPromotionB
     static {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.sv_content, 1);
-        sViewsWithIds.put(R.id.txt_promtion, 2);
-        sViewsWithIds.put(R.id.rv_promotion, 3);
-        sViewsWithIds.put(R.id.txt_gift, 4);
-        sViewsWithIds.put(R.id.rv_gift, 5);
-        sViewsWithIds.put(R.id.btn_complete, 6);
+        sViewsWithIds.put(R.id.rv_page, 1);
+        sViewsWithIds.put(R.id.btn_complete, 2);
     }
     // views
     @NonNull
@@ -30,16 +26,12 @@ public class FragmentSelectPromotionBindingImpl extends FragmentSelectPromotionB
     // Inverse Binding Event Handlers
 
     public FragmentSelectPromotionBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 7, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 3, sIncludes, sViewsWithIds));
     }
     private FragmentSelectPromotionBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
-            , (android.widget.Button) bindings[6]
-            , (androidx.recyclerview.widget.RecyclerView) bindings[5]
-            , (androidx.recyclerview.widget.RecyclerView) bindings[3]
-            , (android.widget.ScrollView) bindings[1]
-            , (android.widget.TextView) bindings[4]
-            , (android.widget.TextView) bindings[2]
+            , (android.widget.Button) bindings[2]
+            , (androidx.recyclerview.widget.RecyclerView) bindings[1]
             );
         this.mboundView0 = (android.widget.RelativeLayout) bindings[0];
         this.mboundView0.setTag(null);

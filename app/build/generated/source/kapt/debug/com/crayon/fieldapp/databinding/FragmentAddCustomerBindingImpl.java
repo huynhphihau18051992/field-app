@@ -36,7 +36,7 @@ public class FragmentAddCustomerBindingImpl extends FragmentAddCustomerBinding  
         super(bindingComponent, root, 0
             , (android.widget.ImageButton) bindings[3]
             , (android.widget.ImageButton) bindings[4]
-            , (androidx.viewpager.widget.ViewPager) bindings[6]
+            , (com.crayon.fieldapp.ui.widgets.NonSwipeViewPager) bindings[6]
             , (android.widget.RelativeLayout) bindings[1]
             , (com.badoualy.stepperindicator.StepperIndicator) bindings[5]
             , (android.widget.TextView) bindings[2]

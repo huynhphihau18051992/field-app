@@ -96,6 +96,14 @@
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_monitor.xml"
     },
     {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_promotion_info.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_promotion_info.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_promotion.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_promotion.xml"
+    },
+    {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_media.xml",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_media.xml"
     },
@@ -166,6 +174,10 @@
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_camerax.xml",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_camerax.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_bill_info.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_bill_info.xml"
     },
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_report_update_status.xml",
@@ -312,6 +324,14 @@
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_verify_otp_step2.xml"
     },
     {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_customer_info.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_customer_info.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_gift_info.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_gift_info.xml"
+    },
+    {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_contact.xml",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_contact.xml"
     },
@@ -422,6 +442,10 @@
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_filter_job.xml",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_filter_job.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_image.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_image.xml"
     },
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_create_task.xml",
@@ -614,6 +638,10 @@
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_attendance.xml",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_attendance.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/dialog_select_product.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/dialog_select_product.xml"
     },
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_detail_store.xml",

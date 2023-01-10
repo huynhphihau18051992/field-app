@@ -686,6 +686,9 @@
         <action
             android:id="@+id/action_changeGiftFragment_to_addCustomerFragment"
             app:destination="@id/addCustomerFragment" />
+        <action
+            android:id="@+id/action_changeGiftFragment_to_detailCustomerFragment"
+            app:destination="@id/detailCustomerFragment" />
     </fragment>
 
     <fragment
@@ -723,6 +726,13 @@
         android:id="@+id/addCustomerFragment"
         android:name="com.crayon.fieldapp.ui.screen.detailTask.changeGift.addCustomer.AddCustomerFragment"
         android:label="AddCustomerFragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailCustomerFragment"
+        android:name="com.crayon.fieldapp.ui.screen.detailTask.changeGift.detailCustomer.DetailCustomerFragment"
+        android:label="DetailCustomerFragment">
 
     </fragment>
 

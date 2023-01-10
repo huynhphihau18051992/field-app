@@ -1,17 +1,14 @@
 package com.crayon.fieldapp.ui.base.dialog.getPhoto
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.crayon.fieldapp.R
-import com.crayon.fieldapp.utils.setSingleClick
-import kotlinx.android.synthetic.main.dialog_pick_photo.*
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class GetPhotoDialogFragment()  : BottomSheetDialogFragment() {
+class GetPhotoDialogFragment() : BottomSheetDialogFragment() {
     lateinit var btnCancel: TextView
     lateinit var btnGallery: TextView
     lateinit var btnCamera: TextView
@@ -22,7 +19,11 @@ class GetPhotoDialogFragment()  : BottomSheetDialogFragment() {
     }
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? =
         inflater.inflate(R.layout.dialog_pick_photo, container, false).apply {
 
             btnCancel = findViewById(R.id.btn_cancel)

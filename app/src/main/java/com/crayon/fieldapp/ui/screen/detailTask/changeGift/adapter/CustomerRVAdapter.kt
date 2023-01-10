@@ -27,7 +27,7 @@ class CustomerRVAdapter constructor(
 
     override fun onBindViewHolder(holder: GroupViewHolder, position: Int) {
         val data = items[position]
-        holder.txtCustomerId.text = "KH" + position + 1
+        holder.txtCustomerId.text = "Khách hàng " + (position + 1)
 
         holder.itemView.setSingleClick {
             onItemClick(data)

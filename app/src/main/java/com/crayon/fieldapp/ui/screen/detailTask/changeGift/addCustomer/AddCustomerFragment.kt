@@ -15,7 +15,6 @@ import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step4.SelectPromotion
 import com.crayon.fieldapp.utils.setSingleClick
 import kotlinx.android.synthetic.main.fragment_add_customer.*
 import kotlinx.android.synthetic.main.fragment_contact.imb_ic_back
-import kotlinx.android.synthetic.main.fragment_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewModel>() {
@@ -42,10 +41,23 @@ class AddCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewM
 
     private fun setupViewPager() {
         mViewPagerAdapter = BaseVPAdapter(childFragmentManager)
-        mViewPagerAdapter.addFragment(InputNameFragment(), "")
-        mViewPagerAdapter.addFragment(VerifyOtpStep2Fragment(), "")
-        mViewPagerAdapter.addFragment(InputBillFragment(), "")
-        mViewPagerAdapter.addFragment(SelectPromotionFragment(), "")
+        mViewPagerAdapter.addFragment(InputNameFragment({
+            // Click next button
+            pagger.setCurrentItem(1, true)
+            stepper_indicator?.currentStep = 1
+        }), "")
+        mViewPagerAdapter.addFragment(VerifyOtpStep2Fragment({
+            // Click next button
+            pagger.setCurrentItem(2, true)
+            stepper_indicator?.currentStep = 2
+        }), "")
+        mViewPagerAdapter.addFragment(InputBillFragment({
+            pagger.setCurrentItem(3, true)
+            stepper_indicator?.currentStep = 3
+        }), "")
+        mViewPagerAdapter.addFragment(SelectPromotionFragment({
+            findNavController().navigateUp()
+        }), "")
 
         pagger.apply {
             offscreenPageLimit = 4
@@ -53,7 +65,7 @@ class AddCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewM
         }
     }
 
-    private fun setupTablayout(){
+    private fun setupTablayout() {
         stepper_indicator?.addOnStepClickListener {
             pagger.setCurrentItem(it, true);
         }

@@ -16,6 +16,11 @@ public class ChangeGiftFragmentDirections {
   }
 
   @NonNull
+  public static NavDirections actionChangeGiftFragmentToDetailCustomerFragment() {
+    return new ActionOnlyNavDirections(R.id.action_changeGiftFragment_to_detailCustomerFragment);
+  }
+
+  @NonNull
   public static NavDirections actionGlobalLoginFragment() {
     return MainNavDirections.actionGlobalLoginFragment();
   }

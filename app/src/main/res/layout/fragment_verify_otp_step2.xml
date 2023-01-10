@@ -8,7 +8,7 @@
             type="com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel" />
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -23,13 +23,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#E9E9E9"
+                android:fontFamily="@font/inter_semi_bold"
                 android:paddingLeft="@dimen/_14sdp"
                 android:paddingTop="@dimen/_10sdp"
                 android:paddingRight="@dimen/_14sdp"
                 android:paddingBottom="@dimen/_10sdp"
                 android:text="Xác thực OTP"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_12ssp" />
 
             <ImageView
                 android:layout_width="@dimen/_200sdp"
@@ -88,6 +89,6 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
 
 </layout>

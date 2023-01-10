@@ -29,7 +29,7 @@
                 android:paddingBottom="@dimen/_10sdp"
                 android:text="Điền thông tin"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/_14ssp" />
+                android:textSize="@dimen/_12ssp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -50,7 +50,7 @@
                 android:layout_marginRight="@dimen/_14sdp"
                 android:background="@drawable/background_button_selector"
                 android:fontFamily="@font/inter_regular"
-                android:hint="example@mail.com"
+                android:hint="Nhập họ và tên"
                 android:imeOptions="actionNext"
                 android:inputType="text"
                 android:maxLength="120"

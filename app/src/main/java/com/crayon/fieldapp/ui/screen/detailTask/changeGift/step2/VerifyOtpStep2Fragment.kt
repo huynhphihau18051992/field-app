@@ -9,9 +9,11 @@ import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel
 import com.crayon.fieldapp.utils.setSingleClick
 import kotlinx.android.synthetic.main.fragment_contact.*
+import kotlinx.android.synthetic.main.fragment_verify_otp_step2.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class VerifyOtpStep2Fragment : BaseFragment<FragmentContactBinding, ChangeGiftViewModel>() {
+class VerifyOtpStep2Fragment(val onNextClick: (String) -> Unit = {}) :
+    BaseFragment<FragmentContactBinding, ChangeGiftViewModel>() {
 
     override val layoutId: Int = R.layout.fragment_verify_otp_step2
 
@@ -28,5 +30,8 @@ class VerifyOtpStep2Fragment : BaseFragment<FragmentContactBinding, ChangeGiftVi
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        btn_next?.setSingleClick {
+            onNextClick("")
+        }
     }
 }

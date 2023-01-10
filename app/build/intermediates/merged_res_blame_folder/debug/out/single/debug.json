@@ -72,12 +72,16 @@
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/drawable/ic_play_red.xml"
     },
     {
-        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/drawable_icon_sales.png.flat",
-        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/drawable/icon_sales.png"
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/layout_item_gift_info.xml.flat",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_gift_info.xml"
     },
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/layout_item_store.xml.flat",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_store.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/drawable_icon_sales.png.flat",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/drawable/icon_sales.png"
     },
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/layout_fragment_store_project.xml.flat",
@@ -244,12 +248,12 @@
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/drawable/boarder.xml"
     },
     {
-        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/drawable_ic_arrowhead_right.xml.flat",
-        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/drawable/ic_arrowhead_right.xml"
-    },
-    {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/layout_item_competitor.xml.flat",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_competitor.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/drawable_ic_arrowhead_right.xml.flat",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/drawable/ic_arrowhead_right.xml"
     },
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_filter.png.flat",
@@ -816,6 +820,10 @@
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/drawable/ic_black_menu.xml"
     },
     {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/layout_item_image.xml.flat",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_image.xml"
+    },
+    {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/layout_fragment_report_competitor.xml.flat",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_report_competitor.xml"
     },
@@ -982,6 +990,10 @@
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/drawable_ic_floppy_disk.xml.flat",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/drawable/ic_floppy_disk.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/drawable_rounded_dialog.xml.flat",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/drawable/rounded_dialog.xml"
     },
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/drawable_background_rectangle_gray.xml.flat",
@@ -1324,12 +1336,20 @@
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/navigation/nav_graph_notification.xml"
     },
     {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/layout_dialog_select_product.xml.flat",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/dialog_select_product.xml"
+    },
+    {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/layout_fragment_input_name.xml.flat",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_input_name.xml"
     },
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_un_checkmark.png.flat",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_un_checkmark.png"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/layout_item_promotion.xml.flat",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_promotion.xml"
     },
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/layout_fragment_detail_report_sales_at_store.xml.flat",
@@ -1458,6 +1478,10 @@
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/layout_job_load_state_footer_view_item.xml.flat",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/job_load_state_footer_view_item.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/layout_item_promotion_info.xml.flat",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_promotion_info.xml"
     },
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_shutter_selected.png.flat",
@@ -1784,6 +1808,10 @@
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_privacy.xml"
     },
     {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/layout_item_customer_info.xml.flat",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_customer_info.xml"
+    },
+    {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_shutter_focused.png.flat",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/build/generated/res/pngs/debug/drawable-mdpi/ic_shutter_focused.png"
     },
@@ -1984,6 +2012,10 @@
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_shutter_selected.png"
     },
     {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/layout_item_bill_info.xml.flat",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_bill_info.xml"
+    },
+    {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/drawable_ic_blue_profile.xml.flat",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/drawable/ic_blue_profile.xml"
     },
@@ -1998,6 +2030,10 @@
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/layout_fragment_add_customer.xml.flat",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_add_customer.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/drawable_dotted.xml.flat",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/drawable/dotted.xml"
     },
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/res/merged/debug/drawable_sample_avatar.jpg.flat",

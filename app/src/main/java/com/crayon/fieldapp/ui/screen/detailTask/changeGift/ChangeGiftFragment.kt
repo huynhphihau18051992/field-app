@@ -42,6 +42,9 @@ class ChangeGiftFragment : BaseFragment<FragmentChangeGiftBinding, ChangeGiftVie
             // Edit
         }, {
             // Item
+            findNavController().navigate(
+                R.id.action_changeGiftFragment_to_detailCustomerFragment
+            )
         })
 
         rv_customer.apply {

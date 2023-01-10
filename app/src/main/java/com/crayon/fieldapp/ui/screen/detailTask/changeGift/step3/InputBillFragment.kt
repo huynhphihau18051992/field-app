@@ -9,9 +9,10 @@ import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel
 import com.crayon.fieldapp.utils.setSingleClick
 import kotlinx.android.synthetic.main.fragment_contact.*
+import kotlinx.android.synthetic.main.fragment_input_bill.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class InputBillFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewModel>() {
+class InputBillFragment(val onNextClick: (String) -> Unit = {}) : BaseFragment<FragmentContactBinding, ChangeGiftViewModel>() {
 
     override val layoutId: Int = R.layout.fragment_input_bill
 
@@ -28,5 +29,8 @@ class InputBillFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewMod
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        btn_next?.setSingleClick {
+            onNextClick("")
+        }
     }
 }

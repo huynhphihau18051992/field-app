@@ -20,7 +20,7 @@ public class FragmentVerifyOtpStep2BindingImpl extends FragmentVerifyOtpStep2Bin
     }
     // views
     @NonNull
-    private final android.widget.LinearLayout mboundView0;
+    private final android.widget.ScrollView mboundView0;
     // variables
     // values
     // listeners
@@ -35,7 +35,7 @@ public class FragmentVerifyOtpStep2BindingImpl extends FragmentVerifyOtpStep2Bin
             , (android.widget.Button) bindings[2]
             , (com.crayon.fieldapp.ui.widgets.PinEntryEditText) bindings[1]
             );
-        this.mboundView0 = (android.widget.LinearLayout) bindings[0];
+        this.mboundView0 = (android.widget.ScrollView) bindings[0];
         this.mboundView0.setTag(null);
         setRootTag(root);
         // listeners

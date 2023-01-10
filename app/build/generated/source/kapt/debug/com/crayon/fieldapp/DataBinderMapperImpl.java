@@ -127,6 +127,7 @@ import com.crayon.fieldapp.databinding.ItemNotificationBindingImpl;
 import com.crayon.fieldapp.databinding.ItemOrderBindingImpl;
 import com.crayon.fieldapp.databinding.ItemPicApplicationBindingImpl;
 import com.crayon.fieldapp.databinding.ItemProjectBindingImpl;
+import com.crayon.fieldapp.databinding.ItemPromotionBindingImpl;
 import com.crayon.fieldapp.databinding.ItemSelectProductBindingImpl;
 import com.crayon.fieldapp.databinding.ItemSelectStoreBindingImpl;
 import com.crayon.fieldapp.databinding.ItemSelectUserBindingImpl;
@@ -388,23 +389,25 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_ITEMPROJECT = 121;
 
-  private static final int LAYOUT_ITEMSELECTPRODUCT = 122;
+  private static final int LAYOUT_ITEMPROMOTION = 122;
 
-  private static final int LAYOUT_ITEMSELECTSTORE = 123;
+  private static final int LAYOUT_ITEMSELECTPRODUCT = 123;
 
-  private static final int LAYOUT_ITEMSELECTUSER = 124;
+  private static final int LAYOUT_ITEMSELECTSTORE = 124;
 
-  private static final int LAYOUT_ITEMSTORE = 125;
+  private static final int LAYOUT_ITEMSELECTUSER = 125;
 
-  private static final int LAYOUT_ITEMSTOREGROUPSTORE = 126;
+  private static final int LAYOUT_ITEMSTORE = 126;
 
-  private static final int LAYOUT_ITEMSWITCHSHIFTREQUEST = 127;
+  private static final int LAYOUT_ITEMSTOREGROUPSTORE = 127;
 
-  private static final int LAYOUT_ITEMTODAYJOB = 128;
+  private static final int LAYOUT_ITEMSWITCHSHIFTREQUEST = 128;
 
-  private static final int LAYOUT_ITEMUSER = 129;
+  private static final int LAYOUT_ITEMTODAYJOB = 129;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(129);
+  private static final int LAYOUT_ITEMUSER = 130;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(130);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.crayon.fieldapp.R.layout.activity_main, LAYOUT_ACTIVITYMAIN);
@@ -528,6 +531,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.crayon.fieldapp.R.layout.item_order, LAYOUT_ITEMORDER);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.crayon.fieldapp.R.layout.item_pic_application, LAYOUT_ITEMPICAPPLICATION);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.crayon.fieldapp.R.layout.item_project, LAYOUT_ITEMPROJECT);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.crayon.fieldapp.R.layout.item_promotion, LAYOUT_ITEMPROMOTION);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.crayon.fieldapp.R.layout.item_select_product, LAYOUT_ITEMSELECTPRODUCT);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.crayon.fieldapp.R.layout.item_select_store, LAYOUT_ITEMSELECTSTORE);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.crayon.fieldapp.R.layout.item_select_user, LAYOUT_ITEMSELECTUSER);
@@ -1281,6 +1285,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
         }
         throw new IllegalArgumentException("The tag for item_project is invalid. Received: " + tag);
       }
+      case  LAYOUT_ITEMPROMOTION: {
+        if ("layout/item_promotion_0".equals(tag)) {
+          return new ItemPromotionBindingImpl(component, view);
+        }
+        throw new IllegalArgumentException("The tag for item_promotion is invalid. Received: " + tag);
+      }
       case  LAYOUT_ITEMSELECTPRODUCT: {
         if ("layout/item_select_product_0".equals(tag)) {
           return new ItemSelectProductBindingImpl(component, view);
@@ -1408,7 +1418,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(129);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(130);
 
     static {
       sKeys.put("layout/activity_main_0", com.crayon.fieldapp.R.layout.activity_main);
@@ -1532,6 +1542,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put("layout/item_order_0", com.crayon.fieldapp.R.layout.item_order);
       sKeys.put("layout/item_pic_application_0", com.crayon.fieldapp.R.layout.item_pic_application);
       sKeys.put("layout/item_project_0", com.crayon.fieldapp.R.layout.item_project);
+      sKeys.put("layout/item_promotion_0", com.crayon.fieldapp.R.layout.item_promotion);
       sKeys.put("layout/item_select_product_0", com.crayon.fieldapp.R.layout.item_select_product);
       sKeys.put("layout/item_select_store_0", com.crayon.fieldapp.R.layout.item_select_store);
       sKeys.put("layout/item_select_user_0", com.crayon.fieldapp.R.layout.item_select_user);

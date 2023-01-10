@@ -2824,6 +2824,7 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable dialog_bg
+drawable dotted
 drawable fab_bg_mini
 drawable fab_bg_normal
 drawable googleg_disabled_color_18
@@ -3058,6 +3059,7 @@ drawable notify_panel_notification_icon_bg
 drawable omo_sample
 drawable oval_blue500
 drawable oval_red_gradient
+drawable rounded_dialog
 drawable same_emoji
 drawable same_picture
 drawable sample_avatar
@@ -3149,6 +3151,7 @@ id action_bar_subtitle
 id action_bar_title
 id action_calendar_to_jobDetail
 id action_changeGiftFragment_to_addCustomerFragment
+id action_changeGiftFragment_to_detailCustomerFragment
 id action_container
 id action_context_bar
 id action_detailGroupFragment_to_detailStoreFragment
@@ -3339,6 +3342,7 @@ id design_menu_item_text
 id design_navigation_view
 id detailAttachmentFragment
 id detailAttendanceFragment
+id detailCustomerFragment
 id detailGroupFragment
 id detailGroupUserFragment
 id detailJobFragment2
@@ -3482,6 +3486,7 @@ id img_clock_early
 id img_clock_late
 id img_close
 id img_day
+id img_delete
 id img_edit
 id img_full_body
 id img_gallary
@@ -3503,6 +3508,7 @@ id img_ic_term
 id img_icon
 id img_id_back
 id img_id_front
+id img_line
 id img_location
 id img_media_type
 id img_minus
@@ -3677,6 +3683,7 @@ id rl_empty
 id rl_late
 id rl_login_qrcod
 id rl_member
+id rl_number
 id rl_product_info
 id rl_resend
 id rl_timeout
@@ -3701,6 +3708,7 @@ id rv_members
 id rv_menu
 id rv_new_image
 id rv_notification
+id rv_page
 id rv_product
 id rv_project
 id rv_promotion
@@ -3881,6 +3889,7 @@ id txtMenu
 id txt_address
 id txt_agency_name
 id txt_am
+id txt_bill
 id txt_birth_day
 id txt_brand
 id txt_check_in
@@ -3892,13 +3901,17 @@ id txt_content
 id txt_count
 id txt_country_code
 id txt_creator
+id txt_customer_name
 id txt_customer_num
+id txt_customer_phone
 id txt_date
 id txt_date_title
 id txt_day
+id txt_delete
 id txt_did_timekeeping
 id txt_distant
 id txt_early
+id txt_edit
 id txt_email
 id txt_empty
 id txt_end_date
@@ -3937,7 +3950,6 @@ id txt_price_default
 id txt_product_name
 id txt_project
 id txt_project_name
-id txt_promtion
 id txt_quality
 id txt_quality_title
 id txt_reason
@@ -3962,6 +3974,7 @@ id txt_timekeeping
 id txt_title
 id txt_toal_title
 id txt_total
+id txt_total_price
 id txt_type
 id txt_type_title
 id unchecked
@@ -4091,6 +4104,7 @@ layout dialog_otp_failed
 layout dialog_otp_success
 layout dialog_pick_photo
 layout dialog_select_agency
+layout dialog_select_product
 layout dialog_select_project
 layout dialog_timekeeping
 layout dialog_video
@@ -4205,18 +4219,22 @@ layout item_add_member_to_project
 layout item_add_store_to_project
 layout item_attendance
 layout item_attributes
+layout item_bill_info
 layout item_city
 layout item_competitor
+layout item_customer_info
 layout item_cutomer
 layout item_detail_group
 layout item_feedback
 layout item_filter
 layout item_filter_store
+layout item_gift_info
 layout item_grid_menu
 layout item_group_job_request
 layout item_group_store
 layout item_group_timekeeping
 layout item_group_user
+layout item_image
 layout item_job
 layout item_job_monitor_attendance
 layout item_job_request_list
@@ -4233,6 +4251,8 @@ layout item_order
 layout item_pic_application
 layout item_product
 layout item_project
+layout item_promotion
+layout item_promotion_info
 layout item_report_feedback
 layout item_report_product
 layout item_select
@@ -4803,6 +4823,9 @@ style Animation_AppCompat_DropDownUp
 style Animation_AppCompat_Tooltip
 style Animation_Design_BottomSheetDialog
 style Animation_MaterialComponents_BottomSheetDialog
+style AppBottomSheetDialogTheme
+style AppModalStyle
+style AppTheme
 style Base_AlertDialog_AppCompat
 style Base_AlertDialog_AppCompat_Light
 style Base_Animation_AppCompat_Dialog
