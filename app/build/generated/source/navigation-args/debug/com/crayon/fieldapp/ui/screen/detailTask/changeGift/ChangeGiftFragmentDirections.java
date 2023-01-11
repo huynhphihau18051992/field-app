@@ -21,6 +21,16 @@ public class ChangeGiftFragmentDirections {
   }
 
   @NonNull
+  public static NavDirections actionChangeGiftFragmentToImportGiftFragment() {
+    return new ActionOnlyNavDirections(R.id.action_changeGiftFragment_to_importGiftFragment);
+  }
+
+  @NonNull
+  public static NavDirections actionChangeGiftFragmentToExportGiftFragment() {
+    return new ActionOnlyNavDirections(R.id.action_changeGiftFragment_to_exportGiftFragment);
+  }
+
+  @NonNull
   public static NavDirections actionGlobalLoginFragment() {
     return MainNavDirections.actionGlobalLoginFragment();
   }

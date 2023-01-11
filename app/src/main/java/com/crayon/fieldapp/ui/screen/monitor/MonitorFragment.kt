@@ -144,6 +144,14 @@ class MonitorFragment : BaseFragment<FragmentMonitorBinding, MonitorViewModel>()
         )
         menu.add(
             GridMenu(
+                CHANGE_GIFT,
+                R.drawable.ic_gift,
+                resources.getString(R.string.txt_change_gift),
+                R.color.bgChangeGift
+            )
+        )
+        menu.add(
+            GridMenu(
                 EMPLOYEE_AGENCY,
                 R.drawable.ic_white_people,
                 resources.getString(R.string.txt_employee),
@@ -206,6 +214,7 @@ class MonitorFragment : BaseFragment<FragmentMonitorBinding, MonitorViewModel>()
         val REPORT_SALES: Int = 7
         val REPORT_COMPITETOR: Int = 8
         val TRACKING: Int = 9
+        val CHANGE_GIFT: Int = 10
     }
 
     override fun onMenuItemClicked(id: Int) {
@@ -232,6 +241,12 @@ class MonitorFragment : BaseFragment<FragmentMonitorBinding, MonitorViewModel>()
             TRACKING -> {
                 findNavController().navigate(
                     R.id.action_monitorFragment_to_manageReportTrackingFragment,
+                    bundle
+                )
+            }
+            CHANGE_GIFT -> {
+                findNavController().navigate(
+                    R.id.action_monitorFragment_to_manageChangeGiftFragment,
                     bundle
                 )
             }

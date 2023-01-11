@@ -8,6 +8,7 @@ import com.crayon.fieldapp.R
 import com.crayon.fieldapp.databinding.FragmentChangeGiftBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.adapter.CustomerRVAdapter
+import com.crayon.fieldapp.utils.PopupMenu
 import com.crayon.fieldapp.utils.setSingleClick
 import kotlinx.android.synthetic.main.fragment_change_gift.*
 import kotlinx.android.synthetic.main.fragment_contact.imb_ic_back
@@ -33,6 +34,23 @@ class ChangeGiftFragment : BaseFragment<FragmentChangeGiftBinding, ChangeGiftVie
             findNavController().navigate(
                 R.id.action_changeGiftFragment_to_addCustomerFragment
             )
+        }
+
+        imb_ic_filter?.setSingleClick {
+            PopupMenu.showPopupMenuDashboard(requireView(), object : MenuCallback {
+                override fun onImport() {
+                    findNavController().navigate(
+                        R.id.action_changeGiftFragment_to_importGiftFragment
+                    )
+                }
+
+                override fun onExport() {
+                    findNavController().navigate(
+                        R.id.action_changeGiftFragment_to_exportGiftFragment
+                    )
+                }
+
+            })
         }
     }
 

@@ -47,6 +47,9 @@ import com.crayon.fieldapp.ui.screen.monitor.application.ManageApplicationViewMo
 import com.crayon.fieldapp.ui.screen.monitor.application.list.ListManagementApplicationViewModel
 import com.crayon.fieldapp.ui.screen.monitor.attendance.detailTask.DetailAttendacneAtStoreViewModel
 import com.crayon.fieldapp.ui.screen.monitor.attendance.listTask.ListAttendanceAtStoreViewModel
+import com.crayon.fieldapp.ui.screen.monitor.changeGift.ManageChangeGiftViewModel
+import com.crayon.fieldapp.ui.screen.monitor.changeGift.detailTask.DetailChangeGiftAtStoreViewModel
+import com.crayon.fieldapp.ui.screen.monitor.changeGift.listTask.ListChangeGiftAtStoreViewModel
 import com.crayon.fieldapp.ui.screen.monitor.employee.ManageEmployeeViewModel
 import com.crayon.fieldapp.ui.screen.monitor.employee.listGroupMember.ListGroupEmployeeViewModel
 import com.crayon.fieldapp.ui.screen.monitor.employee.listMembers.ListEmployeeViewModel
@@ -160,14 +163,17 @@ val viewModelModule = module {
     viewModel { ManageReportCompetitorViewModel(get(), get(), get()) }
     viewModel { ManageReportSalesViewModel(get(), get(), get()) }
     viewModel { ManageReportTrackingViewModel(get(), get(), get()) }
+    viewModel { ManageChangeGiftViewModel(get(), get(), get()) }
     viewModel { ChangeGiftViewModel() }
     viewModel { ReportCompetitorViewModel() }
     viewModel { ReportSalesViewModel() }
     viewModel { ListReportCompetitorAtStoreViewModel(get(), get()) }
     viewModel { ListReportSalesAtStoreViewModel(get(), get()) }
     viewModel { ListReportTrackingAtStoreViewModel(get(), get()) }
+    viewModel { ListChangeGiftAtStoreViewModel(get(), get()) }
     viewModel { DetailReportCompetitorAtStoreViewModel(get(), get()) }
     viewModel { DetailReportSalesAtStoreViewModel(get(), get()) }
     viewModel { DetailReportTrackingAtStoreViewModel(get(), get()) }
+    viewModel { DetailChangeGiftAtStoreViewModel(get(), get()) }
     viewModel { DetailOrderViewModel() }
 }

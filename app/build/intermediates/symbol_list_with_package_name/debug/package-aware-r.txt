@@ -46,6 +46,7 @@ anim nav_default_enter_anim
 anim nav_default_exit_anim
 anim nav_default_pop_enter_anim
 anim nav_default_pop_exit_anim
+anim popup_show
 anim rotate
 anim sequential
 anim slide_down
@@ -947,6 +948,7 @@ color background_material_dark
 color background_material_light
 color bgApplication
 color bgCalendar
+color bgChangeGift
 color bgCheckIn
 color bgMonitoring
 color bgNotification
@@ -2763,6 +2765,7 @@ drawable background_button_default
 drawable background_button_selector
 drawable background_gradient_black
 drawable background_order
+drawable background_otp
 drawable background_rectangle_blue_round_corner
 drawable background_rectangle_dashgap_round_corner
 drawable background_rectangle_gray
@@ -2900,6 +2903,7 @@ drawable ic_floppy_disk
 drawable ic_full_body
 drawable ic_gallery
 drawable ic_gender
+drawable ic_gift
 drawable ic_gray_add
 drawable ic_gray_calendar
 drawable ic_gray_chatboxes
@@ -3092,6 +3096,7 @@ id BOTTOM_END
 id BOTTOM_START
 id CTRL
 id DetailAttendanceFragment
+id DetailChangeGiftFragment
 id DetailReportCompetitorFragment
 id DetailReportSalesFragment
 id DetailReportTrackingFragment
@@ -3152,6 +3157,9 @@ id action_bar_title
 id action_calendar_to_jobDetail
 id action_changeGiftFragment_to_addCustomerFragment
 id action_changeGiftFragment_to_detailCustomerFragment
+id action_changeGiftFragment_to_exportGiftFragment
+id action_changeGiftFragment_to_importGiftFragment
+id action_changeGift_to_list_changeGift
 id action_container
 id action_context_bar
 id action_detailGroupFragment_to_detailStoreFragment
@@ -3172,6 +3180,7 @@ id action_global_loginFragment
 id action_image
 id action_job_to_detailJobFragment2
 id action_list_attendance_to_detail_attendance
+id action_list_changeGift_to_detail_changeGift
 id action_list_reportCompetitor_to_detail_reportCompetitor
 id action_list_reportSales_to_detail_reportSales
 id action_list_reportTracking_to_detail_reportTracking
@@ -3192,6 +3201,7 @@ id action_mode_close_button
 id action_monitor
 id action_monitorFragment_to_manageApplicationFragment
 id action_monitorFragment_to_manageAttendanceFragment
+id action_monitorFragment_to_manageChangeGiftFragment
 id action_monitorFragment_to_manageEmployeeFragment
 id action_monitorFragment_to_manageNotificationFragment
 id action_monitorFragment_to_manageProjectFragment
@@ -3256,6 +3266,8 @@ id bn_register
 id bn_reset
 id bottom
 id btnButton
+id btnExport
+id btnImport
 id btn_accept
 id btn_add_customer
 id btn_calendar
@@ -3312,6 +3324,7 @@ id chip2
 id chip3
 id chip_group
 id chronometer
+id clRoot
 id clear_text
 id clip_horizontal
 id clip_vertical
@@ -3397,6 +3410,7 @@ id error_msg
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id exportGiftFragment
 id fab
 id fab_add_employee
 id fab_add_store
@@ -3524,6 +3538,7 @@ id img_status
 id img_time
 id img_upload
 id img_video
+id importGiftFragment
 id info
 id invisible
 id italic
@@ -3537,6 +3552,7 @@ id light
 id line1
 id line3
 id listAttendanceFragment
+id listChangeGiftFragment
 id listJob
 id listMode
 id listReportCompetitorFragment
@@ -3559,6 +3575,7 @@ id main_nav
 id main_to_list_job
 id manageApplicationFragment
 id manageAttendanceFragment
+id manageChangeGiftFragment
 id manageEmployeeFragment
 id manageJobProjectFragment
 id manageNotificationFragment
@@ -4128,6 +4145,7 @@ layout fragment_create_task
 layout fragment_detail_attachment
 layout fragment_detail_attendance
 layout fragment_detail_attendance_at_store
+layout fragment_detail_change_gift_at_store
 layout fragment_detail_customer
 layout fragment_detail_group_store
 layout fragment_detail_group_user
@@ -4158,6 +4176,7 @@ layout fragment_job_container
 layout fragment_job_project
 layout fragment_list_attendance_at_store
 layout fragment_list_attributes
+layout fragment_list_change_gift_at_store
 layout fragment_list_employee
 layout fragment_list_group
 layout fragment_list_group_employee
@@ -4180,6 +4199,7 @@ layout fragment_login
 layout fragment_main
 layout fragment_manage_application
 layout fragment_manage_attendance
+layout fragment_manage_change_gift
 layout fragment_manage_employee
 layout fragment_manage_notification
 layout fragment_manage_project
@@ -4253,6 +4273,7 @@ layout item_product
 layout item_project
 layout item_promotion
 layout item_promotion_info
+layout item_report_change_gift
 layout item_report_feedback
 layout item_report_product
 layout item_select
@@ -4317,6 +4338,7 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout popup_menu_dashboard
 layout sdp_example
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
@@ -4525,6 +4547,7 @@ string txt_business_day
 string txt_calendar
 string txt_calling_to_number
 string txt_career
+string txt_change_gift
 string txt_check_in
 string txt_check_in_note
 string txt_check_out
@@ -4823,6 +4846,7 @@ style Animation_AppCompat_DropDownUp
 style Animation_AppCompat_Tooltip
 style Animation_Design_BottomSheetDialog
 style Animation_MaterialComponents_BottomSheetDialog
+style AnimationStartPopup
 style AppBottomSheetDialogTheme
 style AppModalStyle
 style AppTheme

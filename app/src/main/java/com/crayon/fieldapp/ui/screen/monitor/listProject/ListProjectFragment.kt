@@ -117,6 +117,13 @@ class ListProjectFragment(private var mode: Int? = FROM_PROJECT_MODE) :
                 "agencyId" to agencyId
             )
             findNavController().navigate(R.id.action_reportTracking_to_list_reportTracking, bundel)
+        } else if (mode == FROM_REPORT_CHANGE_GIFT_MODE) {
+            val bundel = bundleOf(
+                "projectId" to project.id,
+                "projectName" to project.name,
+                "agencyId" to agencyId
+            )
+            findNavController().navigate(R.id.action_changeGift_to_list_changeGift, bundel)
         } else {
             val bundel = bundleOf(
                 "projectId" to project.id,
@@ -165,6 +172,7 @@ class ListProjectFragment(private var mode: Int? = FROM_PROJECT_MODE) :
         const val FROM_REPORT_COMPETITOR_MODE = 3
         const val FROM_REPORT_SALES_MODE = 4
         const val FROM_REPORT_TRACKING_MODE = 5
+        const val FROM_REPORT_CHANGE_GIFT_MODE = 6
         const val FROM_PROJECT_MODE = 0
     }
 

@@ -40,6 +40,8 @@ com/crayon/fieldapp/databinding/FragmentLoadmoreRefreshToolbarBindingImpl.java
  com.crayon.fieldapp.databinding.FragmentLoadmoreRefreshToolbarBindingImpl
 com/crayon/fieldapp/databinding/ItemSelectStoreBindingImpl.java
  com.crayon.fieldapp.databinding.ItemSelectStoreBindingImpl
+com/crayon/fieldapp/databinding/FragmentDetailChangeGiftAtStoreBindingImpl.java
+ com.crayon.fieldapp.databinding.FragmentDetailChangeGiftAtStoreBindingImpl
 com/crayon/fieldapp/databinding/ItemOrderBinding.java
  com.crayon.fieldapp.databinding.ItemOrderBinding
 com/crayon/fieldapp/databinding/FragmentDetailCustomerBindingImpl.java
@@ -373,6 +375,8 @@ androidx/databinding/DataBindingComponent.java
  androidx.databinding.DataBindingComponent
 com/crayon/fieldapp/databinding/FragmentReportCompetitorBindingImpl.java
  com.crayon.fieldapp.databinding.FragmentReportCompetitorBindingImpl
+com/crayon/fieldapp/databinding/FragmentManageChangeGiftBindingImpl.java
+ com.crayon.fieldapp.databinding.FragmentManageChangeGiftBindingImpl
 com/crayon/fieldapp/databinding/ItemStoreGroupStoreBindingImpl.java
  com.crayon.fieldapp.databinding.ItemStoreGroupStoreBindingImpl
 com/crayon/fieldapp/databinding/FragmentAddOrderBindingImpl.java
@@ -381,6 +385,8 @@ com/crayon/fieldapp/databinding/FragmentDetailGroupUserBinding.java
  com.crayon.fieldapp.databinding.FragmentDetailGroupUserBinding
 com/crayon/fieldapp/databinding/FragmentChangeGiftBindingImpl.java
  com.crayon.fieldapp.databinding.FragmentChangeGiftBindingImpl
+com/crayon/fieldapp/databinding/ItemReportChangeGiftBinding.java
+ com.crayon.fieldapp.databinding.ItemReportChangeGiftBinding
 com/crayon/fieldapp/ui/screen/profile/ProfileFragmentDirections.java
  com.crayon.fieldapp.ui.screen.profile.ProfileFragmentDirections
 com/crayon/fieldapp/databinding/FragmentMonitorBinding.java
@@ -417,8 +423,12 @@ com/crayon/fieldapp/databinding/FragmentDetailReportCompetitorAtStoreBinding.jav
  com.crayon.fieldapp.databinding.FragmentDetailReportCompetitorAtStoreBinding
 com/crayon/fieldapp/databinding/ItemSimpleBinding.java
  com.crayon.fieldapp.databinding.ItemSimpleBinding
+com/crayon/fieldapp/databinding/PopupMenuDashboardBinding.java
+ com.crayon.fieldapp.databinding.PopupMenuDashboardBinding
 com/crayon/fieldapp/databinding/ItemSelectBinding.java
  com.crayon.fieldapp.databinding.ItemSelectBinding
+com/crayon/fieldapp/ui/screen/monitor/changeGift/ManageChangeGiftFragmentDirections.java
+ com.crayon.fieldapp.ui.screen.monitor.changeGift.ManageChangeGiftFragmentDirections
 com/crayon/fieldapp/ui/screen/monitor/reportCompetitor/detailTask/DetailReportCompetitorAtStoreFragmentDirections.java
  com.crayon.fieldapp.ui.screen.monitor.reportCompetitor.detailTask.DetailReportCompetitorAtStoreFragmentDirections
 com/crayon/fieldapp/databinding/ItemFilterStoreBindingImpl.java
@@ -441,6 +451,8 @@ com/crayon/fieldapp/databinding/DialogTimekeepingBinding.java
  com.crayon.fieldapp.databinding.DialogTimekeepingBinding
 com/crayon/fieldapp/databinding/FragmentManageProjectBinding.java
  com.crayon.fieldapp.databinding.FragmentManageProjectBinding
+com/crayon/fieldapp/ui/screen/detailTask/changeGift/export/ExportGiftFragmentDirections.java
+ com.crayon.fieldapp.ui.screen.detailTask.changeGift.export.ExportGiftFragmentDirections
 com/crayon/fieldapp/databinding/FragmentManageNotificationBinding.java
  com.crayon.fieldapp.databinding.FragmentManageNotificationBinding
 com/crayon/fieldapp/databinding/DialogPickPhotoBinding.java
@@ -549,6 +561,8 @@ com/crayon/fieldapp/databinding/FragmentLoginBinding.java
  com.crayon.fieldapp.databinding.FragmentLoginBinding
 com/crayon/fieldapp/databinding/ItemStoreGroupStoreBinding.java
  com.crayon.fieldapp.databinding.ItemStoreGroupStoreBinding
+com/crayon/fieldapp/ui/screen/monitor/changeGift/detailTask/DetailChangeGiftAtStoreFragmentDirections.java
+ com.crayon.fieldapp.ui.screen.monitor.changeGift.detailTask.DetailChangeGiftAtStoreFragmentDirections
 com/crayon/fieldapp/data/local/dao/StoreDao_Impl.java
  com.crayon.fieldapp.data.local.dao.StoreDao_Impl
  com.crayon.fieldapp.data.local.dao.StoreDao_Impl$1
@@ -587,6 +601,8 @@ com/crayon/fieldapp/databinding/FragmentListEmployeeBinding.java
  com.crayon.fieldapp.databinding.FragmentListEmployeeBinding
 com/crayon/fieldapp/databinding/ItemCutomerBinding.java
  com.crayon.fieldapp.databinding.ItemCutomerBinding
+com/crayon/fieldapp/ui/screen/detailTask/changeGift/input/ImportGiftFragmentDirections.java
+ com.crayon.fieldapp.ui.screen.detailTask.changeGift.input.ImportGiftFragmentDirections
 com/crayon/fieldapp/BuildConfig.java
  com.crayon.fieldapp.BuildConfig
 com/crayon/fieldapp/databinding/ItemGroupUserBindingImpl.java
@@ -601,12 +617,16 @@ com/crayon/fieldapp/ui/screen/login/LoginFragmentDirections.java
  com.crayon.fieldapp.ui.screen.login.LoginFragmentDirections
  com.crayon.fieldapp.ui.screen.login.LoginFragmentDirections$1
  com.crayon.fieldapp.ui.screen.login.LoginFragmentDirections$ToVerify
+com/crayon/fieldapp/databinding/FragmentManageChangeGiftBinding.java
+ com.crayon.fieldapp.databinding.FragmentManageChangeGiftBinding
 com/crayon/fieldapp/databinding/FragmentCreateTaskBinding.java
  com.crayon.fieldapp.databinding.FragmentCreateTaskBinding
 com/crayon/fieldapp/ui/screen/verifyOtp/VerifyOtpFragmentArgs.java
  com.crayon.fieldapp.ui.screen.verifyOtp.VerifyOtpFragmentArgs
  com.crayon.fieldapp.ui.screen.verifyOtp.VerifyOtpFragmentArgs$1
  com.crayon.fieldapp.ui.screen.verifyOtp.VerifyOtpFragmentArgs$Builder
+com/crayon/fieldapp/databinding/FragmentDetailChangeGiftAtStoreBinding.java
+ com.crayon.fieldapp.databinding.FragmentDetailChangeGiftAtStoreBinding
 com/crayon/fieldapp/databinding/FragmentNotificationSentBinding.java
  com.crayon.fieldapp.databinding.FragmentNotificationSentBinding
 com/crayon/fieldapp/databinding/ItemSelectStoreBinding.java
@@ -627,6 +647,8 @@ com/crayon/fieldapp/databinding/FragmentNotificationSentBindingImpl.java
  com.crayon.fieldapp.databinding.FragmentNotificationSentBindingImpl
 com/crayon/fieldapp/databinding/FragmentReportSalesBinding.java
  com.crayon.fieldapp.databinding.FragmentReportSalesBinding
+com/crayon/fieldapp/ui/screen/monitor/changeGift/listTask/ListChangeGiftAtStoreFragmentDirections.java
+ com.crayon.fieldapp.ui.screen.monitor.changeGift.listTask.ListChangeGiftAtStoreFragmentDirections
 com/crayon/fieldapp/databinding/FragmentTermBindingImpl.java
  com.crayon.fieldapp.databinding.FragmentTermBindingImpl
 com/crayon/fieldapp/databinding/FragmentLoadmoreRefreshBindingImpl.java
@@ -635,6 +657,8 @@ com/crayon/fieldapp/ui/screen/monitor/store/ManageStoreFragmentDirections.java
  com.crayon.fieldapp.ui.screen.monitor.store.ManageStoreFragmentDirections
 com/crayon/fieldapp/databinding/FragmentCalendarBinding.java
  com.crayon.fieldapp.databinding.FragmentCalendarBinding
+com/crayon/fieldapp/databinding/FragmentListChangeGiftAtStoreBinding.java
+ com.crayon.fieldapp.databinding.FragmentListChangeGiftAtStoreBinding
 com/crayon/fieldapp/databinding/FragmentSelectPromotionBinding.java
  com.crayon.fieldapp.databinding.FragmentSelectPromotionBinding
 com/crayon/fieldapp/ui/screen/detailManagementJob/DetailManagementJobFragmentDirections.java
@@ -713,6 +737,8 @@ com/crayon/fieldapp/databinding/FragmentManageUpdateStatusBindingImpl.java
  com.crayon.fieldapp.databinding.FragmentManageUpdateStatusBindingImpl
 com/crayon/fieldapp/databinding/FragmentProfileContainerBindingImpl.java
  com.crayon.fieldapp.databinding.FragmentProfileContainerBindingImpl
+com/crayon/fieldapp/databinding/FragmentListChangeGiftAtStoreBindingImpl.java
+ com.crayon.fieldapp.databinding.FragmentListChangeGiftAtStoreBindingImpl
 com/crayon/fieldapp/databinding/FragmentJobBinding.java
  com.crayon.fieldapp.databinding.FragmentJobBinding
 com/crayon/fieldapp/databinding/ItemCityBinding.java

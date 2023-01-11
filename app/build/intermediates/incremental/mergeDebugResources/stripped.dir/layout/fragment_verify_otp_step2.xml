@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+                                                                   
+
+    
+
+                 
+                            
+                                                                                             
+           
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" android:tag="layout/fragment_verify_otp_step2_0" xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#E9E9E9"
+                android:fontFamily="@font/inter_semi_bold"
+                android:paddingLeft="@dimen/_14sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingRight="@dimen/_14sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:text="Xác thực OTP"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_12ssp" />
+
+            <ImageView
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_200sdp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_verify_otp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mã OTP được gửi đến số 0983813648"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_12ssp" />
+
+            <com.crayon.fieldapp.ui.widgets.PinEntryEditText
+                android:id="@+id/edt_otp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:layout_marginRight="@dimen/_16sdp"
+                android:cursorVisible="false"
+                android:digits="1234567890"
+                android:inputType="number"
+                android:maxLength="6"
+                android:textIsSelectable="false"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btn_resend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:text="Gửi lại mã OTP "
+                android:textColor="#C5C5C5"
+                android:textSize="@dimen/_14ssp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="01:59"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_14ssp" />
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_48sdp"
+                android:layout_marginRight="@dimen/_16sdp"
+                android:background="@drawable/background_rectangle_blue_round_corner"
+                android:text="Tiếp theo" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+         

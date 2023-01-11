@@ -41,6 +41,11 @@ public class MonitorFragmentDirections {
   }
 
   @NonNull
+  public static NavDirections actionMonitorFragmentToManageChangeGiftFragment() {
+    return new ActionOnlyNavDirections(R.id.action_monitorFragment_to_manageChangeGiftFragment);
+  }
+
+  @NonNull
   public static NavDirections actionMonitorFragmentToManageApplicationFragment() {
     return new ActionOnlyNavDirections(R.id.action_monitorFragment_to_manageApplicationFragment);
   }

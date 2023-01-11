@@ -108,6 +108,10 @@
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_media.xml"
     },
     {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_list_change_gift_at_store.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_list_change_gift_at_store.xml"
+    },
+    {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_select_product.xml",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_select_product.xml"
     },
@@ -312,6 +316,10 @@
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_project.xml"
     },
     {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_report_change_gift.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_report_change_gift.xml"
+    },
+    {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_export_gift.xml",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_export_gift.xml"
     },
@@ -326,6 +334,10 @@
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_customer_info.xml",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_customer_info.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/popup_menu_dashboard.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/popup_menu_dashboard.xml"
     },
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_gift_info.xml",
@@ -510,6 +522,10 @@
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_detail_group.xml",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/item_detail_group.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_manage_change_gift.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_manage_change_gift.xml"
     },
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_my_attendance.xml",
@@ -702,6 +718,10 @@
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/dialog_add_note.xml",
         "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/dialog_add_note.xml"
+    },
+    {
+        "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_detail_change_gift_at_store.xml",
+        "source": "/Users/hauhuynh/Projects/mts-ver2/app/src/main/res/layout/fragment_detail_change_gift_at_store.xml"
     },
     {
         "merged": "/Users/hauhuynh/Projects/mts-ver2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_application.xml",

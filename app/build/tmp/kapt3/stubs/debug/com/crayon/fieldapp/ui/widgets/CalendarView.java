@@ -13,7 +13,7 @@ public final class CalendarView extends android.widget.LinearLayout {
     private android.widget.TextView txtDate;
     private android.widget.GridView grid;
     @org.jetbrains.annotations.NotNull()
-    private int[] rainbow = {2131100121, 2131099876, 2131100162, 2131100116};
+    private int[] rainbow = {2131100122, 2131099877, 2131100163, 2131100117};
     @org.jetbrains.annotations.NotNull()
     private int[] monthSeason = {2, 2, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2};
     private static final java.lang.String LOGTAG = "Calendar View";
