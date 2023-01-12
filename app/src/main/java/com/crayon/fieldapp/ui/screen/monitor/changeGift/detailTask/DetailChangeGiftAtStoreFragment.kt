@@ -1,6 +1,7 @@
 package com.crayon.fieldapp.ui.screen.monitor.changeGift.detailTask
 
 import android.os.Bundle
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.crayon.fieldapp.R
@@ -95,9 +96,17 @@ class DetailChangeGiftAtStoreFragment() :
 //        }
 
         val mCompetitorAdapter =
-            CustomerRVAdapter(arrayListOf("1", "2", "3"), requireContext(), {
-                // Item
-            })
+            CustomerRVAdapter(arrayListOf("1", "2", "3"), requireContext(), false,
+                {
+
+                }, {
+                    // Item
+                    val bundel = bundleOf("isEdit" to false)
+                    findNavController().navigate(
+                        R.id.action_detail_changeGift_to_detail_customer,
+                        bundel
+                    )
+                })
 
         rv_customer.apply {
             layoutManager = LinearLayoutManager(context)

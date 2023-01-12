@@ -29,7 +29,14 @@ class ListTaskAdapter constructor(
         val data = items[position]
 
         data.type?.name?.let {
-            holder.txtTask.text = it
+            // TODO
+            if (it.contains("Báo cáo khách hàng")) {
+                holder.txtTask.text = "Đổi quà"
+            } else if (it.contains("Báo cáo cuối ca")) {
+                holder.txtTask.text = "Báo cáo bán hàng"
+            } else {
+                holder.txtTask.text = it
+            }
         }
 
         if (data.status.equals(JobStatus.PENDING.value)

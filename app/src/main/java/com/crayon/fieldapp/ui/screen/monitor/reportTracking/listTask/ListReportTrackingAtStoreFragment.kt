@@ -19,7 +19,6 @@ import com.crayon.fieldapp.ui.base.dialog.filterStore.model.ItemStore
 import com.crayon.fieldapp.ui.screen.monitor.reportTracking.listTask.adapter.ManageReportTrackingRVAdapter
 import com.crayon.fieldapp.utils.Status
 import com.crayon.fieldapp.utils.setSingleClick
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_list_update_status_at_store.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import studio.phillip.yolo.utils.TimeFormatUtils
@@ -59,8 +58,7 @@ class ListReportTrackingAtStoreFragment() :
             arrayListOf("Vinmart Vũng Tàu", "Coop Bình Phước", "Big C Quận 9"),
             requireContext(),
             itemClickListener = {
-                val taskJSon = Gson().toJson(it)
-                toTaskDetail(taskJSon)
+                findNavController().navigate(R.id.action_list_reportTracking_to_history)
             }
         )
 

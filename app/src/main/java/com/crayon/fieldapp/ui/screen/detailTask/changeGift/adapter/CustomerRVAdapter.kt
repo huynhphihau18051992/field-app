@@ -13,6 +13,7 @@ import com.crayon.fieldapp.utils.setSingleClick
 class CustomerRVAdapter constructor(
     val items: ArrayList<String>,
     val context: Context,
+    val isEdit: Boolean,
     val onEditItemClick: (String) -> Unit = {},
     val onItemClick: (String) -> Unit = {}
 ) :
@@ -29,6 +30,11 @@ class CustomerRVAdapter constructor(
         val data = items[position]
         holder.txtCustomerId.text = "Khách hàng " + (position + 1)
 
+        if (isEdit) {
+            holder.icEdit.visibility = View.VISIBLE
+        } else {
+            holder.icEdit.visibility = View.GONE
+        }
         holder.itemView.setSingleClick {
             onItemClick(data)
         }

@@ -6,6 +6,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.databinding.FragmentContactBinding
+import com.crayon.fieldapp.databinding.FragmentDetailCustomerBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.adapter.DetailCustomerRVAdapter
@@ -14,11 +15,17 @@ import kotlinx.android.synthetic.main.fragment_contact.imb_ic_back
 import kotlinx.android.synthetic.main.fragment_detail_customer.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DetailCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewModel>() {
+class DetailCustomerFragment : BaseFragment<FragmentDetailCustomerBinding, ChangeGiftViewModel>() {
 
     override val layoutId: Int = R.layout.fragment_detail_customer
     override val viewModel: ChangeGiftViewModel by viewModel()
     private lateinit var mDetailRVAdapter: DetailCustomerRVAdapter
+    private var isEdit: Boolean? = true
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        isEdit = requireArguments()?.getBoolean("isEdit")
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,6 +44,7 @@ class DetailCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftVi
             arrayListOf("1", "2", "3"),
             arrayListOf("1", "2", "3"),
             requireContext(),
+            isEdit?: true,
             {
             },
             {

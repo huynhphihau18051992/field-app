@@ -19,6 +19,7 @@ class DetailCustomerRVAdapter constructor(
     val products: ArrayList<String>,
     val gifts: ArrayList<String>,
     val context: Context,
+    val isEidt: Boolean,
     val onEditItemClick: (String) -> Unit = {},
     val onItemClick: (String) -> Unit = {}
 ) :

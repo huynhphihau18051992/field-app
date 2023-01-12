@@ -42,7 +42,6 @@ class DetailReportTrackingAtStoreFragment() :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        task = requireArguments().get("task").toString()
 //        taskResponse = Gson().fromJson(task, TaskResponse::class.java)
     }
 

@@ -16,7 +16,7 @@ class ManageReportSalesRVAdapter constructor(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.item_order, parent, false)
+        val view = inflater.inflate(R.layout.item_monitor_report_sales, parent, false)
         val holder = JobViewHolder(view)
         holder.itemView.setOnClickListener {
             itemClickListener(items.get(holder.absoluteAdapterPosition))

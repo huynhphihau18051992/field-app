@@ -2,6 +2,7 @@ package com.crayon.fieldapp.ui.screen.detailTask.changeGift
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.crayon.fieldapp.R
@@ -56,14 +57,18 @@ class ChangeGiftFragment : BaseFragment<FragmentChangeGiftBinding, ChangeGiftVie
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        mCustomerAdapter = CustomerRVAdapter(arrayListOf("1", "2", "3"), requireContext(), {
-            // Edit
-        }, {
-            // Item
-            findNavController().navigate(
-                R.id.action_changeGiftFragment_to_detailCustomerFragment
-            )
-        })
+        mCustomerAdapter = CustomerRVAdapter(
+            arrayListOf("1", "2", "3"), requireContext(),
+            true, {
+
+            }, {
+                // Item
+                val bundle = bundleOf("isEdit" to true )
+                findNavController().navigate(
+                    R.id.action_changeGiftFragment_to_detailCustomerFragment,
+                    bundle
+                )
+            })
 
         rv_customer.apply {
             layoutManager = LinearLayoutManager(context)

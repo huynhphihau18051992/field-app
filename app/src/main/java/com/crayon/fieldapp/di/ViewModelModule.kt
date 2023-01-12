@@ -65,6 +65,7 @@ import com.crayon.fieldapp.ui.screen.monitor.reportSales.detailTask.DetailReport
 import com.crayon.fieldapp.ui.screen.monitor.reportSales.listTask.ListReportSalesAtStoreViewModel
 import com.crayon.fieldapp.ui.screen.monitor.reportTracking.ManageReportTrackingViewModel
 import com.crayon.fieldapp.ui.screen.monitor.reportTracking.detailTask.DetailReportTrackingAtStoreViewModel
+import com.crayon.fieldapp.ui.screen.monitor.reportTracking.history.HistoryTrackingAtStoreViewModel
 import com.crayon.fieldapp.ui.screen.monitor.reportTracking.listTask.ListReportTrackingAtStoreViewModel
 import com.crayon.fieldapp.ui.screen.monitor.store.ManageStoreViewModel
 import com.crayon.fieldapp.ui.screen.monitor.store.listGroup.ListGroupViewModel
@@ -175,5 +176,6 @@ val viewModelModule = module {
     viewModel { DetailReportSalesAtStoreViewModel(get(), get()) }
     viewModel { DetailReportTrackingAtStoreViewModel(get(), get()) }
     viewModel { DetailChangeGiftAtStoreViewModel(get(), get()) }
+    viewModel { HistoryTrackingAtStoreViewModel(get(), get()) }
     viewModel { DetailOrderViewModel() }
 }

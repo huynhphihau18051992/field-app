@@ -428,6 +428,10 @@
             android:id="@+id/action_list_reportTracking_to_detail_reportTracking"
             app:destination="@id/DetailReportTrackingFragment" />
 
+        <action
+            android:id="@+id/action_list_reportTracking_to_history"
+            app:destination="@id/HistoryFragment" />
+
     </fragment>
 
     <fragment
@@ -485,6 +489,17 @@
     </fragment>
 
     <fragment
+        android:id="@+id/HistoryFragment"
+        android:name="com.crayon.fieldapp.ui.screen.monitor.reportTracking.history.HistoryTrackingAtStoreFragment"
+        android:label="HistoryFragment">
+        <action
+            android:id="@+id/action_history_tracking_to_detail_tracking"
+            app:destination="@id/DetailReportTrackingFragment" />
+
+
+    </fragment>
+
+    <fragment
         android:id="@+id/DetailReportCompetitorFragment"
         android:name="com.crayon.fieldapp.ui.screen.monitor.reportCompetitor.detailTask.DetailReportCompetitorAtStoreFragment"
         android:label="DetailReportCompetitorFragment"/>
@@ -494,12 +509,20 @@
         android:name="com.crayon.fieldapp.ui.screen.monitor.changeGift.detailTask.DetailChangeGiftAtStoreFragment"
         android:label="DetailChangeGiftFragment">
 
+        <action
+            android:id="@+id/action_detail_changeGift_to_detail_customer"
+            app:destination="@id/detailCustomerFragment" />
+
     </fragment>
 
     <fragment
         android:id="@+id/DetailReportSalesFragment"
         android:name="com.crayon.fieldapp.ui.screen.monitor.reportSales.detailTask.DetailReportSalesAtStoreFragment"
         android:label="DetailReportSalesFragment">
+
+        <action
+            android:id="@+id/action_detail_reportSales_to_detail_order"
+            app:destination="@id/detailOrderFragment" />
 
     </fragment>
 

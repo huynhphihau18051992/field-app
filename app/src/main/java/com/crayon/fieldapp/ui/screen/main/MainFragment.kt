@@ -53,17 +53,17 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
                                     it.findLast { it.key.equals("android_app_version") }
                                 androidVersion?.let {
                                     if (!it.value.equals(BuildConfig.VERSION_NAME)) {
-                                        requireContext().showDialog(
-                                            title = "Thông báo",
-                                            message = "Vui lòng cập phiên bản mới: " + it.value,
-                                            positiveListener = {
-                                                val browserIntent = Intent(
-                                                    Intent.ACTION_VIEW,
-                                                    Uri.parse("https://play.google.com/store/apps/details?id=com.crayon.fieldapp")
-                                                )
-                                                startActivity(browserIntent)
-                                            }
-                                        )
+//                                        requireContext().showDialog(
+//                                            title = "Thông báo",
+//                                            message = "Vui lòng cập phiên bản mới: " + it.value,
+//                                            positiveListener = {
+//                                                val browserIntent = Intent(
+//                                                    Intent.ACTION_VIEW,
+//                                                    Uri.parse("https://play.google.com/store/apps/details?id=com.crayon.fieldapp")
+//                                                )
+//                                                startActivity(browserIntent)
+//                                            }
+//                                        )
                                     }
                                 }
                             }
