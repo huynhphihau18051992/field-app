@@ -37,12 +37,10 @@ class DetailCustomerFragment : BaseFragment<FragmentDetailCustomerBinding, Chang
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-
         mDetailRVAdapter = DetailCustomerRVAdapter(
-            arrayListOf("1", "2", "3"),
-            arrayListOf("1", "2", "3"),
-            arrayListOf("1", "2", "3"),
+            arrayListOf(),
+            arrayListOf(),
+            arrayListOf(),
             requireContext(),
             isEdit?: true,
             {

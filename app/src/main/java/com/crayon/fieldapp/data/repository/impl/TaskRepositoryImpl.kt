@@ -4,9 +4,7 @@ import androidx.lifecycle.LiveData
 import com.crayon.fieldapp.data.local.dao.JobDao
 import com.crayon.fieldapp.data.remote.ApiService
 import com.crayon.fieldapp.data.remote.request.*
-import com.crayon.fieldapp.data.remote.response.GetMessageResponse
-import com.crayon.fieldapp.data.remote.response.TaskResponse
-import com.crayon.fieldapp.data.remote.response.TaskType
+import com.crayon.fieldapp.data.remote.response.*
 import com.crayon.fieldapp.data.repository.TaskRepository
 import com.crayon.fieldapp.utils.NetworkBoundNoCacheResource
 import com.crayon.fieldapp.utils.Resource
@@ -294,4 +292,155 @@ class TaskRepositoryImpl(
         }.build().asLiveData()
     }
 
+    override suspend fun getProductList(projectId: String): Resource<GetProductListResponse> {
+        val result = apiService.getProducts(
+            projectId
+        )
+        return Resource.success(result)
+    }
+
+    override suspend fun getPromotionsList(projectId: String): Resource<GetPromotionListResponse> {
+        val result = apiService.getPromotions(
+            projectId
+        )
+        return Resource.success(result)
+    }
+
+    override suspend fun updatePriceOfProduct(
+        projectId: String,
+        productId: String,
+        price: Long
+    ): LiveData<Resource<GetMessageResponse>> {
+        return object : NetworkBoundNoCacheResource<GetMessageResponse>() {
+            override suspend fun createCallAsync(): GetMessageResponse {
+                return apiService.updatePriceOfProduct(
+                    projectId = projectId,
+                    productId = productId,
+                    UpdatePriceOfProductRequest = UpdatePriceOfProductRequest(price = price)
+                )
+            }
+
+        }.build().asLiveData()
+    }
+
+
+    override suspend fun getCustomerBillById(taskId: String): LiveData<Resource<GetCustomerBillListResponse>> {
+        return object : NetworkBoundNoCacheResource<GetCustomerBillListResponse>() {
+            override suspend fun createCallAsync(): GetCustomerBillListResponse {
+                return apiService.getCustomerBillById(
+                    id = taskId
+                )
+            }
+
+        }.build().asLiveData()
+    }
+
+    override suspend fun createCustomerBill(
+        taskId: String,
+        customerId: String,
+        code_bill: String,
+        file1: MultipartBody.Part
+    ): Resource<GetMessageResponse> {
+        val result = apiService.createCustomerBill(
+            taskId = taskId,
+            customerId = customerId,
+            codeBill = code_bill,
+            file1 = file1
+        )
+        return Resource.success(result)
+    }
+
+    override suspend fun createCustomerBill(
+        taskId: String,
+        customerId: String,
+        code_bill: String,
+        file1: MultipartBody.Part,
+        file2: MultipartBody.Part
+    ): Resource<GetMessageResponse> {
+        val result = apiService.createCustomerBill(
+            taskId = taskId,
+            customerId = customerId,
+            codeBill = code_bill,
+            file1 = file1,
+            file2 = file2
+        )
+        return Resource.success(result)
+    }
+
+    override suspend fun createCustomerBill(
+        taskId: String,
+        customerId: String,
+        code_bill: String,
+        file1: MultipartBody.Part,
+        file2: MultipartBody.Part,
+        file3: MultipartBody.Part
+    ): Resource<GetMessageResponse> {
+        val result = apiService.createCustomerBill(
+            taskId = taskId,
+            customerId = customerId,
+            codeBill = code_bill,
+            file1 = file1,
+            file2 = file2,
+            file3 = file3
+        )
+        return Resource.success(result)
+    }
+
+    override suspend fun addProductToBill(
+        taskId: String,
+        billId: String,
+        promotionId: String,
+        customerBillId: String,
+        products: ArrayList<ProjectProductRequest>
+    ): Resource<GetMessageResponse> {
+        val result = apiService.addProductToBill(
+            taskId = taskId,
+            billId = billId,
+            addProductToBillRequest = AddProductToBillRequest(
+                promotionId = promotionId,
+                customerBillId = customerBillId,
+                products = products
+
+            )
+        )
+        return Resource.success(result)
+    }
+
+    override suspend fun registerCustomer(
+        taskId: String,
+        name: String,
+        mobile_number: String
+    ): Resource<GetMessageResponse> {
+        val result = apiService.registerCustomer(
+            taskId = taskId,
+            customer = CustomerRequest(name = name, mobile_number = mobile_number)
+        )
+        return Resource.success(result)
+    }
+
+    override suspend fun verifyCustomerOtp(
+        taskId: String,
+        mobile_number: String,
+        otp_number: String
+    ): Resource<GetMessageResponse> {
+        val result = apiService.verifyCustomerOtp(
+            taskId = taskId,
+            otpRequest = VerifyOtpResetPasswordRequest(
+                otp_number = otp_number,
+                mobile_number = mobile_number
+            )
+        )
+        return Resource.success(result)
+    }
+
+    override suspend fun resendCustomerOtp(
+        taskId: String,
+        mobile_number: String
+    ): Resource<GetMessageResponse> {
+        val result = apiService.resendCustomerOtp(
+            taskId = taskId,
+            otpRequest = ResendCustomerOtpRequest(mobile_number = mobile_number)
+        )
+        return Resource.success(result)
+    }
 }

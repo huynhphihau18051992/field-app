@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel" />
+            type="com.crayon.fieldapp.ui.screen.detailTask.changeGift.step4.SelectPromotionViewModel" />
     </data>
 
     <RelativeLayout
@@ -30,6 +30,14 @@
             android:layout_marginBottom="@dimen/_16sdp"
             android:background="@drawable/background_rectangle_blue_round_corner"
             android:text="Hoàn thành" />
+
+
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
     </RelativeLayout>
 
 </layout>

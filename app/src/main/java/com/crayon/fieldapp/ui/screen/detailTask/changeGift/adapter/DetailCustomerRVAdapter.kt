@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.data.remote.response.ProductResponse
+import com.crayon.fieldapp.data.remote.response.PromotionResponse
 import kotlinx.android.synthetic.main.item_bill_info.view.*
 import kotlinx.android.synthetic.main.item_customer_info.view.*
 import kotlinx.android.synthetic.main.item_gift_info.view.*
@@ -16,8 +18,8 @@ import kotlinx.android.synthetic.main.item_promotion_info.view.*
 
 class DetailCustomerRVAdapter constructor(
     val images: ArrayList<String>,
-    val products: ArrayList<String>,
-    val gifts: ArrayList<String>,
+    val promotions: ArrayList<PromotionResponse>,
+    val gifts: ArrayList<ProductResponse>,
     val context: Context,
     val isEidt: Boolean,
     val onEditItemClick: (String) -> Unit = {},
@@ -60,17 +62,23 @@ class DetailCustomerRVAdapter constructor(
         if (holder is CustomerItemViewHolder) {
 
         } else if (holder is BillItemViewHolder) {
+
             mImageAdapter = BillImageRVAdapter(images, context)
             holder.rvImages.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 this.adapter = mImageAdapter
             }
         } else if (holder is PromotionItemViewHolder) {
-            mPromotionRVAdapter = PromotionRVAdapter(products, context, { i: Int, b: Boolean ->
+            val promotionData = promotions.get(position)
+            mPromotionRVAdapter = PromotionRVAdapter(
+                promotionName = promotionData.name.toString(),
+                items = promotionData.product ?: arrayListOf(),
+                context = context,
+                onCheckBoxSelect = { position, isChecked ->
 
-            }, {
+                }, onItemClick = {
 
-            })
+                })
             holder.rvPromotion.apply {
                 layoutManager = LinearLayoutManager(context)
                 this.adapter = mPromotionRVAdapter

@@ -549,6 +549,68 @@ interface ApiService {
         @Body updateCustomerFeedback: UpdateProductFeedbackRequest
     ): GetMessageResponse
 
+    /*
+    * Redeem
+    * */
+    @POST("/pic/v1/tasks/{id}/customer-register")
+    suspend fun registerCustomer(
+        @Path("id") taskId: String,
+        @Body customer: CustomerRequest
+    ): GetMessageResponse
+
+    @POST("/pic/v1/tasks/{id}/customer-otp")
+    suspend fun verifyCustomerOtp(
+        @Path("id") taskId: String,
+        @Body otpRequest: VerifyOtpResetPasswordRequest
+    ): GetMessageResponse
+
+    @POST("/pic/v1/tasks/{id}/customer-resend-otp")
+    suspend fun resendCustomerOtp(
+        @Path("id") taskId: String,
+        @Body otpRequest: ResendCustomerOtpRequest
+    ): GetMessageResponse
+
+    @Multipart
+    @POST("/pic/v1/tasks/{taskId}/customers/{customerId}/bills")
+    suspend fun createCustomerBill(
+        @Path("taskId") taskId: String,
+        @Path("customerId") customerId: String,
+        @Part("code_bill") codeBill: String,
+        @Part file1: MultipartBody.Part? = null,
+        @Part file2: MultipartBody.Part? = null,
+        @Part file3: MultipartBody.Part? = null
+    ): GetMessageResponse
+
+    @GET("/pic/v1/tasks/{id}/customer-bill")
+    suspend fun getCustomerBillById(
+        @Path("id") id: String
+    ): GetCustomerBillListResponse
+
+    @PUT("/management/v1/{productId}/projects/{projectId}/products")
+    suspend fun updatePriceOfProduct(
+        @Path("projectId") projectId: String,
+        @Path("productId") productId: String,
+        @Body UpdatePriceOfProductRequest: UpdatePriceOfProductRequest
+    ): GetMessageResponse
+
+    @GET("/management/v1/projects/{projectId}/promotions")
+    suspend fun getPromotions(
+        @Path("projectId") projectId: String
+    ): GetPromotionListResponse
+
+    @GET("/management/v1/projects/{projectId}/products")
+    suspend fun getProducts(
+        @Path("projectId") projectId: String
+    ): GetProductListResponse
+
+
+    @POST("/pic/v1/tasks/{taskId}/customer-bill/{billId}/add-products")
+    suspend fun addProductToBill(
+        @Path("taskId") taskId: String,
+        @Path("billId") billId: String,
+        @Body addProductToBillRequest: AddProductToBillRequest
+    ): GetMessageResponse
+
     companion object {
         const val NETWORK_PAGE_SIZE = 20
     }

@@ -1,12 +1,8 @@
 package com.crayon.fieldapp.data.repository
 
 import androidx.lifecycle.LiveData
-import com.crayon.fieldapp.data.remote.request.CreateTaskForm
-import com.crayon.fieldapp.data.remote.request.UpdateCustomerFeedbackRequest
-import com.crayon.fieldapp.data.remote.request.UpdateProductFeedbackRequest
-import com.crayon.fieldapp.data.remote.request.UpdateProductRequest
-import com.crayon.fieldapp.data.remote.response.GetMessageResponse
-import com.crayon.fieldapp.data.remote.response.TaskResponse
+import com.crayon.fieldapp.data.remote.request.*
+import com.crayon.fieldapp.data.remote.response.*
 import com.crayon.fieldapp.utils.Resource
 import okhttp3.MultipartBody
 
@@ -118,4 +114,72 @@ interface TaskRepository {
         taskId: String,
         updateProductFeedbackRequest: UpdateProductFeedbackRequest
     ): LiveData<Resource<GetMessageResponse>>
+
+    suspend fun getProductList(
+        projectId: String
+    ): Resource<GetProductListResponse>
+
+    suspend fun getPromotionsList(
+        projectId: String
+    ): Resource<GetPromotionListResponse>
+
+    suspend fun updatePriceOfProduct(
+        projectId: String,
+        productId: String,
+        price: Long
+    ): LiveData<Resource<GetMessageResponse>>
+
+    suspend fun getCustomerBillById(
+        taskId: String
+    ): LiveData<Resource<GetCustomerBillListResponse>>
+
+    suspend fun createCustomerBill(
+        taskId: String,
+        customerId: String,
+        code_bill: String,
+        file1: MultipartBody.Part
+    ): Resource<GetMessageResponse>
+
+    suspend fun createCustomerBill(
+        taskId: String,
+        customerId: String,
+        code_bill: String,
+        file1: MultipartBody.Part,
+        file2: MultipartBody.Part
+    ): Resource<GetMessageResponse>
+
+    suspend fun createCustomerBill(
+        taskId: String,
+        customerId: String,
+        code_bill: String,
+        file1: MultipartBody.Part,
+        file2: MultipartBody.Part,
+        file3: MultipartBody.Part
+    ): Resource<GetMessageResponse>
+
+    suspend fun addProductToBill(
+        taskId: String,
+        billId: String,
+        promotionId: String,
+        customerBillId: String,
+        products: ArrayList<ProjectProductRequest>
+    ): Resource<GetMessageResponse>
+
+    suspend fun registerCustomer(
+        taskId: String,
+        name: String,
+        mobile_number: String
+    ): Resource<GetMessageResponse>
+
+    suspend fun verifyCustomerOtp(
+        taskId: String,
+        mobile_number: String,
+        otp_number: String
+    ): Resource<GetMessageResponse>
+
+
+    suspend fun resendCustomerOtp(
+        taskId: String,
+        mobile_number: String
+    ): Resource<GetMessageResponse>
 }

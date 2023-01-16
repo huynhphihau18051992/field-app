@@ -9,9 +9,11 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.data.remote.response.ProductResponse
 
 class PromotionRVAdapter constructor(
-    val items: ArrayList<String>,
+    promotionName: String,
+    val items: ArrayList<ProductResponse>,
     val context: Context,
     val onCheckBoxSelect: (position: Int, isChecked: Boolean) -> Unit = { i: Int, b: Boolean -> },
     val onItemClick: (String) -> Unit = {}

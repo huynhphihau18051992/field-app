@@ -30,6 +30,10 @@ import com.crayon.fieldapp.ui.screen.detailProject.manageJob.ManageJobProjectVie
 import com.crayon.fieldapp.ui.screen.detailProject.member.MemberProjectViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.base.DetailTaskViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel
+import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step1.InputNameViewModel
+import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step2.VerifyOtpStep2ViewModel
+import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step3.InputBillViewModel
+import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step4.SelectPromotionViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.reportCompetitor.ReportCompetitorViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.reportSales.ReportSalesViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.reportSales.detailOrder.DetailOrderViewModel
@@ -165,7 +169,11 @@ val viewModelModule = module {
     viewModel { ManageReportSalesViewModel(get(), get(), get()) }
     viewModel { ManageReportTrackingViewModel(get(), get(), get()) }
     viewModel { ManageChangeGiftViewModel(get(), get(), get()) }
-    viewModel { ChangeGiftViewModel() }
+    viewModel { ChangeGiftViewModel(get()) }
+    viewModel { InputNameViewModel(get(), get()) }
+    viewModel { VerifyOtpStep2ViewModel(get(), get()) }
+    viewModel { InputBillViewModel(get(), get()) }
+    viewModel { SelectPromotionViewModel(get(), get()) }
     viewModel { ReportCompetitorViewModel() }
     viewModel { ReportSalesViewModel() }
     viewModel { ListReportCompetitorAtStoreViewModel(get(), get()) }

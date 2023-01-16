@@ -2,6 +2,7 @@ package com.crayon.fieldapp.ui.screen.detailTask.changeGift.addCustomer
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.databinding.FragmentContactBinding
@@ -22,6 +23,13 @@ class AddCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewM
     override val layoutId: Int = R.layout.fragment_add_customer
     override val viewModel: ChangeGiftViewModel by viewModel()
     lateinit var mViewPagerAdapter: BaseVPAdapter
+    private var taskId: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        taskId = requireArguments().getString("taskId").toString()
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,26 +49,43 @@ class AddCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewM
 
     private fun setupViewPager() {
         mViewPagerAdapter = BaseVPAdapter(childFragmentManager)
-        mViewPagerAdapter.addFragment(InputNameFragment({
-            // Click next button
-            pagger.setCurrentItem(1, true)
-            stepper_indicator?.currentStep = 1
-        }), "")
-        mViewPagerAdapter.addFragment(VerifyOtpStep2Fragment({
-            // Click next button
+        val inputFragment = InputNameFragment({ isVefiyOtp ->
+            if (isVefiyOtp) {
+                pagger.setCurrentItem(1, true)
+                stepper_indicator?.currentStep = 1
+            } else {
+                pagger.setCurrentItem(3, true)
+                stepper_indicator?.currentStep = 3
+            }
+        })
+        inputFragment.arguments = bundleOf("taskId" to taskId)
+
+        val verifyOtpFragment = VerifyOtpStep2Fragment({ mPhone ->
             pagger.setCurrentItem(2, true)
             stepper_indicator?.currentStep = 2
-        }), "")
-        mViewPagerAdapter.addFragment(InputBillFragment({
+        })
+        verifyOtpFragment.arguments = bundleOf("taskId" to taskId)
+
+
+        val inputBillFragment = InputBillFragment({
             pagger.setCurrentItem(3, true)
             stepper_indicator?.currentStep = 3
-        }), "")
-        mViewPagerAdapter.addFragment(SelectPromotionFragment({
+        })
+        inputBillFragment.arguments = bundleOf("taskId" to taskId)
+
+        val selectPromotionFragment = SelectPromotionFragment({
             findNavController().navigateUp()
-        }), "")
+        })
+        selectPromotionFragment.arguments = bundleOf("taskId" to taskId)
+
+
+        mViewPagerAdapter.addFragment(inputFragment, "")
+        mViewPagerAdapter.addFragment(verifyOtpFragment, "")
+        mViewPagerAdapter.addFragment(inputBillFragment, "")
+        mViewPagerAdapter.addFragment(selectPromotionFragment, "")
 
         pagger.apply {
-            offscreenPageLimit = 4
+            offscreenPageLimit = 1
             adapter = mViewPagerAdapter
         }
     }
