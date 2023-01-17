@@ -39,6 +39,7 @@ class VerifyOtpStep2ViewModel(
                 )
                 _verifyCustomerOtp.postValue(Event(Resource.success(result.data)))
             } catch (e: Exception) {
+                _verifyCustomerOtp.postValue(Event(Resource.error(Throwable(), null)))
                 onLoadFail(e)
             }
         }
@@ -58,6 +59,7 @@ class VerifyOtpStep2ViewModel(
                 )
                 _resendOtpCustomer.postValue(Event(Resource.success(result.data)))
             } catch (e: Exception) {
+                _resendOtpCustomer.postValue(Event(Resource.error(Throwable(), null)))
                 onLoadFail(e)
             }
         }

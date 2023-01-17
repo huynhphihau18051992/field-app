@@ -410,7 +410,7 @@ class TaskRepositoryImpl(
         taskId: String,
         name: String,
         mobile_number: String
-    ): Resource<GetMessageResponse> {
+    ): Resource<BaseItemResponse<CustomerResponse>> {
         val result = apiService.registerCustomer(
             taskId = taskId,
             customer = CustomerRequest(name = name, mobile_number = mobile_number)
@@ -442,5 +442,88 @@ class TaskRepositoryImpl(
             otpRequest = ResendCustomerOtpRequest(mobile_number = mobile_number)
         )
         return Resource.success(result)
+    }
+
+    override suspend fun uploadReportOpponents(
+        taskId: String,
+        brandName: String,
+        type: String,
+        note: String,
+        file1: MultipartBody.Part,
+        file2: MultipartBody.Part,
+        file3: MultipartBody.Part
+    ): Resource<GetMessageResponse> {
+        val result = apiService.uploadReportOpponents(
+            taskId = taskId,
+            brandName = brandName,
+            type = type,
+            note = note,
+            file1 = file1,
+            file2 = file2,
+            file3 = file3
+        )
+        return Resource.success(result)
+    }
+
+    override suspend fun uploadReportOpponents(
+        taskId: String,
+        brandName: String,
+        type: String,
+        note: String,
+        file1: MultipartBody.Part,
+        file2: MultipartBody.Part
+    ): Resource<GetMessageResponse> {
+        val result = apiService.uploadReportOpponents(
+            taskId = taskId,
+            brandName = brandName,
+            type = type,
+            note = note,
+            file1 = file1,
+            file2 = file2
+        )
+        return Resource.success(result)
+    }
+
+    override suspend fun uploadReportOpponents(
+        taskId: String,
+        brandName: String,
+        type: String,
+        note: String,
+        file1: MultipartBody.Part
+    ): Resource<GetMessageResponse> {
+        val result = apiService.uploadReportOpponents(
+            taskId = taskId,
+            brandName = brandName,
+            type = type,
+            note = note,
+            file1 = file1
+        )
+        return Resource.success(result)
+    }
+
+    override suspend fun getPicReportOpponents(taskId: String): Resource<GetReportOpponentListResponse> {
+        val result = apiService.getPicReportOpponents(
+            taskId = taskId
+        )
+        return Resource.success(result)
+    }
+
+    override suspend fun getManagementReportOpponents(
+        agencyId: String,
+        projectId: String,
+        startTime: String,
+        endTime: String,
+        skip: Int,
+        take: Int
+    ): Resource<List<TaskResponse>> {
+        val result = apiService.getManagementReportOpponents(
+            agencyId = agencyId,
+            projectId = projectId,
+            startTime = startTime,
+            endTime = endTime,
+            skip = skip,
+            take = take
+        )
+        return Resource.success(result.data)
     }
 }

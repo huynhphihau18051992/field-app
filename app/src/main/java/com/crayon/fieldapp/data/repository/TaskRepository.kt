@@ -169,7 +169,7 @@ interface TaskRepository {
         taskId: String,
         name: String,
         mobile_number: String
-    ): Resource<GetMessageResponse>
+    ): Resource<BaseItemResponse<CustomerResponse>>
 
     suspend fun verifyCustomerOtp(
         taskId: String,
@@ -182,4 +182,45 @@ interface TaskRepository {
         taskId: String,
         mobile_number: String
     ): Resource<GetMessageResponse>
+
+    suspend fun uploadReportOpponents(
+        taskId: String,
+        brandName: String,
+        type: String,
+        note: String,
+        file1: MultipartBody.Part,
+        file2: MultipartBody.Part,
+        file3: MultipartBody.Part
+    ): Resource<GetMessageResponse>
+
+    suspend fun uploadReportOpponents(
+        taskId: String,
+        brandName: String,
+        type: String,
+        note: String,
+        file1: MultipartBody.Part,
+        file2: MultipartBody.Part
+    ): Resource<GetMessageResponse>
+
+    suspend fun uploadReportOpponents(
+        taskId: String,
+        brandName: String,
+        type: String,
+        note: String,
+        file1: MultipartBody.Part
+    ): Resource<GetMessageResponse>
+
+    suspend fun getPicReportOpponents(
+        taskId: String
+    ): Resource<GetReportOpponentListResponse>
+
+    suspend fun getManagementReportOpponents(
+        agencyId: String,
+        projectId: String,
+        startTime: String,
+        endTime: String,
+        skip: Int,
+        take: Int
+    ): Resource<List<TaskResponse>>
+
 }

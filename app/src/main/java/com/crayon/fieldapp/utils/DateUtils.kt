@@ -43,6 +43,25 @@ fun formatDate(
     }
 }
 
+fun formatHourAndDate(
+    origin: String
+): String {
+    try {
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm")
+//        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"))
+        return SimpleDateFormat("HH:mm - dd/MM/yyyy").format(
+            simpleDateFormat.parse(
+                origin!!.substring(
+                    0,
+                    16
+                )
+            )
+        )
+    } catch (e: Exception) {
+        return ""
+    }
+}
+
 fun formatHour(
     origin: String
 ): String {

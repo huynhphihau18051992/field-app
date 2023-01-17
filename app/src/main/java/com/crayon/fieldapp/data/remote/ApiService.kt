@@ -556,7 +556,7 @@ interface ApiService {
     suspend fun registerCustomer(
         @Path("id") taskId: String,
         @Body customer: CustomerRequest
-    ): GetMessageResponse
+    ): BaseItemResponse<CustomerResponse>
 
     @POST("/pic/v1/tasks/{id}/customer-otp")
     suspend fun verifyCustomerOtp(
@@ -610,6 +610,63 @@ interface ApiService {
         @Path("billId") billId: String,
         @Body addProductToBillRequest: AddProductToBillRequest
     ): GetMessageResponse
+
+    /*
+    * Tracking
+    * */
+    @Multipart
+    @POST("/pic/v1/tracking")
+    suspend fun uploadLocation(
+        @Part("lat") lat: String,
+        @Part("lng") lng: String
+    ): GetMessageResponse
+
+    @GET("/management/v1/projects/{projectId}/stores/{storeId}/users")
+    suspend fun getMembersAtStore(
+        @Header("mts-agency-id") agencyId: String,
+        @Path("storeId") storeId: String,
+        @Path("projectId") projectId: String
+    ): GetMemberListResponse
+
+    @GET("/management/v1/tracking")
+    suspend fun getManagementTrackingOfUser(
+        @Header("mts-agency-id") agencyId: String,
+        @Path("user_id") userId: String,
+        @Query("start_time") startTime: String? = null,
+        @Query("end_time") endTime: String? = null,
+        @Query("skip") skip: Int? = null,
+        @Query("take") take: Int? = null
+    ): GetTrackingListResponse
+
+    /*
+    * Bao cao doi thu
+    * */
+    @Multipart
+    @POST("/pic/v1/tasks/{taskId}/report-opponents")
+    suspend fun uploadReportOpponents(
+        @Path("taskId") taskId: String,
+        @Path("brand_name") brandName: String,
+        @Part("type") type: String,
+        @Part("note") note: String,
+        @Part file1: MultipartBody.Part? = null,
+        @Part file2: MultipartBody.Part? = null,
+        @Part file3: MultipartBody.Part? = null
+    ): GetMessageResponse
+
+    @GET("/pic/v1/tasks/{taskId}/report-opponents")
+    suspend fun getPicReportOpponents(
+        @Path("taskId") taskId: String
+    ): GetReportOpponentListResponse
+
+    @GET("/management/v1/projects/{projectId}/report-opponents")
+    suspend fun getManagementReportOpponents(
+        @Header("mts-agency-id") agencyId: String,
+        @Path("projectId") projectId: String,
+        @Query("start_time") startTime: String? = null,
+        @Query("end_time") endTime: String? = null,
+        @Query("skip") skip: Int? = null,
+        @Query("take") take: Int? = null
+    ): GetTaskListResponse
 
     companion object {
         const val NETWORK_PAGE_SIZE = 20

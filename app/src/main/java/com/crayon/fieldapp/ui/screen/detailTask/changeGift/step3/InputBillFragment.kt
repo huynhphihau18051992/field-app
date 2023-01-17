@@ -5,22 +5,25 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.TaskResponse
-import com.crayon.fieldapp.databinding.FragmentContactBinding
 import com.crayon.fieldapp.databinding.FragmentInputBillBinding
-import com.crayon.fieldapp.databinding.FragmentInputNameBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.screen.detailAttachment.image.ImageAdapter
 import com.crayon.fieldapp.ui.screen.detailTask.adapter.MediaAdapter
 import com.crayon.fieldapp.ui.screen.detailTask.adapter.MediaData
+import com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step3.adapter.UploadMediaAdapter
 import com.crayon.fieldapp.ui.screen.imageDialog.ImageDialog
 import com.crayon.fieldapp.ui.screen.videoDialog.VideoDialog
 import com.crayon.fieldapp.utils.*
 import kotlinx.android.synthetic.main.fragment_input_bill.*
+import kotlinx.android.synthetic.main.fragment_input_bill.btn_next
+import kotlinx.android.synthetic.main.fragment_input_bill.pb_loading
+import kotlinx.android.synthetic.main.fragment_verify_otp_step2.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -33,6 +36,7 @@ class InputBillFragment(val onNextClick: (String) -> Unit = {}) :
 
     override val layoutId: Int = R.layout.fragment_input_bill
     override val viewModel: InputBillViewModel by viewModel()
+    private val shareViewModel: ChangeGiftViewModel by activityViewModels()
     private var taskId: String? = null
     private var customerId: String? = null
     private lateinit var updateImageAdapter: UploadMediaAdapter
@@ -40,7 +44,6 @@ class InputBillFragment(val onNextClick: (String) -> Unit = {}) :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         taskId = requireArguments().getString("taskId").toString()
-        customerId = requireArguments().getString("customerId").toString()
         updateImageAdapter =
             UploadMediaAdapter(
                 items = arrayListOf(),
@@ -134,6 +137,10 @@ class InputBillFragment(val onNextClick: (String) -> Unit = {}) :
                     }
                 }
             }
+        })
+
+        shareViewModel.customerId.observe(viewLifecycleOwner, Observer {
+            customerId = it
         })
     }
 

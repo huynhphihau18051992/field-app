@@ -70,9 +70,16 @@ class InputNameFragment(val onNextClick: (isVerifyOtp: Boolean) -> Unit = {}) :
                     Status.SUCCESS -> {
                         pb_loading.visibility = View.GONE
                         it.data?.let {
-                            context?.showMessageDialog(message = it.message) {
-                                onNextClick.invoke(isVerifyOtp)
+                            it.name?.let {
+                                shareViewModel.setName(it)
                             }
+                            it.mobileNumber?.let {
+                                shareViewModel.setPhone(it)
+                            }
+                            it.id?.let {
+                                shareViewModel.setCustomerId(it)
+                            }
+                            onNextClick.invoke(isVerifyOtp)
                         }
                     }
                     Status.ERROR -> {

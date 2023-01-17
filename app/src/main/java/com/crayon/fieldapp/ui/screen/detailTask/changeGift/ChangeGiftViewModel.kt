@@ -17,6 +17,7 @@ class ChangeGiftViewModel(
 
     val name = MutableLiveData<String>()
     val phone = MutableLiveData<String>()
+    val customerId = MutableLiveData<String>()
     val otp = MutableLiveData<String>()
 
     fun setName(text: String) {
@@ -25,6 +26,10 @@ class ChangeGiftViewModel(
 
     fun setOtp(text: String) {
         otp.value = text
+    }
+
+    fun setCustomerId(text: String) {
+        customerId.value = text
     }
 
     fun setPhone(text: String) {

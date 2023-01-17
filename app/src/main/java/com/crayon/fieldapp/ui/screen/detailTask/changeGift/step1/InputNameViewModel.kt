@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.viewModelScope
 import com.crayon.fieldapp.AppDispatchers
+import com.crayon.fieldapp.data.remote.response.CustomerResponse
 import com.crayon.fieldapp.data.remote.response.GetMessageResponse
 import com.crayon.fieldapp.data.repository.TaskRepository
 import com.crayon.fieldapp.ui.base.BaseViewModel
@@ -15,8 +16,8 @@ class InputNameViewModel(
     private val taskRepository: TaskRepository,
     private val dispatchers: AppDispatchers
 ) : BaseViewModel() {
-    private val _createCustomer = MediatorLiveData<Event<Resource<GetMessageResponse>>>()
-    val createCustomer: LiveData<Event<Resource<GetMessageResponse>>> get() = _createCustomer
+    private val _createCustomer = MediatorLiveData<Event<Resource<CustomerResponse>>>()
+    val createCustomer: LiveData<Event<Resource<CustomerResponse>>> get() = _createCustomer
     fun registerCustomer(
         taskId: String,
         name: String,
@@ -30,8 +31,9 @@ class InputNameViewModel(
                     name = name,
                     mobile_number = phone
                 )
-                _createCustomer.postValue(Event(Resource.success(result.data)))
+                _createCustomer.postValue(Event(Resource.success(result.data!!.data)))
             } catch (e: Exception) {
+                _createCustomer.postValue(Event(Resource.error(Throwable(), null)))
                 onLoadFail(e)
             }
         }

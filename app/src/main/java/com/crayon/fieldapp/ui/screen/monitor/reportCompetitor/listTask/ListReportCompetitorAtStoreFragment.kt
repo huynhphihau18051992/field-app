@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
-import com.crayon.fieldapp.data.remote.response.TaskType
+import com.crayon.fieldapp.data.remote.response.TaskResponse
 import com.crayon.fieldapp.databinding.FragmentListReportCompetitorAtStoreBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.base.dialog.filterStore.FilterStoreDialog
@@ -39,9 +39,7 @@ class ListReportCompetitorAtStoreFragment() :
     private var calendar = Calendar.getInstance()
     var filterStoreIds: ArrayList<String> = arrayListOf()
 
-    //    var mTasks: ArrayList<TaskResponse> = arrayListOf()
-    // TODO
-    var mTasks: ArrayList<String> = arrayListOf()
+    var mTasks: ArrayList<TaskResponse> = arrayListOf()
     private var mAdapter: ManageReportCompetitorRVAdapter? = null
     private var mIsLoading = false
     private var pastVisiblesItems = 0
@@ -58,7 +56,7 @@ class ListReportCompetitorAtStoreFragment() :
         projectName = requireArguments().get("projectName").toString()
 
         mAdapter = ManageReportCompetitorRVAdapter(
-            arrayListOf("Vinmart Đông Hội", "MaxValu Florence", "Vinmart Vũng Tàu"),
+            arrayListOf(),
             requireContext(),
             itemClickListener = {
                 val taskJSon = Gson().toJson(it)
@@ -69,7 +67,6 @@ class ListReportCompetitorAtStoreFragment() :
         viewModel.getTaskByProject(
             agencyId = agencyId.toString(),
             projectId = projectId.toString(),
-            taskType = TaskType.UPDATE_STATUS.value,
             date = calendar,
             skip = 0,
             take = 20
@@ -97,9 +94,7 @@ class ListReportCompetitorAtStoreFragment() :
                     if (listRoleIds.isNotEmpty()) {
                         mTasks?.let { listTasks ->
                             val filter = listTasks.filter { task ->
-                                // TODO
-//                                listRoleIds.contains(task.store!!.id.toString())
-                                listRoleIds.contains(task)
+                                listRoleIds.contains(task.store!!.id.toString())
                             }
                             mAdapter?.clearAll()
                             mAdapter?.addAll(filter)
@@ -125,16 +120,10 @@ class ListReportCompetitorAtStoreFragment() :
                 val listRole = ArrayList<ItemStore>()
                 it.forEach {
                     listRole.add(
-                        // TODO
-//                        ItemStore(
-//                            id = it.store!!.id.toString(),
-//                            name = it.store!!.name.toString(),
-//                            isSelect = filterStoreIds.contains(it.store!!.id.toString()) ?: false
-//                        )
                         ItemStore(
-                            id = it,
-                            name = it,
-                            isSelect = filterStoreIds.contains(it) ?: false
+                            id = it.store!!.id.toString(),
+                            name = it.store!!.name.toString(),
+                            isSelect = filterStoreIds.contains(it.store!!.id.toString()) ?: false
                         )
                     )
                 }
@@ -195,9 +184,8 @@ class ListReportCompetitorAtStoreFragment() :
                             pb_loading.visibility = View.GONE
                             rv_members.visibility = View.VISIBLE
                             it.data?.let { mListTasks ->
-                                // TODO
-//                                mTasks?.addAll(mListTasks)
-//                                mAdapter?.addAll(mListTasks)
+                                mTasks?.addAll(mListTasks)
+                                mAdapter?.addAll(mListTasks)
                             }
                         }
                         Status.ERROR -> {
@@ -228,7 +216,6 @@ class ListReportCompetitorAtStoreFragment() :
         viewModel.getTaskByProject(
             agencyId = agencyId.toString(),
             projectId = projectId.toString(),
-            taskType = TaskType.UPDATE_STATUS.value,
             date = calendar,
             skip = skip,
             take = 20
@@ -247,7 +234,6 @@ class ListReportCompetitorAtStoreFragment() :
         viewModel.getTaskByProject(
             agencyId = agencyId.toString(),
             projectId = projectId.toString(),
-            taskType = TaskType.UPDATE_STATUS.value,
             date = calendar,
             skip = skip,
             take = 20

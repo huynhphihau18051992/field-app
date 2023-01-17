@@ -174,7 +174,7 @@ val viewModelModule = module {
     viewModel { VerifyOtpStep2ViewModel(get(), get()) }
     viewModel { InputBillViewModel(get(), get()) }
     viewModel { SelectPromotionViewModel(get(), get()) }
-    viewModel { ReportCompetitorViewModel() }
+    viewModel { ReportCompetitorViewModel(get()) }
     viewModel { ReportSalesViewModel() }
     viewModel { ListReportCompetitorAtStoreViewModel(get(), get()) }
     viewModel { ListReportSalesAtStoreViewModel(get(), get()) }

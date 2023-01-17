@@ -38,6 +38,7 @@ val repositoryModule = module {
     single<NotificationRepository> { NotificationRepositoryImpl(get(), get()) }
     single<MemberInvitationRepository> { MemberInvitationRepositoryImpl(get(), get()) }
     single<TaskRepository> { TaskRepositoryImpl(get(), get()) }
+    single<TrackingRepository> { TrackingRepositoryImpl(get(), get()) }
 }
 
 fun createDatabaseName() = Constants.DATABASE_NAME

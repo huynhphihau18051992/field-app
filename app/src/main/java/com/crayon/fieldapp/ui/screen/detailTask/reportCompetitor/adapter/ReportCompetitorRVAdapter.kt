@@ -4,17 +4,21 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.request.RequestOptions
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.data.remote.response.ReportOpponentResponse
+import com.crayon.fieldapp.utils.GlideApp
+import com.crayon.fieldapp.utils.formatHourAndDate
 import com.crayon.fieldapp.utils.setSingleClick
 
 class ReportCompetitorRVAdapter constructor(
-    val items: ArrayList<String>,
+    val items: ArrayList<ReportOpponentResponse>,
     val context: Context,
-    val onItemClick: (String) -> Unit = {},
-    val onImageClick: (String) -> Unit = {}
+    val onItemClick: (ReportOpponentResponse) -> Unit = {},
+    val onImageClick: (ReportOpponentResponse) -> Unit = {}
 ) :
     RecyclerView.Adapter<ReportCompetitorRVAdapter.GroupViewHolder>() {
 
@@ -28,6 +32,54 @@ class ReportCompetitorRVAdapter constructor(
     override fun onBindViewHolder(holder: GroupViewHolder, position: Int) {
         val data = items[position]
         holder.txtCustomerId.text = "Hoạt động " + (position + 1)
+
+        data.brandName?.let {
+            holder.txtName.text = it
+        }
+
+        data.type?.let {
+            holder.txtType.text = it
+        }
+
+        data.createdAt?.let {
+            holder.txtDate.text = formatHourAndDate(it)
+        }
+
+        data.medias?.let {
+            val options: RequestOptions = RequestOptions()
+                .centerCrop()
+                .placeholder(R.drawable.ic_photo)
+                .error(R.drawable.ic_photo)
+                .override(300, 300)
+            holder.cvImage1.visibility = View.GONE
+            holder.cvImage2.visibility = View.GONE
+            holder.cvImage3.visibility = View.GONE
+            when (it.size) {
+                1 -> {
+                    GlideApp.with(context).load(it.get(0)).apply(options).into(holder.cvImage1)
+                    holder.cvImage1.visibility = View.VISIBLE
+                }
+                2 -> {
+                    GlideApp.with(context).load(it.get(0).thumbnailUrl).apply(options).into(holder.cvImage1)
+                    GlideApp.with(context).load(it.get(1).thumbnailUrl).apply(options).into(holder.cvImage2)
+                    holder.cvImage1.visibility = View.VISIBLE
+                    holder.cvImage2.visibility = View.VISIBLE
+                }
+                3 -> {
+                    GlideApp.with(context).load(it.get(0).thumbnailUrl).apply(options).into(holder.cvImage1)
+                    GlideApp.with(context).load(it.get(1).thumbnailUrl).apply(options).into(holder.cvImage2)
+                    GlideApp.with(context).load(it.get(3).thumbnailUrl).apply(options).into(holder.cvImage3)
+                    holder.cvImage1.visibility = View.VISIBLE
+                    holder.cvImage2.visibility = View.VISIBLE
+                    holder.cvImage3.visibility = View.VISIBLE
+                }
+                else -> {
+                    holder.cvImage1.visibility = View.GONE
+                    holder.cvImage2.visibility = View.GONE
+                    holder.cvImage3.visibility = View.GONE
+                }
+            }
+        }
 
         holder.itemView.setSingleClick {
             onItemClick(data)
@@ -45,9 +97,9 @@ class ReportCompetitorRVAdapter constructor(
         var txtType: TextView
         var txtDate: TextView
         var txtGift: TextView
-        var cvImage1: CardView
-        var cvImage2: CardView
-        var cvImage3: CardView
+        var cvImage1: ImageView
+        var cvImage2: ImageView
+        var cvImage3: ImageView
 
         init {
             txtCustomerId = itemView.findViewById(R.id.txt_customer_num)
@@ -55,9 +107,9 @@ class ReportCompetitorRVAdapter constructor(
             txtType = itemView.findViewById(R.id.txt_type)
             txtDate = itemView.findViewById(R.id.txt_date)
             txtGift = itemView.findViewById(R.id.txt_note)
-            cvImage1 = itemView.findViewById(R.id.cv_image1)
-            cvImage2 = itemView.findViewById(R.id.cv_image2)
-            cvImage3 = itemView.findViewById(R.id.cv_image3)
+            cvImage1 = itemView.findViewById(R.id.img_1)
+            cvImage2 = itemView.findViewById(R.id.img_2)
+            cvImage3 = itemView.findViewById(R.id.img_3)
         }
     }
 
@@ -67,6 +119,12 @@ class ReportCompetitorRVAdapter constructor(
 
     fun clearData() {
         items.clear()
+        notifyDataSetChanged()
+    }
+
+    fun addItems(list: ArrayList<ReportOpponentResponse>) {
+        items.clear()
+        items.addAll(list)
         notifyDataSetChanged()
     }
 

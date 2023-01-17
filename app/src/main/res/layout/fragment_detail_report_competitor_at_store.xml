@@ -35,8 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_medium"
-                    android:gravity="center"
-                    android:text="Ten cua hang" />
+                    android:gravity="center" />
 
             </LinearLayout>
 
@@ -114,6 +113,18 @@
                     android:fontFamily="@font/inter_regular"
                     android:maxLines="1"
                     android:text="Vivo City, Quận 7, Tp HCM"
+                    android:textColor="#8E8E8E"
+                    android:textSize="@dimen/_12ssp" />
+
+                <TextView
+                    android:id="@+id/txt_pic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_3sdp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/inter_regular"
+                    android:maxLines="1"
+                    android:text="Huynh Phi Hau"
                     android:textColor="#8E8E8E"
                     android:textSize="@dimen/_12ssp" />
 

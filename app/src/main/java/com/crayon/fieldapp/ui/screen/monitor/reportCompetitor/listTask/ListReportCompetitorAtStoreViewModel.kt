@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.viewModelScope
 import com.crayon.fieldapp.AppDispatchers
+import com.crayon.fieldapp.data.remote.response.GetReportOpponentListResponse
+import com.crayon.fieldapp.data.remote.response.GetTaskListResponse
 import com.crayon.fieldapp.data.remote.response.TaskResponse
 import com.crayon.fieldapp.data.repository.TaskRepository
 import com.crayon.fieldapp.ui.base.BaseViewModel
@@ -22,7 +24,13 @@ class ListReportCompetitorAtStoreViewModel(
 
     private val _tasks = MediatorLiveData<Event<Resource<List<TaskResponse>>>>()
     val listTask: LiveData<Event<Resource<List<TaskResponse>>>> get() = _tasks
-    fun getTaskByProject(date: Calendar, agencyId: String, projectId: String, taskType: Int, skip: Int, take: Int = 20) =
+    fun getTaskByProject(
+        date: Calendar,
+        agencyId: String,
+        projectId: String,
+        skip: Int,
+        take: Int
+    ) =
         viewModelScope.launch(dispatchers.main) {
             _tasks.postValue(Event(Resource.loading(null)))
             withContext(dispatchers.io) {
@@ -42,10 +50,9 @@ class ListReportCompetitorAtStoreViewModel(
                         23,
                         59
                     )!!.toTimeString("yyyy-MM-dd") + "T23:59:00.000Z"
-                    val result = taskRepository.getManagementTasksByFilter(
+                    val result = taskRepository.getManagementReportOpponents(
                         agencyId = agencyId,
                         projectId = projectId,
-                        type = taskType,
                         startTime = start_date,
                         endTime = end_date,
                         skip = skip,
