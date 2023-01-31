@@ -15,13 +15,11 @@ import com.crayon.fieldapp.utils.showMessageDialog
 import kotlinx.android.synthetic.main.fragment_input_name.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class InputNameFragment(val onNextClick: (isVerifyOtp: Boolean) -> Unit = {}) :
+class InputNameFragment(val onNextClick: () -> Unit = {}) :
     BaseFragment<FragmentInputBillBinding, InputNameViewModel>() {
 
     override val layoutId: Int = R.layout.fragment_input_name
     override val viewModel: InputNameViewModel by viewModel()
-    private val shareViewModel: ChangeGiftViewModel by activityViewModels()
-    private var isVerifyOtp: Boolean = true
     private var taskId: String? = null
 
 
@@ -52,12 +50,7 @@ class InputNameFragment(val onNextClick: (isVerifyOtp: Boolean) -> Unit = {}) :
             }
             Utils.hideKeyboard(requireActivity())
             taskId?.let {
-                if (isVerifyOtp) {
-                    viewModel.resendOtpCustomer(it, phone = phone)
-                } else {
-                    shareViewModel.setPhone(phone)
-                    viewModel.registerCustomer(it, name = name, phone = phone)
-                }
+                viewModel.registerCustomer(it, name = name, phone = phone)
             }
         }
 
@@ -71,36 +64,12 @@ class InputNameFragment(val onNextClick: (isVerifyOtp: Boolean) -> Unit = {}) :
                         pb_loading.visibility = View.GONE
                         it.data?.let {
                             it.name?.let {
-                                shareViewModel.setName(it)
                             }
                             it.mobileNumber?.let {
-                                shareViewModel.setPhone(it)
                             }
                             it.id?.let {
-                                shareViewModel.setCustomerId(it)
                             }
-                            onNextClick.invoke(isVerifyOtp)
-                        }
-                    }
-                    Status.ERROR -> {
-                        pb_loading.visibility = View.GONE
-                    }
-                }
-            }
-        })
-
-        viewModel.resendOtpCustomer.observe(viewLifecycleOwner, Observer {
-            it.getContentIfNotHandled()?.let {
-                when (it.status) {
-                    Status.LOADING -> {
-                        pb_loading.visibility = View.VISIBLE
-                    }
-                    Status.SUCCESS -> {
-                        pb_loading.visibility = View.GONE
-                        it.data?.let {
-                            context?.showMessageDialog(message = it.message) {
-                                onNextClick.invoke(isVerifyOtp)
-                            }
+                            onNextClick.invoke()
                         }
                     }
                     Status.ERROR -> {

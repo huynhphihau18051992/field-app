@@ -6,6 +6,10 @@
         <variable
             name="viewModel"
             type="com.crayon.fieldapp.ui.screen.detailTask.changeGift.step1.InputNameViewModel" />
+
+        <variable
+            name="shareViewModel"
+            type="com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel" />
     </data>
 
     <ScrollView

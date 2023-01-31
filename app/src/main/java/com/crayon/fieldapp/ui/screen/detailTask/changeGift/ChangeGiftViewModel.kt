@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.crayon.fieldapp.data.remote.response.TaskResponse
+import com.crayon.fieldapp.data.remote.response.CustomerResponse
 import com.crayon.fieldapp.data.repository.TaskRepository
 import com.crayon.fieldapp.ui.base.BaseViewModel
 import com.crayon.fieldapp.utils.Event
@@ -36,14 +36,14 @@ class ChangeGiftViewModel(
         phone.value = text
     }
 
-    private val _task = MediatorLiveData<Event<Resource<TaskResponse>>>()
-    val task: LiveData<Event<Resource<TaskResponse>>> get() = _task
-    fun getDetailTask(taskId: String) {
+    private val _customers = MediatorLiveData<Event<Resource<List<CustomerResponse>>>>()
+    val customers: LiveData<Event<Resource<List<CustomerResponse>>>> get() = _customers
+    fun getListCustomer(taskId: String) {
         viewModelScope.launch {
-            _task.postValue(Event(Resource.loading(null)))
+            _customers.postValue(Event(Resource.loading(null)))
             try {
-                val result = taskRepository.getPicTask(taskId)
-                _task.postValue(Event(Resource.success(result.data)))
+                val result = taskRepository.getListCustomer(taskId)
+                _customers.postValue(Event(Resource.success(result.data)))
             } catch (e: Exception) {
                 onLoadFail(e)
             }

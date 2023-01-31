@@ -29,8 +29,27 @@ fun formatDate(
 ): String {
     try {
         val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm")
-//        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"))
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"))
         return SimpleDateFormat("dd/MM/yyyy").format(
+            simpleDateFormat.parse(
+                origin!!.substring(
+                    0,
+                    16
+                )
+            )
+        )
+    } catch (e: Exception) {
+        return ""
+    }
+}
+
+fun formatDate2(
+    origin: String
+): String {
+    try {
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm")
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"))
+        return SimpleDateFormat("EEE, dd/MM/yyyy").format(
             simpleDateFormat.parse(
                 origin!!.substring(
                     0,
@@ -48,7 +67,7 @@ fun formatHourAndDate(
 ): String {
     try {
         val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm")
-//        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"))
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"))
         return SimpleDateFormat("HH:mm - dd/MM/yyyy").format(
             simpleDateFormat.parse(
                 origin!!.substring(
@@ -57,6 +76,20 @@ fun formatHourAndDate(
                 )
             )
         )
+    } catch (e: Exception) {
+        return ""
+    }
+}
+
+fun formatStartEndFullDate(
+    start: String,
+    end: String
+): String {
+    try {
+        val start = formatHour(start)
+        val end = formatHour(end)
+        val date = formatDate(start)
+        return start + " - " + end + " " + date
     } catch (e: Exception) {
         return ""
     }

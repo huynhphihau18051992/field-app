@@ -96,7 +96,8 @@ class DetailChangeGiftAtStoreFragment() :
 //        }
 
         val mCompetitorAdapter =
-            CustomerRVAdapter(arrayListOf("1", "2", "3"), requireContext(), false,
+            CustomerRVAdapter(
+                arrayListOf(), requireContext(), false,
                 {
 
                 }, {

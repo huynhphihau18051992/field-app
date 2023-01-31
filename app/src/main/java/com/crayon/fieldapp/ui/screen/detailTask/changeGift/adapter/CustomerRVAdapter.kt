@@ -8,14 +8,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.data.remote.response.CustomerResponse
+import com.crayon.fieldapp.utils.formatHourAndDate
 import com.crayon.fieldapp.utils.setSingleClick
 
 class CustomerRVAdapter constructor(
-    val items: ArrayList<String>,
+    val items: ArrayList<CustomerResponse>,
     val context: Context,
     val isEdit: Boolean,
-    val onEditItemClick: (String) -> Unit = {},
-    val onItemClick: (String) -> Unit = {}
+    val onEditItemClick: (CustomerResponse) -> Unit = {},
+    val onItemClick: (CustomerResponse) -> Unit = {}
 ) :
     RecyclerView.Adapter<CustomerRVAdapter.GroupViewHolder>() {
 
@@ -37,6 +39,18 @@ class CustomerRVAdapter constructor(
         }
         holder.itemView.setSingleClick {
             onItemClick(data)
+        }
+
+        data.name?.let {
+            holder.txtName.text = it
+        }
+
+        data.mobileNumber?.let {
+            holder.txtPhone.text = it
+        }
+
+        data.createdAt?.let {
+            holder.txtDate.text = formatHourAndDate(it)
         }
 
         holder.icEdit.setSingleClick {
@@ -69,6 +83,12 @@ class CustomerRVAdapter constructor(
 
     fun clearData() {
         items.clear()
+        notifyDataSetChanged()
+    }
+
+    fun addAll(list: ArrayList<CustomerResponse>) {
+        items.clear()
+        items.addAll(list)
         notifyDataSetChanged()
     }
 

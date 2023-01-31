@@ -31,7 +31,7 @@ class InputNameViewModel(
                     name = name,
                     mobile_number = phone
                 )
-                _createCustomer.postValue(Event(Resource.success(result.data!!.data)))
+                _createCustomer.postValue(Event(Resource.success(result.data!!)))
             } catch (e: Exception) {
                 _createCustomer.postValue(Event(Resource.error(Throwable(), null)))
                 onLoadFail(e)

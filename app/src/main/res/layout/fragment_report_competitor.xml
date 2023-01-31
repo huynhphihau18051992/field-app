@@ -101,7 +101,6 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/inter_semi_bold"
                     android:maxLines="1"
-                    android:text="Nước tương Tam Thái Tử"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_17ssp" />
 
@@ -113,7 +112,6 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/inter_regular"
                     android:maxLines="1"
-                    android:text="Vivo City, Quận 7, Tp HCM"
                     android:textColor="#8E8E8E"
                     android:textSize="@dimen/_12ssp" />
 
@@ -138,7 +136,6 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/inter_regular"
                         android:maxLines="1"
-                        android:text="09:00 - 12:00 Thứ 7 ngày 27/6/2022 "
                         android:textColor="#323231"
                         android:textSize="@dimen/_12ssp" />
                 </RelativeLayout>
@@ -186,7 +183,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:fontFamily="@font/inter_semi_bold"
-                    android:text="6 hoạt động"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_12ssp" />
 
@@ -235,6 +231,12 @@
                     android:textAlignment="center"
                     android:textColor="#8E8E8E"
                     android:textSize="@dimen/_12ssp" />
+
+                <ProgressBar
+                    android:id="@+id/pb_loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
 
             </RelativeLayout>
 

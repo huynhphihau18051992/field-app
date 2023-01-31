@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.TaskResponse
-import com.crayon.fieldapp.databinding.FragmentInputBillBinding
+import com.crayon.fieldapp.databinding.FragmentInputNameBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.screen.detailAttachment.image.ImageAdapter
 import com.crayon.fieldapp.ui.screen.detailTask.adapter.MediaAdapter
@@ -32,11 +32,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
 class InputBillFragment(val onNextClick: (String) -> Unit = {}) :
-    BaseFragment<FragmentInputBillBinding, InputBillViewModel>() {
+    BaseFragment<FragmentInputNameBinding, InputBillViewModel>() {
 
     override val layoutId: Int = R.layout.fragment_input_bill
     override val viewModel: InputBillViewModel by viewModel()
-    private val shareViewModel: ChangeGiftViewModel by activityViewModels()
     private var taskId: String? = null
     private var customerId: String? = null
     private lateinit var updateImageAdapter: UploadMediaAdapter
@@ -139,9 +138,9 @@ class InputBillFragment(val onNextClick: (String) -> Unit = {}) :
             }
         })
 
-        shareViewModel.customerId.observe(viewLifecycleOwner, Observer {
-            customerId = it
-        })
+//        shareViewModel.customerId.observe(viewLifecycleOwner, Observer {
+//            customerId = it
+//        })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

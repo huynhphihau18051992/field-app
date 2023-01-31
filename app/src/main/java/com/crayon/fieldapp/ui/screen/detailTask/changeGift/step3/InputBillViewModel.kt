@@ -43,7 +43,7 @@ class InputBillViewModel(
 
                     val fileToUpload1: MultipartBody.Part =
                         MultipartBody.Part.createFormData(
-                            "image_url",
+                            "image",
                             File(listUri.get(0)).getName(),
                             requestBody1
                         )
@@ -67,13 +67,13 @@ class InputBillViewModel(
 
                     val fileToUpload1: MultipartBody.Part =
                         MultipartBody.Part.createFormData(
-                            "image_url",
+                            "image",
                             File(listUri.get(0)).getName(),
                             requestBody1
                         )
                     val fileToUpload2: MultipartBody.Part =
                         MultipartBody.Part.createFormData(
-                            "image_url",
+                            "image",
                             File(listUri.get(1)).getName(),
                             requestBody2
                         )
@@ -101,19 +101,19 @@ class InputBillViewModel(
 
                     val fileToUpload1: MultipartBody.Part =
                         MultipartBody.Part.createFormData(
-                            "image_url",
+                            "image",
                             File(listUri.get(0)).getName(),
                             requestBody1
                         )
                     val fileToUpload2: MultipartBody.Part =
                         MultipartBody.Part.createFormData(
-                            "image_url",
+                            "image",
                             File(listUri.get(1)).getName(),
                             requestBody2
                         )
                     val fileToUpload3: MultipartBody.Part =
                         MultipartBody.Part.createFormData(
-                            "image_url",
+                            "image",
                             File(listUri.get(2)).getName(),
                             requestBody3
                         )

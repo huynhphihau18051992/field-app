@@ -89,10 +89,10 @@ class VerifyOtpStep2Fragment(val onNextClick: (String) -> Unit = {}) :
             }
         })
 
-        shareViewModel.phone.observe(viewLifecycleOwner, Observer {
-            txt_hint_otp?.text = "Mã OTP được gửi đến số +84" + it
-            phone = it
-        })
+//        shareViewModel.phone.observe(viewLifecycleOwner, Observer {
+//            txt_hint_otp?.text = "Mã OTP được gửi đến số +84" + it
+//            phone = it
+//        })
     }
 
     fun startLoginTimer(

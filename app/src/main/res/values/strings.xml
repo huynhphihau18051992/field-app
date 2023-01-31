@@ -12,6 +12,12 @@
         <item>Gói \n khuyến mãi</item>
     </string-array>
 
+    <string-array name="stepLabelsWithoutOTP">
+        <item>Điền \n thông tin</item>
+        <item>Ảnh \n hoá đơn</item>
+        <item>Gói \n khuyến mãi</item>
+    </string-array>
+
     <string-array name="arr_activity">
         <item>Sampling</item>
         <item>Inline</item>

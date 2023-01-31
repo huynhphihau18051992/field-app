@@ -552,11 +552,16 @@ interface ApiService {
     /*
     * Redeem
     * */
-    @POST("/pic/v1/tasks/{id}/customer-register")
+    @POST("/pic/v1/tasks/{id}/customers")
     suspend fun registerCustomer(
         @Path("id") taskId: String,
         @Body customer: CustomerRequest
-    ): BaseItemResponse<CustomerResponse>
+    ): CustomerResponse
+
+    @GET("/pic/v1/tasks/{id}/customers")
+    suspend fun getListCustomer(
+        @Path("id") taskId: String
+    ): GetCustomerListResponse
 
     @POST("/pic/v1/tasks/{id}/customer-otp")
     suspend fun verifyCustomerOtp(
@@ -571,7 +576,7 @@ interface ApiService {
     ): GetMessageResponse
 
     @Multipart
-    @POST("/pic/v1/tasks/{taskId}/customers/{customerId}/bills")
+    @POST("/pic/v1/tasks/{taskId}/customers/{customerId}/customer-bills")
     suspend fun createCustomerBill(
         @Path("taskId") taskId: String,
         @Path("customerId") customerId: String,
@@ -579,32 +584,32 @@ interface ApiService {
         @Part file1: MultipartBody.Part? = null,
         @Part file2: MultipartBody.Part? = null,
         @Part file3: MultipartBody.Part? = null
-    ): GetMessageResponse
+    ): CustomerBillResponse
 
     @GET("/pic/v1/tasks/{id}/customer-bill")
     suspend fun getCustomerBillById(
         @Path("id") id: String
     ): GetCustomerBillListResponse
 
-    @PUT("/management/v1/{productId}/projects/{projectId}/products")
+    @PUT("/pic/v1/{productId}/projects/{projectId}/products")
     suspend fun updatePriceOfProduct(
         @Path("projectId") projectId: String,
         @Path("productId") productId: String,
         @Body UpdatePriceOfProductRequest: UpdatePriceOfProductRequest
     ): GetMessageResponse
 
-    @GET("/management/v1/projects/{projectId}/promotions")
+    @GET("/pic/v1/projects/{projectId}/promotions")
     suspend fun getPromotions(
         @Path("projectId") projectId: String
     ): GetPromotionListResponse
 
-    @GET("/management/v1/projects/{projectId}/products")
+    @GET("/pic/v1/projects/{projectId}/products")
     suspend fun getProducts(
         @Path("projectId") projectId: String
     ): GetProductListResponse
 
 
-    @POST("/pic/v1/tasks/{taskId}/customer-bill/{billId}/add-products")
+    @POST("/pic/v1/tasks/{taskId}/customer-bills/{billId}/add-product")
     suspend fun addProductToBill(
         @Path("taskId") taskId: String,
         @Path("billId") billId: String,
@@ -645,7 +650,7 @@ interface ApiService {
     @POST("/pic/v1/tasks/{taskId}/report-opponents")
     suspend fun uploadReportOpponents(
         @Path("taskId") taskId: String,
-        @Path("brand_name") brandName: String,
+        @Part("brand_name") brandName: String,
         @Part("type") type: String,
         @Part("note") note: String,
         @Part file1: MultipartBody.Part? = null,

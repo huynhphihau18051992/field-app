@@ -12,9 +12,7 @@ import com.crayon.fieldapp.ui.screen.detailTask.reportCompetitor.adapter.ReportC
 import com.crayon.fieldapp.ui.screen.imageDialog.ImageDialog
 import com.crayon.fieldapp.utils.Status
 import com.crayon.fieldapp.utils.setSingleClick
-import kotlinx.android.synthetic.main.fragment_change_gift.*
-import kotlinx.android.synthetic.main.fragment_contact.imb_ic_back
-import kotlinx.android.synthetic.main.fragment_input_bill.*
+import kotlinx.android.synthetic.main.fragment_report_competitor.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ReportCompetitorFragment :

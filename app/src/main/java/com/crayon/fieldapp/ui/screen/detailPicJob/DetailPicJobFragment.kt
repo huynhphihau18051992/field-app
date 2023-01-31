@@ -14,16 +14,17 @@ import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.screen.detailPicJob.adapter.ListTaskAdapter
 import com.crayon.fieldapp.utils.Status
 import com.crayon.fieldapp.utils.setSingleClick
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_detail_pic_job.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailPicJobFragment : BaseFragment<FragmentDetailPicJobBinding, DetailPicJobViewModel>() {
 
     override val layoutId: Int = R.layout.fragment_detail_pic_job
-
     override val viewModel: DetailPicJobViewModel by viewModel()
 
     private lateinit var jobId: String
+    private var jobResponse: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,6 +78,22 @@ class DetailPicJobFragment : BaseFragment<FragmentDetailPicJobBinding, DetailPic
                 }
 
             })
+
+            job.observe(viewLifecycleOwner, Observer {
+                when (it.status) {
+                    Status.LOADING -> {
+                    }
+                    Status.SUCCESS -> {
+                        pb_loading.visibility = View.GONE
+                        it.data?.let {
+                            jobResponse = Gson().toJson(it)
+                        }
+                    }
+                    Status.ERROR -> {
+                    }
+                }
+
+            })
         }
     }
 
@@ -100,7 +117,7 @@ class DetailPicJobFragment : BaseFragment<FragmentDetailPicJobBinding, DetailPic
                 bundel
             )
         } else if (type == TaskType.CHANGE_GIFT.value) {
-            val bundel = bundleOf("taskId" to taskId)
+            val bundel = bundleOf("taskId" to taskId, "job" to jobResponse.toString())
             findNavController().navigate(
                 R.id.action_detailPicJobFragment_to_changeGiftFragment,
                 bundel

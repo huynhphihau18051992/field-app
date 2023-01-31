@@ -32,7 +32,8 @@ data class Project(
     @SerializedName("end_date") val endDate: String? = null,
     @SerializedName("status") val status: String? = null,
     @SerializedName("agency") val agency: String? = null,
-    @SerializedName("owner") val owner: String? = null
+    @SerializedName("owner") val owner: String? = null,
+    @SerializedName("isVerifyOtp") val isVerifyOtp: Boolean? = false
 ) : BaseResponse()
 
 data class Agency(

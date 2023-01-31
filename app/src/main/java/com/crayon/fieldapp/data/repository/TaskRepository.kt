@@ -169,7 +169,7 @@ interface TaskRepository {
         taskId: String,
         name: String,
         mobile_number: String
-    ): Resource<BaseItemResponse<CustomerResponse>>
+    ): Resource<CustomerResponse>
 
     suspend fun verifyCustomerOtp(
         taskId: String,
@@ -222,5 +222,10 @@ interface TaskRepository {
         skip: Int,
         take: Int
     ): Resource<List<TaskResponse>>
+
+    suspend fun getListCustomer(
+        taskId: String
+    ): Resource<List<CustomerResponse>>
+
 
 }

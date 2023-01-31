@@ -410,7 +410,7 @@ class TaskRepositoryImpl(
         taskId: String,
         name: String,
         mobile_number: String
-    ): Resource<BaseItemResponse<CustomerResponse>> {
+    ): Resource<CustomerResponse> {
         val result = apiService.registerCustomer(
             taskId = taskId,
             customer = CustomerRequest(name = name, mobile_number = mobile_number)
@@ -523,6 +523,13 @@ class TaskRepositoryImpl(
             endTime = endTime,
             skip = skip,
             take = take
+        )
+        return Resource.success(result.data)
+    }
+
+    override suspend fun getListCustomer(taskId: String): Resource<List<CustomerResponse>> {
+        val result = apiService.getListCustomer(
+            taskId = taskId
         )
         return Resource.success(result.data)
     }

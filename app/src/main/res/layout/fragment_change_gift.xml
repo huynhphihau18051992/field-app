@@ -69,13 +69,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#F8F8F8"
                 android:orientation="vertical"
-                android:padding="@dimen/_14sdp">
+                android:padding="@dimen/_14sdp"
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -83,7 +83,7 @@
                     android:layout_marginBottom="@dimen/_3sdp"
                     android:fontFamily="@font/inter_semi_bold"
                     android:text="Thông tin dự án"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="#323231"
                     android:textSize="@dimen/_14ssp" />
 
                 <View
@@ -100,8 +100,7 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/inter_semi_bold"
                     android:maxLines="1"
-                    android:text="Chơi game đổi quà"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="#323231"
                     android:textSize="@dimen/_17ssp" />
 
                 <TextView
@@ -112,7 +111,6 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/inter_regular"
                     android:maxLines="1"
-                    android:text="Vivo City, Quận 7, Tp HCM"
                     android:textColor="#8E8E8E"
                     android:textSize="@dimen/_12ssp" />
 
@@ -137,7 +135,6 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/inter_regular"
                         android:maxLines="1"
-                        android:text="09:00 - 12:00 Thứ 7 ngày 27/6/2022 "
                         android:textColor="#323231"
                         android:textSize="@dimen/_12ssp" />
                 </RelativeLayout>
@@ -211,37 +208,50 @@
                 android:background="@color/colorGrayDisable" />
 
             <RelativeLayout
-                android:id="@+id/rl_empty"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:padding="@dimen/_14sdp"
-                android:visibility="visible">
+                android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/ic_empty"
-                    android:layout_width="@dimen/_150sdp"
-                    android:layout_height="@dimen/_150sdp"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_empty" />
-
-                <TextView
+                <RelativeLayout
+                    android:id="@+id/rl_empty"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:padding="@dimen/_14sdp"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/ic_empty"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="@dimen/_150sdp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/ic_empty" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ic_empty"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Chưa có khách hàng nào \n thêm khách hàng ngay"
+                        android:textAlignment="center"
+                        android:textColor="#8E8E8E"
+                        android:textSize="@dimen/_12ssp" />
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_customer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone" />
+
+                <ProgressBar
+                    android:id="@+id/pb_loading"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/ic_empty"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Chưa có khách hàng nào \n thêm khách hàng ngay"
-                    android:textAlignment="center"
-                    android:textColor="#8E8E8E"
-                    android:textSize="@dimen/_12ssp" />
+                    android:layout_centerInParent="true" />
 
             </RelativeLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_customer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone" />
 
         </LinearLayout>
 

@@ -7,13 +7,7 @@ class PromotionResponse (
     @SerializedName("updatedAt") val updatedAt: String? = null,
     @SerializedName("id") val id: String? = null,
     @SerializedName("name") val name: String? = null,
-    @SerializedName("description") val description: String? = null,
-    @SerializedName("address") val address: String? = null,
-    @SerializedName("mobile_number") val mobileNumber: String? = null,
-    @SerializedName("bank_number") val bankNumber: String? = null,
-    @SerializedName("tax") val tax: String? = null,
-    @SerializedName("max_account") val maxAccount: String? = null,
-    @SerializedName("expire_date") val expireDate: String? = null,
-    @SerializedName("logo_url") val logoUrl: String? = null,
-    @SerializedName("product") val product: ArrayList<ProductResponse>? = null
+    @SerializedName("default_price") val default_price: String? = null,
+    @SerializedName("package_type") val package_type: String? = null,
+    @SerializedName("project") val project: String? = null
 ) : BaseResponse()
