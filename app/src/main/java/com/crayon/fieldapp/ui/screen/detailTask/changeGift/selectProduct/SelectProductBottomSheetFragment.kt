@@ -12,10 +12,14 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.ui.screen.detailTask.reportSales.adapter.SelectProductRVAdapter
 import com.crayon.fieldapp.ui.screen.detailTask.reportSales.addOrder.dialog.EditPriceProductDialog
 
-class SelectProductBottomSheetFragment() : DialogFragment() {
+class SelectProductBottomSheetFragment(
+    val product: ArrayList<ProductResponse>,
+    val onSelectProductListener: (ArrayList<ProductResponse>) -> Unit = {}
+) : DialogFragment() {
     lateinit var rvProudct: RecyclerView
     lateinit var btnConfirm: Button
 
@@ -33,28 +37,43 @@ class SelectProductBottomSheetFragment() : DialogFragment() {
             btnConfirm = findViewById(R.id.btn_update)
 
             btnConfirm.setOnClickListener {
+                val allItemSelected = mProductAdapter.getAllItemSelected()
+                onSelectProductListener(allItemSelected)
                 this@SelectProductBottomSheetFragment.dismiss()
             }
 
             this@SelectProductBottomSheetFragment.activity?.let { activity ->
                 mProductAdapter =
-                    SelectProductRVAdapter(arrayListOf(
-                        "Dầu gội Clear 350ml",
-                        "Lăn khử mùi",
-                        "Bình giữ nhiệt kháng khuẩn",
-                        "Khăn tắm cao cấp",
-                        "Lốc sữa tiệt trùng",
-                        "Bánh gạo",
-                        "Dầu ăn Tường An",
-                        "Sữa chua Vinamilk",
-                        "Dầu xả Sunsilk"
-                    ), activity, {
-                        // Edit
-                        var dialog = EditPriceProductDialog()
-                        dialog.show(activity.supportFragmentManager, dialog.tag)
-                    }, {
+                    SelectProductRVAdapter(
+                        items = product,
+                        onItemSelectClick = { mProduct, isChecked ->
+                            if (isChecked) {
+                                mProductAdapter.selectItem(mProduct)
+                            } else {
+                                mProductAdapter.unSelectItem(mProduct)
+                            }
+                        },
+                        onPriceClick = { mProduct ->
+                            val dialog =
+                                EditPriceProductDialog(mProduct, onUpdatePriceClick = { mPrice ->
+                                    mProductAdapter.updatePrice(item = mProduct, price = mPrice)
+                                })
+                            dialog.show(requireActivity().supportFragmentManager, dialog.tag)
+                        },
+                        context = requireContext(),
+                        onItemAddClick = { mProduct ->
+                            var newQuantity = mProduct.quantity + 1
+                            mProductAdapter.updateQuantity(mProduct, newQuantity)
+                        },
+                        onItemMinusClick = { mProduct ->
+                            var newQuantity = mProduct.quantity - 1
+                            if (newQuantity < 0) {
+                                newQuantity = 0
+                            }
+                            mProductAdapter.updateQuantity(mProduct, newQuantity)
+                        }
+                    )
 
-                    })
                 mLayoutManager = LinearLayoutManager(activity)
                 rvProudct.setLayoutManager(mLayoutManager)
                 rvProudct.adapter = mProductAdapter

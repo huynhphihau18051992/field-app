@@ -9,10 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.ui.widgets.MoneyTextWatcher
 import kotlinx.android.synthetic.main.dialog_edit_price.view.*
+import java.text.DecimalFormat
 
-class EditPriceProductDialog(val onItemClick: (String) -> Unit = {}) : DialogFragment() {
+class EditPriceProductDialog(
+    val product: ProductResponse,
+    val onUpdatePriceClick: (Int) -> Unit = {}
+) : DialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,13 +30,19 @@ class EditPriceProductDialog(val onItemClick: (String) -> Unit = {}) : DialogFra
             }
 
             btn_update?.setOnClickListener {
-                onItemClick.invoke("")
+                val newPrice = edt_price?.text.toString()
+
+                onUpdatePriceClick.invoke(newPrice.replace(",","").toInt())
                 this@EditPriceProductDialog.dismiss()
             }
             edt_price?.addTextChangedListener(object : MoneyTextWatcher(edt_price) {
 
             })
 
+            txt_product_name?.text = product.name
+            val format = DecimalFormat("#,###")
+            format.maximumFractionDigits = 0
+            txt_current_price?.text = format.format(product.price)
         }
 
     override fun onStart() {

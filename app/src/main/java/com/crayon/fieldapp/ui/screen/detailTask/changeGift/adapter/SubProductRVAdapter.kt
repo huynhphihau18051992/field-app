@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.utils.setSingleClick
 
 class SubProductRVAdapter constructor(
-    val items: ArrayList<String>,
+    val items: ArrayList<ProductResponse>,
     val context: Context,
-    val onEditItemClick: (String) -> Unit = {},
-    val onItemClick: (String) -> Unit = {}
+    val onEditItemClick: (ProductResponse) -> Unit = {},
+    val onItemClick: (ProductResponse) -> Unit = {}
 ) :
     RecyclerView.Adapter<SubProductRVAdapter.GroupViewHolder>() {
 
@@ -65,6 +66,17 @@ class SubProductRVAdapter constructor(
 
     fun clearData() {
         items.clear()
+        notifyDataSetChanged()
+    }
+
+    fun addProduct(product: ProductResponse){
+        items.add(product)
+        notifyDataSetChanged()
+    }
+
+    fun addAll(proudcts: ArrayList<ProductResponse>){
+        items.clear()
+        items.addAll(proudcts)
         notifyDataSetChanged()
     }
 

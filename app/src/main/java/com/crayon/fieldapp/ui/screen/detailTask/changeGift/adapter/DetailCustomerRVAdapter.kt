@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.data.remote.response.GiftResponse
 import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.data.remote.response.PromotionResponse
 import kotlinx.android.synthetic.main.item_bill_info.view.*
@@ -19,7 +20,7 @@ import kotlinx.android.synthetic.main.item_promotion_info.view.*
 class DetailCustomerRVAdapter constructor(
     val images: ArrayList<String>,
     val promotions: ArrayList<PromotionResponse>,
-    val gifts: ArrayList<ProductResponse>,
+    val gifts: ArrayList<GiftResponse>,
     val context: Context,
     val isEidt: Boolean,
     val onEditItemClick: (String) -> Unit = {},
@@ -69,10 +70,8 @@ class DetailCustomerRVAdapter constructor(
                 this.adapter = mImageAdapter
             }
         } else if (holder is PromotionItemViewHolder) {
-            val promotionData = promotions.get(position)
             mPromotionRVAdapter = PromotionRVAdapter(
-                promotionName = promotionData.name.toString(),
-                items = promotionData.product ?: arrayListOf(),
+                items = promotions,
                 context = context,
                 onCheckBoxSelect = { position, isChecked ->
 

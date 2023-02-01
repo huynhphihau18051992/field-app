@@ -306,6 +306,13 @@ class TaskRepositoryImpl(
         return Resource.success(result)
     }
 
+    override suspend fun getGiftList(projectId: String): Resource<GetGiftListResponse> {
+        val result = apiService.getGifts(
+            projectId
+        )
+        return Resource.success(result)
+    }
+
     override suspend fun updatePriceOfProduct(
         projectId: String,
         productId: String,
@@ -340,7 +347,7 @@ class TaskRepositoryImpl(
         customerId: String,
         code_bill: String,
         file1: MultipartBody.Part
-    ): Resource<GetMessageResponse> {
+    ): Resource<CustomerBillResponse> {
         val result = apiService.createCustomerBill(
             taskId = taskId,
             customerId = customerId,
@@ -356,7 +363,7 @@ class TaskRepositoryImpl(
         code_bill: String,
         file1: MultipartBody.Part,
         file2: MultipartBody.Part
-    ): Resource<GetMessageResponse> {
+    ): Resource<CustomerBillResponse> {
         val result = apiService.createCustomerBill(
             taskId = taskId,
             customerId = customerId,
@@ -374,7 +381,7 @@ class TaskRepositoryImpl(
         file1: MultipartBody.Part,
         file2: MultipartBody.Part,
         file3: MultipartBody.Part
-    ): Resource<GetMessageResponse> {
+    ): Resource<CustomerBillResponse> {
         val result = apiService.createCustomerBill(
             taskId = taskId,
             customerId = customerId,
@@ -390,7 +397,6 @@ class TaskRepositoryImpl(
         taskId: String,
         billId: String,
         promotionId: String,
-        customerBillId: String,
         products: ArrayList<ProjectProductRequest>
     ): Resource<GetMessageResponse> {
         val result = apiService.addProductToBill(
@@ -398,7 +404,6 @@ class TaskRepositoryImpl(
             billId = billId,
             addProductToBillRequest = AddProductToBillRequest(
                 promotionId = promotionId,
-                customerBillId = customerBillId,
                 products = products
 
             )

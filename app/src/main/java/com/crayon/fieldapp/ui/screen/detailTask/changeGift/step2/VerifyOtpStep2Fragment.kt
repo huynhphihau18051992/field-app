@@ -18,13 +18,12 @@ import kotlinx.android.synthetic.main.fragment_verify_otp_step2.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.concurrent.TimeUnit
 
-class VerifyOtpStep2Fragment(val onNextClick: (String) -> Unit = {}) :
+class VerifyOtpStep2Fragment(val onNextClick: () -> Unit = {}) :
     BaseFragment<FragmentVerifyOtpStep2Binding, VerifyOtpStep2ViewModel>() {
     override val layoutId: Int = R.layout.fragment_verify_otp_step2
     override val viewModel: VerifyOtpStep2ViewModel by viewModel()
-    private val shareViewModel: ChangeGiftViewModel by activityViewModels()
     private var taskId: String? = null
-    private var phone: String? = null
+    private var _phone: String? = null
     private var timer: CountDownTimer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,9 +44,9 @@ class VerifyOtpStep2Fragment(val onNextClick: (String) -> Unit = {}) :
         btn_resend?.setSingleClick {
             btn_resend?.isEnabled = false
             txt_time?.visibility = View.VISIBLE
-            if (taskId != null && phone != null) {
+            if (taskId != null && _phone != null) {
                 timer?.start()
-                viewModel.resendOtpCustomer(taskId = taskId.toString(), phone = phone.toString())
+                viewModel.resendOtpCustomer(taskId = taskId.toString(), phone = _phone.toString())
             }
         }
     }
@@ -62,8 +61,8 @@ class VerifyOtpStep2Fragment(val onNextClick: (String) -> Unit = {}) :
                 return@setSingleClick
             }
             Utils.hideKeyboard(requireActivity())
-            if (taskId != null && phone != null) {
-                viewModel.verifyCustomerOtp(taskId.toString(), phone.toString(), otp)
+            if (taskId != null && _phone != null) {
+                viewModel.verifyCustomerOtp(taskId.toString(), _phone.toString(), otp)
             }
         }
 
@@ -78,7 +77,7 @@ class VerifyOtpStep2Fragment(val onNextClick: (String) -> Unit = {}) :
                         timer?.cancel()
                         it.data?.let {
                             context?.showMessageDialog(message = it.message) {
-                                onNextClick.invoke("")
+                                onNextClick.invoke()
                             }
                         }
                     }
@@ -89,10 +88,6 @@ class VerifyOtpStep2Fragment(val onNextClick: (String) -> Unit = {}) :
             }
         })
 
-//        shareViewModel.phone.observe(viewLifecycleOwner, Observer {
-//            txt_hint_otp?.text = "Mã OTP được gửi đến số +84" + it
-//            phone = it
-//        })
     }
 
     fun startLoginTimer(
@@ -133,5 +128,9 @@ class VerifyOtpStep2Fragment(val onNextClick: (String) -> Unit = {}) :
                 )
             }
         }.start()
+    }
+
+    fun setCustomerPhone(mPhone: String){
+        this._phone = mPhone
     }
 }

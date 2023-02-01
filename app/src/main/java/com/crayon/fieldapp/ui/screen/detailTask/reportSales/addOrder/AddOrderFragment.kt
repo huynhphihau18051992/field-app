@@ -30,30 +30,20 @@ class AddOrderFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewMode
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        mProductAdapter =
-            SelectProductRVAdapter(
-                arrayListOf(
-                    "Dầu gội Clear 350ml",
-                    "Lăn khử mùi",
-                    "Bình giữ nhiệt kháng khuẩn",
-                    "Khăn tắm cao cấp",
-                    "Lốc sữa tiệt trùng",
-                    "Bánh gạo",
-                    "Dầu ăn Tường An",
-                    "Sữa chua Vinamilk",
-                    "Dầu xả Sunsilk"
-                ), requireContext(), {
-                    // Price click
-                    val dialog = EditPriceProductDialog()
-                    dialog.show(requireActivity().supportFragmentManager, dialog.tag)
-                }, {
-                    // Item click
-                })
-
-        rv_product.apply {
-            layoutManager = LinearLayoutManager(context)
-            this.adapter = mProductAdapter
-        }
+//        mProductAdapter =
+//            SelectProductRVAdapter(
+//                arrayListOf(), requireContext(), {
+//                    // Price click
+//                    val dialog = EditPriceProductDialog(it)
+//                    dialog.show(requireActivity().supportFragmentManager, dialog.tag)
+//                }, {
+//                    // Item click
+//                })
+//
+//        rv_product.apply {
+//            layoutManager = LinearLayoutManager(context)
+//            this.adapter = mProductAdapter
+//        }
     }
 
 }

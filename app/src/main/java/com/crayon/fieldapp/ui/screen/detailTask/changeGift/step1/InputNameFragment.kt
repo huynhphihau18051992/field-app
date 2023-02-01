@@ -2,20 +2,18 @@ package com.crayon.fieldapp.ui.screen.detailTask.changeGift.step1
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.data.remote.response.CustomerResponse
 import com.crayon.fieldapp.databinding.FragmentInputBillBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
-import com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel
 import com.crayon.fieldapp.utils.Status
 import com.crayon.fieldapp.utils.Utils
 import com.crayon.fieldapp.utils.setSingleClick
-import com.crayon.fieldapp.utils.showMessageDialog
 import kotlinx.android.synthetic.main.fragment_input_name.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class InputNameFragment(val onNextClick: () -> Unit = {}) :
+class InputNameFragment(val onNextClick: (customer: CustomerResponse) -> Unit = {}) :
     BaseFragment<FragmentInputBillBinding, InputNameViewModel>() {
 
     override val layoutId: Int = R.layout.fragment_input_name
@@ -32,8 +30,8 @@ class InputNameFragment(val onNextClick: () -> Unit = {}) :
         super.onActivityCreated(savedInstanceState)
 
         btn_next?.setSingleClick {
-            var name = edt_name.text.toString()
-            var phone = edt_phone.text.toString()
+            var name = edt_name.text.toString().trim()
+            var phone = edt_phone.text.toString().trim()
             if (name.isNullOrBlank()) {
                 edt_name.setError("Họ và tên không được để trống")
                 return@setSingleClick
@@ -63,13 +61,7 @@ class InputNameFragment(val onNextClick: () -> Unit = {}) :
                     Status.SUCCESS -> {
                         pb_loading.visibility = View.GONE
                         it.data?.let {
-                            it.name?.let {
-                            }
-                            it.mobileNumber?.let {
-                            }
-                            it.id?.let {
-                            }
-                            onNextClick.invoke()
+                            onNextClick.invoke(it)
                         }
                     }
                     Status.ERROR -> {

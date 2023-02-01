@@ -5,21 +5,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.data.remote.response.CustomerBillResponse
 import com.crayon.fieldapp.data.remote.response.TaskResponse
 import com.crayon.fieldapp.databinding.FragmentInputNameBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.screen.detailAttachment.image.ImageAdapter
 import com.crayon.fieldapp.ui.screen.detailTask.adapter.MediaAdapter
 import com.crayon.fieldapp.ui.screen.detailTask.adapter.MediaData
-import com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step3.adapter.UploadMediaAdapter
 import com.crayon.fieldapp.ui.screen.imageDialog.ImageDialog
 import com.crayon.fieldapp.ui.screen.videoDialog.VideoDialog
 import com.crayon.fieldapp.utils.*
+import kotlinx.android.synthetic.main.fragment_change_gift.*
 import kotlinx.android.synthetic.main.fragment_input_bill.*
 import kotlinx.android.synthetic.main.fragment_input_bill.btn_next
 import kotlinx.android.synthetic.main.fragment_input_bill.pb_loading
@@ -31,13 +32,13 @@ import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
-class InputBillFragment(val onNextClick: (String) -> Unit = {}) :
+class InputBillFragment(val onNextClick: (CustomerBillResponse) -> Unit = {}) :
     BaseFragment<FragmentInputNameBinding, InputBillViewModel>() {
 
     override val layoutId: Int = R.layout.fragment_input_bill
     override val viewModel: InputBillViewModel by viewModel()
     private var taskId: String? = null
-    private var customerId: String? = null
+    private var _customerId: String? = null
     private lateinit var updateImageAdapter: UploadMediaAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,19 +86,19 @@ class InputBillFragment(val onNextClick: (String) -> Unit = {}) :
 
         btn_next?.setSingleClick {
             Utils.hideKeyboard(requireActivity())
-            if (updateImageAdapter.itemCount > 4) {
+            if (updateImageAdapter.itemCount > 3) {
                 context?.showMessageDialog("Bạn chỉ được chụp tối đa 3 tấm")
                 return@setSingleClick
             } else {
                 if (updateImageAdapter.itemCount != 0) {
-                    val bill = edt_bill.text.toString()
+                    val bill = edt_bill.text.toString().trim()
                     if (bill.isNullOrBlank()) {
                         context?.showMessageDialog("Vui lòng nhập mã hóa đơn")
                         return@setSingleClick
                     } else {
                         viewModel.createCustomerBill(
                             taskId = taskId.toString(),
-                            customerId = customerId.toString(),
+                            customerId = _customerId.toString(),
                             codeBill = bill.toString(),
                             listUri = updateImageAdapter.getData()
                         )
@@ -126,9 +127,7 @@ class InputBillFragment(val onNextClick: (String) -> Unit = {}) :
                     Status.SUCCESS -> {
                         pb_loading.visibility = View.GONE
                         it.data?.let {
-                            context?.showMessageDialog(message = it.message) {
-                                onNextClick.invoke("")
-                            }
+                            onNextClick(it)
                         }
                     }
                     Status.ERROR -> {
@@ -138,9 +137,10 @@ class InputBillFragment(val onNextClick: (String) -> Unit = {}) :
             }
         })
 
-//        shareViewModel.customerId.observe(viewLifecycleOwner, Observer {
-//            customerId = it
-//        })
+        rv_images?.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            this.adapter = updateImageAdapter
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -212,6 +212,10 @@ class InputBillFragment(val onNextClick: (String) -> Unit = {}) :
             }
 
         }
+    }
+
+    fun setCustomerId(mCustomerId: String) {
+        this._customerId = mCustomerId
     }
 
     companion object {

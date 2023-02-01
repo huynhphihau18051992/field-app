@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.data.remote.response.GiftResponse
 import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.data.remote.response.PromotionResponse
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.adapter.GiftRVAdapter
@@ -16,9 +17,9 @@ import kotlinx.android.synthetic.main.item_promotion_info.view.*
 
 class SelectPromotionRVAdapter constructor(
     val promotion: ArrayList<PromotionResponse>,
-    val gifts: ArrayList<ProductResponse>,
+    val gifts: ArrayList<GiftResponse>,
     val context: Context,
-    val onShowSelectProduct: (String) -> Unit = {},
+    val onShowSelectProduct: (promotion: PromotionResponse) -> Unit = {},
     val onItemClick: (String) -> Unit = {}
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -43,16 +44,21 @@ class SelectPromotionRVAdapter constructor(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is PromotionItemViewHolder) {
-            val promotionData = promotion.get(position)
             mPromotionRVAdapter = PromotionRVAdapter(
-                promotionName = promotionData.name.toString(),
-                items = promotionData.product ?: arrayListOf(),
+                items = promotion,
                 context = context,
-                onCheckBoxSelect = { position, isChecked ->
+                onCheckBoxSelect = { mPromotion, isChecked ->
+                    if (isChecked) {
+                        mPromotionRVAdapter.onSelectItem(mPromotion)
+                        onShowSelectProduct(mPromotion)
+                    } else {
+                        mPromotionRVAdapter.onUnSelectItem(mPromotion)
+                    }
 
                 }, onItemClick = {
 
                 })
+
             holder.rvPromotion.apply {
                 layoutManager = LinearLayoutManager(context)
                 this.adapter = mPromotionRVAdapter
@@ -86,14 +92,23 @@ class SelectPromotionRVAdapter constructor(
         var rvGift: RecyclerView = view.rv_gift
     }
 
-    fun addItems(mPromotion: ArrayList<PromotionResponse>, mProducts: ArrayList<ProductResponse>) {
+    fun addItems(mPromotion: ArrayList<PromotionResponse>, mGift: ArrayList<GiftResponse>) {
         promotion.clear()
         gifts.clear()
         promotion.addAll(mPromotion)
-        gifts.addAll(mProducts)
+        gifts.addAll(mGift)
         notifyDataSetChanged()
     }
 
+    fun addAllProduct(mPromotion: PromotionResponse, mProduct: ArrayList<ProductResponse>) {
+        promotion.indexOfFirst { it.id.toString().equals(mPromotion.id) }.let { index ->
+            if (index != -1) {
+                promotion.get(index).products.clear()
+                promotion.get(index).products.addAll(mProduct)
+                notifyItemChanged(0)
+            }
+        }
+    }
 
     override fun getItemCount(): Int {
         return 2

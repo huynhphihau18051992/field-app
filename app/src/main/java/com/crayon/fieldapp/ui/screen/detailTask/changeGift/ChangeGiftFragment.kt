@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -98,9 +99,13 @@ class ChangeGiftFragment :
 
         btn_add_customer?.setSingleClick {
             val isVerifyOtp = jobResponse?.project?.isVerifyOtp ?: false
+            val projectId = jobResponse?.project?.id.toString()
             findNavController().navigate(
                 R.id.action_changeGiftFragment_to_addCustomerFragment,
-                bundleOf("taskId" to taskId, "isVerifyOtp" to isVerifyOtp)
+                bundleOf(
+                    "taskId" to taskId, "isVerifyOtp" to isVerifyOtp,
+                    "projectId" to projectId
+                )
             )
         }
 

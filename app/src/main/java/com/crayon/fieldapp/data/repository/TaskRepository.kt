@@ -123,6 +123,10 @@ interface TaskRepository {
         projectId: String
     ): Resource<GetPromotionListResponse>
 
+    suspend fun getGiftList(
+        projectId: String
+    ): Resource<GetGiftListResponse>
+
     suspend fun updatePriceOfProduct(
         projectId: String,
         productId: String,
@@ -138,7 +142,7 @@ interface TaskRepository {
         customerId: String,
         code_bill: String,
         file1: MultipartBody.Part
-    ): Resource<GetMessageResponse>
+    ): Resource<CustomerBillResponse>
 
     suspend fun createCustomerBill(
         taskId: String,
@@ -146,7 +150,7 @@ interface TaskRepository {
         code_bill: String,
         file1: MultipartBody.Part,
         file2: MultipartBody.Part
-    ): Resource<GetMessageResponse>
+    ): Resource<CustomerBillResponse>
 
     suspend fun createCustomerBill(
         taskId: String,
@@ -155,13 +159,12 @@ interface TaskRepository {
         file1: MultipartBody.Part,
         file2: MultipartBody.Part,
         file3: MultipartBody.Part
-    ): Resource<GetMessageResponse>
+    ): Resource<CustomerBillResponse>
 
     suspend fun addProductToBill(
         taskId: String,
         billId: String,
         promotionId: String,
-        customerBillId: String,
         products: ArrayList<ProjectProductRequest>
     ): Resource<GetMessageResponse>
 

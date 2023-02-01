@@ -18,35 +18,46 @@ class UploadMediaAdapter constructor(
     val onItemClick: (MediaData, Int) -> Unit = { data: MediaData, position: Int -> },
     val removeClickListener: (MediaData, Int) -> Unit = { data: MediaData, position: Int -> }
 ) :
-    RecyclerView.Adapter<UploadMediaAdapter.GroupViewHolder>() {
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroupViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.item_image, parent, false)
-        val holder = GroupViewHolder(view)
-        return holder
+        if (viewType == VIEW_LIST) {
+            val view = inflater.inflate(R.layout.item_upload_media, parent, false)
+            val holder = GroupViewHolder(view)
+            return holder
+        } else {
+            val view = inflater.inflate(R.layout.item_empty_image, parent, false)
+            val holder = EmptyViewHolder(view)
+            return holder
+        }
     }
 
-    override fun onBindViewHolder(holder: GroupViewHolder, position: Int) {
-        val data = items[position]
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if(holder is GroupViewHolder){
+            val data = items[position]
 
-        holder.imgClose.setSingleClick {
-            removeClickListener(items.get(position), position)
+            holder.imgClose.setSingleClick {
+                removeClickListener(items.get(position), position)
+            }
+
+            holder.itemView.setSingleClick {
+                onItemClick(items.get(position), position)
+            }
+
+
+            data.uri?.let {
+                val options: RequestOptions = RequestOptions()
+                    .centerCrop()
+                    .placeholder(R.drawable.ic_photo)
+                    .error(R.drawable.ic_photo)
+                    .override(300, 300)
+                GlideApp.with(context).load(data.thumbnail).apply(options).into(holder.imgUpload)
+            }
+        } else {
+            // do nothing
         }
 
-        holder.itemView.setSingleClick {
-            onItemClick(items.get(position), position)
-        }
-
-
-        data.uri?.let {
-            val options: RequestOptions = RequestOptions()
-                .centerCrop()
-                .placeholder(R.drawable.ic_photo)
-                .error(R.drawable.ic_photo)
-                .override(300, 300)
-            GlideApp.with(context).load(data.thumbnail).apply(options).into(holder.imgUpload)
-        }
     }
 
     inner class GroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -59,8 +70,24 @@ class UploadMediaAdapter constructor(
         }
     }
 
+    inner class EmptyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+    }
+
     override fun getItemCount(): Int {
-        return this.items.size
+        if(items.size == 0){
+            return 1
+        } else {
+            return this.items.size
+        }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        if (items.size == 0) {
+            return VIEW_EMPTY
+        } else {
+            return VIEW_LIST
+        }
     }
 
     fun updateUploadImageStatus(mUri: String, isCompleted: Boolean) {
@@ -122,6 +149,8 @@ class UploadMediaAdapter constructor(
     companion object {
         const val MEDIA_IMAGE = 0
         const val MEDIA_VIDEO = 1
+        const val VIEW_LIST = 1
+        const val VIEW_EMPTY = 0
     }
 
 }

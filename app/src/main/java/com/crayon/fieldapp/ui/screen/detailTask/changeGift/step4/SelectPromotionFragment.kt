@@ -5,6 +5,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.databinding.FragmentSelectPromotionBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.selectProduct.SelectProductBottomSheetFragment
@@ -21,27 +22,41 @@ class SelectPromotionFragment(val onNextClick: (String) -> Unit = {}) :
     override val layoutId: Int = R.layout.fragment_select_promotion
     override val viewModel: SelectPromotionViewModel by viewModel()
     private var taskId: String? = null
+    private var _projectId: String? = null
+    private var _products: ArrayList<ProductResponse> = arrayListOf()
+    private var _billId: String? = null
+
     private lateinit var mDetailRVAdapter: SelectPromotionRVAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         taskId = requireArguments().getString("taskId").toString()
+        _projectId = requireArguments().getString("projectId")
+
+        _projectId?.let {
+            viewModel.getListProductAndPromotions(it)
+        }
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mDetailRVAdapter = SelectPromotionRVAdapter(
-            arrayListOf(),
-            arrayListOf(),
-            requireContext(),
-            {
-                // show product
-                val dialog = SelectProductBottomSheetFragment()
+            promotion = arrayListOf(),
+            gifts = arrayListOf(),
+            context = requireContext(),
+            onShowSelectProduct = { mPromotion ->
+                val dialog = SelectProductBottomSheetFragment(
+                    _products,
+                    onSelectProductListener = { mProducts ->
+                        mDetailRVAdapter.addAllProduct(mPromotion, mProducts)
+                    })
                 dialog.show(requireActivity().supportFragmentManager, dialog.tag)
             },
-            {
+            onItemClick = {
 
             })
+
 
         rv_page.apply {
             layoutManager = LinearLayoutManager(context)
@@ -63,8 +78,10 @@ class SelectPromotionFragment(val onNextClick: (String) -> Unit = {}) :
                         it.data?.let {
                             mDetailRVAdapter.addItems(
                                 mPromotion = it.first.data!!,
-                                mProducts = it.second.data!!
+                                mGift = it.third.data!!
                             )
+                            _products.clear()
+                            _products.addAll(it.second.data!!)
                         }
                     }
                     Status.ERROR -> {
@@ -73,5 +90,14 @@ class SelectPromotionFragment(val onNextClick: (String) -> Unit = {}) :
                 }
             }
         })
+
+        rv_page?.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            this.adapter = mDetailRVAdapter
+        }
+    }
+
+    fun setBillId(mBillId: String) {
+        this._billId = mBillId
     }
 }

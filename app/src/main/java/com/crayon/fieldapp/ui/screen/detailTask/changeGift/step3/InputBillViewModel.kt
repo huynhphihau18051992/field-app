@@ -6,6 +6,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.viewModelScope
 import com.crayon.fieldapp.AppDispatchers
 import com.crayon.fieldapp.data.remote.request.ProjectProductRequest
+import com.crayon.fieldapp.data.remote.response.CustomerBillResponse
 import com.crayon.fieldapp.data.remote.response.GetMessageResponse
 import com.crayon.fieldapp.data.remote.response.TaskResponse
 import com.crayon.fieldapp.data.repository.TaskRepository
@@ -25,8 +26,8 @@ class InputBillViewModel(
     private val dispatchers: AppDispatchers
 ) : BaseViewModel() {
 
-    private val _createCustomerBill = MediatorLiveData<Event<Resource<GetMessageResponse>>>()
-    val createCustomerBill: LiveData<Event<Resource<GetMessageResponse>>> get() = _createCustomerBill
+    private val _createCustomerBill = MediatorLiveData<Event<Resource<CustomerBillResponse>>>()
+    val createCustomerBill: LiveData<Event<Resource<CustomerBillResponse>>> get() = _createCustomerBill
     fun createCustomerBill(
         taskId: String,
         customerId: String,
@@ -43,7 +44,7 @@ class InputBillViewModel(
 
                     val fileToUpload1: MultipartBody.Part =
                         MultipartBody.Part.createFormData(
-                            "image",
+                            "files",
                             File(listUri.get(0)).getName(),
                             requestBody1
                         )
@@ -67,13 +68,13 @@ class InputBillViewModel(
 
                     val fileToUpload1: MultipartBody.Part =
                         MultipartBody.Part.createFormData(
-                            "image",
+                            "files",
                             File(listUri.get(0)).getName(),
                             requestBody1
                         )
                     val fileToUpload2: MultipartBody.Part =
                         MultipartBody.Part.createFormData(
-                            "image",
+                            "files",
                             File(listUri.get(1)).getName(),
                             requestBody2
                         )
@@ -101,19 +102,19 @@ class InputBillViewModel(
 
                     val fileToUpload1: MultipartBody.Part =
                         MultipartBody.Part.createFormData(
-                            "image",
+                            "files",
                             File(listUri.get(0)).getName(),
                             requestBody1
                         )
                     val fileToUpload2: MultipartBody.Part =
                         MultipartBody.Part.createFormData(
-                            "image",
+                            "files",
                             File(listUri.get(1)).getName(),
                             requestBody2
                         )
                     val fileToUpload3: MultipartBody.Part =
                         MultipartBody.Part.createFormData(
-                            "image",
+                            "files",
                             File(listUri.get(2)).getName(),
                             requestBody3
                         )
@@ -129,6 +130,7 @@ class InputBillViewModel(
                 }
             }
         } catch (e: Exception) {
+            _createCustomerBill.postValue(Event(Resource.error(Throwable(), null)))
             onLoadFail(e)
         }
     }

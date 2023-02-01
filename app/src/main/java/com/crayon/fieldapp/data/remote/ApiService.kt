@@ -608,6 +608,11 @@ interface ApiService {
         @Path("projectId") projectId: String
     ): GetProductListResponse
 
+    @GET("/pic/v1/projects/{projectId}/gifts")
+    suspend fun getGifts(
+        @Path("projectId") projectId: String
+    ): GetGiftListResponse
+
 
     @POST("/pic/v1/tasks/{taskId}/customer-bills/{billId}/add-product")
     suspend fun addProductToBill(

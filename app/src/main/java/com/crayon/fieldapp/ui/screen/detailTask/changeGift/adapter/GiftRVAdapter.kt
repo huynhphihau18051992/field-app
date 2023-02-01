@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.data.remote.response.GiftResponse
 import com.crayon.fieldapp.data.remote.response.ProductResponse
 
 class GiftRVAdapter constructor(
-    val items: ArrayList<ProductResponse>,
+    val items: ArrayList<GiftResponse>,
     val context: Context,
     val onEditItemClick: (String) -> Unit = {},
     val onItemClick: (String) -> Unit = {}

@@ -35,17 +35,7 @@ class ExportGiftFragment : BaseFragment<FragmentImportGiftBinding, ChangeGiftVie
 
         mProductAdapter =
             SelectProductRVAdapter(
-                arrayListOf(
-                    "Dầu gội Clear 350ml",
-                    "Lăn khử mùi",
-                    "Bình giữ nhiệt kháng khuẩn",
-                    "Khăn tắm cao cấp",
-                    "Lốc sữa tiệt trùng",
-                    "Bánh gạo",
-                    "Dầu ăn Tường An",
-                    "Sữa chua Vinamilk",
-                    "Dầu xả Sunsilk"
-                ), requireContext(), {
+                arrayListOf(), requireContext(), {
                     // Item
                 })
 

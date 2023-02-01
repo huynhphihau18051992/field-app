@@ -23,20 +23,30 @@ class AddCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewM
     override val layoutId: Int = R.layout.fragment_add_customer
     override val viewModel: ChangeGiftViewModel by viewModel()
     lateinit var mViewPagerAdapter: BaseVPAdapter
-    private var taskId: String? = null
-    private var isVerifyOtp: Boolean = false
+    private var _taskId: String? = null
+    private var _projectId: String? = null
+    private var _customerId: String? = null
+    private var _customerPhone: String? = null
+    private var _billId: String? = null
+    private var _isVerifyOtp: Boolean = false
+
+    private var _inputNameFragment: InputNameFragment? = null
+    private var _verifyOtpFragment: VerifyOtpStep2Fragment? = null
+    private var _inputBillFragment: InputBillFragment? = null
+    private var _selectPromotionFragment: SelectPromotionFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        taskId = requireArguments().getString("taskId").toString()
-        isVerifyOtp = requireArguments().getBoolean("isVerifyOtp", false)
+        _taskId = requireArguments().getString("taskId").toString()
+        _projectId = requireArguments().getString("projectId").toString()
+        _isVerifyOtp = requireArguments().getBoolean("isVerifyOtp", false)
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViewPager()
-        if (isVerifyOtp) {
+        if (_isVerifyOtp) {
             stepper_indicator?.setViewPager(pagger, 4)
             stepper_indicator.setLabels(resources.getStringArray(R.array.stepLabels))
         } else {
@@ -57,43 +67,55 @@ class AddCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewM
 
     private fun setupViewPager() {
         mViewPagerAdapter = BaseVPAdapter(childFragmentManager)
-        val inputFragment = InputNameFragment({ ->
-            pagger.setCurrentItem(1, true)
-            stepper_indicator?.currentStep = 1
-        })
-        inputFragment.arguments = bundleOf("taskId" to taskId)
+//        _inputNameFragment = InputNameFragment({ customer ->
+//            _customerId = customer.id.toString()
+//            _customerPhone = customer.mobileNumber.toString()
+//            pagger.setCurrentItem(1, true)
+//            stepper_indicator?.currentStep = 1
+//            _verifyOtpFragment?.setCustomerPhone(_customerPhone.toString())
+//            _inputBillFragment?.setCustomerId(_customerId.toString())
+//        })
+//        _inputNameFragment?.arguments = bundleOf("taskId" to _taskId)
+//
+//        _verifyOtpFragment = VerifyOtpStep2Fragment({ ->
+//            pagger.setCurrentItem(2, true)
+//            stepper_indicator?.currentStep = 2
+//        })
+//        _verifyOtpFragment?.arguments = bundleOf(
+//            "taskId" to _taskId
+//        )
+//
+//        _inputBillFragment = InputBillFragment({
+//            _billId = it.id
+//            if (_isVerifyOtp) {
+//                pagger.setCurrentItem(3, true)
+//                stepper_indicator?.currentStep = 3
+//            } else {
+//                pagger.setCurrentItem(2, true)
+//                stepper_indicator?.currentStep = 2
+//            }
+//            _selectPromotionFragment?.setBillId(_billId.toString())
+//
+//        })
+//        _inputBillFragment?.arguments = bundleOf(
+//            "taskId" to _taskId
+//        )
 
-        val verifyOtpFragment = VerifyOtpStep2Fragment({ mPhone ->
-            pagger.setCurrentItem(2, true)
-            stepper_indicator?.currentStep = 2
-        })
-        verifyOtpFragment.arguments = bundleOf("taskId" to taskId)
-
-
-        val inputBillFragment = InputBillFragment({
-            if (isVerifyOtp) {
-                pagger.setCurrentItem(3, true)
-                stepper_indicator?.currentStep = 3
-            } else {
-                pagger.setCurrentItem(2, true)
-                stepper_indicator?.currentStep = 2
-            }
-
-        })
-        inputBillFragment.arguments = bundleOf("taskId" to taskId)
-
-        val selectPromotionFragment = SelectPromotionFragment({
+        _selectPromotionFragment = SelectPromotionFragment({
             findNavController().navigateUp()
         })
-        selectPromotionFragment.arguments = bundleOf("taskId" to taskId)
+        _selectPromotionFragment?.arguments = bundleOf(
+            "taskId" to _taskId,
+            "projectId" to _projectId
+        )
 
 
-        mViewPagerAdapter.addFragment(inputFragment, "")
-        if (isVerifyOtp) {
-            mViewPagerAdapter.addFragment(verifyOtpFragment, "")
-        }
-        mViewPagerAdapter.addFragment(inputBillFragment, "")
-        mViewPagerAdapter.addFragment(selectPromotionFragment, "")
+//        mViewPagerAdapter.addFragment(_inputNameFragment!!, "")
+//        if (_isVerifyOtp) {
+//            mViewPagerAdapter.addFragment(_verifyOtpFragment!!, "")
+//        }
+//        mViewPagerAdapter.addFragment(_inputBillFragment!!, "")
+        mViewPagerAdapter.addFragment(_selectPromotionFragment!!, "")
 
         pagger.apply {
             offscreenPageLimit = 1
@@ -103,7 +125,7 @@ class AddCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewM
 
     private fun setupTablayout() {
         stepper_indicator?.addOnStepClickListener {
-            pagger.setCurrentItem(it, true);
+            pagger.setCurrentItem(it, true)
         }
     }
 }
