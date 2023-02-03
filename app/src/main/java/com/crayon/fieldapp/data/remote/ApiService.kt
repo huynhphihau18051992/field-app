@@ -618,7 +618,7 @@ interface ApiService {
     suspend fun addProductToBill(
         @Path("taskId") taskId: String,
         @Path("billId") billId: String,
-        @Body addProductToBillRequest: AddProductToBillRequest
+        @Body addProductToBillRequest: AddPromotionGiftRequest
     ): GetMessageResponse
 
     /*
@@ -677,6 +677,32 @@ interface ApiService {
         @Query("skip") skip: Int? = null,
         @Query("take") take: Int? = null
     ): GetTaskListResponse
+
+
+    /* sale */
+    @POST("/pic/v1/tasks/{taskId}/orders")
+    suspend fun createOrder(
+        @Path("taskId") taskId: String,
+        @Body request: AddProductToOrderRequest
+    ): GetMessageResponse
+
+    @POST("/pic/v1/tasks/{taskId}/orders/{orderId}")
+    suspend fun viewOrder(
+        @Path("taskId") taskId: String,
+        @Path("orderId") orderId: String
+    ): OrderResponse
+
+    @POST("/pic/v1/tasks/{taskId}/orders/")
+    suspend fun getOrder(
+        @Path("taskId") taskId: String
+    ): GetOrderListResponse
+
+    @PUT("/pic/v1/tasks/{taskId}/orders/{orderId}")
+    suspend fun updateOrder(
+        @Path("taskId") taskId: String,
+        @Path("orderId") orderId: String,
+        @Body request: AddProductToOrderRequest
+    ): GetMessageResponse
 
     companion object {
         const val NETWORK_PAGE_SIZE = 20

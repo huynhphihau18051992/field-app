@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.crayon.fieldapp.BR
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.local.pref.PrefHelper
+import com.crayon.fieldapp.utils.Utils
 import com.crayon.fieldapp.utils.showLoadingDialog
 import com.crayon.fieldapp.utils.showMessageDialog
 import org.koin.android.ext.android.inject
@@ -128,6 +129,11 @@ abstract class BaseFragment<ViewBinding : ViewDataBinding, ViewModel : BaseViewM
         loadingDialog?.dismiss()
         messageDialog?.dismiss()
         super.onDestroy()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Utils.hideKeyboard(requireActivity())
     }
 
     fun navigateUp() {

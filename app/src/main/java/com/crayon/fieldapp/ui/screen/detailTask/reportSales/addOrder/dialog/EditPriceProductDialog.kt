@@ -11,6 +11,7 @@ import androidx.fragment.app.DialogFragment
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.ui.widgets.MoneyTextWatcher
+import com.crayon.fieldapp.utils.Utils
 import kotlinx.android.synthetic.main.dialog_edit_price.view.*
 import java.text.DecimalFormat
 
@@ -32,7 +33,7 @@ class EditPriceProductDialog(
             btn_update?.setOnClickListener {
                 val newPrice = edt_price?.text.toString()
 
-                onUpdatePriceClick.invoke(newPrice.replace(",","").toInt())
+                onUpdatePriceClick.invoke(newPrice.replace(",", "").toInt())
                 this@EditPriceProductDialog.dismiss()
             }
             edt_price?.addTextChangedListener(object : MoneyTextWatcher(edt_price) {
@@ -60,6 +61,11 @@ class EditPriceProductDialog(
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Utils.hideKeyboard(requireActivity())
     }
 
 }

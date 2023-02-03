@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.utils.setSingleClick
+import java.text.DecimalFormat
 
 class SubProductRVAdapter constructor(
     val items: ArrayList<ProductResponse>,
@@ -33,30 +34,28 @@ class SubProductRVAdapter constructor(
         holder.itemView.setSingleClick {
             onItemClick(data)
         }
-
-//        holder.icEdit.setSingleClick {
-//            onEditItemClick(data)
-//        }
+        holder.txtName.text = data.name.toString()
+        holder.txtQuantity.text = data.quantity.toString()
+        val format = DecimalFormat("#,###")
+        format.maximumFractionDigits = 0
+        var total = data.price.toInt() * data.quantity
+        holder.txtPrice.text = format.format(total) + "vnd"
 
     }
 
     inner class GroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var txtCustomerId: TextView
         var tvLoadMore: TextView
-//        var icEdit: ImageView
-//        var txtName: TextView
-//        var txtPhone: TextView
-//        var txtDate: TextView
-//        var txtGift: TextView
+        var txtName: TextView
+        var txtQuantity: TextView
+        var txtPrice: TextView
 
         init {
             txtCustomerId = itemView.findViewById(R.id.txt_order_id)
             tvLoadMore = itemView.findViewById(R.id.txt_load_more)
-//            icEdit = itemView.findViewById(R.id.img_edit)
-//            txtName = itemView.findViewById(R.id.txt_name)
-//            txtPhone = itemView.findViewById(R.id.txt_phone)
-//            txtDate = itemView.findViewById(R.id.txt_date)
-//            txtGift = itemView.findViewById(R.id.txt_gift)
+            txtName = itemView.findViewById(R.id.txt_name)
+            txtQuantity = itemView.findViewById(R.id.txt_quality)
+            txtPrice = itemView.findViewById(R.id.txt_total)
         }
     }
 
@@ -69,12 +68,7 @@ class SubProductRVAdapter constructor(
         notifyDataSetChanged()
     }
 
-    fun addProduct(product: ProductResponse){
-        items.add(product)
-        notifyDataSetChanged()
-    }
-
-    fun addAll(proudcts: ArrayList<ProductResponse>){
+    fun addAll(proudcts: ArrayList<ProductResponse>) {
         items.clear()
         items.addAll(proudcts)
         notifyDataSetChanged()

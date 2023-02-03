@@ -36,6 +36,7 @@ import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step3.InputBillViewMo
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step4.SelectPromotionViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.reportCompetitor.ReportCompetitorViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.reportSales.ReportSalesViewModel
+import com.crayon.fieldapp.ui.screen.detailTask.reportSales.addOrder.AddOrderViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.reportSales.detailOrder.DetailOrderViewModel
 import com.crayon.fieldapp.ui.screen.detailUser.DetailUserViewModel
 import com.crayon.fieldapp.ui.screen.forgot.ForgotPasswordViewModel
@@ -175,7 +176,7 @@ val viewModelModule = module {
     viewModel { InputBillViewModel(get(), get()) }
     viewModel { SelectPromotionViewModel(get(), get()) }
     viewModel { ReportCompetitorViewModel(get()) }
-    viewModel { ReportSalesViewModel() }
+    viewModel { ReportSalesViewModel(get()) }
     viewModel { ListReportCompetitorAtStoreViewModel(get(), get()) }
     viewModel { ListReportSalesAtStoreViewModel(get(), get()) }
     viewModel { ListReportTrackingAtStoreViewModel(get(), get()) }
@@ -186,4 +187,5 @@ val viewModelModule = module {
     viewModel { DetailChangeGiftAtStoreViewModel(get(), get()) }
     viewModel { HistoryTrackingAtStoreViewModel(get(), get()) }
     viewModel { DetailOrderViewModel() }
+    viewModel { AddOrderViewModel(get()) }
 }

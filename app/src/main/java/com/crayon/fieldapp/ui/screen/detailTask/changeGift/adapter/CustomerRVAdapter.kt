@@ -65,7 +65,6 @@ class CustomerRVAdapter constructor(
         var txtName: TextView
         var txtPhone: TextView
         var txtDate: TextView
-        var txtGift: TextView
 
         init {
             txtCustomerId = itemView.findViewById(R.id.txt_customer_num)
@@ -73,7 +72,6 @@ class CustomerRVAdapter constructor(
             txtName = itemView.findViewById(R.id.txt_name)
             txtPhone = itemView.findViewById(R.id.txt_phone)
             txtDate = itemView.findViewById(R.id.txt_date)
-            txtGift = itemView.findViewById(R.id.txt_gift)
         }
     }
 

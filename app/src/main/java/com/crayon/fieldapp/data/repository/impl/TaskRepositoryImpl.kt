@@ -396,17 +396,12 @@ class TaskRepositoryImpl(
     override suspend fun addProductToBill(
         taskId: String,
         billId: String,
-        promotionId: String,
-        products: ArrayList<ProjectProductRequest>
+        request: AddPromotionGiftRequest
     ): Resource<GetMessageResponse> {
         val result = apiService.addProductToBill(
             taskId = taskId,
             billId = billId,
-            addProductToBillRequest = AddProductToBillRequest(
-                promotionId = promotionId,
-                products = products
-
-            )
+            addProductToBillRequest = request
         )
         return Resource.success(result)
     }
@@ -534,6 +529,48 @@ class TaskRepositoryImpl(
 
     override suspend fun getListCustomer(taskId: String): Resource<List<CustomerResponse>> {
         val result = apiService.getListCustomer(
+            taskId = taskId
+        )
+        return Resource.success(result.data)
+    }
+
+    override suspend fun createOrder(
+        taskId: String,
+        request: AddProductToOrderRequest
+    ): Resource<GetMessageResponse> {
+        val result = apiService.createOrder(
+            taskId = taskId,
+            request = request
+        )
+        return Resource.success(result)
+    }
+
+    override suspend fun viewOrder(
+        taskId: String,
+        orderId: String
+    ): Resource<OrderResponse> {
+        val result = apiService.viewOrder(
+            taskId = taskId,
+            orderId = orderId
+        )
+        return Resource.success(result)
+    }
+
+    override suspend fun updateOrder(
+        taskId: String,
+        orderId: String,
+        request: AddProductToOrderRequest
+    ): Resource<GetMessageResponse> {
+        val result = apiService.updateOrder(
+            taskId = taskId,
+            orderId = orderId,
+            request = request
+        )
+        return Resource.success(result)
+    }
+
+    override suspend fun getListOrder(taskId: String): Resource<List<OrderResponse>> {
+        val result = apiService.getOrder(
             taskId = taskId
         )
         return Resource.success(result.data)

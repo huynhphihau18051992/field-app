@@ -26,7 +26,7 @@ class ReportCompetitorViewModel(val taskRepository: TaskRepository) : BaseViewMo
     fun createActivity(
         taskId: String,
         brandName: String,
-        type: String,
+        mReportType: String,
         note: String,
         listUri: ArrayList<String>
     ) = viewModelScope.launch {
@@ -48,7 +48,7 @@ class ReportCompetitorViewModel(val taskRepository: TaskRepository) : BaseViewMo
                     val result = taskRepository.uploadReportOpponents(
                         taskId = taskId,
                         brandName = brandName,
-                        type = type,
+                        type = mReportType,
                         note = note,
                         file1 = fileToUpload1
                     )
@@ -79,7 +79,7 @@ class ReportCompetitorViewModel(val taskRepository: TaskRepository) : BaseViewMo
                     val result = taskRepository.uploadReportOpponents(
                         taskId = taskId,
                         brandName = brandName,
-                        type = type,
+                        type = mReportType,
                         note = note,
                         file1 = fileToUpload1,
                         file2 = fileToUpload2
@@ -120,7 +120,7 @@ class ReportCompetitorViewModel(val taskRepository: TaskRepository) : BaseViewMo
                     val result = taskRepository.uploadReportOpponents(
                         taskId = taskId,
                         brandName = brandName,
-                        type = type,
+                        type = mReportType,
                         note = note,
                         file1 = fileToUpload1,
                         file2 = fileToUpload2,

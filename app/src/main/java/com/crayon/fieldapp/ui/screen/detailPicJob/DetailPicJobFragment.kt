@@ -128,8 +128,8 @@ class DetailPicJobFragment : BaseFragment<FragmentDetailPicJobBinding, DetailPic
                 R.id.action_detailPicJobFragment_to_reportCompetitorFragment,
                 bundel
             )
-        } else if (type == TaskType.REPORT_END_SHIFT.value) {
-            val bundel = bundleOf("taskId" to taskId)
+        } else if (type == TaskType.REPORT_SALES.value) {
+            val bundel = bundleOf("taskId" to taskId, "job" to jobResponse.toString())
             findNavController().navigate(
                 R.id.action_detailPicJobFragment_to_reportSalesFragment,
                 bundel

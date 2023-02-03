@@ -7,6 +7,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.data.remote.request.AddPromotionGiftRequest
+import com.crayon.fieldapp.data.remote.request.AddPromotionRequest
+import com.crayon.fieldapp.data.remote.request.ProjectGiftRequest
+import com.crayon.fieldapp.data.remote.request.ProjectProductRequest
 import com.crayon.fieldapp.data.remote.response.GiftResponse
 import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.data.remote.response.PromotionResponse
@@ -55,8 +59,18 @@ class SelectPromotionRVAdapter constructor(
                         mPromotionRVAdapter.onUnSelectItem(mPromotion)
                     }
 
-                }, onItemClick = {
+                }, onItemDeleteListener = { mPromotion ->
+                    mPromotionRVAdapter.deleteAllProduct(promotion = mPromotion)
 
+                }, onItemPlusListener = { mPromotion ->
+                    var quantity = mPromotion.quantity + 1
+                    mPromotionRVAdapter.onUpdateQuantity(mPromotion, quantity)
+                }, onItemMinusListener = { mPromotion ->
+                    var quantity = mPromotion.quantity - 1
+                    if (quantity <= 0) {
+                        quantity = 1
+                    }
+                    mPromotionRVAdapter.onUpdateQuantity(mPromotion, quantity)
                 })
 
             holder.rvPromotion.apply {
@@ -64,11 +78,28 @@ class SelectPromotionRVAdapter constructor(
                 this.adapter = mPromotionRVAdapter
             }
         } else {
-            mGiftRVAdapter = GiftRVAdapter(gifts, context, {
-
-            }, {
-
-            })
+            mGiftRVAdapter =
+                GiftRVAdapter(
+                    items = gifts,
+                    context = context,
+                    onItemSelectedListener = { mGift, isChecked ->
+                        if (isChecked) {
+                            mGiftRVAdapter.onSelectItem(mGift)
+                        } else {
+                            mGiftRVAdapter.onUnSelectItem(mGift)
+                        }
+                    },
+                    onItemMinusListener = { mGift ->
+                        var quantity = mGift.selectQuantity - 1
+                        if (quantity < 0) {
+                            quantity = 0
+                        }
+                        mGiftRVAdapter.onUpdateQuantity(mGift, quantity)
+                    },
+                    onItemPlusListener = { mGift ->
+                        var quantity = mGift.selectQuantity + 1
+                        mGiftRVAdapter.onUpdateQuantity(mGift, quantity)
+                    })
             (holder as GiftItemViewHolder).rvGift.apply {
                 layoutManager = LinearLayoutManager(context)
                 this.adapter = mGiftRVAdapter
@@ -108,6 +139,28 @@ class SelectPromotionRVAdapter constructor(
                 notifyItemChanged(0)
             }
         }
+    }
+
+    fun getSelectPromotions(): AddPromotionGiftRequest {
+        var mGifts = gifts.filter { it.isSelect == true }.map {
+            ProjectGiftRequest(
+                quantity = it.selectQuantity,
+                giftId = it.id.toString()
+            )
+        } as ArrayList<ProjectGiftRequest>
+        var mPromotions = promotion.filter { it.isSelect == true }.map {
+            AddPromotionRequest(promotionId = it.id.toString(),
+                products = it.products.map {
+                    ProjectProductRequest(
+                        productId = it.id.toString(),
+                        price = it.price,
+                        quantity = it.quantity
+                    )
+                } as ArrayList<ProjectProductRequest>
+            )
+        } as ArrayList
+
+        return AddPromotionGiftRequest(promotions = mPromotions, gifts = mGifts)
     }
 
     override fun getItemCount(): Int {

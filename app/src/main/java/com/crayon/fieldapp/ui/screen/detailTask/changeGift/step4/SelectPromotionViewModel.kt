@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.viewModelScope
 import com.crayon.fieldapp.AppDispatchers
-import com.crayon.fieldapp.data.remote.request.ProjectProductRequest
+import com.crayon.fieldapp.data.remote.request.AddPromotionGiftRequest
 import com.crayon.fieldapp.data.remote.response.GetGiftListResponse
 import com.crayon.fieldapp.data.remote.response.GetMessageResponse
 import com.crayon.fieldapp.data.remote.response.GetProductListResponse
@@ -25,8 +25,7 @@ class SelectPromotionViewModel(
     fun addProductToBill(
         taskId: String,
         billId: String,
-        promotionId: String,
-        products: ArrayList<ProjectProductRequest>
+        request: AddPromotionGiftRequest
     ) =
         viewModelScope.launch {
             _addProductToBill.postValue(Event(Resource.loading(null)))
@@ -34,11 +33,11 @@ class SelectPromotionViewModel(
                 val result = taskRepository.addProductToBill(
                     taskId = taskId,
                     billId = billId,
-                    promotionId = promotionId,
-                    products = products
+                    request = request
                 )
                 _addProductToBill.postValue(Event(Resource.success(result.data)))
             } catch (e: Exception) {
+                _addProductToBill.postValue(Event(Resource.error(Throwable(), null)))
                 onLoadFail(e)
             }
         }

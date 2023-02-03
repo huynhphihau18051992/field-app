@@ -4,52 +4,74 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.GiftResponse
-import com.crayon.fieldapp.data.remote.response.ProductResponse
+import com.crayon.fieldapp.utils.setSingleClick
 
 class GiftRVAdapter constructor(
     val items: ArrayList<GiftResponse>,
     val context: Context,
-    val onEditItemClick: (String) -> Unit = {},
-    val onItemClick: (String) -> Unit = {}
+    val onItemSelectedListener: (gift: GiftResponse, isChecked: Boolean) -> Unit = { i: GiftResponse, b: Boolean -> },
+    val onItemPlusListener: (gift: GiftResponse) -> Unit = { },
+    val onItemMinusListener: (gift: GiftResponse) -> Unit = { }
 ) :
     RecyclerView.Adapter<GiftRVAdapter.GroupViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroupViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.item_select_product, parent, false)
+        val view = inflater.inflate(R.layout.item_select_gift, parent, false)
         val holder = GroupViewHolder(view)
         return holder
     }
 
     override fun onBindViewHolder(holder: GroupViewHolder, position: Int) {
         val data = items[position]
-//        holder.txtCustomerId.text = "KH" + position + 1
-//
-//        holder.itemView.setSingleClick {
-//            onItemClick(data)
-//        }
-//
-//        holder.icEdit.setSingleClick {
-//            onEditItemClick(data)
-//        }
+        holder.cvGift.text = data.name
+
+        holder.cvGift.isChecked = data.isSelect
+        holder.txtNumber.text = data.selectQuantity.toString()
+        if (data.isSelect) {
+            holder.imgPlus.isEnabled = true
+            holder.imgMinus.isEnabled = true
+            holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_select_add))
+            holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_select_minus))
+        } else {
+            holder.imgPlus.isEnabled = false
+            holder.imgMinus.isEnabled = false
+            holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_gray_add))
+            holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_minus))
+        }
+
+        holder.cvGift?.setOnClickListener {
+            val isChecked = holder.cvGift.isChecked
+            onItemSelectedListener(data, isChecked)
+        }
+
+        holder.imgMinus?.setSingleClick {
+            onItemMinusListener(data)
+        }
+
+        holder.imgPlus?.setSingleClick {
+            onItemPlusListener(data)
+        }
 
     }
 
     inner class GroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//        var rvProduct: RecyclerView
+        var cvGift: CheckBox
+        var txtNumber: TextView
+        var imgPlus: ImageView
+        var imgMinus: ImageView
 
-        //        var icEdit: ImageView
-//        var txtName: TextView
-//        var txtPhone: TextView
-//        var txtDate: TextView
-//        var txtGift: TextView
-//
         init {
-//            rvProduct = itemView.findViewById(R.id.rv_product)
+            cvGift = itemView.findViewById(R.id.cb_product)
+            imgMinus = itemView.findViewById(R.id.img_minus)
+            txtNumber = itemView.findViewById(R.id.txt_number)
+            imgPlus = itemView.findViewById(R.id.img_plus)
         }
     }
 
@@ -60,6 +82,35 @@ class GiftRVAdapter constructor(
     fun clearData() {
         items.clear()
         notifyDataSetChanged()
+    }
+
+    fun onSelectItem(gift: GiftResponse) {
+        items.indexOfFirst { it.id.toString().equals(gift.id) }.let { index ->
+            if (index != -1) {
+                items.get(index).isSelect = true
+                items.get(index).selectQuantity = 1
+                notifyItemChanged(index)
+            }
+        }
+    }
+
+    fun onUnSelectItem(gift: GiftResponse) {
+        items.indexOfFirst { it.id.toString().equals(gift.id) }.let { index ->
+            if (index != -1) {
+                items.get(index).isSelect = false
+                items.get(index).selectQuantity = 0
+                notifyItemChanged(index)
+            }
+        }
+    }
+
+    fun onUpdateQuantity(gift: GiftResponse, quantity: Int) {
+        items.indexOfFirst { it.id.toString().equals(gift.id) }.let { index ->
+            if (index != -1) {
+                items.get(index).selectQuantity = quantity
+                notifyItemChanged(index)
+            }
+        }
     }
 
 }

@@ -17,7 +17,9 @@ class PromotionRVAdapter constructor(
     val items: ArrayList<PromotionResponse>,
     val context: Context,
     val onCheckBoxSelect: (promotion: PromotionResponse, isChecked: Boolean) -> Unit = { i: PromotionResponse, b: Boolean -> },
-    val onItemClick: (String) -> Unit = {}
+    val onItemPlusListener: (promotion: PromotionResponse) -> Unit = { },
+    val onItemMinusListener: (promotion: PromotionResponse) -> Unit = { },
+    val onItemDeleteListener: (promotion: PromotionResponse) -> Unit = {}
 ) :
     RecyclerView.Adapter<PromotionRVAdapter.GroupViewHolder>() {
     private lateinit var mPromotionAdapter: SubProductRVAdapter
@@ -38,14 +40,14 @@ class PromotionRVAdapter constructor(
         } else {
             holder.llTotal.visibility = View.VISIBLE
         }
-        val totalPrice = data.products.sumBy { it.price }
+        val totalPrice = data.products.sumBy { it.price * it.quantity }
         val format = DecimalFormat("#,###")
         format.maximumFractionDigits = 0
         holder.txtTotal.text = format.format(totalPrice) + "vnd"
 
         holder.cbProduct.text = data.name
         holder.cbProduct.isChecked = data.isSelect
-        holder.cbProduct.isChecked = data.isSelect
+        holder.txtNumber.text = data.quantity.toString()
         if (data.isSelect) {
             holder.imgPlus.isEnabled = true
             holder.imgMinus.isEnabled = true
@@ -57,7 +59,6 @@ class PromotionRVAdapter constructor(
             holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_gray_add))
             holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_minus))
         }
-
 
         if (items.size - 1 == position) {
             holder.imgLine.visibility = View.GONE
@@ -79,8 +80,7 @@ class PromotionRVAdapter constructor(
         }
 
         holder.btnDelete?.setSingleClick {
-            mPromotionAdapter.clearData()
-            notifyItemChanged(position)
+            onItemDeleteListener(data)
         }
 
         holder.rvProduct.apply {
@@ -88,6 +88,13 @@ class PromotionRVAdapter constructor(
             this.adapter = mPromotionAdapter
         }
 
+        holder.imgMinus?.setSingleClick {
+            onItemMinusListener(data)
+        }
+
+        holder.imgPlus?.setSingleClick {
+            onItemPlusListener(data)
+        }
     }
 
     inner class GroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -100,6 +107,7 @@ class PromotionRVAdapter constructor(
         var btnEdit: RelativeLayout
         var imgPlus: ImageView
         var imgMinus: ImageView
+        var txtNumber: TextView
 
         init {
             rvProduct = itemView.findViewById(R.id.rv_product)
@@ -112,6 +120,7 @@ class PromotionRVAdapter constructor(
             btnEdit = itemView.findViewById(R.id.btn_edit)
             imgPlus = itemView.findViewById(R.id.img_plus)
             imgMinus = itemView.findViewById(R.id.img_minus)
+            txtNumber = itemView.findViewById(R.id.txt_number)
         }
     }
 
@@ -135,10 +144,20 @@ class PromotionRVAdapter constructor(
         }
     }
 
+    fun deleteAllProduct(promotion: PromotionResponse) {
+        items.indexOfFirst { it.id.toString().equals(promotion.id) }.let { index ->
+            if (index != -1) {
+                items.get(index).products.clear()
+                notifyItemChanged(index)
+            }
+        }
+    }
+
     fun onSelectItem(promotion: PromotionResponse) {
         items.indexOfFirst { it.id.toString().equals(promotion.id) }.let { index ->
             if (index != -1) {
                 items.get(index).isSelect = true
+                items.get(index).quantity = 1
                 notifyItemChanged(index)
             }
         }
@@ -148,6 +167,17 @@ class PromotionRVAdapter constructor(
         items.indexOfFirst { it.id.toString().equals(promotion.id) }.let { index ->
             if (index != -1) {
                 items.get(index).isSelect = false
+                items.get(index).quantity = 0
+                items.get(index).products.clear()
+                notifyItemChanged(index)
+            }
+        }
+    }
+
+    fun onUpdateQuantity(promotion: PromotionResponse, quantity: Int) {
+        items.indexOfFirst { it.id.toString().equals(promotion.id) }.let { index ->
+            if (index != -1) {
+                items.get(index).quantity = quantity
                 notifyItemChanged(index)
             }
         }

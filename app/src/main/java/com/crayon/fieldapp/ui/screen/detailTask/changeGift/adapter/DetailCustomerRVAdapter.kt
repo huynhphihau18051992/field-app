@@ -75,7 +75,7 @@ class DetailCustomerRVAdapter constructor(
                 context = context,
                 onCheckBoxSelect = { position, isChecked ->
 
-                }, onItemClick = {
+                }, onItemDeleteListener = {
 
                 })
             holder.rvPromotion.apply {
@@ -83,11 +83,28 @@ class DetailCustomerRVAdapter constructor(
                 this.adapter = mPromotionRVAdapter
             }
         } else {
-            mGiftRVAdapter = GiftRVAdapter(gifts, context, {
-
-            }, {
-
-            })
+            mGiftRVAdapter =
+                GiftRVAdapter(
+                    items = gifts,
+                    context = context,
+                    onItemSelectedListener = { mGift, isChecked ->
+                        if (isChecked) {
+                            mGiftRVAdapter.onSelectItem(mGift)
+                        } else {
+                            mGiftRVAdapter.onUnSelectItem(mGift)
+                        }
+                    },
+                    onItemMinusListener = { mGift ->
+                        var quantity = mGift.selectQuantity - 1
+                        if (quantity < 0) {
+                            quantity = 0
+                        }
+                        mGiftRVAdapter.onUpdateQuantity(mGift, quantity)
+                    },
+                    onItemPlusListener = { mGift ->
+                        var quantity = mGift.selectQuantity + 1
+                        mGiftRVAdapter.onUpdateQuantity(mGift, quantity)
+                    })
             (holder as GiftItemViewHolder).rvGift.apply {
                 layoutManager = LinearLayoutManager(context)
                 this.adapter = mGiftRVAdapter
@@ -110,7 +127,6 @@ class DetailCustomerRVAdapter constructor(
         var txtName: TextView
         var txtPhone: TextView
         var txtDate: TextView
-        var txtGift: TextView
 
         init {
             txtCustomerId = itemView.findViewById(R.id.txt_customer_num)
@@ -118,7 +134,6 @@ class DetailCustomerRVAdapter constructor(
             txtName = itemView.findViewById(R.id.txt_name)
             txtPhone = itemView.findViewById(R.id.txt_phone)
             txtDate = itemView.findViewById(R.id.txt_date)
-            txtGift = itemView.findViewById(R.id.txt_gift)
         }
     }
 

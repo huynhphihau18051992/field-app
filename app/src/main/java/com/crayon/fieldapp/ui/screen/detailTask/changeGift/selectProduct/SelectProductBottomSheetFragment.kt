@@ -67,8 +67,8 @@ class SelectProductBottomSheetFragment(
                         },
                         onItemMinusClick = { mProduct ->
                             var newQuantity = mProduct.quantity - 1
-                            if (newQuantity < 0) {
-                                newQuantity = 0
+                            if (newQuantity <= 0) {
+                                newQuantity = 1
                             }
                             mProductAdapter.updateQuantity(mProduct, newQuantity)
                         }

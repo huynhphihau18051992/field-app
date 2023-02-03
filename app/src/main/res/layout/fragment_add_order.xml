@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel" />
+            type="com.crayon.fieldapp.ui.screen.detailTask.reportSales.addOrder.AddOrderViewModel" />
     </data>
 
     <LinearLayout
@@ -70,34 +70,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/_14sdp"
-                    android:layout_marginTop="@dimen/_14sdp"
-                    android:fontFamily="@font/inter_semi_bold"
-                    android:text="Chọn sản phẩm"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/_12ssp" />
-
-                <CheckBox
-                    android:id="@+id/cb_select_all"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/_14ssp"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Chọn tất cả"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_12ssp" />
-
-            </RelativeLayout>
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/sv_product"
@@ -116,24 +88,55 @@
                 app:searchIcon="@drawable/ic_search"
                 app:submitBackground="@null" />
 
-            <TextView
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:background="#E9E9E9"
-                android:fontFamily="@font/inter_semi_bold"
-                android:paddingLeft="@dimen/_14sdp"
-                android:paddingTop="@dimen/_10sdp"
-                android:paddingRight="@dimen/_14sdp"
-                android:paddingBottom="@dimen/_10sdp"
-                android:text="Tên sản phẩm"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/_12ssp" />
+                android:background="#E9E9E9">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_product"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/inter_semi_bold"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingRight="@dimen/_14sdp"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:text="Sản phẩm"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_12ssp" />
+
+                <CheckBox
+                    android:id="@+id/cb_select_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/_14ssp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Chọn tất cả"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_12ssp" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content">
+
+                <ProgressBar
+                    android:id="@+id/pb_loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </RelativeLayout>
+
 
         </LinearLayout>
 

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.request.RequestOptions
 import com.crayon.fieldapp.R
@@ -44,31 +45,35 @@ class ReportCompetitorRVAdapter constructor(
         data.createdAt?.let {
             holder.txtDate.text = formatHourAndDate(it)
         }
+        data.note?.let {
+            holder.txtNote.text = it
+        }
 
+        holder.cvImage1.visibility = View.GONE
+        holder.cvImage2.visibility = View.GONE
+        holder.cvImage3.visibility = View.GONE
         data.medias?.let {
             val options: RequestOptions = RequestOptions()
                 .centerCrop()
                 .placeholder(R.drawable.ic_photo)
                 .error(R.drawable.ic_photo)
                 .override(300, 300)
-            holder.cvImage1.visibility = View.GONE
-            holder.cvImage2.visibility = View.GONE
-            holder.cvImage3.visibility = View.GONE
+
             when (it.size) {
                 1 -> {
-                    GlideApp.with(context).load(it.get(0)).apply(options).into(holder.cvImage1)
+                    GlideApp.with(context).load(it.get(0)).apply(options).into(holder.imgImage1)
                     holder.cvImage1.visibility = View.VISIBLE
                 }
                 2 -> {
-                    GlideApp.with(context).load(it.get(0).thumbnailUrl).apply(options).into(holder.cvImage1)
-                    GlideApp.with(context).load(it.get(1).thumbnailUrl).apply(options).into(holder.cvImage2)
+                    GlideApp.with(context).load(it.get(0).thumbnailUrl).apply(options).into(holder.imgImage1)
+                    GlideApp.with(context).load(it.get(1).thumbnailUrl).apply(options).into(holder.imgImage2)
                     holder.cvImage1.visibility = View.VISIBLE
                     holder.cvImage2.visibility = View.VISIBLE
                 }
                 3 -> {
-                    GlideApp.with(context).load(it.get(0).thumbnailUrl).apply(options).into(holder.cvImage1)
-                    GlideApp.with(context).load(it.get(1).thumbnailUrl).apply(options).into(holder.cvImage2)
-                    GlideApp.with(context).load(it.get(3).thumbnailUrl).apply(options).into(holder.cvImage3)
+                    GlideApp.with(context).load(it.get(0).thumbnailUrl).apply(options).into(holder.imgImage1)
+                    GlideApp.with(context).load(it.get(1).thumbnailUrl).apply(options).into(holder.imgImage2)
+                    GlideApp.with(context).load(it.get(2).thumbnailUrl).apply(options).into(holder.imgImage3)
                     holder.cvImage1.visibility = View.VISIBLE
                     holder.cvImage2.visibility = View.VISIBLE
                     holder.cvImage3.visibility = View.VISIBLE
@@ -96,20 +101,27 @@ class ReportCompetitorRVAdapter constructor(
         var txtName: TextView
         var txtType: TextView
         var txtDate: TextView
-        var txtGift: TextView
-        var cvImage1: ImageView
-        var cvImage2: ImageView
-        var cvImage3: ImageView
+        var txtNote: TextView
+        var cvImage1: CardView
+        var cvImage2: CardView
+        var cvImage3: CardView
+        var imgImage1: ImageView
+        var imgImage2: ImageView
+        var imgImage3: ImageView
 
         init {
             txtCustomerId = itemView.findViewById(R.id.txt_customer_num)
             txtName = itemView.findViewById(R.id.txt_name)
             txtType = itemView.findViewById(R.id.txt_type)
             txtDate = itemView.findViewById(R.id.txt_date)
-            txtGift = itemView.findViewById(R.id.txt_note)
-            cvImage1 = itemView.findViewById(R.id.img_1)
-            cvImage2 = itemView.findViewById(R.id.img_2)
-            cvImage3 = itemView.findViewById(R.id.img_3)
+            txtNote = itemView.findViewById(R.id.txt_note)
+            imgImage1 = itemView.findViewById(R.id.img_1)
+            imgImage2 = itemView.findViewById(R.id.img_2)
+            imgImage3 = itemView.findViewById(R.id.img_3)
+
+            cvImage1 = itemView.findViewById(R.id.cv_image1)
+            cvImage2 = itemView.findViewById(R.id.cv_image2)
+            cvImage3 = itemView.findViewById(R.id.cv_image3)
         }
     }
 

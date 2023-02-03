@@ -60,47 +60,42 @@ class AddCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewM
         }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-    }
 
     private fun setupViewPager() {
         mViewPagerAdapter = BaseVPAdapter(childFragmentManager)
-//        _inputNameFragment = InputNameFragment({ customer ->
-//            _customerId = customer.id.toString()
-//            _customerPhone = customer.mobileNumber.toString()
-//            pagger.setCurrentItem(1, true)
-//            stepper_indicator?.currentStep = 1
-//            _verifyOtpFragment?.setCustomerPhone(_customerPhone.toString())
-//            _inputBillFragment?.setCustomerId(_customerId.toString())
-//        })
-//        _inputNameFragment?.arguments = bundleOf("taskId" to _taskId)
-//
-//        _verifyOtpFragment = VerifyOtpStep2Fragment({ ->
-//            pagger.setCurrentItem(2, true)
-//            stepper_indicator?.currentStep = 2
-//        })
-//        _verifyOtpFragment?.arguments = bundleOf(
-//            "taskId" to _taskId
-//        )
-//
-//        _inputBillFragment = InputBillFragment({
-//            _billId = it.id
-//            if (_isVerifyOtp) {
-//                pagger.setCurrentItem(3, true)
-//                stepper_indicator?.currentStep = 3
-//            } else {
-//                pagger.setCurrentItem(2, true)
-//                stepper_indicator?.currentStep = 2
-//            }
-//            _selectPromotionFragment?.setBillId(_billId.toString())
-//
-//        })
-//        _inputBillFragment?.arguments = bundleOf(
-//            "taskId" to _taskId
-//        )
+        _inputNameFragment = InputNameFragment({ customer ->
+            _customerId = customer.id.toString()
+            _customerPhone = customer.mobileNumber.toString()
+            pagger.setCurrentItem(1, true)
+            stepper_indicator?.currentStep = 1
+            _verifyOtpFragment?.setCustomerPhone(_customerPhone.toString())
+            _inputBillFragment?.setCustomerId(_customerId.toString())
+        })
+        _inputNameFragment?.arguments = bundleOf("taskId" to _taskId)
 
+        _verifyOtpFragment = VerifyOtpStep2Fragment({ ->
+            pagger.setCurrentItem(2, true)
+            stepper_indicator?.currentStep = 2
+        })
+        _verifyOtpFragment?.arguments = bundleOf(
+            "taskId" to _taskId
+        )
+
+        _inputBillFragment = InputBillFragment({
+            _billId = it.id
+            if (_isVerifyOtp) {
+                pagger.setCurrentItem(3, true)
+                stepper_indicator?.currentStep = 3
+            } else {
+                pagger.setCurrentItem(2, true)
+                stepper_indicator?.currentStep = 2
+            }
+            _selectPromotionFragment?.setBillId(_billId.toString())
+
+        })
+        _inputBillFragment?.arguments = bundleOf(
+            "taskId" to _taskId
+        )
         _selectPromotionFragment = SelectPromotionFragment({
             findNavController().navigateUp()
         })
@@ -110,11 +105,11 @@ class AddCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewM
         )
 
 
-//        mViewPagerAdapter.addFragment(_inputNameFragment!!, "")
-//        if (_isVerifyOtp) {
-//            mViewPagerAdapter.addFragment(_verifyOtpFragment!!, "")
-//        }
-//        mViewPagerAdapter.addFragment(_inputBillFragment!!, "")
+        mViewPagerAdapter.addFragment(_inputNameFragment!!, "")
+        if (_isVerifyOtp) {
+            mViewPagerAdapter.addFragment(_verifyOtpFragment!!, "")
+        }
+        mViewPagerAdapter.addFragment(_inputBillFragment!!, "")
         mViewPagerAdapter.addFragment(_selectPromotionFragment!!, "")
 
         pagger.apply {

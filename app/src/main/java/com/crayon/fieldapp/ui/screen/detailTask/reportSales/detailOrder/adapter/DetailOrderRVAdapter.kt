@@ -7,14 +7,18 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.data.remote.response.OrderResponse
+import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.utils.setSingleClick
+import java.text.DecimalFormat
 
 class DetailOrderRVAdapter constructor(
-    val items: ArrayList<String>,
+    val items: ArrayList<ProductResponse>,
     val context: Context,
-    val onItemClick: (String) -> Unit = {}
+    val onItemClick: (ProductResponse) -> Unit = {}
 ) :
     RecyclerView.Adapter<DetailOrderRVAdapter.GroupViewHolder>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroupViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -31,6 +35,12 @@ class DetailOrderRVAdapter constructor(
             onItemClick(data)
         }
 
+        holder.txtProductName.text = data.name
+        holder.txtQuality.text = data.quantity.toString()
+        val total = data.price * data.quantity
+        val format = DecimalFormat("#,###")
+        format.maximumFractionDigits = 0
+        holder.txtTotal.text = format.format(total) + "vnd"
     }
 
     inner class GroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -55,6 +65,12 @@ class DetailOrderRVAdapter constructor(
 
     fun clearData() {
         items.clear()
+        notifyDataSetChanged()
+    }
+
+    fun addAll(mOrders: ArrayList<ProductResponse>) {
+        items.clear()
+        items.addAll(mOrders)
         notifyDataSetChanged()
     }
 

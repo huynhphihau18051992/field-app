@@ -13,10 +13,11 @@ import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step4.adapter.SelectP
 import com.crayon.fieldapp.utils.Status
 import com.crayon.fieldapp.utils.Utils
 import com.crayon.fieldapp.utils.setSingleClick
+import com.crayon.fieldapp.utils.showMessageDialog
 import kotlinx.android.synthetic.main.fragment_select_promotion.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SelectPromotionFragment(val onNextClick: (String) -> Unit = {}) :
+class SelectPromotionFragment(val onNextClick: () -> Unit = {}) :
     BaseFragment<FragmentSelectPromotionBinding, SelectPromotionViewModel>() {
 
     override val layoutId: Int = R.layout.fragment_select_promotion
@@ -46,8 +47,12 @@ class SelectPromotionFragment(val onNextClick: (String) -> Unit = {}) :
             gifts = arrayListOf(),
             context = requireContext(),
             onShowSelectProduct = { mPromotion ->
+                val items = ArrayList<ProductResponse>()
+                _products.forEach {
+                    items.add(it.copy())
+                }
                 val dialog = SelectProductBottomSheetFragment(
-                    _products,
+                    items,
                     onSelectProductListener = { mProducts ->
                         mDetailRVAdapter.addAllProduct(mPromotion, mProducts)
                     })
@@ -64,7 +69,18 @@ class SelectPromotionFragment(val onNextClick: (String) -> Unit = {}) :
         }
         btn_complete?.setSingleClick {
             Utils.hideKeyboard(requireActivity())
-            onNextClick("")
+            if (_billId.isNullOrEmpty()) {
+                requireContext().showMessageDialog(title = "Không tìm thấy mã hóa đơn")
+            }
+            if (taskId.isNullOrEmpty()) {
+                requireContext().showMessageDialog(title = "Không tìm thấy mã nhiệm vụ")
+            }
+            val request = mDetailRVAdapter.getSelectPromotions()
+            viewModel.addProductToBill(
+                taskId = taskId.toString(),
+                billId = _billId.toString(),
+                request = request
+            )
         }
 
         viewModel.productAndPromotion.observe(viewLifecycleOwner, Observer {
@@ -83,6 +99,26 @@ class SelectPromotionFragment(val onNextClick: (String) -> Unit = {}) :
                             _products.clear()
                             _products.addAll(it.second.data!!)
                         }
+                    }
+                    Status.ERROR -> {
+                        pb_loading.visibility = View.GONE
+                    }
+                }
+            }
+        })
+
+        viewModel.addProductToBill.observe(viewLifecycleOwner, Observer {
+            it.getContentIfNotHandled()?.let {
+                when (it.status) {
+                    Status.LOADING -> {
+                        pb_loading.visibility = View.VISIBLE
+                    }
+                    Status.SUCCESS -> {
+                        pb_loading.visibility = View.GONE
+                        it.data?.let {
+                            requireContext().showMessageDialog(message = it.message.toString())
+                        }
+                        onNextClick()
                     }
                     Status.ERROR -> {
                         pb_loading.visibility = View.GONE

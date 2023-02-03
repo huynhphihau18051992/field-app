@@ -7,6 +7,7 @@ import android.view.View
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.TaskResponse
 import com.crayon.fieldapp.databinding.FragmentAddReportBinding
@@ -33,13 +34,11 @@ class AddReportFragment : BaseFragment<FragmentAddReportBinding, ReportCompetito
     override val viewModel: ReportCompetitorViewModel by viewModel()
 
     private var taskId: String? = null
-    private var customerId: String? = null
     private lateinit var updateImageAdapter: UploadMediaAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         taskId = requireArguments().getString("taskId").toString()
-        customerId = requireArguments().getString("customerId").toString()
         updateImageAdapter =
             UploadMediaAdapter(
                 items = arrayListOf(),
@@ -86,18 +85,18 @@ class AddReportFragment : BaseFragment<FragmentAddReportBinding, ReportCompetito
 
         imb_ic_filter?.setSingleClick {
             Utils.hideKeyboard(requireActivity())
-            val brandName = edt_brand_name.text.toString()
+            val brandName = edt_brand_name.text.toString().trim()
             if (brandName.isNullOrBlank()) {
                 edt_brand_name?.setError("Vui lòng nhập tên nhãn hàng")
                 return@setSingleClick
             }
 
-            val type = sp_activity?.selectedItem.toString()
+            val type = sp_activity?.selectedItem.toString().trim()
             if (type.isNullOrBlank()) {
                 edt_brand_name?.setError("Vui lòng nhập loại hoạt động")
                 return@setSingleClick
             }
-            val note = edt_note.text.toString()
+            val note = edt_note.text.toString().trim()
 
 
             if (updateImageAdapter.itemCount > 4) {
@@ -108,7 +107,7 @@ class AddReportFragment : BaseFragment<FragmentAddReportBinding, ReportCompetito
                     viewModel.createActivity(
                         taskId = taskId.toString(),
                         brandName = brandName,
-                        type = type,
+                        mReportType = type,
                         note = note,
                         listUri = updateImageAdapter.getData()
                     )
@@ -147,6 +146,11 @@ class AddReportFragment : BaseFragment<FragmentAddReportBinding, ReportCompetito
                 }
             }
         })
+
+        rv_images?.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            this.adapter = updateImageAdapter
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

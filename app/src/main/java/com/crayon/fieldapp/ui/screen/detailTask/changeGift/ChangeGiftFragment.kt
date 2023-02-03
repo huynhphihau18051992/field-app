@@ -41,6 +41,19 @@ class ChangeGiftFragment :
         taskId?.let {
             viewModel.getListCustomer(it)
         }
+
+        mCustomerAdapter = CustomerRVAdapter(
+            arrayListOf(), requireContext(),
+            true, {
+
+            }, {
+                // Item
+                val bundle = bundleOf("isEdit" to true)
+                findNavController().navigate(
+                    R.id.action_changeGiftFragment_to_detailCustomerFragment,
+                    bundle
+                )
+            })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -129,18 +142,6 @@ class ChangeGiftFragment :
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        mCustomerAdapter = CustomerRVAdapter(
-            arrayListOf(), requireContext(),
-            true, {
-
-            }, {
-                // Item
-                val bundle = bundleOf("isEdit" to true)
-                findNavController().navigate(
-                    R.id.action_changeGiftFragment_to_detailCustomerFragment,
-                    bundle
-                )
-            })
 
         rv_customer.apply {
             layoutManager = LinearLayoutManager(context)

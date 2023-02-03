@@ -4,15 +4,20 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.data.remote.response.OrderResponse
 import com.crayon.fieldapp.utils.setSingleClick
+import java.text.DecimalFormat
 
 class OrderRVAdapter constructor(
-    val items: ArrayList<String>,
+    val items: ArrayList<OrderResponse>,
     val context: Context,
-    val onItemClick: (String) -> Unit = {}
+    val onItemClickListener: (OrderResponse) -> Unit = {},
+    val onItemEditListener: (OrderResponse) -> Unit = {},
+    val isEdit: Boolean = false
 ) :
     RecyclerView.Adapter<OrderRVAdapter.GroupViewHolder>() {
 
@@ -27,9 +32,30 @@ class OrderRVAdapter constructor(
         val data = items[position]
         holder.txtOrderId.text = "Đơn hàng " + (position + 1).toString()
         holder.itemView.setSingleClick {
-            onItemClick(data)
+            onItemClickListener(data)
         }
-
+        data.products?.let {
+            if (it.size == 1) {
+                holder.txtLoadMore.visibility = View.GONE
+            } else {
+                holder.txtLoadMore.visibility = View.VISIBLE
+                holder.txtLoadMore.text = "Xem thêm " + (items.size - 1) + " sản phẩm"
+            }
+            holder.txtProductName.text = it.get(0).name
+            holder.txtQuality.text = it.get(0).quantity.toString()
+            val total = it.sumBy { it.price * it.quantity }
+            val format = DecimalFormat("#,###")
+            format.maximumFractionDigits = 0
+            holder.txtTotal.text = format.format(total) + "vnd"
+        }
+        if (isEdit) {
+            holder.imgEdit.visibility = View.VISIBLE
+        } else {
+            holder.imgEdit.visibility = View.GONE
+        }
+        holder.imgEdit?.setSingleClick {
+            onItemEditListener(data)
+        }
     }
 
     inner class GroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,6 +64,7 @@ class OrderRVAdapter constructor(
         var txtQuality: TextView
         var txtTotal: TextView
         var txtLoadMore: TextView
+        var imgEdit: ImageView
 
         init {
             txtOrderId = itemView.findViewById(R.id.txt_order_id)
@@ -45,6 +72,7 @@ class OrderRVAdapter constructor(
             txtQuality = itemView.findViewById(R.id.txt_quality)
             txtTotal = itemView.findViewById(R.id.txt_total)
             txtLoadMore = itemView.findViewById(R.id.txt_load_more)
+            imgEdit = itemView.findViewById(R.id.img_edit)
         }
     }
 
@@ -54,6 +82,12 @@ class OrderRVAdapter constructor(
 
     fun clearData() {
         items.clear()
+        notifyDataSetChanged()
+    }
+
+    fun addAll(mOrders: ArrayList<OrderResponse>) {
+        items.clear()
+        items.addAll(mOrders)
         notifyDataSetChanged()
     }
 

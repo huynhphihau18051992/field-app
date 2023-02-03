@@ -164,8 +164,7 @@ interface TaskRepository {
     suspend fun addProductToBill(
         taskId: String,
         billId: String,
-        promotionId: String,
-        products: ArrayList<ProjectProductRequest>
+        request: AddPromotionGiftRequest
     ): Resource<GetMessageResponse>
 
     suspend fun registerCustomer(
@@ -230,5 +229,26 @@ interface TaskRepository {
         taskId: String
     ): Resource<List<CustomerResponse>>
 
+
+    /* Report sale */
+    suspend fun createOrder(
+        taskId: String,
+        request: AddProductToOrderRequest
+    ): Resource<GetMessageResponse>
+
+    suspend fun viewOrder(
+        taskId: String,
+        orderId: String
+    ): Resource<OrderResponse>
+
+    suspend fun updateOrder(
+        taskId: String,
+        orderId: String,
+        request: AddProductToOrderRequest
+    ): Resource<GetMessageResponse>
+
+    suspend fun getListOrder(
+        taskId: String
+    ): Resource<List<OrderResponse>>
 
 }
