@@ -586,10 +586,16 @@ interface ApiService {
         @Part file3: MultipartBody.Part? = null
     ): CustomerBillResponse
 
-    @GET("/pic/v1/tasks/{id}/customer-bill")
-    suspend fun getCustomerBillById(
+    @GET("/pic/v1/tasks/{id}/customer-bills")
+    suspend fun getListCustomerBill(
         @Path("id") id: String
     ): GetCustomerBillListResponse
+
+    @GET("/pic/v1/tasks/{taskId}/customer-bills/{billId}")
+    suspend fun getCustomerBill(
+        @Path("taskId") taskId: String,
+        @Path("billId") billId: String
+    ): DetailCustomerBillResponse
 
     @PUT("/pic/v1/{productId}/projects/{projectId}/products")
     suspend fun updatePriceOfProduct(
@@ -618,7 +624,7 @@ interface ApiService {
     suspend fun addProductToBill(
         @Path("taskId") taskId: String,
         @Path("billId") billId: String,
-        @Body addProductToBillRequest: AddPromotionGiftRequest
+        @Body request: AddPromotionGiftRequest
     ): GetMessageResponse
 
     /*
@@ -684,7 +690,7 @@ interface ApiService {
     suspend fun createOrder(
         @Path("taskId") taskId: String,
         @Body request: AddProductToOrderRequest
-    ): GetMessageResponse
+    ): OrderResponse
 
     @POST("/pic/v1/tasks/{taskId}/orders/{orderId}")
     suspend fun viewOrder(
@@ -692,7 +698,7 @@ interface ApiService {
         @Path("orderId") orderId: String
     ): OrderResponse
 
-    @POST("/pic/v1/tasks/{taskId}/orders/")
+    @GET("/pic/v1/tasks/{taskId}/orders")
     suspend fun getOrder(
         @Path("taskId") taskId: String
     ): GetOrderListResponse

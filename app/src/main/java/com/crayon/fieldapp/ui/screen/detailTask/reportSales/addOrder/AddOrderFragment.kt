@@ -200,7 +200,7 @@ class AddOrderFragment : BaseFragment<FragmentAddOrderBinding, AddOrderViewModel
                     Status.SUCCESS -> {
                         pb_loading.visibility = View.GONE
                         it.data?.let {
-                            requireContext().showMessageDialog(message = it.message) { }
+                            requireContext().showMessageDialog(message = "Tạo đơn hàng thành công") { }
                         }
                     }
                     Status.ERROR -> {

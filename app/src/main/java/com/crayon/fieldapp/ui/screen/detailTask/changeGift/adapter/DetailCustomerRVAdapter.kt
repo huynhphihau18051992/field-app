@@ -9,6 +9,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.data.remote.request.AddPromotionGiftRequest
+import com.crayon.fieldapp.data.remote.request.AddPromotionRequest
+import com.crayon.fieldapp.data.remote.request.ProjectGiftRequest
+import com.crayon.fieldapp.data.remote.request.ProjectProductRequest
 import com.crayon.fieldapp.data.remote.response.GiftResponse
 import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.data.remote.response.PromotionResponse
@@ -21,10 +25,14 @@ class DetailCustomerRVAdapter constructor(
     val images: ArrayList<String>,
     val promotions: ArrayList<PromotionResponse>,
     val gifts: ArrayList<GiftResponse>,
+    var customerName: String,
+    var customerPhone: String,
+    var codeBill: String,
     val context: Context,
-    val isEidt: Boolean,
-    val onEditItemClick: (String) -> Unit = {},
-    val onItemClick: (String) -> Unit = {}
+    val onItemPromotionSelectClick: (item: PromotionResponse, isChecked: Boolean) -> Unit = { promotion: PromotionResponse, b: Boolean -> },
+    val onItemPromotionAddClick: (item: PromotionResponse) -> Unit = { },
+    val onItemPromotionEditClick: (item: PromotionResponse) -> Unit = { },
+    val onItemPromotionMinusClick: (item: PromotionResponse) -> Unit = { }
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -61,9 +69,11 @@ class DetailCustomerRVAdapter constructor(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is CustomerItemViewHolder) {
+            holder.txtName.text = customerName
+            holder.txtPhone.text = customerPhone
 
         } else if (holder is BillItemViewHolder) {
-
+            holder.txtBill.text = codeBill
             mImageAdapter = BillImageRVAdapter(images, context)
             holder.rvImages.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -73,10 +83,22 @@ class DetailCustomerRVAdapter constructor(
             mPromotionRVAdapter = PromotionRVAdapter(
                 items = promotions,
                 context = context,
-                onCheckBoxSelect = { position, isChecked ->
-
-                }, onItemDeleteListener = {
-
+                onCheckBoxSelect = { promotion, isChecked ->
+                    if (isChecked) {
+                        onItemPromotionSelectClick(promotion, isChecked)
+                        mPromotionRVAdapter.onSelectItem(promotion)
+                    } else {
+                        mPromotionRVAdapter.onUnSelectItem(promotion)
+                    }
+                }, onItemDeleteListener = { mPromotion ->
+                    unSelectPromotionItem(mPromotion)
+                    mPromotionRVAdapter.onDeleteAllProduct(mPromotion)
+                }, onItemPlusListener = { mPromotion ->
+                    onItemPromotionAddClick(mPromotion)
+                }, onItemMinusListener = { mPromotion ->
+                    onItemPromotionMinusClick(mPromotion)
+                }, onItemEditListener = { mPromotion ->
+                    onItemPromotionEditClick(mPromotion)
                 })
             holder.rvPromotion.apply {
                 layoutManager = LinearLayoutManager(context)
@@ -155,6 +177,114 @@ class DetailCustomerRVAdapter constructor(
         var rvGift: RecyclerView = view.rv_gift
     }
 
+    fun addData(
+        mImages: ArrayList<String>,
+        mPromotions: ArrayList<PromotionResponse>,
+        mGift: ArrayList<GiftResponse>,
+        mCodeBill: String
+
+    ) {
+        images.clear()
+        images.addAll(mImages)
+
+        promotions.clear()
+        promotions.addAll(mPromotions)
+
+        gifts.clear()
+        gifts.addAll(mGift)
+        codeBill = mCodeBill
+
+        notifyDataSetChanged()
+    }
+
+    fun updatePromotionQuantity(item: PromotionResponse, quantity: Int) {
+        promotions.indexOfFirst { it.id.toString().equals(item.id) }.let { index ->
+            if (index != -1) {
+                promotions.get(index).quantity = quantity
+                notifyItemChanged(2)
+            }
+        }
+    }
+
+    fun updateGiftQuantity(item: GiftResponse, quantity: Int) {
+        gifts.indexOfFirst { it.id.toString().equals(item.id) }.let { index ->
+            if (index != -1) {
+                gifts.get(index).quantity = quantity
+                notifyItemChanged(3)
+            }
+        }
+    }
+
+    fun selectPromotionItem(data: PromotionResponse) {
+        promotions.findLast { it.id.equals(data.id) }?.let {
+            it.isSelect = true
+            if (it.quantity < 1) {
+                it.quantity = 1
+            }
+            notifyItemChanged(2)
+        }
+    }
+
+    fun unSelectPromotionItem(data: PromotionResponse) {
+        promotions.findLast { it.id.equals(data.id) }?.let {
+            it.isSelect = false
+            it.quantity = 0
+            notifyItemChanged(2)
+        }
+    }
+
+    fun selectGiftItem(data: GiftResponse) {
+        gifts.findLast { it.id.equals(data.id) }?.let {
+            it.isSelect = true
+            if (it.quantity < 1) {
+                it.quantity = 1
+            }
+            notifyItemChanged(3)
+        }
+    }
+
+    fun unSelectGiftItem(data: GiftResponse) {
+        gifts.findLast { it.id.equals(data.id) }?.let {
+            it.isSelect = false
+            it.quantity = 0
+            notifyItemChanged(3)
+        }
+    }
+
+    fun addAllProduct(mPromotion: PromotionResponse, mProduct: ArrayList<ProductResponse>) {
+        promotions.indexOfFirst { it.id.toString().equals(mPromotion.id) }.let { index ->
+            if (index != -1) {
+                promotions.get(index).products.clear()
+                promotions.get(index).products.addAll(mProduct)
+                if (mProduct.size == 0) {
+                    promotions.get(index).quantity = 0
+                    promotions.get(index).isSelect = false
+                }
+                notifyItemChanged(2)
+            }
+        }
+    }
+
+    fun getSelectPromotions(): AddPromotionGiftRequest {
+        var mGifts = gifts.filter { it.isSelect == true }.map {
+            ProjectGiftRequest(
+                quantity = it.selectQuantity,
+                giftId = it.id.toString()
+            )
+        } as ArrayList<ProjectGiftRequest>
+        var mPromotions = promotions.filter { it.isSelect == true }.map { mPromotionSelect ->
+            AddPromotionRequest(promotionId = mPromotionSelect.id.toString(),
+                products = mPromotionSelect.products.map { mProduct ->
+                    ProjectProductRequest(
+                        productId = mProduct.id.toString(),
+                        price = mProduct.price,
+                        quantity = mProduct.quantity
+                    )
+                } as ArrayList<ProjectProductRequest>
+            )
+        } as ArrayList
+        return AddPromotionGiftRequest(promotions = mPromotions, gifts = mGifts)
+    }
 
     override fun getItemCount(): Int {
         return 4

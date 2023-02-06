@@ -40,23 +40,6 @@ class ReportSalesFragment :
         }
 
         mOrderAdatper = OrderRVAdapter(arrayListOf(
-//            OrderResponse(
-//                id = "1",
-//                products = arrayListOf(
-//                    ProductResponse(
-//                        createdAt = "2023-02-01T17:12:14.479Z",
-//                        updatedAt = "2023-02-01T17:12:14.479Z",
-//                        id = "14",
-//                        name = "Nước tương Tam Thái Tử",
-//                        price = 12000,
-//                        quantity = 3,
-//                        product_code = "SP001",
-//                        product_sku = "SKU001",
-//                        project = "154"
-//
-//                    )
-//                )
-//            )
         ), requireContext(), onItemClickListener = {
             val order = Gson().toJson(it).toString()
             findNavController().navigate(

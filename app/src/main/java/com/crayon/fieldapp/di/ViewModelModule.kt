@@ -30,6 +30,7 @@ import com.crayon.fieldapp.ui.screen.detailProject.manageJob.ManageJobProjectVie
 import com.crayon.fieldapp.ui.screen.detailProject.member.MemberProjectViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.base.DetailTaskViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel
+import com.crayon.fieldapp.ui.screen.detailTask.changeGift.detailCustomer.DetailCustomerViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step1.InputNameViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step2.VerifyOtpStep2ViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step3.InputBillViewModel
@@ -188,4 +189,5 @@ val viewModelModule = module {
     viewModel { HistoryTrackingAtStoreViewModel(get(), get()) }
     viewModel { DetailOrderViewModel() }
     viewModel { AddOrderViewModel(get()) }
+    viewModel { DetailCustomerViewModel(get(), get()) }
 }

@@ -34,15 +34,22 @@ class OrderRVAdapter constructor(
         holder.itemView.setSingleClick {
             onItemClickListener(data)
         }
+        holder.txtLoadMore.visibility = View.GONE
         data.products?.let {
             if (it.size == 1) {
                 holder.txtLoadMore.visibility = View.GONE
             } else {
-                holder.txtLoadMore.visibility = View.VISIBLE
-                holder.txtLoadMore.text = "Xem thêm " + (items.size - 1) + " sản phẩm"
+                if (items.size > 0) {
+                    holder.txtLoadMore.visibility = View.VISIBLE
+                    holder.txtLoadMore.text = "Xem thêm " + (items.size - 1) + " sản phẩm"
+                }
             }
-            holder.txtProductName.text = it.get(0).name
-            holder.txtQuality.text = it.get(0).quantity.toString()
+
+            if (it.size >= 1) {
+                holder.txtProductName.text = it.get(0).name
+                holder.txtQuality.text = it.get(0).quantity.toString()
+            }
+
             val total = it.sumBy { it.price * it.quantity }
             val format = DecimalFormat("#,###")
             format.maximumFractionDigits = 0

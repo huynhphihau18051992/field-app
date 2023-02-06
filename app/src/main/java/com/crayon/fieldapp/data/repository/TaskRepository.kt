@@ -133,9 +133,14 @@ interface TaskRepository {
         price: Long
     ): LiveData<Resource<GetMessageResponse>>
 
-    suspend fun getCustomerBillById(
+    suspend fun getListCustomerBill(
         taskId: String
-    ): LiveData<Resource<GetCustomerBillListResponse>>
+    ): Resource<List<CustomerBillResponse>>
+
+    suspend fun getCustomerBill(
+        taskId: String,
+        billId: String
+    ): Resource<DetailCustomerBillResponse>
 
     suspend fun createCustomerBill(
         taskId: String,
@@ -234,7 +239,7 @@ interface TaskRepository {
     suspend fun createOrder(
         taskId: String,
         request: AddProductToOrderRequest
-    ): Resource<GetMessageResponse>
+    ): Resource<OrderResponse>
 
     suspend fun viewOrder(
         taskId: String,

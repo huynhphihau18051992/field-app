@@ -60,7 +60,7 @@ class SelectPromotionRVAdapter constructor(
                     }
 
                 }, onItemDeleteListener = { mPromotion ->
-                    mPromotionRVAdapter.deleteAllProduct(promotion = mPromotion)
+                    mPromotionRVAdapter.onDeleteAllProduct(promotion = mPromotion)
 
                 }, onItemPlusListener = { mPromotion ->
                     var quantity = mPromotion.quantity + 1

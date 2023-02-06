@@ -19,7 +19,8 @@ class PromotionRVAdapter constructor(
     val onCheckBoxSelect: (promotion: PromotionResponse, isChecked: Boolean) -> Unit = { i: PromotionResponse, b: Boolean -> },
     val onItemPlusListener: (promotion: PromotionResponse) -> Unit = { },
     val onItemMinusListener: (promotion: PromotionResponse) -> Unit = { },
-    val onItemDeleteListener: (promotion: PromotionResponse) -> Unit = {}
+    val onItemDeleteListener: (promotion: PromotionResponse) -> Unit = {},
+    val onItemEditListener: (promotion: PromotionResponse) -> Unit = {}
 ) :
     RecyclerView.Adapter<PromotionRVAdapter.GroupViewHolder>() {
     private lateinit var mPromotionAdapter: SubProductRVAdapter
@@ -76,7 +77,7 @@ class PromotionRVAdapter constructor(
 
         })
         holder.btnEdit?.setSingleClick {
-
+            onItemEditListener(data)
         }
 
         holder.btnDelete?.setSingleClick {
@@ -144,7 +145,7 @@ class PromotionRVAdapter constructor(
         }
     }
 
-    fun deleteAllProduct(promotion: PromotionResponse) {
+    fun onDeleteAllProduct(promotion: PromotionResponse) {
         items.indexOfFirst { it.id.toString().equals(promotion.id) }.let { index ->
             if (index != -1) {
                 items.get(index).products.clear()
@@ -168,7 +169,6 @@ class PromotionRVAdapter constructor(
             if (index != -1) {
                 items.get(index).isSelect = false
                 items.get(index).quantity = 0
-                items.get(index).products.clear()
                 notifyItemChanged(index)
             }
         }

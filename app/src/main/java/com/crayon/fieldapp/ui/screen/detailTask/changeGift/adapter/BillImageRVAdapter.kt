@@ -4,8 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.request.RequestOptions
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.utils.GlideApp
 
 class BillImageRVAdapter constructor(
     val items: ArrayList<String>,
@@ -22,24 +25,20 @@ class BillImageRVAdapter constructor(
 
     override fun onBindViewHolder(holder: GroupViewHolder, position: Int) {
         val data = items[position]
-
+        val options: RequestOptions = RequestOptions()
+            .centerCrop()
+            .placeholder(R.drawable.ic_photo)
+            .error(R.drawable.ic_photo)
+            .override(300, 300)
+        GlideApp.with(context).load(data).apply(options)
+            .into(holder.imgBill)
     }
 
     inner class GroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//        var txtCustomerId: TextView
-//        var icEdit: ImageView
-//        var txtName: TextView
-//        var txtPhone: TextView
-//        var txtDate: TextView
-//        var txtGift: TextView
+        var imgBill: ImageView
 
         init {
-//            txtCustomerId = itemView.findViewById(R.id.txt_customer_num)
-//            icEdit = itemView.findViewById(R.id.img_edit)
-//            txtName = itemView.findViewById(R.id.txt_name)
-//            txtPhone = itemView.findViewById(R.id.txt_phone)
-//            txtDate = itemView.findViewById(R.id.txt_date)
-//            txtGift = itemView.findViewById(R.id.txt_gift)
+            imgBill = itemView.findViewById(R.id.img_1)
         }
     }
 

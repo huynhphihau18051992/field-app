@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel" />
+            type="com.crayon.fieldapp.ui.screen.detailTask.changeGift.detailCustomer.DetailCustomerViewModel" />
     </data>
 
     <LinearLayout
@@ -57,17 +57,29 @@
                 android:background="@null"
                 android:clickable="false"
                 android:padding="16dp"
-                android:src="@drawable/ic_black_more"
+                android:src="@drawable/ic_save"
                 android:tint="@color/colorWhite"
-                android:visibility="invisible" />
+                android:visibility="visible" />
 
         </RelativeLayout>
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_page"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/pb_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_page"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
 
     </LinearLayout>
 

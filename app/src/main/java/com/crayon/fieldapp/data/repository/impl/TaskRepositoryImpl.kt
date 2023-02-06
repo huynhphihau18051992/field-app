@@ -331,15 +331,22 @@ class TaskRepositoryImpl(
     }
 
 
-    override suspend fun getCustomerBillById(taskId: String): LiveData<Resource<GetCustomerBillListResponse>> {
-        return object : NetworkBoundNoCacheResource<GetCustomerBillListResponse>() {
-            override suspend fun createCallAsync(): GetCustomerBillListResponse {
-                return apiService.getCustomerBillById(
-                    id = taskId
-                )
-            }
+    override suspend fun getListCustomerBill(taskId: String): Resource<List<CustomerBillResponse>> {
+        val result = apiService.getListCustomerBill(
+            id = taskId
+        )
+        return Resource.success(result.data)
+    }
 
-        }.build().asLiveData()
+    override suspend fun getCustomerBill(
+        taskId: String,
+        billId: String
+    ): Resource<DetailCustomerBillResponse> {
+        val result = apiService.getCustomerBill(
+            taskId = taskId,
+            billId = billId
+        )
+        return Resource.success(result)
     }
 
     override suspend fun createCustomerBill(
@@ -401,7 +408,7 @@ class TaskRepositoryImpl(
         val result = apiService.addProductToBill(
             taskId = taskId,
             billId = billId,
-            addProductToBillRequest = request
+            request = request
         )
         return Resource.success(result)
     }
@@ -537,7 +544,7 @@ class TaskRepositoryImpl(
     override suspend fun createOrder(
         taskId: String,
         request: AddProductToOrderRequest
-    ): Resource<GetMessageResponse> {
+    ): Resource<OrderResponse> {
         val result = apiService.createOrder(
             taskId = taskId,
             request = request

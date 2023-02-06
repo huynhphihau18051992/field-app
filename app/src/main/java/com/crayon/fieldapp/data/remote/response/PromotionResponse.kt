@@ -12,5 +12,6 @@ class PromotionResponse(
     @SerializedName("project") val project: String? = null,
     @SerializedName("product") var products: ArrayList<ProductResponse> = arrayListOf(),
     @SerializedName("isSelect") var isSelect: Boolean = false,
-    @SerializedName("quantity") var quantity: Int = 0
+    @SerializedName("quantity") var quantity: Int = 0,
+    @SerializedName("project_promotion_package") var project_promotion_package: String? = null
 ) : BaseResponse()

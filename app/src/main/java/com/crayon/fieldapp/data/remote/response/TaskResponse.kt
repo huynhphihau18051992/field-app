@@ -15,6 +15,7 @@ data class TaskResponse(
     @SerializedName("attachments") val attachments: ArrayList<Attachments>? = null,
     @SerializedName("opponents") val opponents: ArrayList<ReportOpponentResponse>? = null,
     @SerializedName("products") val products: ArrayList<Product> = arrayListOf(),
+    @SerializedName("project_customer_bills") val customerBills: ArrayList<CustomerBillInfo> = arrayListOf(),
     @SerializedName("customer_feedback") val feedbacks: ArrayList<Feedback> = arrayListOf(),
     @SerializedName("pic") val pic: MemberResponse? = null,
     @SerializedName("project") val project: ProjectInfo? = null
@@ -62,6 +63,15 @@ data class TaskResponse(
         @SerializedName("store") val store: String? = null,
         @SerializedName("task") val task: String? = null,
         @SerializedName("pic") val pic: String? = null
+    )
+
+    data class CustomerBillInfo(
+        @SerializedName("createdAt") val createdAt: String? = null,
+        @SerializedName("updatedAt") val updatedAt: String? = null,
+        @SerializedName("id") val id: String? = null,
+        @SerializedName("code_bill") val codeBill: String? = null,
+        @SerializedName("total_price_bill") val totalBill: String? = null,
+        @SerializedName("project_customer") val customer: CustomerResponse? = null
     )
 
     data class Attachments(

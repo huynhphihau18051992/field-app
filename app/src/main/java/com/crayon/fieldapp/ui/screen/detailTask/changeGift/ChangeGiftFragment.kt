@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,7 +38,7 @@ class ChangeGiftFragment :
             jobResponse = Gson().fromJson(it, JobResponse::class.java)
         }
         taskId?.let {
-            viewModel.getListCustomer(it)
+            viewModel.getDetailTask(it)
         }
 
         mCustomerAdapter = CustomerRVAdapter(
@@ -48,7 +47,12 @@ class ChangeGiftFragment :
 
             }, {
                 // Item
-                val bundle = bundleOf("isEdit" to true)
+                val bundle = bundleOf(
+                    "isEdit" to true,
+                    "taskId" to taskId.toString(),
+                    "projectId" to jobResponse?.project?.id.toString(),
+                    "customerInfo" to Gson().toJson(it)
+                )
                 findNavController().navigate(
                     R.id.action_changeGiftFragment_to_detailCustomerFragment,
                     bundle
@@ -148,7 +152,7 @@ class ChangeGiftFragment :
             this.adapter = mCustomerAdapter
         }
 
-        viewModel.customers.observe(viewLifecycleOwner, Observer {
+        viewModel.task.observe(viewLifecycleOwner, Observer {
             it.getContentIfNotHandled()?.let {
                 when (it.status) {
                     Status.LOADING -> {
@@ -157,15 +161,26 @@ class ChangeGiftFragment :
                     Status.SUCCESS -> {
                         pb_loading.visibility = View.GONE
                         it.data?.let {
-                            if (it.size == 0) {
+
+                            if (it.customerBills.size == 0) {
                                 txt_num_customer?.text = "0 khách hàng"
                                 rl_empty.visibility = View.VISIBLE
                                 rv_customer.visibility = View.GONE
                             } else {
-                                txt_num_customer?.text = it.size.toString() + " khách hàng"
+                                txt_num_customer?.text =
+                                    it.customerBills.size.toString() + " khách hàng"
                                 rl_empty.visibility = View.GONE
                                 rv_customer.visibility = View.VISIBLE
-                                mCustomerAdapter.addAll(it as ArrayList<CustomerResponse>)
+                                mCustomerAdapter.addAll(it.customerBills.map {
+                                    CustomerResponse(
+                                        id = it.customer!!.id.toString(),
+                                        name = it.customer!!.name.toString(),
+                                        mobileNumber = it.customer!!.mobileNumber.toString(),
+                                        createdAt = it.createdAt,
+                                        updatedAt = it.updatedAt,
+                                        customerBill = it.id
+                                    )
+                                } as ArrayList<CustomerResponse>)
                             }
                         }
                     }

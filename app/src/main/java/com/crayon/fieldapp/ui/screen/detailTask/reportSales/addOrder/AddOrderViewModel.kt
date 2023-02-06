@@ -5,6 +5,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.viewModelScope
 import com.crayon.fieldapp.data.remote.request.AddProductToOrderRequest
 import com.crayon.fieldapp.data.remote.response.GetMessageResponse
+import com.crayon.fieldapp.data.remote.response.OrderResponse
 import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.data.repository.TaskRepository
 import com.crayon.fieldapp.ui.base.BaseViewModel
@@ -15,8 +16,8 @@ import kotlinx.coroutines.launch
 class AddOrderViewModel(val taskRepository: TaskRepository) : BaseViewModel() {
 
     private val _addOrder =
-        MediatorLiveData<Event<Resource<GetMessageResponse>>>()
-    val addOrder: LiveData<Event<Resource<GetMessageResponse>>> get() = _addOrder
+        MediatorLiveData<Event<Resource<OrderResponse>>>()
+    val addOrder: LiveData<Event<Resource<OrderResponse>>> get() = _addOrder
     fun addOrder(taskId: String, request: AddProductToOrderRequest) {
         viewModelScope.launch {
             _addOrder.postValue(Event(Resource.loading(null)))

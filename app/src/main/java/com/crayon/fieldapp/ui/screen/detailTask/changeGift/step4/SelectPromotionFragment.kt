@@ -62,7 +62,6 @@ class SelectPromotionFragment(val onNextClick: () -> Unit = {}) :
 
             })
 
-
         rv_page.apply {
             layoutManager = LinearLayoutManager(context)
             this.adapter = mDetailRVAdapter

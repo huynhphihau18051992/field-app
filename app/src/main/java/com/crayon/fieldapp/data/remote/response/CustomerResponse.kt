@@ -8,5 +8,6 @@ data class CustomerResponse(
     @SerializedName("updatedAt") val updatedAt: String? = null,
     @SerializedName("id") val id: String? = null,
     @SerializedName("name") val name: String? = null,
-    @SerializedName("mobile_number") val mobileNumber: String? = null
+    @SerializedName("mobile_number") val mobileNumber: String? = null,
+    @SerializedName("customer_bill") val customerBill: String? = null
 ) : BaseResponse()
