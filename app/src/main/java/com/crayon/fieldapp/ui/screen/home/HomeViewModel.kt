@@ -5,6 +5,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.crayon.fieldapp.AppDispatchers
+import com.crayon.fieldapp.data.local.dao.ProductDao
 import com.crayon.fieldapp.data.remote.ApiService
 import com.crayon.fieldapp.data.remote.response.JobResponse
 import com.crayon.fieldapp.data.remote.response.RoleResponse
@@ -17,10 +18,12 @@ import com.crayon.fieldapp.utils.SingleLiveEvent
 import com.crayon.fieldapp.utils.Status
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
 
 class HomeViewModel(
     private val jobRepository: JobRepository,
     private val roleRepository: RoleRepository,
+    private val productDao: ProductDao,
     private val dispatchers: AppDispatchers
 ) : BaseViewModel() {
     // FOR DATA
@@ -34,6 +37,16 @@ class HomeViewModel(
             try {
                 val result = jobRepository.getTodayPicJob(statusTime, endTime, skip = skip)
                 _jobs.postValue(Event(Resource.success(result.data)))
+            } catch (e: Exception) {
+                onLoadFail(e)
+            }
+        }
+    }
+
+    fun deleteProduct(){
+        viewModelScope.launch {
+            try {
+                productDao.deleteProduct(Date().time)
             } catch (e: Exception) {
                 onLoadFail(e)
             }

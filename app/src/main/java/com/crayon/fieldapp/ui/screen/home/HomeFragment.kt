@@ -9,6 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.work.*
+import com.crayon.fieldapp.MainApplication
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.JobResponse
 import com.crayon.fieldapp.data.remote.response.RoleOfAgency
@@ -21,9 +23,11 @@ import com.crayon.fieldapp.utils.Status
 import com.crayon.fieldapp.utils.getCurrentDateTime
 import com.crayon.fieldapp.utils.setSingleClick
 import com.crayon.fieldapp.utils.toTimeString
+import com.crayon.fieldapp.workers.UploadLocationWorker
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.Serializable
+import java.util.concurrent.TimeUnit
 import java.util.stream.Collectors
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
@@ -49,7 +53,36 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             itemClickListener = { toJobDetail(it.id.toString()) }
         )
         viewModel.getListRole()
+        viewModel.deleteProduct()
         refresh()
+        updateLocation()
+    }
+
+    fun updateLocation() {
+        Log.d("AAAHAU", "updateLocation")
+        val constraints: Constraints = Constraints.Builder().apply {
+            setRequiredNetworkType(NetworkType.CONNECTED)
+            setRequiresBatteryNotLow(true)
+        }.build()
+
+        val request: PeriodicWorkRequest = PeriodicWorkRequest.Builder(
+            UploadLocationWorker::class.java,
+            PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS,
+            TimeUnit.MILLISECONDS,
+            PeriodicWorkRequest.MIN_PERIODIC_FLEX_MILLIS,
+            TimeUnit.MILLISECONDS
+        )
+            .setConstraints(constraints)
+            .setInitialDelay(5, TimeUnit.SECONDS)
+//            .setBackoffCriteria(BackoffPolicy.LINEAR, 1, TimeUnit.HOURS)
+            .build()
+
+        WorkManager.getInstance(requireContext()).enqueueUniquePeriodicWork(
+            MainApplication.TAG_WORK_NAME,
+            ExistingPeriodicWorkPolicy.KEEP,
+            request
+        )
+
     }
 
     override fun onResume() {
@@ -69,7 +102,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                     if (dy > 0) { //check for scroll down
                         visibleItemCount = (layoutManager as LinearLayoutManager).getChildCount()
                         totalItemCount = (layoutManager as LinearLayoutManager).getItemCount()
-                        pastVisiblesItems = (layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+                        pastVisiblesItems =
+                            (layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
                         if (!isLoading) {
                             if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
                                 isLoading = true

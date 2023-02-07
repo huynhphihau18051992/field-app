@@ -46,6 +46,11 @@ class SelectProductRVAdapter constructor(
         holder.txtProductPrice.text = format.format(data.price) + "vnd"
 
         holder.txtNumber.text = data.quantity.toString()
+        if (data.isEdit) {
+            holder.icEdit.visibility = View.VISIBLE
+        } else {
+            holder.icEdit.visibility = View.GONE
+        }
 
         holder.cbProduct.isChecked = data.isSelect
         if (data.isSelect) {
@@ -83,6 +88,7 @@ class SelectProductRVAdapter constructor(
         var imgPlus: ImageView
         var imgMinus: ImageView
         var txtNumber: TextView
+        var icEdit: ImageView
 
         init {
             cbProduct = itemView.findViewById(R.id.cb_product)
@@ -91,6 +97,7 @@ class SelectProductRVAdapter constructor(
             imgPlus = itemView.findViewById(R.id.img_plus)
             imgMinus = itemView.findViewById(R.id.img_minus)
             txtNumber = itemView.findViewById(R.id.txt_number)
+            icEdit = itemView.findViewById(R.id.img_edit)
         }
     }
 
@@ -102,6 +109,7 @@ class SelectProductRVAdapter constructor(
         productListFiltered.indexOfFirst { it.id.toString().equals(item.id) }.let { index ->
             if (index != -1) {
                 productListFiltered.get(index).price = price
+                productListFiltered.get(index).isEdit = true
                 notifyItemChanged(index)
             }
         }
@@ -167,7 +175,7 @@ class SelectProductRVAdapter constructor(
         notifyDataSetChanged()
     }
 
-    fun refresh(){
+    fun refresh() {
         productListFiltered.clear()
         productListFiltered.addAll(items)
         notifyDataSetChanged()

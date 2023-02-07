@@ -5,7 +5,9 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.data.remote.response.GiftResponse
 import com.crayon.fieldapp.data.remote.response.ProductResponse
+import com.crayon.fieldapp.data.remote.response.PromotionResponse
 import com.crayon.fieldapp.databinding.FragmentSelectPromotionBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.selectProduct.SelectProductBottomSheetFragment
@@ -55,6 +57,16 @@ class SelectPromotionFragment(val onNextClick: () -> Unit = {}) :
                     items,
                     onSelectProductListener = { mProducts ->
                         mDetailRVAdapter.addAllProduct(mPromotion, mProducts)
+                    }, onUpdatePriceListener = { product, price ->
+                        _products.indexOfFirst { _item ->
+                            _item.id.toString().equals(product.id.toString())
+                        }?.let {
+                            if (it != -1) {
+                                _products.get(it).price = price
+                                _products.get(it).isEdit = true
+                            }
+                        }
+                        viewModel.updatePrice(product, price = price.toLong())
                     })
                 dialog.show(requireActivity().supportFragmentManager, dialog.tag)
             },
@@ -92,11 +104,11 @@ class SelectPromotionFragment(val onNextClick: () -> Unit = {}) :
                         pb_loading.visibility = View.GONE
                         it.data?.let {
                             mDetailRVAdapter.addItems(
-                                mPromotion = it.first.data!!,
-                                mGift = it.third.data!!
+                                mPromotion = it.first as ArrayList<PromotionResponse>,
+                                mGift = it.third as ArrayList<GiftResponse>
                             )
                             _products.clear()
-                            _products.addAll(it.second.data!!)
+                            _products.addAll(it.second)
                         }
                     }
                     Status.ERROR -> {

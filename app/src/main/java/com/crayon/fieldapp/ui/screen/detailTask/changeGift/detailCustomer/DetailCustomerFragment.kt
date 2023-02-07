@@ -118,7 +118,7 @@ class DetailCustomerFragment :
                     billId = _customerInfo!!.customerBill.toString(),
                     projectId = _projectId!!.toString()
                 )
-                viewModel.getProducts(projectId = _projectId!!.toString())
+                viewModel.fetchProducts(projectId = _projectId!!.toString())
             }
         }
     }

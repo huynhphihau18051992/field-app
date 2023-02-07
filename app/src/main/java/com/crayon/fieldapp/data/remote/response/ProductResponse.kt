@@ -13,5 +13,6 @@ data class ProductResponse(
     @SerializedName("product_sku") val product_sku: String? = null,
     @SerializedName("project") val project: String? = null,
     @SerializedName("quantity") var quantity: Int = 0,
-    @SerializedName("isSelect") var isSelect: Boolean = false
+    @SerializedName("isSelect") var isSelect: Boolean = false,
+    @SerializedName("isEdit") var isEdit: Boolean = false
 ) : BaseResponse()

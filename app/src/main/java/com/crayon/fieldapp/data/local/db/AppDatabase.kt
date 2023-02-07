@@ -8,17 +8,20 @@ import com.crayon.fieldapp.data.model.*
 @Database(
     entities = [
         Job::class,
+        ProductEntity::class,
         Store::class,
         Project::class,
         User::class,
         GroupUser::class,
         GroupStore::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun jobDao(): JobDao
+
+    abstract fun productDao(): ProductDao
 
     abstract fun storeDao(): StoreDao
 

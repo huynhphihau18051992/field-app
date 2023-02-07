@@ -73,6 +73,7 @@ class AddOrderFragment : BaseFragment<FragmentAddOrderBinding, AddOrderViewModel
                 onPriceClick = { mProduct ->
                     val dialog =
                         EditPriceProductDialog(mProduct, onUpdatePriceClick = { mPrice ->
+                            viewModel.updatePrice(product = mProduct, price = mPrice.toLong())
                             mProductAdapter.updatePrice(item = mProduct, price = mPrice)
                         })
                     dialog.show(requireActivity().supportFragmentManager, dialog.tag)

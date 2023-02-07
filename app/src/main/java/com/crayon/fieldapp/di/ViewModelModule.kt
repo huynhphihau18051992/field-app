@@ -115,7 +115,7 @@ val viewModelModule = module {
     viewModel { TermViewModel() }
     viewModel { PrivacyViewModel() }
     viewModel { ContactViewModel() }
-    viewModel { HomeViewModel(get(), get(), get()) }
+    viewModel { HomeViewModel(get(), get(), get(), get()) }
     viewModel { ReportViewModel(get(), get()) }
     viewModel { CalendarViewModel(get(), get()) }
     viewModel { AttendanceViewModel(get(), get(), get(), get()) }
@@ -175,7 +175,7 @@ val viewModelModule = module {
     viewModel { InputNameViewModel(get(), get()) }
     viewModel { VerifyOtpStep2ViewModel(get(), get()) }
     viewModel { InputBillViewModel(get(), get()) }
-    viewModel { SelectPromotionViewModel(get(), get()) }
+    viewModel { SelectPromotionViewModel(get(), get(), get()) }
     viewModel { ReportCompetitorViewModel(get()) }
     viewModel { ReportSalesViewModel(get()) }
     viewModel { ListReportCompetitorAtStoreViewModel(get(), get()) }
@@ -188,6 +188,6 @@ val viewModelModule = module {
     viewModel { DetailChangeGiftAtStoreViewModel(get(), get()) }
     viewModel { HistoryTrackingAtStoreViewModel(get(), get()) }
     viewModel { DetailOrderViewModel() }
-    viewModel { AddOrderViewModel(get()) }
-    viewModel { DetailCustomerViewModel(get(), get()) }
+    viewModel { AddOrderViewModel(get(), get()) }
+    viewModel { DetailCustomerViewModel(get(), get(), get()) }
 }

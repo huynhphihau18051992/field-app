@@ -3,7 +3,10 @@ package com.crayon.fieldapp.ui.screen.detailTask.changeGift.selectProduct
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.*
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -18,11 +21,7 @@ import com.crayon.fieldapp.ui.screen.detailTask.reportSales.addOrder.dialog.Edit
 import com.crayon.fieldapp.utils.Utils
 import com.crayon.fieldapp.utils.setSingleClick
 import com.example.moviedb.utils.getQueryTextChangeStateFlow
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.dialog_select_product.*
-import kotlinx.android.synthetic.main.dialog_select_product.cb_select_all
-import kotlinx.android.synthetic.main.dialog_select_product.sv_product
-import kotlinx.android.synthetic.main.fragment_add_order.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.collect
@@ -35,7 +34,8 @@ import kotlinx.coroutines.withContext
 
 class SelectProductBottomSheetFragment(
     val product: ArrayList<ProductResponse>,
-    val onSelectProductListener: (ArrayList<ProductResponse>) -> Unit = {}
+    val onSelectProductListener: (ArrayList<ProductResponse>) -> Unit = {},
+    val onUpdatePriceListener: (product: ProductResponse, price: Int) -> Unit = { product, price -> }
 ) : DialogFragment() {
     lateinit var rvProudct: RecyclerView
     lateinit var btnConfirm: Button
@@ -72,6 +72,7 @@ class SelectProductBottomSheetFragment(
                         onPriceClick = { mProduct ->
                             val dialog =
                                 EditPriceProductDialog(mProduct, onUpdatePriceClick = { mPrice ->
+                                    onUpdatePriceListener(mProduct, mPrice)
                                     mProductAdapter.updatePrice(item = mProduct, price = mPrice)
                                 })
                             dialog.show(requireActivity().supportFragmentManager, dialog.tag)
