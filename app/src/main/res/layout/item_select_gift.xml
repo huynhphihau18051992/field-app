@@ -2,8 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/_8sdp"
-    android:paddingBottom="@dimen/_8sdp">
+    android:layout_marginLeft="@dimen/_14sdp"
+    android:layout_marginTop="@dimen/_7sdp"
+    android:layout_marginRight="@dimen/_14sdp">
 
     <CheckBox
         android:id="@+id/cb_product"

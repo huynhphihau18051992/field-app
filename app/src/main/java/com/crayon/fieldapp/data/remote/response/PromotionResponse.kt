@@ -10,8 +10,7 @@ class PromotionResponse(
     @SerializedName("default_price") val default_price: String? = null,
     @SerializedName("package_type") val package_type: String? = null,
     @SerializedName("project") val project: String? = null,
-    @SerializedName("product") var products: ArrayList<ProductResponse> = arrayListOf(),
+    @SerializedName("products") var products: ArrayList<ProductResponse> = arrayListOf(),
     @SerializedName("isSelect") var isSelect: Boolean = false,
-    @SerializedName("quantity") var quantity: Int = 0,
-    @SerializedName("project_promotion_package") var project_promotion_package: String? = null
+    @SerializedName("quantity") var quantity: Int = 0
 ) : BaseResponse()

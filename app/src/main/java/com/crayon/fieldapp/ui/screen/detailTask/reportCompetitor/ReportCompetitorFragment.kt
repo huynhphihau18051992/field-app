@@ -120,6 +120,16 @@ class ReportCompetitorFragment :
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Boolean>("isNew")
+            ?.observe(viewLifecycleOwner, Observer { isNew ->
+                if (isNew) {
+                    taskId?.let {
+                        viewModel.getReportOpponents(it)
+                    }
+                }
+            })
+
+
         viewModel.reportOpponents.observe(viewLifecycleOwner, Observer {
             it.getContentIfNotHandled()?.let {
                 when (it.status) {

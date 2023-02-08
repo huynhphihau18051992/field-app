@@ -584,7 +584,7 @@ interface ApiService {
         @Part file1: MultipartBody.Part? = null,
         @Part file2: MultipartBody.Part? = null,
         @Part file3: MultipartBody.Part? = null
-    ): CustomerBillResponse
+    ): DetailCustomerBillResponse
 
     @GET("/pic/v1/tasks/{id}/customer-bills")
     suspend fun getListCustomerBill(
@@ -625,6 +625,13 @@ interface ApiService {
         @Path("taskId") taskId: String,
         @Path("billId") billId: String,
         @Body request: AddPromotionGiftRequest
+    ): GetMessageResponse
+
+
+    @POST("/pic/v1/tasks/{taskId}/receive-gifs")
+    suspend fun receiveGifts(
+        @Path("taskId") taskId: String,
+        @Body request: ReceiveGiftRequest
     ): GetMessageResponse
 
     /*

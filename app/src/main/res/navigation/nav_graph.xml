@@ -744,7 +744,7 @@
 
         <action
             android:id="@+id/action_changeGiftFragment_to_importGiftFragment"
-            app:destination="@id/importGiftFragment" />
+            app:destination="@id/receiveGiftFragment" />
 
         <action
             android:id="@+id/action_changeGiftFragment_to_exportGiftFragment"
@@ -795,9 +795,9 @@
         android:label="DetailCustomerFragment" />
 
     <fragment
-        android:id="@+id/importGiftFragment"
-        android:name="com.crayon.fieldapp.ui.screen.detailTask.changeGift.input.ImportGiftFragment"
-        android:label="ImportGiftFragment" />
+        android:id="@+id/receiveGiftFragment"
+        android:name="com.crayon.fieldapp.ui.screen.detailTask.changeGift.receiveGift.ReceiveGiftFragment"
+        android:label="ReceiveGiftFragment" />
 
 
     <fragment

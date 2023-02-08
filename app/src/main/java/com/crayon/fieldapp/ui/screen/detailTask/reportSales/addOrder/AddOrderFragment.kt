@@ -5,12 +5,11 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.SearchView
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.crayon.fieldapp.R
-import com.crayon.fieldapp.data.remote.request.AddProductToOrderRequest
-import com.crayon.fieldapp.data.remote.request.ProjectProductRequest
 import com.crayon.fieldapp.data.remote.response.OrderResponse
 import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.databinding.FragmentAddOrderBinding
@@ -116,30 +115,20 @@ class AddOrderFragment : BaseFragment<FragmentAddOrderBinding, AddOrderViewModel
         }
 
         imb_ic_filter?.setSingleClick {
-            val products = mProductAdapter.getAllItemSelected().map {
-                ProjectProductRequest(
-                    productId = it.id.toString(),
-                    price = it.price,
-                    quantity = it.quantity
-                )
-            } as ArrayList
+            val products = mProductAdapter.getAllItemSelected()
             if (products.size == 0) {
-                requireContext().showMessageDialog(message = "Vui lòng chọn sản phẩm") { }
+                requireContext().showMessageDialog(message = "Vui lòng chọn sản phẩm") {}
                 return@setSingleClick
             } else {
                 if (_orderResponse != null) {
                     viewModel.updateOrder(
                         taskId = taskId.toString(),
                         orderId = _orderResponse!!.id.toString(),
-                        request = AddProductToOrderRequest(
-                            products = products
-                        )
+                        listProducts = products
                     )
                 } else {
                     viewModel.addOrder(
-                        taskId = taskId.toString(), request = AddProductToOrderRequest(
-                            products = products
-                        )
+                        taskId = taskId.toString(), listProducts = products
                     )
                 }
 
@@ -200,8 +189,40 @@ class AddOrderFragment : BaseFragment<FragmentAddOrderBinding, AddOrderViewModel
                     }
                     Status.SUCCESS -> {
                         pb_loading.visibility = View.GONE
-                        it.data?.let {
-                            requireContext().showMessageDialog(message = "Tạo đơn hàng thành công") { }
+                        it.data?.let { mOrder ->
+                            requireContext().showMessageDialog(message = "Tạo đơn hàng thành công") {
+                                findNavController().previousBackStackEntry?.savedStateHandle?.set(
+                                    "isNew",
+                                    true
+                                )
+                                findNavController().navigateUp()
+                            }
+                        }
+                    }
+                    Status.ERROR -> {
+                        pb_loading.visibility = View.GONE
+                    }
+                }
+            }
+        })
+
+
+        viewModel.updateOrder.observe(viewLifecycleOwner, Observer {
+            it.getContentIfNotHandled()?.let {
+                when (it.status) {
+                    Status.LOADING -> {
+                        pb_loading.visibility = View.VISIBLE
+                    }
+                    Status.SUCCESS -> {
+                        pb_loading.visibility = View.GONE
+                        it.data?.let { mOrder ->
+                            requireContext().showMessageDialog(message = "Cập nhật đơn hàng thành công") {
+                                findNavController().previousBackStackEntry?.savedStateHandle?.set(
+                                    "isNew",
+                                    true
+                                )
+                                findNavController().navigateUp()
+                            }
                         }
                     }
                     Status.ERROR -> {

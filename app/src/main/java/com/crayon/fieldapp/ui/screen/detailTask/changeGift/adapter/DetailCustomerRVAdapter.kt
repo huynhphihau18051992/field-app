@@ -280,7 +280,8 @@ class DetailCustomerRVAdapter constructor(
                         price = mProduct.price,
                         quantity = mProduct.quantity
                     )
-                } as ArrayList<ProjectProductRequest>
+                } as ArrayList<ProjectProductRequest>,
+                quantity = mPromotionSelect.quantity
             )
         } as ArrayList
         return AddPromotionGiftRequest(promotions = mPromotions, gifts = mGifts)

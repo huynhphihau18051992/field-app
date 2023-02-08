@@ -135,6 +135,7 @@ class ReportCompetitorRVAdapter constructor(
     }
 
     fun addItems(list: ArrayList<ReportOpponentResponse>) {
+        list.sortByDescending { it.createdAt }
         items.clear()
         items.addAll(list)
         notifyDataSetChanged()

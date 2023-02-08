@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.JobResponse
 import com.crayon.fieldapp.data.remote.response.OrderResponse
-import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.databinding.FragmentReportSalesBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.screen.detailTask.reportSales.adapter.OrderRVAdapter
@@ -29,12 +28,14 @@ class ReportSalesFragment :
     private lateinit var mOrderAdatper: OrderRVAdapter
     private lateinit var taskId: String
     private var jobJson: String? = null
+    private var updateOrderJson: String? = null
     private var jobResponse: JobResponse? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         taskId = requireArguments().getString("taskId").toString()
         jobJson = requireArguments().getString("job").toString()
+        updateOrderJson = requireArguments().getString("updateOrder").toString()
         jobJson?.let {
             jobResponse = Gson().fromJson(it, JobResponse::class.java)
         }
@@ -56,7 +57,8 @@ class ReportSalesFragment :
                     "order" to order
                 )
             )
-        }, isEdit = true)
+        }, isEdit = true
+        )
 
         viewModel.fetchOrders(taskId)
     }
@@ -122,6 +124,16 @@ class ReportSalesFragment :
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Boolean>("isNew")
+            ?.observe(viewLifecycleOwner, Observer { isNew ->
+                if (isNew) {
+                    taskId?.let {
+                        viewModel.fetchOrders(it)
+                    }
+                }
+            })
+
         rv_customer.apply {
             layoutManager = LinearLayoutManager(context)
             this.adapter = mOrderAdatper
@@ -137,9 +149,12 @@ class ReportSalesFragment :
                         pb_loading.visibility = View.GONE
                         it.data?.let {
                             if (it.size == 0) {
+                                txt_num_customer?.visibility = View.GONE
                                 rl_empty.visibility = View.VISIBLE
                                 rv_customer.visibility = View.GONE
                             } else {
+                                txt_num_customer?.visibility = View.VISIBLE
+                                txt_num_customer?.text = it.size.toString() + " đơn hàng"
                                 rl_empty.visibility = View.GONE
                                 rv_customer.visibility = View.VISIBLE
                                 mOrderAdatper.addAll(it as ArrayList<OrderResponse>)

@@ -130,7 +130,11 @@ class ChangeGiftFragment :
             PopupMenu.showPopupMenuDashboard(requireView(), object : MenuCallback {
                 override fun onImport() {
                     findNavController().navigate(
-                        R.id.action_changeGiftFragment_to_importGiftFragment
+                        R.id.action_changeGiftFragment_to_importGiftFragment,
+                        bundleOf(
+                            "taskId" to taskId,
+                            "projectId" to jobResponse?.project?.id.toString()
+                        )
                     )
                 }
 
@@ -146,6 +150,15 @@ class ChangeGiftFragment :
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Boolean>("isNew")
+            ?.observe(viewLifecycleOwner, Observer { isNew ->
+                if (isNew) {
+                    taskId?.let {
+                        viewModel.getDetailTask(it)
+                    }
+                }
+            })
 
         rv_customer.apply {
             layoutManager = LinearLayoutManager(context)

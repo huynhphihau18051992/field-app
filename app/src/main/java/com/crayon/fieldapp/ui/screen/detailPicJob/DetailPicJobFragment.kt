@@ -123,7 +123,7 @@ class DetailPicJobFragment : BaseFragment<FragmentDetailPicJobBinding, DetailPic
                 bundel
             )
         } else if (type == TaskType.REPORT_COMPITETOR.value) {
-            val bundel = bundleOf("taskId" to taskId)
+            val bundel = bundleOf("taskId" to taskId,  "job" to jobResponse.toString())
             findNavController().navigate(
                 R.id.action_detailPicJobFragment_to_reportCompetitorFragment,
                 bundel

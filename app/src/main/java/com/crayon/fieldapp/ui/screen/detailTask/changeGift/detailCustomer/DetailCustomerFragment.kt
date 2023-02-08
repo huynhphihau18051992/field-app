@@ -185,7 +185,9 @@ class DetailCustomerFragment :
                     Status.SUCCESS -> {
                         pb_loading.visibility = View.GONE
                         it.data?.let {
-                            requireContext().showMessageDialog(message = it.message)
+                            requireContext().showMessageDialog(message = it.message){
+                                findNavController().navigateUp()
+                            }
                         }
                     }
                     Status.ERROR -> {

@@ -85,6 +85,7 @@ class CustomerRVAdapter constructor(
     }
 
     fun addAll(list: ArrayList<CustomerResponse>) {
+        list.sortByDescending { it.createdAt }
         items.clear()
         items.addAll(list)
         notifyDataSetChanged()

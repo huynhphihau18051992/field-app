@@ -31,11 +31,13 @@ import com.crayon.fieldapp.ui.screen.detailProject.member.MemberProjectViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.base.DetailTaskViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.detailCustomer.DetailCustomerViewModel
+import com.crayon.fieldapp.ui.screen.detailTask.changeGift.receiveGift.ReceiveGiftViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step1.InputNameViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step2.VerifyOtpStep2ViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step3.InputBillViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step4.SelectPromotionViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.reportCompetitor.ReportCompetitorViewModel
+import com.crayon.fieldapp.ui.screen.detailTask.reportCompetitor.addReport.AddReportViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.reportSales.ReportSalesViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.reportSales.addOrder.AddOrderViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.reportSales.detailOrder.DetailOrderViewModel
@@ -189,5 +191,7 @@ val viewModelModule = module {
     viewModel { HistoryTrackingAtStoreViewModel(get(), get()) }
     viewModel { DetailOrderViewModel() }
     viewModel { AddOrderViewModel(get(), get()) }
+    viewModel { AddReportViewModel(get()) }
     viewModel { DetailCustomerViewModel(get(), get(), get()) }
+    viewModel { ReceiveGiftViewModel(get()) }
 }

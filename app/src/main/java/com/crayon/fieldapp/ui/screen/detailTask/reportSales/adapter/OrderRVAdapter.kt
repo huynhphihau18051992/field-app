@@ -35,22 +35,20 @@ class OrderRVAdapter constructor(
             onItemClickListener(data)
         }
         holder.txtLoadMore.visibility = View.GONE
-        data.products?.let {
-            if (it.size == 1) {
+        data.products?.let { mListProduct ->
+            if (mListProduct.size <= 1) {
                 holder.txtLoadMore.visibility = View.GONE
             } else {
-                if (items.size > 0) {
-                    holder.txtLoadMore.visibility = View.VISIBLE
-                    holder.txtLoadMore.text = "Xem thêm " + (items.size - 1) + " sản phẩm"
-                }
+                holder.txtLoadMore.visibility = View.VISIBLE
+                holder.txtLoadMore.text = "Xem thêm " + (mListProduct.size - 1) + " sản phẩm"
             }
 
-            if (it.size >= 1) {
-                holder.txtProductName.text = it.get(0).name
-                holder.txtQuality.text = it.get(0).quantity.toString()
+            if (mListProduct.size >= 1) {
+                holder.txtProductName.text = mListProduct.get(0).name
+                holder.txtQuality.text = mListProduct.get(0).quantity.toString()
             }
 
-            val total = it.sumBy { it.price * it.quantity }
+            val total = mListProduct.sumBy { it.price * it.quantity }
             val format = DecimalFormat("#,###")
             format.maximumFractionDigits = 0
             holder.txtTotal.text = format.format(total) + "vnd"
@@ -93,9 +91,9 @@ class OrderRVAdapter constructor(
     }
 
     fun addAll(mOrders: ArrayList<OrderResponse>) {
+        mOrders.sortByDescending { it.createdAt }
         items.clear()
         items.addAll(mOrders)
         notifyDataSetChanged()
     }
-
 }

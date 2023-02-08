@@ -1,14 +1,11 @@
-package com.crayon.fieldapp.ui.screen.detailTask.changeGift.step3
+package com.crayon.fieldapp.ui.screen.detailTask.reportCompetitor.addReport
 
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.viewModelScope
-import com.crayon.fieldapp.AppDispatchers
-import com.crayon.fieldapp.data.remote.request.ProjectProductRequest
-import com.crayon.fieldapp.data.remote.response.CustomerBillResponse
-import com.crayon.fieldapp.data.remote.response.DetailCustomerBillResponse
 import com.crayon.fieldapp.data.remote.response.GetMessageResponse
+import com.crayon.fieldapp.data.remote.response.GetReportOpponentListResponse
 import com.crayon.fieldapp.data.remote.response.TaskResponse
 import com.crayon.fieldapp.data.repository.TaskRepository
 import com.crayon.fieldapp.ui.base.BaseViewModel
@@ -22,20 +19,18 @@ import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 
-class InputBillViewModel(
-    private val taskRepository: TaskRepository,
-    private val dispatchers: AppDispatchers
-) : BaseViewModel() {
+class AddReportViewModel(val taskRepository: TaskRepository) : BaseViewModel() {
 
-    private val _createCustomerBill = MediatorLiveData<Event<Resource<DetailCustomerBillResponse>>>()
-    val createCustomerBill: LiveData<Event<Resource<DetailCustomerBillResponse>>> get() = _createCustomerBill
-    fun createCustomerBill(
+    private val _createActivity = MediatorLiveData<Event<Resource<GetMessageResponse>>>()
+    val createActivity: LiveData<Event<Resource<GetMessageResponse>>> get() = _createActivity
+    fun createActivity(
         taskId: String,
-        customerId: String,
-        codeBill: String,
+        brandName: String,
+        mReportType: String,
+        note: String,
         listUri: ArrayList<String>
     ) = viewModelScope.launch {
-        _createCustomerBill.postValue(Event(Resource.loading(null)))
+        _createActivity.postValue(Event(Resource.loading(null)))
         try {
             when (listUri.size) {
                 1 -> {
@@ -50,13 +45,14 @@ class InputBillViewModel(
                             requestBody1
                         )
 
-                    val result = taskRepository.createCustomerBill(
+                    val result = taskRepository.uploadReportOpponents(
                         taskId = taskId,
-                        customerId = customerId,
-                        code_bill = codeBill,
+                        brandName = brandName,
+                        type = mReportType,
+                        note = note,
                         file1 = fileToUpload1
                     )
-                    _createCustomerBill.postValue(Event(Resource.success(result.data)))
+                    _createActivity.postValue(Event(Resource.success(result.data)))
                 }
                 2 -> {
                     val type1 = getTypeMedia(listUri.get(0))
@@ -79,14 +75,16 @@ class InputBillViewModel(
                             File(listUri.get(1)).getName(),
                             requestBody2
                         )
-                    val result = taskRepository.createCustomerBill(
+
+                    val result = taskRepository.uploadReportOpponents(
                         taskId = taskId,
-                        customerId = customerId,
-                        code_bill = codeBill,
+                        brandName = brandName,
+                        type = mReportType,
+                        note = note,
                         file1 = fileToUpload1,
                         file2 = fileToUpload2
                     )
-                    _createCustomerBill.postValue(Event(Resource.success(result.data)))
+                    _createActivity.postValue(Event(Resource.success(result.data)))
                 }
                 else -> {
                     val type1 = getTypeMedia(listUri.get(0))
@@ -119,19 +117,20 @@ class InputBillViewModel(
                             File(listUri.get(2)).getName(),
                             requestBody3
                         )
-                    val result = taskRepository.createCustomerBill(
+                    val result = taskRepository.uploadReportOpponents(
                         taskId = taskId,
-                        customerId = customerId,
-                        code_bill = codeBill,
+                        brandName = brandName,
+                        type = mReportType,
+                        note = note,
                         file1 = fileToUpload1,
                         file2 = fileToUpload2,
                         file3 = fileToUpload3
                     )
-                    _createCustomerBill.postValue(Event(Resource.success(result.data)))
+                    _createActivity.postValue(Event(Resource.success(result.data)))
                 }
             }
         } catch (e: Exception) {
-            _createCustomerBill.postValue(Event(Resource.error(Throwable(), null)))
+            _createActivity.postValue(Event(Resource.error(Throwable(), null)))
             onLoadFail(e)
         }
     }
@@ -163,5 +162,4 @@ class InputBillViewModel(
             return "image/jpeg"
         }
     }
-
 }

@@ -34,12 +34,12 @@ class DetailCustomerViewModel(
                 promotion.data?.data?.let { mPromotions ->
                     mPromotions.forEach { mProjectPromotion ->
                         val selectPromotionsId =
-                            bill.data?.promotions?.map { it.project_promotion_package.toString() }
+                            bill.data?.promotions?.map { it.id.toString() }
                         selectPromotionsId?.let { mId ->
                             if (mId.contains(mProjectPromotion.id)) {
                                 val selectPromotion =
                                     bill.data.promotions.firstOrNull { mSelectPromotion ->
-                                        mSelectPromotion.project_promotion_package.equals(
+                                        mSelectPromotion.id.equals(
                                             mProjectPromotion.id
                                         )
                                     }
@@ -57,18 +57,21 @@ class DetailCustomerViewModel(
                 }
                 gifts.data?.data?.let { mGift ->
                     mGift.forEach { mProjectGift ->
-                        val selectGiftIds = bill.data?.gifts?.map { it.id.toString() }
+                        val selectGiftIds = bill.data?.gifts?.map { mGift ->
+                            mGift.id.toString()
+                        }
                         selectGiftIds?.let { mIds ->
-                            val selectGifts = bill.data.gifts.firstOrNull { mSelectGift ->
-                                mSelectGift.id.equals(mProjectGift.id)
-                            }
-                            mProjectGift.isSelect = true
-                            selectGifts?.let { mGiftReponse ->
-                                mProjectGift.selectQuantity = mGiftReponse.quantity
+                            if (mIds.contains(mProjectGift.id.toString())) {
+                                val selectGifts = bill.data.gifts.firstOrNull { mSelectGift ->
+                                    mSelectGift.id.toString().equals(mProjectGift.id.toString())
+                                }
+                                mProjectGift.isSelect = true
+                                selectGifts?.let { mSelectItem ->
+                                    mProjectGift.selectQuantity = mSelectItem.quantity
+                                }
                             }
                         }
                     }
-
                 }
                 _customerBill.postValue(
                     Event(

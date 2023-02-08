@@ -354,7 +354,7 @@ class TaskRepositoryImpl(
         customerId: String,
         code_bill: String,
         file1: MultipartBody.Part
-    ): Resource<CustomerBillResponse> {
+    ): Resource<DetailCustomerBillResponse> {
         val result = apiService.createCustomerBill(
             taskId = taskId,
             customerId = customerId,
@@ -370,7 +370,7 @@ class TaskRepositoryImpl(
         code_bill: String,
         file1: MultipartBody.Part,
         file2: MultipartBody.Part
-    ): Resource<CustomerBillResponse> {
+    ): Resource<DetailCustomerBillResponse> {
         val result = apiService.createCustomerBill(
             taskId = taskId,
             customerId = customerId,
@@ -388,7 +388,7 @@ class TaskRepositoryImpl(
         file1: MultipartBody.Part,
         file2: MultipartBody.Part,
         file3: MultipartBody.Part
-    ): Resource<CustomerBillResponse> {
+    ): Resource<DetailCustomerBillResponse> {
         val result = apiService.createCustomerBill(
             taskId = taskId,
             customerId = customerId,
@@ -581,5 +581,16 @@ class TaskRepositoryImpl(
             taskId = taskId
         )
         return Resource.success(result.data)
+    }
+
+    override suspend fun receiveGifts(
+        taskId: String,
+        request: ReceiveGiftRequest
+    ): Resource<GetMessageResponse> {
+        val result = apiService.receiveGifts(
+            taskId = taskId,
+            request = request
+        )
+        return Resource.success(result)
     }
 }

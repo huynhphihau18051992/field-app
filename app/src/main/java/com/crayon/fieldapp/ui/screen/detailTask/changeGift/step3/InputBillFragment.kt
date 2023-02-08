@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.CustomerBillResponse
+import com.crayon.fieldapp.data.remote.response.DetailCustomerBillResponse
 import com.crayon.fieldapp.data.remote.response.TaskResponse
 import com.crayon.fieldapp.databinding.FragmentInputNameBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
@@ -32,7 +33,7 @@ import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
-class InputBillFragment(val onNextClick: (CustomerBillResponse) -> Unit = {}) :
+class InputBillFragment(val onNextClick: (DetailCustomerBillResponse) -> Unit = {}) :
     BaseFragment<FragmentInputNameBinding, InputBillViewModel>() {
 
     override val layoutId: Int = R.layout.fragment_input_bill

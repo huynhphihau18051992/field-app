@@ -97,6 +97,10 @@ class AddCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewM
             "taskId" to _taskId
         )
         _selectPromotionFragment = SelectPromotionFragment({
+            findNavController().previousBackStackEntry?.savedStateHandle?.set(
+                "isNew",
+                true
+            )
             findNavController().navigateUp()
         })
         _selectPromotionFragment?.arguments = bundleOf(

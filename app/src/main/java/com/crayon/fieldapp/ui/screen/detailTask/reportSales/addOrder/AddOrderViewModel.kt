@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.crayon.fieldapp.data.local.dao.ProductDao
 import com.crayon.fieldapp.data.model.ProductEntity
 import com.crayon.fieldapp.data.remote.request.AddProductToOrderRequest
-import com.crayon.fieldapp.data.remote.response.GetMessageResponse
+import com.crayon.fieldapp.data.remote.request.ProjectProductRequest
 import com.crayon.fieldapp.data.remote.response.OrderResponse
 import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.data.repository.TaskRepository
@@ -15,6 +15,7 @@ import com.crayon.fieldapp.utils.Event
 import com.crayon.fieldapp.utils.Resource
 import kotlinx.coroutines.launch
 import java.util.*
+import kotlin.collections.ArrayList
 
 class AddOrderViewModel(val taskRepository: TaskRepository, val productDao: ProductDao) :
     BaseViewModel() {
@@ -22,12 +23,23 @@ class AddOrderViewModel(val taskRepository: TaskRepository, val productDao: Prod
     private val _addOrder =
         MediatorLiveData<Event<Resource<OrderResponse>>>()
     val addOrder: LiveData<Event<Resource<OrderResponse>>> get() = _addOrder
-    fun addOrder(taskId: String, request: AddProductToOrderRequest) {
+    fun addOrder(taskId: String, listProducts: ArrayList<ProductResponse>) {
         viewModelScope.launch {
             _addOrder.postValue(Event(Resource.loading(null)))
             try {
+                val request = AddProductToOrderRequest(products = listProducts.map { mProduct ->
+                    ProjectProductRequest(
+                        productId = mProduct.id.toString(),
+                        price = mProduct.price,
+                        quantity = mProduct.quantity
+                    )
+                } as ArrayList)
                 val result = taskRepository.createOrder(taskId, request = request)
-                _addOrder.postValue(Event(Resource.success(result.data)))
+                val order = OrderResponse(
+                    id = result.data!!.id.toString(),
+                    products = listProducts
+                )
+                _addOrder.postValue(Event(Resource.success(order)))
             } catch (e: Exception) {
                 _addOrder.postValue(Event(Resource.error(Throwable(), null)))
                 onLoadFail(e)
@@ -36,15 +48,40 @@ class AddOrderViewModel(val taskRepository: TaskRepository, val productDao: Prod
     }
 
     private val _updateOrder =
-        MediatorLiveData<Event<Resource<GetMessageResponse>>>()
-    val updateOrder: LiveData<Event<Resource<GetMessageResponse>>> get() = _updateOrder
-    fun updateOrder(taskId: String, orderId: String, request: AddProductToOrderRequest) {
+        MediatorLiveData<Event<Resource<OrderResponse>>>()
+    val updateOrder: LiveData<Event<Resource<OrderResponse>>> get() = _updateOrder
+    fun updateOrder(taskId: String, orderId: String, listProducts: ArrayList<ProductResponse>) {
         viewModelScope.launch {
             _updateOrder.postValue(Event(Resource.loading(null)))
             try {
-                val result =
-                    taskRepository.updateOrder(taskId, orderId = orderId, request = request)
-                _updateOrder.postValue(Event(Resource.success(result.data)))
+                val request = AddProductToOrderRequest(products = listProducts.map { mProduct ->
+                    ProjectProductRequest(
+                        productId = mProduct.id.toString(),
+                        price = mProduct.price,
+                        quantity = mProduct.quantity
+                    )
+                } as ArrayList)
+                taskRepository.updateOrder(
+                    taskId,
+                    orderId = orderId,
+                    request = request
+                )
+                val products = ArrayList<ProductResponse>()
+                listProducts.forEach { mProduct ->
+                    products.add(
+                        ProductResponse(
+                            id = mProduct.id,
+                            price = mProduct.price,
+                            quantity = mProduct.quantity,
+                            name = mProduct.name
+                        )
+                    )
+                }
+                val order = OrderResponse(
+                    id = orderId,
+                    products = products
+                )
+                _updateOrder.postValue(Event(Resource.success(order)))
             } catch (e: Exception) {
                 _updateOrder.postValue(Event(Resource.error(Throwable(), null)))
                 onLoadFail(e)

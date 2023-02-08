@@ -10,6 +10,7 @@ class AddPromotionGiftRequest(
 
 class AddPromotionRequest(
     @field:SerializedName("promotion_package_id") var promotionId: String,
+    @field:SerializedName("quantity") var quantity: Int,
     @field:SerializedName("products") var products: ArrayList<ProjectProductRequest>
 )
 

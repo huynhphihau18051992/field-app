@@ -5,6 +5,9 @@ import com.crayon.fieldapp.data.remote.request.*
 import com.crayon.fieldapp.data.remote.response.*
 import com.crayon.fieldapp.utils.Resource
 import okhttp3.MultipartBody
+import retrofit2.http.Body
+import retrofit2.http.POST
+import retrofit2.http.Path
 
 
 interface TaskRepository {
@@ -147,7 +150,7 @@ interface TaskRepository {
         customerId: String,
         code_bill: String,
         file1: MultipartBody.Part
-    ): Resource<CustomerBillResponse>
+    ): Resource<DetailCustomerBillResponse>
 
     suspend fun createCustomerBill(
         taskId: String,
@@ -155,7 +158,7 @@ interface TaskRepository {
         code_bill: String,
         file1: MultipartBody.Part,
         file2: MultipartBody.Part
-    ): Resource<CustomerBillResponse>
+    ): Resource<DetailCustomerBillResponse>
 
     suspend fun createCustomerBill(
         taskId: String,
@@ -164,7 +167,7 @@ interface TaskRepository {
         file1: MultipartBody.Part,
         file2: MultipartBody.Part,
         file3: MultipartBody.Part
-    ): Resource<CustomerBillResponse>
+    ): Resource<DetailCustomerBillResponse>
 
     suspend fun addProductToBill(
         taskId: String,
@@ -255,5 +258,11 @@ interface TaskRepository {
     suspend fun getListOrder(
         taskId: String
     ): Resource<List<OrderResponse>>
+
+
+    suspend fun receiveGifts(
+        taskId: String,
+        request: ReceiveGiftRequest
+    ): Resource<GetMessageResponse>
 
 }

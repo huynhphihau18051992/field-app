@@ -148,15 +148,16 @@ class SelectPromotionRVAdapter constructor(
                 giftId = it.id.toString()
             )
         } as ArrayList<ProjectGiftRequest>
-        var mPromotions = promotion.filter { it.isSelect == true }.map {
-            AddPromotionRequest(promotionId = it.id.toString(),
-                products = it.products.map {
+        var mPromotions = promotion.filter { it.isSelect == true }.map { mPromotion ->
+            AddPromotionRequest(promotionId = mPromotion.id.toString(),
+                products = mPromotion.products.map { mProduct ->
                     ProjectProductRequest(
-                        productId = it.id.toString(),
-                        price = it.price,
-                        quantity = it.quantity
+                        productId = mProduct.id.toString(),
+                        price = mProduct.price,
+                        quantity = mProduct.quantity
                     )
-                } as ArrayList<ProjectProductRequest>
+                } as ArrayList<ProjectProductRequest>,
+                quantity = mPromotion.quantity
             )
         } as ArrayList
 

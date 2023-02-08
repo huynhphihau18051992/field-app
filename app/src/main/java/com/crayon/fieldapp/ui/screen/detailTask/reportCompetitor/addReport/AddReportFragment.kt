@@ -28,10 +28,10 @@ import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
-class AddReportFragment : BaseFragment<FragmentAddReportBinding, ReportCompetitorViewModel>() {
+class AddReportFragment : BaseFragment<FragmentAddReportBinding, AddReportViewModel>() {
 
     override val layoutId: Int = R.layout.fragment_add_report
-    override val viewModel: ReportCompetitorViewModel by viewModel()
+    override val viewModel: AddReportViewModel by viewModel()
 
     private var taskId: String? = null
     private lateinit var updateImageAdapter: UploadMediaAdapter
@@ -136,7 +136,13 @@ class AddReportFragment : BaseFragment<FragmentAddReportBinding, ReportCompetito
                         pb_loading.visibility = View.GONE
                         it.data?.let {
                             context?.showMessageDialog(message = it.message) {
-                                findNavController().navigateUp()
+                                requireContext().showMessageDialog(message = "Tạo hoạt động thành công") {
+                                    findNavController().previousBackStackEntry?.savedStateHandle?.set(
+                                        "isNew",
+                                        true
+                                    )
+                                    findNavController().navigateUp()
+                                }
                             }
                         }
                     }
