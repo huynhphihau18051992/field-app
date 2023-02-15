@@ -33,6 +33,7 @@ class ListProjectFragment(private var mode: Int? = FROM_PROJECT_MODE) :
 
     lateinit var agencyId: String
     private var status: String? = null
+    private var taskType: Int = 0
 
     override val viewModel: ListProjectViewModel by viewModel()
 
@@ -40,6 +41,7 @@ class ListProjectFragment(private var mode: Int? = FROM_PROJECT_MODE) :
         super.onCreate(savedInstanceState)
         agencyId = requireArguments().get("agencyId").toString()
         status = requireArguments().get("status").toString()
+        taskType = requireArguments().getInt("type")
     }
 
 
@@ -73,7 +75,7 @@ class ListProjectFragment(private var mode: Int? = FROM_PROJECT_MODE) :
                     }
                 }
             })
-            getProjects(agencyId, status)
+            getProjects(agencyId, status, taskType)
         }
         setUpSearchStateFlow()
     }
@@ -151,7 +153,7 @@ class ListProjectFragment(private var mode: Int? = FROM_PROJECT_MODE) :
                     withContext(Dispatchers.Main) {
                         sv_project.clearFocus()
                         if (result.isNullOrBlank()) {
-                            viewModel.getProjects(agencyId, status)
+                            viewModel.getProjects(agencyId, status, type = taskType)
                         } else {
                             val key_search = MStringUtils.removeAccents(result)
                             viewModel.searchProjects(

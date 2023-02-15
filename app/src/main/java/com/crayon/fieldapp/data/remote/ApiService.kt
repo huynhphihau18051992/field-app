@@ -282,7 +282,8 @@ interface ApiService {
         @Query("take") take: Int? = null,
         @Query("start_time") startTime: String? = null,
         @Query("end_time") endTime: String? = null,
-        @Query("status") status: String? = null
+        @Query("status") status: String? = null,
+        @Query("type") taskType: Int = 13
     ): GetProjectListResponse
 
     @GET("/management/v1/projects")

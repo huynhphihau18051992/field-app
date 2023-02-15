@@ -16,6 +16,7 @@ data class TaskResponse(
     @SerializedName("opponents") val opponents: ArrayList<ReportOpponentResponse>? = null,
     @SerializedName("products") val products: ArrayList<Product> = arrayListOf(),
     @SerializedName("project_customer_bills") val customerBills: ArrayList<CustomerBillInfo> = arrayListOf(),
+    @SerializedName("orders") val orders: ArrayList<OrderResponse> = arrayListOf(),
     @SerializedName("customer_feedback") val feedbacks: ArrayList<Feedback> = arrayListOf(),
     @SerializedName("pic") val pic: MemberResponse? = null,
     @SerializedName("project") val project: ProjectInfo? = null

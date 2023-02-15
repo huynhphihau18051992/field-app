@@ -56,7 +56,7 @@ class ListChangeGiftAtStoreFragment() :
         projectName = requireArguments().get("projectName").toString()
 
         mAdapter = ManageChangeGiftRVAdapter(
-            arrayListOf("Vinmart Vũng Tàu", "Coop Bình Phước", "Big C Quận 9"),
+            arrayListOf(),
             requireContext(),
             itemClickListener = {
                 val taskJSon = Gson().toJson(it)
@@ -97,16 +97,14 @@ class ListChangeGiftAtStoreFragment() :
                             val filter = listTasks.filter { task ->
                                 listRoleIds.contains(task.store!!.id.toString())
                             }
-                            // TODO
-//                            mAdapter?.clearAll()
-//                            mAdapter?.addAll(filter)
+                            mAdapter?.clearAll()
+                            mAdapter?.addAll(filter)
                             txt_filter_role_status?.visibility = View.VISIBLE
                         }
                     } else {
                         mTasks?.let {
-                            // TODO
-//                            mAdapter?.clearAll()
-//                            mAdapter?.addAll(it)
+                            mAdapter?.clearAll()
+                            mAdapter?.addAll(it)
                             txt_filter_role_status?.visibility = View.GONE
                         }
                     }
@@ -115,22 +113,20 @@ class ListChangeGiftAtStoreFragment() :
                     filterStoreIds.clear()
                     mAdapter?.clearAll()
                     mTasks?.let {
-                        // TODO
-//                        mAdapter?.addAll(it)
+                        mAdapter?.addAll(it)
                         txt_filter_role_status?.visibility = View.GONE
                     }
                 })
                 val bundle = Bundle()
                 val listRole = ArrayList<ItemStore>()
                 it.forEach {
-                    // TODO
-//                    listRole.add(
-//                        ItemStore(
-//                            id = it.store!!.id.toString(),
-//                            name = it.store!!.name.toString(),
-//                            isSelect = filterStoreIds.contains(it.store!!.id.toString()) ?: false
-//                        )
-//                    )
+                    listRole.add(
+                        ItemStore(
+                            id = it.store!!.id.toString(),
+                            name = it.store!!.name.toString(),
+                            isSelect = filterStoreIds.contains(it.store!!.id.toString()) ?: false
+                        )
+                    )
                 }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     bundle.putSerializable(
@@ -189,9 +185,8 @@ class ListChangeGiftAtStoreFragment() :
                             pb_loading.visibility = View.GONE
                             rv_members.visibility = View.VISIBLE
                             it.data?.let { mListTasks ->
-                                // TODO
-//                                mTasks?.addAll(mListTasks)
-//                                mAdapter?.addAll(mListTasks)
+                                mTasks?.addAll(mListTasks)
+                                mAdapter?.addAll(mListTasks)
                             }
                         }
                         Status.ERROR -> {

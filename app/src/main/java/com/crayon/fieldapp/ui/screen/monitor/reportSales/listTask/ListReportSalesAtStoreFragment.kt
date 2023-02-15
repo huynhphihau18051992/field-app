@@ -56,7 +56,7 @@ class ListReportSalesAtStoreFragment() :
         projectName = requireArguments().get("projectName").toString()
 
         mAdapter = ManageReportSalesRVAdapter(
-            arrayListOf("Vinmart Đông Hội", "AEON MAXVALU", "CO.OPMART SCA VICTORIA", "Vinmart Vũng Tàu"),
+            arrayListOf(),
             requireContext(),
             itemClickListener = {
                 val taskJSon = Gson().toJson(it)
@@ -97,16 +97,14 @@ class ListReportSalesAtStoreFragment() :
                             val filter = listTasks.filter { task ->
                                 listRoleIds.contains(task.store!!.id.toString())
                             }
-                            // TODO
-//                            mAdapter?.clearAll()
-//                            mAdapter?.addAll(filter)
+                            mAdapter?.clearAll()
+                            mAdapter?.addAll(filter)
                             txt_filter_role_status?.visibility = View.VISIBLE
                         }
                     } else {
                         mTasks?.let {
-                            // TODO
-//                            mAdapter?.clearAll()
-//                            mAdapter?.addAll(it)
+                            mAdapter?.clearAll()
+                            mAdapter?.addAll(it)
                             txt_filter_role_status?.visibility = View.GONE
                         }
                     }
@@ -115,8 +113,7 @@ class ListReportSalesAtStoreFragment() :
                     filterStoreIds.clear()
                     mAdapter?.clearAll()
                     mTasks?.let {
-                        // TODO
-//                        mAdapter?.addAll(it)
+                        mAdapter?.addAll(it)
                         txt_filter_role_status?.visibility = View.GONE
                     }
                 })
@@ -188,9 +185,8 @@ class ListReportSalesAtStoreFragment() :
                             pb_loading.visibility = View.GONE
                             rv_members.visibility = View.VISIBLE
                             it.data?.let { mListTasks ->
-                                // TODO
-//                                mTasks?.addAll(mListTasks)
-//                                mAdapter?.addAll(mListTasks)
+                                mTasks?.addAll(mListTasks)
+                                mAdapter?.addAll(mListTasks)
                             }
                         }
                         Status.ERROR -> {
@@ -237,7 +233,7 @@ class ListReportSalesAtStoreFragment() :
         viewModel.getTaskByProject(
             agencyId = agencyId.toString(),
             projectId = projectId.toString(),
-            taskType = TaskType.UPDATE_STATUS.value,
+            taskType = TaskType.REPORT_SALES.value,
             date = calendar,
             skip = skip,
             take = 20

@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.model.ProjectStatus
+import com.crayon.fieldapp.data.remote.response.TaskType
 import com.crayon.fieldapp.databinding.FragmentManageReportTrackingBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.base.adapter.BaseVPAdapter
@@ -56,10 +57,22 @@ class ManageChangeGiftFragment :
         val processingFragment =
             ListProjectFragment(ListProjectFragment.FROM_REPORT_CHANGE_GIFT_MODE)
         val closedFragment = ListProjectFragment(ListProjectFragment.FROM_REPORT_CHANGE_GIFT_MODE)
-        val pendingBundle = bundleOf("agencyId" to agencyId, "status" to ProjectStatus.Pending)
+        val pendingBundle = bundleOf(
+            "agencyId" to agencyId,
+            "status" to ProjectStatus.Pending,
+            "type" to TaskType.CHANGE_GIFT.value
+        )
         val processingBundle =
-            bundleOf("agencyId" to agencyId, "status" to ProjectStatus.Processing)
-        val closedBundle = bundleOf("agencyId" to agencyId, "status" to ProjectStatus.Closed)
+            bundleOf(
+                "agencyId" to agencyId,
+                "status" to ProjectStatus.Processing,
+                "type" to TaskType.CHANGE_GIFT.value
+            )
+        val closedBundle = bundleOf(
+            "agencyId" to agencyId,
+            "status" to ProjectStatus.Closed,
+            "type" to TaskType.CHANGE_GIFT.value
+        )
         pendingFragment.arguments = pendingBundle
         processingFragment.arguments = processingBundle
         closedFragment.arguments = closedBundle

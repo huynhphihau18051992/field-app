@@ -29,11 +29,11 @@ class ListProjectViewModel(
     val projects: LiveData<Resource<List<ProjectResponse>>> get() = _projects
     private var projectsSource: LiveData<Resource<List<ProjectResponse>>> = MutableLiveData()
 
-    fun getProjects(agencyId: String, status: String? = null) =
+    fun getProjects(agencyId: String, status: String? = null, type: Int) =
         viewModelScope.launch(dispatchers.main) {
             _projects.removeSource(projectsSource)
             withContext(dispatchers.io) {
-                projectsSource = projectRepository.getProjectsByStatus(agencyId, status)
+                projectsSource = projectRepository.getProjectsByStatus(agencyId, status, type)
             }
             _projects.addSource(projectsSource) {
                 _projects.value = it

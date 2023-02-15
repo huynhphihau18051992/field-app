@@ -1,6 +1,5 @@
 package com.crayon.fieldapp.data.repository.impl
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.crayon.fieldapp.data.local.dao.ProjectDao
 import com.crayon.fieldapp.data.model.Project
@@ -10,10 +9,6 @@ import com.crayon.fieldapp.data.remote.response.*
 import com.crayon.fieldapp.data.repository.ProjectRepository
 import com.crayon.fieldapp.utils.NetworkBoundNoCacheResource
 import com.crayon.fieldapp.utils.Resource
-import com.google.gson.JsonArray
-import org.json.JSONArray
-import org.json.JSONObject
-import java.net.URLEncoder
 
 
 class ProjectRepositoryImpl(
@@ -32,11 +27,16 @@ class ProjectRepositoryImpl(
 
     override suspend fun getProjectsByStatus(
         agencyId: String,
-        status: String?
+        status: String?,
+        type: Int
     ): LiveData<Resource<List<ProjectResponse>>> {
         return object : NetworkBoundNoCacheResource<List<ProjectResponse>>() {
             override suspend fun createCallAsync(): List<ProjectResponse> {
-                return apiService.getProjects(agencyId = agencyId, status = status).data!!
+                return apiService.getProjects(
+                    agencyId = agencyId,
+                    status = status,
+                    taskType = type
+                ).data!!
             }
 
         }.build().asLiveData()
@@ -49,7 +49,11 @@ class ProjectRepositoryImpl(
     ): LiveData<Resource<List<ProjectResponse>>> {
         return object : NetworkBoundNoCacheResource<List<ProjectResponse>>() {
             override suspend fun createCallAsync(): List<ProjectResponse> {
-                return apiService.searchProjectsByName(agencyId = agencyId, project = name, status = status).data!!
+                return apiService.searchProjectsByName(
+                    agencyId = agencyId,
+                    project = name,
+                    status = status
+                ).data!!
             }
 
         }.build().asLiveData()

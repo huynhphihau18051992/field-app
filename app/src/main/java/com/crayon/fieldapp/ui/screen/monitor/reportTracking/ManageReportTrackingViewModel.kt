@@ -55,14 +55,15 @@ class ManageReportTrackingViewModel(
     val projects: LiveData<Event<Resource<List<ProjectResponse>>>> get() = _projects
     private var projectsSource: LiveData<Resource<List<ProjectResponse>>> =
         MutableLiveData()
-    fun getManagementProject(agencyId: String) =
+    fun getManagementProject(agencyId: String, taskType: Int) =
         viewModelScope.launch(dispatchers.main) {
             _projects.removeSource(projectsSource)
             withContext(dispatchers.io) {
                 projectsSource =
                     projectRepository.getProjectsByStatus(
                         agencyId = agencyId,
-                        status = ProjectStatus.PROCESSING.value
+                        status = ProjectStatus.PROCESSING.value,
+                        type = taskType
                     )
             }
             _projects.addSource(projectsSource) {

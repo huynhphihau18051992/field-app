@@ -12,7 +12,8 @@ interface ProjectRepository {
 
     suspend fun getProjectsByStatus(
         agencyId: String,
-        status: String? = null
+        status: String? = null,
+        type: Int
     ): LiveData<Resource<List<ProjectResponse>>>
 
     suspend fun searchProjectsByName(
