@@ -17,7 +17,8 @@ class GiftRVAdapter constructor(
     val context: Context,
     val onItemSelectedListener: (gift: GiftResponse, isChecked: Boolean) -> Unit = { i: GiftResponse, b: Boolean -> },
     val onItemPlusListener: (gift: GiftResponse) -> Unit = { },
-    val onItemMinusListener: (gift: GiftResponse) -> Unit = { }
+    val onItemMinusListener: (gift: GiftResponse) -> Unit = { },
+    val isEdit: Boolean = true
 ) :
     RecyclerView.Adapter<GiftRVAdapter.GroupViewHolder>() {
 
@@ -35,11 +36,25 @@ class GiftRVAdapter constructor(
         holder.cvGift.isChecked = data.isSelect
         holder.txtNumber.text = data.selectQuantity.toString()
         if (data.isSelect) {
-            holder.imgPlus.isEnabled = true
-            holder.imgMinus.isEnabled = true
-            holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_select_add))
-            holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_select_minus))
+            if (isEdit) {
+                holder.imgPlus.isEnabled = true
+                holder.imgMinus.isEnabled = true
+                holder.cvGift.isEnabled = true
+                holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_select_add))
+                holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_select_minus))
+            } else {
+                holder.imgPlus.isEnabled = false
+                holder.imgMinus.isEnabled = false
+                holder.cvGift.isEnabled = false
+                holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_gray_add))
+                holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_minus))
+            }
         } else {
+            if (isEdit) {
+                holder.cvGift.isEnabled = true
+            } else {
+                holder.cvGift.isEnabled = false
+            }
             holder.imgPlus.isEnabled = false
             holder.imgMinus.isEnabled = false
             holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_gray_add))

@@ -71,7 +71,7 @@ class ManageChangeGiftRVAdapter constructor(
 
         init {
             txtStore = itemView.findViewById(R.id.txt_store)
-            txtPicName = itemView.findViewById(R.id.txt_customer_num)
+            txtPicName = itemView.findViewById(R.id.txt_name)
             txtShift = itemView.findViewById(R.id.txt_shift)
             txtAM = itemView.findViewById(R.id.txt_am)
             txtPicRole = itemView.findViewById(R.id.txt_type)

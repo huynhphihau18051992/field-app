@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.model.ProjectStatus
+import com.crayon.fieldapp.data.remote.response.TaskType
 import com.crayon.fieldapp.databinding.FragmentManageAttendanceBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.base.adapter.BaseVPAdapter
@@ -60,10 +61,22 @@ class ManageAttendanceFragment :
         processingFragment = ListProjectFragment(ListProjectFragment.FROM_ATTENDANCE_MODE)
         closedFragment = ListProjectFragment(ListProjectFragment.FROM_ATTENDANCE_MODE)
 
-        val pendingBundle = bundleOf("agencyId" to agencyId, "status" to ProjectStatus.Pending)
+        val pendingBundle = bundleOf(
+            "agencyId" to agencyId,
+            "status" to ProjectStatus.Pending,
+            "type" to TaskType.TIME_KEEPING.value
+        )
         val processingBundle =
-            bundleOf("agencyId" to agencyId, "status" to ProjectStatus.Processing)
-        val closedBundle = bundleOf("agencyId" to agencyId, "status" to ProjectStatus.Closed)
+            bundleOf(
+                "agencyId" to agencyId,
+                "status" to ProjectStatus.Processing,
+                "type" to TaskType.TIME_KEEPING.value
+            )
+        val closedBundle = bundleOf(
+            "agencyId" to agencyId,
+            "status" to ProjectStatus.Closed,
+            "type" to TaskType.TIME_KEEPING.value
+        )
         pendingFragment?.arguments = pendingBundle
         processingFragment?.arguments = processingBundle
         closedFragment?.arguments = closedBundle

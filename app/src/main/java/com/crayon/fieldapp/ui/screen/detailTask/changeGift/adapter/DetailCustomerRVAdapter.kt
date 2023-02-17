@@ -32,7 +32,8 @@ class DetailCustomerRVAdapter constructor(
     val onItemPromotionSelectClick: (item: PromotionResponse, isChecked: Boolean) -> Unit = { promotion: PromotionResponse, b: Boolean -> },
     val onItemPromotionAddClick: (item: PromotionResponse) -> Unit = { },
     val onItemPromotionEditClick: (item: PromotionResponse) -> Unit = { },
-    val onItemPromotionMinusClick: (item: PromotionResponse) -> Unit = { }
+    val onItemPromotionMinusClick: (item: PromotionResponse) -> Unit = { },
+    val isEdit: Boolean = true
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -99,7 +100,8 @@ class DetailCustomerRVAdapter constructor(
                     onItemPromotionMinusClick(mPromotion)
                 }, onItemEditListener = { mPromotion ->
                     onItemPromotionEditClick(mPromotion)
-                })
+                }, isEdit = isEdit
+            )
             holder.rvPromotion.apply {
                 layoutManager = LinearLayoutManager(context)
                 this.adapter = mPromotionRVAdapter
@@ -126,7 +128,8 @@ class DetailCustomerRVAdapter constructor(
                     onItemPlusListener = { mGift ->
                         var quantity = mGift.selectQuantity + 1
                         mGiftRVAdapter.onUpdateQuantity(mGift, quantity)
-                    })
+                    }, isEdit = isEdit
+                )
             (holder as GiftItemViewHolder).rvGift.apply {
                 layoutManager = LinearLayoutManager(context)
                 this.adapter = mGiftRVAdapter

@@ -27,7 +27,7 @@ class DetailCustomerFragment :
     override val layoutId: Int = R.layout.fragment_detail_customer
     override val viewModel: DetailCustomerViewModel by viewModel()
     private lateinit var mDetailRVAdapter: DetailCustomerRVAdapter
-    private var isEdit: Boolean? = true
+    private var isEdit: Boolean = true
     private var _projectId: String? = null
     private var _taskId: String? = null
     private var _customerInfo: CustomerResponse? = null
@@ -38,7 +38,6 @@ class DetailCustomerFragment :
         isEdit = requireArguments()?.getBoolean("isEdit")
         _projectId = requireArguments()?.getString("projectId")
         _taskId = requireArguments()?.getString("taskId")
-        _projectId = requireArguments()?.getString("projectId")
 
         val _customerJson = requireArguments()?.getString("customerInfo")
         _customerJson?.let {
@@ -108,7 +107,8 @@ class DetailCustomerFragment :
                         })
                     dialog.show(requireActivity().supportFragmentManager, dialog.tag)
                 }
-            }
+            },
+            isEdit = isEdit
         )
 
         _taskId?.let {
@@ -128,6 +128,12 @@ class DetailCustomerFragment :
 
         imb_ic_back?.setSingleClick {
             findNavController().navigateUp()
+        }
+
+        if (isEdit) {
+            imb_ic_filter?.visibility = View.VISIBLE
+        } else {
+            imb_ic_filter?.visibility = View.INVISIBLE
         }
 
         imb_ic_filter?.setSingleClick {
@@ -185,7 +191,7 @@ class DetailCustomerFragment :
                     Status.SUCCESS -> {
                         pb_loading.visibility = View.GONE
                         it.data?.let {
-                            requireContext().showMessageDialog(message = it.message){
+                            requireContext().showMessageDialog(message = it.message) {
                                 findNavController().navigateUp()
                             }
                         }

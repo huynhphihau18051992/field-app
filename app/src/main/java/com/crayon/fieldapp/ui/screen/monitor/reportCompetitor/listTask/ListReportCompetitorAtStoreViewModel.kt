@@ -24,13 +24,7 @@ class ListReportCompetitorAtStoreViewModel(
 
     private val _tasks = MediatorLiveData<Event<Resource<List<TaskResponse>>>>()
     val listTask: LiveData<Event<Resource<List<TaskResponse>>>> get() = _tasks
-    fun getTaskByProject(
-        date: Calendar,
-        agencyId: String,
-        projectId: String,
-        skip: Int,
-        take: Int
-    ) =
+    fun getTaskByProject(date: Calendar, agencyId: String, projectId: String, taskType: Int, skip: Int, take: Int = 20) =
         viewModelScope.launch(dispatchers.main) {
             _tasks.postValue(Event(Resource.loading(null)))
             withContext(dispatchers.io) {
@@ -50,9 +44,10 @@ class ListReportCompetitorAtStoreViewModel(
                         23,
                         59
                     )!!.toTimeString("yyyy-MM-dd") + "T23:59:00.000Z"
-                    val result = taskRepository.getManagementReportOpponents(
+                    val result = taskRepository.getManagementTasksByFilter(
                         agencyId = agencyId,
                         projectId = projectId,
+                        type = taskType,
                         startTime = start_date,
                         endTime = end_date,
                         skip = skip,

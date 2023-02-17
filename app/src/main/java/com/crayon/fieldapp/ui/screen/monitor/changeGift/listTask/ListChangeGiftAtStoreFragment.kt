@@ -67,7 +67,7 @@ class ListChangeGiftAtStoreFragment() :
         viewModel.getTaskByProject(
             agencyId = agencyId.toString(),
             projectId = projectId.toString(),
-            taskType = TaskType.UPDATE_STATUS.value,
+            taskType = TaskType.CHANGE_GIFT.value,
             date = calendar,
             skip = 0,
             take = 20
@@ -217,7 +217,7 @@ class ListChangeGiftAtStoreFragment() :
         viewModel.getTaskByProject(
             agencyId = agencyId.toString(),
             projectId = projectId.toString(),
-            taskType = TaskType.UPDATE_STATUS.value,
+            taskType = TaskType.CHANGE_GIFT.value,
             date = calendar,
             skip = skip,
             take = 20
@@ -236,7 +236,7 @@ class ListChangeGiftAtStoreFragment() :
         viewModel.getTaskByProject(
             agencyId = agencyId.toString(),
             projectId = projectId.toString(),
-            taskType = TaskType.UPDATE_STATUS.value,
+            taskType = TaskType.CHANGE_GIFT.value,
             date = calendar,
             skip = skip,
             take = 20

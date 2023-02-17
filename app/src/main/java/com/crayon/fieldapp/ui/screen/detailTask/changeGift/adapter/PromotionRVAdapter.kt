@@ -20,7 +20,8 @@ class PromotionRVAdapter constructor(
     val onItemPlusListener: (promotion: PromotionResponse) -> Unit = { },
     val onItemMinusListener: (promotion: PromotionResponse) -> Unit = { },
     val onItemDeleteListener: (promotion: PromotionResponse) -> Unit = {},
-    val onItemEditListener: (promotion: PromotionResponse) -> Unit = {}
+    val onItemEditListener: (promotion: PromotionResponse) -> Unit = {},
+    val isEdit: Boolean = true
 ) :
     RecyclerView.Adapter<PromotionRVAdapter.GroupViewHolder>() {
     private lateinit var mPromotionAdapter: SubProductRVAdapter
@@ -50,11 +51,25 @@ class PromotionRVAdapter constructor(
         holder.cbProduct.isChecked = data.isSelect
         holder.txtNumber.text = data.quantity.toString()
         if (data.isSelect) {
-            holder.imgPlus.isEnabled = true
-            holder.imgMinus.isEnabled = true
-            holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_select_add))
-            holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_select_minus))
+            if (isEdit) {
+                holder.imgPlus.isEnabled = true
+                holder.imgMinus.isEnabled = true
+                holder.cbProduct.isEnabled = true
+                holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_select_add))
+                holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_select_minus))
+            } else {
+                holder.imgPlus.isEnabled = false
+                holder.imgMinus.isEnabled = false
+                holder.cbProduct.isEnabled = false
+                holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_gray_add))
+                holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_minus))
+            }
         } else {
+            if (isEdit) {
+                holder.cbProduct.isEnabled = true
+            } else {
+                holder.cbProduct.isEnabled = false
+            }
             holder.imgPlus.isEnabled = false
             holder.imgMinus.isEnabled = false
             holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_gray_add))
@@ -76,6 +91,13 @@ class PromotionRVAdapter constructor(
         }, {
 
         })
+        if (isEdit) {
+            holder.btnDelete.visibility = View.VISIBLE
+            holder.btnEdit.visibility = View.VISIBLE
+        } else {
+            holder.btnDelete.visibility = View.GONE
+            holder.btnEdit.visibility = View.GONE
+        }
         holder.btnEdit?.setSingleClick {
             onItemEditListener(data)
         }

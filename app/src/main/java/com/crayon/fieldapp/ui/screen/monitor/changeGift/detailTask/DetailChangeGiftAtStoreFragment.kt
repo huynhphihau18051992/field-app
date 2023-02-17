@@ -41,7 +41,8 @@ class DetailChangeGiftAtStoreFragment() :
                         createdAt = it.createdAt,
                         updatedAt = it.updatedAt,
                         name = it.customer?.name,
-                        mobileNumber = it.customer?.mobileNumber
+                        mobileNumber = it.customer?.mobileNumber,
+                        customerBill = it.id.toString()
                     )
                 }
             )

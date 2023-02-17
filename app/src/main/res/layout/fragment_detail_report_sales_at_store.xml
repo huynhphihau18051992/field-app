@@ -101,7 +101,6 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/inter_semi_bold"
                     android:maxLines="1"
-                    android:text="Nước tương Tam Thái Tử"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_17ssp" />
 
@@ -113,7 +112,6 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/inter_regular"
                     android:maxLines="1"
-                    android:text="Vivo City, Quận 7, Tp HCM"
                     android:textColor="#8E8E8E"
                     android:textSize="@dimen/_12ssp" />
 
@@ -138,7 +136,6 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/inter_regular"
                         android:maxLines="1"
-                        android:text="09:00 - 12:00 Thứ 7 ngày 27/6/2022 "
                         android:textColor="#323231"
                         android:textSize="@dimen/_12ssp" />
                 </RelativeLayout>
@@ -164,7 +161,6 @@
                         android:layout_marginLeft="@dimen/_7sdp"
                         android:layout_toRightOf="@id/ic_status"
                         android:fontFamily="@font/inter_regular"
-                        android:text="Đang chạy"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_10ssp" />
                 </RelativeLayout>
@@ -186,7 +182,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:fontFamily="@font/inter_semi_bold"
-                    android:text="6 đơn hàng"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_12ssp" />
 
@@ -198,37 +193,49 @@
                 android:background="@color/colorGrayDisable" />
 
             <RelativeLayout
-                android:id="@+id/rl_empty"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:padding="@dimen/_14sdp"
-                android:visibility="visible">
+                android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/ic_empty"
-                    android:layout_width="@dimen/_150sdp"
-                    android:layout_height="@dimen/_150sdp"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_empty" />
-
-                <TextView
+                <RelativeLayout
+                    android:id="@+id/rl_empty"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/ic_empty"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Chưa có đơn hàng nào \n thêm đơn hàng ngay"
-                    android:textAlignment="center"
-                    android:textColor="#8E8E8E"
-                    android:textSize="@dimen/_12ssp" />
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:padding="@dimen/_14sdp"
+                    android:visibility="visible">
 
+                    <ImageView
+                        android:id="@+id/ic_empty"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="@dimen/_150sdp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/ic_empty" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ic_empty"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Chưa có đơn hàng nào \n thêm đơn hàng ngay"
+                        android:textAlignment="center"
+                        android:textColor="#8E8E8E"
+                        android:textSize="@dimen/_12ssp" />
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="visible" />
+
+                <ProgressBar
+                    android:id="@+id/pb_loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
             </RelativeLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_order"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone" />
 
         </LinearLayout>
 

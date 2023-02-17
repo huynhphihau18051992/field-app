@@ -67,7 +67,7 @@ class ListReportSalesAtStoreFragment() :
         viewModel.getTaskByProject(
             agencyId = agencyId.toString(),
             projectId = projectId.toString(),
-            taskType = TaskType.UPDATE_STATUS.value,
+            taskType = TaskType.REPORT_SALES.value,
             date = calendar,
             skip = 0,
             take = 20
@@ -214,7 +214,7 @@ class ListReportSalesAtStoreFragment() :
         viewModel.getTaskByProject(
             agencyId = agencyId.toString(),
             projectId = projectId.toString(),
-            taskType = TaskType.UPDATE_STATUS.value,
+            taskType = TaskType.REPORT_SALES.value,
             date = calendar,
             skip = skip,
             take = 20

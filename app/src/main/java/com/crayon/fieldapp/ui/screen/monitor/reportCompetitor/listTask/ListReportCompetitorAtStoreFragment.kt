@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.TaskResponse
+import com.crayon.fieldapp.data.remote.response.TaskType
 import com.crayon.fieldapp.databinding.FragmentListReportCompetitorAtStoreBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.base.dialog.filterStore.FilterStoreDialog
@@ -69,8 +70,10 @@ class ListReportCompetitorAtStoreFragment() :
             projectId = projectId.toString(),
             date = calendar,
             skip = 0,
-            take = 20
+            take = 20,
+            taskType = TaskType.REPORT_COMPITETOR.value
         )
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -218,7 +221,8 @@ class ListReportCompetitorAtStoreFragment() :
             projectId = projectId.toString(),
             date = calendar,
             skip = skip,
-            take = 20
+            take = 20,
+            taskType = TaskType.REPORT_COMPITETOR.value
         )
     }
 
@@ -236,7 +240,8 @@ class ListReportCompetitorAtStoreFragment() :
             projectId = projectId.toString(),
             date = calendar,
             skip = skip,
-            take = 20
+            take = 20,
+            taskType = TaskType.REPORT_COMPITETOR.value
         )
     }
 }

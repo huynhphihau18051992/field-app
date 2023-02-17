@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.model.ProjectStatus
+import com.crayon.fieldapp.data.remote.response.TaskType
 import com.crayon.fieldapp.databinding.FragmentManageReportCompetitorBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.base.adapter.BaseVPAdapter
@@ -53,12 +54,25 @@ class ManageReportCompetitorFragment :
 
     private fun setupViewPager() {
         val pendingFragment = ListProjectFragment(ListProjectFragment.FROM_REPORT_COMPETITOR_MODE)
-        val processingFragment = ListProjectFragment(ListProjectFragment.FROM_REPORT_COMPETITOR_MODE)
+        val processingFragment =
+            ListProjectFragment(ListProjectFragment.FROM_REPORT_COMPETITOR_MODE)
         val closedFragment = ListProjectFragment(ListProjectFragment.FROM_REPORT_COMPETITOR_MODE)
-        val pendingBundle = bundleOf("agencyId" to agencyId, "status" to ProjectStatus.Pending)
+        val pendingBundle = bundleOf(
+            "agencyId" to agencyId,
+            "status" to ProjectStatus.Pending,
+            "type" to TaskType.REPORT_COMPITETOR.value
+        )
         val processingBundle =
-            bundleOf("agencyId" to agencyId, "status" to ProjectStatus.Processing)
-        val closedBundle = bundleOf("agencyId" to agencyId, "status" to ProjectStatus.Closed)
+            bundleOf(
+                "agencyId" to agencyId,
+                "status" to ProjectStatus.Processing,
+                "type" to TaskType.REPORT_COMPITETOR.value
+            )
+        val closedBundle = bundleOf(
+            "agencyId" to agencyId,
+            "status" to ProjectStatus.Closed,
+            "type" to TaskType.REPORT_COMPITETOR.value
+        )
         pendingFragment.arguments = pendingBundle
         processingFragment.arguments = processingBundle
         closedFragment.arguments = closedBundle

@@ -54,9 +54,7 @@ class ManageReportSalesRVAdapter constructor(
         data.orders?.let { mOrders ->
             holder.txtNumberOrder.text = mOrders.size.toString()
             if (mOrders.size != 0) {
-                val totalPrice = mOrders.sumBy { mItem ->
-                    mItem.products.sumBy { it.quantity * it.price }
-                }
+                val totalPrice = mOrders.sumBy { it.total }
                 val format = DecimalFormat("#,###")
                 format.maximumFractionDigits = 0
                 holder.txtTotal.text = format.format(totalPrice) + "vnd"
