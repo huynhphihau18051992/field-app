@@ -71,7 +71,9 @@ class DetailReportCompetitorAtStoreFragment() :
             }
             it.opponents?.let {
                 mCompetitorAdapter?.addItems(it)
+                txt_num_customer?.text = it.size.toString() + " hoạt động"
             }
+
         }
     }
 }

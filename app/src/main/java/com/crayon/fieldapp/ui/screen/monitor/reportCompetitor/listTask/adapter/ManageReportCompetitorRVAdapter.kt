@@ -46,6 +46,9 @@ class ManageReportCompetitorRVAdapter constructor(
                 opponents.createdAt?.let {
                     holder.txtDate.text = formatHourAndDate(it)
                 }
+                opponents.note?.let {
+                    holder.txtNote.text = it.toString()
+                }
                 opponents.medias?.let { media ->
                     val options: RequestOptions = RequestOptions()
                         .centerCrop()
@@ -97,7 +100,7 @@ class ManageReportCompetitorRVAdapter constructor(
         var txtName: TextView
         var txtType: TextView
         var txtDate: TextView
-        var txtGift: TextView
+        var txtNote: TextView
         var cvImage1: ImageView
         var cvImage2: ImageView
         var cvImage3: ImageView
@@ -107,7 +110,7 @@ class ManageReportCompetitorRVAdapter constructor(
             txtName = itemView.findViewById(R.id.txt_name)
             txtType = itemView.findViewById(R.id.txt_type)
             txtDate = itemView.findViewById(R.id.txt_date)
-            txtGift = itemView.findViewById(R.id.txt_note)
+            txtNote = itemView.findViewById(R.id.txt_note)
             cvImage1 = itemView.findViewById(R.id.img_1)
             cvImage2 = itemView.findViewById(R.id.img_2)
             cvImage3 = itemView.findViewById(R.id.img_3)

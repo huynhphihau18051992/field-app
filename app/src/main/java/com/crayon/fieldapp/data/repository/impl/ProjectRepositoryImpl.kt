@@ -19,7 +19,7 @@ class ProjectRepositoryImpl(
     override suspend fun getProjects(agencyId: String): LiveData<Resource<List<ProjectResponse>>> {
         return object : NetworkBoundNoCacheResource<List<ProjectResponse>>() {
             override suspend fun createCallAsync(): List<ProjectResponse> {
-                return apiService.getProjects(agencyId).data!!
+                return apiService.getProjects(agencyId, taskType = 0).data!!
             }
 
         }.build().asLiveData()

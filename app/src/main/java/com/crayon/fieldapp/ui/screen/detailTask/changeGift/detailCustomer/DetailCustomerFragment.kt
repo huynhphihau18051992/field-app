@@ -12,8 +12,13 @@ import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.data.remote.response.PromotionResponse
 import com.crayon.fieldapp.databinding.FragmentDetailCustomerBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
+import com.crayon.fieldapp.ui.screen.detailAttachment.image.ImageAdapter
+import com.crayon.fieldapp.ui.screen.detailTask.adapter.MediaAdapter
+import com.crayon.fieldapp.ui.screen.detailTask.adapter.MediaData
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.adapter.DetailCustomerRVAdapter
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.selectProduct.SelectProductBottomSheetFragment
+import com.crayon.fieldapp.ui.screen.imageDialog.ImageDialog
+import com.crayon.fieldapp.ui.screen.videoDialog.VideoDialog
 import com.crayon.fieldapp.utils.Status
 import com.crayon.fieldapp.utils.setSingleClick
 import com.crayon.fieldapp.utils.showMessageDialog
@@ -108,7 +113,22 @@ class DetailCustomerFragment :
                     dialog.show(requireActivity().supportFragmentManager, dialog.tag)
                 }
             },
-            isEdit = isEdit
+            isEdit = isEdit,
+            onItemImageClick = {
+                if (it.type == ImageAdapter.MEDIA_IMAGE) {
+                    val imageDialog = ImageDialog(
+                        title = it.note ?: "",
+                        imageUrl = it.uri
+                    )
+                    imageDialog.show(childFragmentManager, imageDialog.tag)
+                } else {
+                    val videoDialog = VideoDialog(
+                        title = it.note ?: "",
+                        imageUrl = it.uri
+                    )
+                    videoDialog.show(childFragmentManager, videoDialog.tag)
+                }
+            }
         )
 
         _taskId?.let {
@@ -168,7 +188,16 @@ class DetailCustomerFragment :
                         pb_loading.visibility = View.GONE
                         it.data?.let {
                             mDetailRVAdapter.addData(
-                                mImages = it.first.attachments?.map { it.thumbnailUrl.toString() } as ArrayList<String>,
+                                mImages = it.first.attachments?.map {
+                                    MediaData(
+                                        id = it.id.toString(),
+                                        thumbnail = it.thumbnailUrl.toString(),
+                                        uri = it.imageUrl.toString(),
+                                        note = it.note.toString(),
+                                        isCompleted = false,
+                                        type = MediaAdapter.MEDIA_IMAGE
+                                    )
+                                } as ArrayList<MediaData>,
                                 mPromotions = it.second.data as ArrayList<PromotionResponse>,
                                 mGift = it.third.data as ArrayList<GiftResponse>,
                                 mCodeBill = it.first.code_bill.toString()

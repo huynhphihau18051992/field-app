@@ -11,8 +11,10 @@ import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.JobResponse
 import com.crayon.fieldapp.databinding.FragmentReportCompetitorBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
+import com.crayon.fieldapp.ui.screen.detailTask.adapter.MediaAdapter
 import com.crayon.fieldapp.ui.screen.detailTask.reportCompetitor.adapter.ReportCompetitorRVAdapter
 import com.crayon.fieldapp.ui.screen.imageDialog.ImageDialog
+import com.crayon.fieldapp.ui.screen.videoDialog.VideoDialog
 import com.crayon.fieldapp.utils.Status
 import com.crayon.fieldapp.utils.formatStartEndFullDate
 import com.crayon.fieldapp.utils.setSingleClick
@@ -43,11 +45,20 @@ class ReportCompetitorFragment :
                 // Item
             }, {
                 // Image
-                val imageDialog = ImageDialog(
-                    title = "",
-                    imageUrl = ""
-                )
-                imageDialog.show(childFragmentManager, imageDialog.tag)
+                if (it.type == MediaAdapter.MEDIA_IMAGE) {
+                    val imageDialog = ImageDialog(
+                        title = "",
+                        imageUrl = it.uri
+                    )
+                    imageDialog.show(childFragmentManager, imageDialog.tag)
+                } else {
+                    val imageDialog = VideoDialog(
+                        title = "",
+                        imageUrl = it.uri
+                    )
+                    imageDialog.show(childFragmentManager, imageDialog.tag)
+                }
+
             })
 
         viewModel.getReportOpponents(taskId)

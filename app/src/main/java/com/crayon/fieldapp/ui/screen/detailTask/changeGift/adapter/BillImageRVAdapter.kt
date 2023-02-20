@@ -8,11 +8,14 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.request.RequestOptions
 import com.crayon.fieldapp.R
+import com.crayon.fieldapp.ui.screen.detailTask.adapter.MediaData
 import com.crayon.fieldapp.utils.GlideApp
+import com.crayon.fieldapp.utils.setSingleClick
 
 class BillImageRVAdapter constructor(
-    val items: ArrayList<String>,
-    val context: Context
+    val items: ArrayList<MediaData>,
+    val context: Context,
+    val onItemImageClick: (item: MediaData) -> Unit = { }
 ) :
     RecyclerView.Adapter<BillImageRVAdapter.GroupViewHolder>() {
 
@@ -30,8 +33,12 @@ class BillImageRVAdapter constructor(
             .placeholder(R.drawable.ic_photo)
             .error(R.drawable.ic_photo)
             .override(300, 300)
-        GlideApp.with(context).load(data).apply(options)
+        GlideApp.with(context).load(data.thumbnail).apply(options)
             .into(holder.imgBill)
+
+        holder.imgBill.setSingleClick {
+            onItemImageClick(data)
+        }
     }
 
     inner class GroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -2,7 +2,6 @@ package com.crayon.fieldapp.ui.screen.monitor.reportSales.detailTask
 
 import android.os.Bundle
 import android.view.View
-import androidx.constraintlayout.solver.GoalRow
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
@@ -66,6 +65,7 @@ class DetailReportSalesAtStoreFragment() :
             }
             it.store?.let {
                 txt_address?.text = it.address.toString()
+                tv_title?.text = it.name.toString()
             }
             it.job?.let {
                 if (it.startTime != null && it.endTime != null) {
@@ -114,13 +114,12 @@ class DetailReportSalesAtStoreFragment() :
                     Status.SUCCESS -> {
                         pb_loading.visibility = View.GONE
                         it.data?.let {
+                            txt_num_customer?.text = it.size.toString() + " đơn hàng"
                             if (it.size == 0) {
-                                txt_num_customer?.visibility = View.GONE
                                 rl_empty.visibility = View.VISIBLE
                                 rv_order.visibility = View.GONE
                             } else {
-                                txt_num_customer?.visibility = View.VISIBLE
-                                txt_num_customer?.text = it.size.toString() + " đơn hàng"
+
                                 rl_empty.visibility = View.GONE
                                 rv_order.visibility = View.VISIBLE
                                 mOrderAdapter?.addAll(it as ArrayList<OrderResponse>)

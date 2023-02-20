@@ -16,13 +16,14 @@ import com.crayon.fieldapp.data.remote.request.ProjectProductRequest
 import com.crayon.fieldapp.data.remote.response.GiftResponse
 import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.data.remote.response.PromotionResponse
+import com.crayon.fieldapp.ui.screen.detailTask.adapter.MediaData
 import kotlinx.android.synthetic.main.item_bill_info.view.*
 import kotlinx.android.synthetic.main.item_customer_info.view.*
 import kotlinx.android.synthetic.main.item_gift_info.view.*
 import kotlinx.android.synthetic.main.item_promotion_info.view.*
 
 class DetailCustomerRVAdapter constructor(
-    val images: ArrayList<String>,
+    val images: ArrayList<MediaData>,
     val promotions: ArrayList<PromotionResponse>,
     val gifts: ArrayList<GiftResponse>,
     var customerName: String,
@@ -33,6 +34,7 @@ class DetailCustomerRVAdapter constructor(
     val onItemPromotionAddClick: (item: PromotionResponse) -> Unit = { },
     val onItemPromotionEditClick: (item: PromotionResponse) -> Unit = { },
     val onItemPromotionMinusClick: (item: PromotionResponse) -> Unit = { },
+    val onItemImageClick: (item: MediaData) -> Unit = { },
     val isEdit: Boolean = true
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -75,7 +77,9 @@ class DetailCustomerRVAdapter constructor(
 
         } else if (holder is BillItemViewHolder) {
             holder.txtBill.text = codeBill
-            mImageAdapter = BillImageRVAdapter(images, context)
+            mImageAdapter = BillImageRVAdapter(images, context, onItemImageClick = {
+                onItemImageClick(it)
+            })
             holder.rvImages.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 this.adapter = mImageAdapter
@@ -181,7 +185,7 @@ class DetailCustomerRVAdapter constructor(
     }
 
     fun addData(
-        mImages: ArrayList<String>,
+        mImages: ArrayList<MediaData>,
         mPromotions: ArrayList<PromotionResponse>,
         mGift: ArrayList<GiftResponse>,
         mCodeBill: String

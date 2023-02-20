@@ -22,13 +22,7 @@ import com.crayon.fieldapp.utils.setSingleClick
 import com.crayon.fieldapp.utils.showMessageDialog
 import com.example.moviedb.utils.getQueryTextChangeStateFlow
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.dialog_filter_store.*
 import kotlinx.android.synthetic.main.fragment_add_order.*
-import kotlinx.android.synthetic.main.fragment_add_order.cb_select_all
-import kotlinx.android.synthetic.main.fragment_add_order.imb_ic_back
-import kotlinx.android.synthetic.main.fragment_add_order.imb_ic_filter
-import kotlinx.android.synthetic.main.fragment_add_order.tv_title
-import kotlinx.android.synthetic.main.fragment_detail_report_sales_at_store.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.collect

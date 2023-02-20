@@ -79,6 +79,7 @@ class DetailChangeGiftAtStoreFragment() :
             }
             it.store?.let {
                 txt_address?.text = it.address.toString()
+                tv_title?.text = it.name.toString()
             }
 
             it.job?.let { job ->
@@ -118,6 +119,8 @@ class DetailChangeGiftAtStoreFragment() :
                     )
                 }
             }
+
+            txt_num_customer?.text = listCustomer.size.toString() + " khách hàng"
         }
 
 

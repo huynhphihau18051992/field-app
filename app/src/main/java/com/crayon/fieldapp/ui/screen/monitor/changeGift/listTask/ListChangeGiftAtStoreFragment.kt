@@ -42,6 +42,7 @@ class ListChangeGiftAtStoreFragment() :
     var mTasks: ArrayList<TaskResponse> = arrayListOf()
     private var mAdapter: ManageChangeGiftRVAdapter? = null
     private var mIsLoading = false
+    private var mIsEndList = false
     private var pastVisiblesItems = 0
     private var visibleItemCount: Int = 0
     private var totalItemCount: Int = 0
@@ -157,7 +158,7 @@ class ListChangeGiftAtStoreFragment() :
                         totalItemCount = (layoutManager as LinearLayoutManager).getItemCount()
                         pastVisiblesItems =
                             (layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
-                        if (!mIsLoading) {
+                        if (!mIsLoading && !mIsEndList) {
                             if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
                                 mIsLoading = true
                                 skip = skip + 20
@@ -182,11 +183,17 @@ class ListChangeGiftAtStoreFragment() :
                         }
                         Status.SUCCESS -> {
                             mIsLoading = false
+
                             pb_loading.visibility = View.GONE
                             rv_members.visibility = View.VISIBLE
                             it.data?.let { mListTasks ->
-                                mTasks?.addAll(mListTasks)
-                                mAdapter?.addAll(mListTasks)
+                                if (mListTasks.size != 0) {
+                                    mIsEndList = false
+                                    mTasks?.addAll(mListTasks)
+                                    mAdapter?.addAll(mListTasks)
+                                } else {
+                                    mIsEndList = true
+                                }
                             }
                         }
                         Status.ERROR -> {
@@ -214,6 +221,7 @@ class ListChangeGiftAtStoreFragment() :
         mTasks.clear()
         mAdapter?.clearAll()
         skip = 0
+        mIsEndList = false
         viewModel.getTaskByProject(
             agencyId = agencyId.toString(),
             projectId = projectId.toString(),

@@ -43,6 +43,8 @@ class ListReportCompetitorAtStoreFragment() :
     var mTasks: ArrayList<TaskResponse> = arrayListOf()
     private var mAdapter: ManageReportCompetitorRVAdapter? = null
     private var mIsLoading = false
+    private var mIsEndList = false
+
     private var pastVisiblesItems = 0
     private var visibleItemCount: Int = 0
     private var totalItemCount: Int = 0
@@ -159,7 +161,7 @@ class ListReportCompetitorAtStoreFragment() :
                         totalItemCount = (layoutManager as LinearLayoutManager).getItemCount()
                         pastVisiblesItems =
                             (layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
-                        if (!mIsLoading) {
+                        if (!mIsLoading && !mIsEndList) {
                             if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
                                 mIsLoading = true
                                 skip = skip + 20
@@ -187,8 +189,13 @@ class ListReportCompetitorAtStoreFragment() :
                             pb_loading.visibility = View.GONE
                             rv_members.visibility = View.VISIBLE
                             it.data?.let { mListTasks ->
-                                mTasks?.addAll(mListTasks)
-                                mAdapter?.addAll(mListTasks)
+                                if (mListTasks.size != 0) {
+                                    mIsEndList = true
+                                    mTasks?.addAll(mListTasks)
+                                    mAdapter?.addAll(mListTasks)
+                                } else {
+                                    mIsEndList = false
+                                }
                             }
                         }
                         Status.ERROR -> {
@@ -216,6 +223,7 @@ class ListReportCompetitorAtStoreFragment() :
         mTasks.clear()
         mAdapter?.clearAll()
         skip = 0
+        mIsEndList = false
         viewModel.getTaskByProject(
             agencyId = agencyId.toString(),
             projectId = projectId.toString(),

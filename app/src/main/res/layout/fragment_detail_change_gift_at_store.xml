@@ -35,8 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_medium"
-                    android:gravity="center"
-                    android:text="Ten cua hang" />
+                    android:gravity="center" />
 
             </LinearLayout>
 
@@ -101,7 +100,6 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/inter_semi_bold"
                     android:maxLines="1"
-                    android:text="Nước tương Tam Thái Tử"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_17ssp" />
 
@@ -113,7 +111,6 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/inter_regular"
                     android:maxLines="1"
-                    android:text="Vivo City, Quận 7, Tp HCM"
                     android:textColor="#8E8E8E"
                     android:textSize="@dimen/_12ssp" />
 
@@ -138,7 +135,6 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/inter_regular"
                         android:maxLines="1"
-                        android:text="09:00 - 12:00 Thứ 7 ngày 27/6/2022 "
                         android:textColor="#323231"
                         android:textSize="@dimen/_12ssp" />
                 </RelativeLayout>
@@ -164,7 +160,6 @@
                         android:layout_marginLeft="@dimen/_7sdp"
                         android:layout_toRightOf="@id/ic_status"
                         android:fontFamily="@font/inter_regular"
-                        android:text="Đang chạy"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_10ssp" />
                 </RelativeLayout>
@@ -186,7 +181,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:fontFamily="@font/inter_semi_bold"
-                    android:text="6 khách hàng"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_12ssp" />
 

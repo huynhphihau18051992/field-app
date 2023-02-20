@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.request.RequestOptions
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.ReportOpponentResponse
+import com.crayon.fieldapp.ui.screen.detailTask.adapter.MediaAdapter
+import com.crayon.fieldapp.ui.screen.detailTask.adapter.MediaData
 import com.crayon.fieldapp.utils.GlideApp
 import com.crayon.fieldapp.utils.formatHourAndDate
 import com.crayon.fieldapp.utils.setSingleClick
@@ -19,7 +21,7 @@ class ReportCompetitorRVAdapter constructor(
     val items: ArrayList<ReportOpponentResponse>,
     val context: Context,
     val onItemClick: (ReportOpponentResponse) -> Unit = {},
-    val onImageClick: (ReportOpponentResponse) -> Unit = {}
+    val onImageClick: (MediaData) -> Unit = {}
 ) :
     RecyclerView.Adapter<ReportCompetitorRVAdapter.GroupViewHolder>() {
 
@@ -61,19 +63,25 @@ class ReportCompetitorRVAdapter constructor(
 
             when (it.size) {
                 1 -> {
-                    GlideApp.with(context).load(it.get(0)).apply(options).into(holder.imgImage1)
+                    GlideApp.with(context).load(it.get(0).thumbnailUrl).apply(options)
+                        .into(holder.imgImage1)
                     holder.cvImage1.visibility = View.VISIBLE
                 }
                 2 -> {
-                    GlideApp.with(context).load(it.get(0).thumbnailUrl).apply(options).into(holder.imgImage1)
-                    GlideApp.with(context).load(it.get(1).thumbnailUrl).apply(options).into(holder.imgImage2)
+                    GlideApp.with(context).load(it.get(0).thumbnailUrl).apply(options)
+                        .into(holder.imgImage1)
+                    GlideApp.with(context).load(it.get(1).thumbnailUrl).apply(options)
+                        .into(holder.imgImage2)
                     holder.cvImage1.visibility = View.VISIBLE
                     holder.cvImage2.visibility = View.VISIBLE
                 }
                 3 -> {
-                    GlideApp.with(context).load(it.get(0).thumbnailUrl).apply(options).into(holder.imgImage1)
-                    GlideApp.with(context).load(it.get(1).thumbnailUrl).apply(options).into(holder.imgImage2)
-                    GlideApp.with(context).load(it.get(2).thumbnailUrl).apply(options).into(holder.imgImage3)
+                    GlideApp.with(context).load(it.get(0).thumbnailUrl).apply(options)
+                        .into(holder.imgImage1)
+                    GlideApp.with(context).load(it.get(1).thumbnailUrl).apply(options)
+                        .into(holder.imgImage2)
+                    GlideApp.with(context).load(it.get(2).thumbnailUrl).apply(options)
+                        .into(holder.imgImage3)
                     holder.cvImage1.visibility = View.VISIBLE
                     holder.cvImage2.visibility = View.VISIBLE
                     holder.cvImage3.visibility = View.VISIBLE
@@ -91,7 +99,51 @@ class ReportCompetitorRVAdapter constructor(
         }
 
         holder.cvImage1?.setSingleClick {
-            onImageClick(data)
+            data?.medias?.get(0)?.let {
+                onImageClick(
+                    MediaData(
+                        id = it.id.toString(),
+                        thumbnail = it.thumbnailUrl.toString(),
+                        uri = it.fileUrl.toString(),
+                        isCompleted = false,
+                        type = if (it.type.toString()
+                                .equals("image/jpeg")
+                        ) MediaAdapter.MEDIA_IMAGE else MediaAdapter.MEDIA_VIDEO
+                    )
+                )
+            }
+        }
+
+        holder.cvImage2?.setSingleClick {
+            data?.medias?.get(1)?.let {
+                onImageClick(
+                    MediaData(
+                        id = it.id.toString(),
+                        thumbnail = it.thumbnailUrl.toString(),
+                        uri = it.fileUrl.toString(),
+                        isCompleted = false,
+                        type = if (it.type.toString()
+                                .equals("image/jpeg")
+                        ) MediaAdapter.MEDIA_IMAGE else MediaAdapter.MEDIA_VIDEO
+                    )
+                )
+            }
+        }
+
+        holder.cvImage3?.setSingleClick {
+            data?.medias?.get(2)?.let {
+                onImageClick(
+                    MediaData(
+                        id = it.id.toString(),
+                        thumbnail = it.thumbnailUrl.toString(),
+                        uri = it.fileUrl.toString(),
+                        isCompleted = false,
+                        type = if (it.type.toString()
+                                .equals("image/jpeg")
+                        ) MediaAdapter.MEDIA_IMAGE else MediaAdapter.MEDIA_VIDEO
+                    )
+                )
+            }
         }
 
     }
