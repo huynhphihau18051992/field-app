@@ -136,13 +136,11 @@ class AddReportFragment : BaseFragment<FragmentAddReportBinding, AddReportViewMo
                         pb_loading.visibility = View.GONE
                         it.data?.let {
                             context?.showMessageDialog(message = it.message) {
-                                requireContext().showMessageDialog(message = "Tạo hoạt động thành công") {
-                                    findNavController().previousBackStackEntry?.savedStateHandle?.set(
-                                        "isNew",
-                                        true
-                                    )
-                                    findNavController().navigateUp()
-                                }
+                                findNavController().previousBackStackEntry?.savedStateHandle?.set(
+                                    "isNew",
+                                    true
+                                )
+                                findNavController().navigateUp()
                             }
                         }
                     }

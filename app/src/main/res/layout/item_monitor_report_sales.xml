@@ -17,7 +17,6 @@
             android:layout_marginLeft="@dimen/_14sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:fontFamily="@font/inter_semi_bold"
-            android:text="HD01"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/_14ssp" />
 
@@ -57,7 +56,6 @@
             android:ellipsize="end"
             android:fontFamily="@font/inter_regular"
             android:maxLines="1"
-            android:text="09:00-15:00"
             android:textAlignment="textEnd"
             android:textColor="#323231"
             android:textSize="@dimen/_12ssp" />
@@ -70,7 +68,6 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="@dimen/_3sdp"
             android:fontFamily="@font/inter_semi_bold"
-            android:text="(Sáng)"
             android:textColor="@color/black"
             android:textSize="@dimen/_12ssp" />
 
@@ -103,7 +100,6 @@
             android:ellipsize="end"
             android:fontFamily="@font/inter_regular"
             android:maxLines="1"
-            android:text="5"
             android:textAlignment="textEnd"
             android:textColor="#323231"
             android:textSize="@dimen/_12ssp" />
@@ -137,7 +133,6 @@
             android:ellipsize="end"
             android:fontFamily="@font/inter_regular"
             android:maxLines="1"
-            android:text="18.000.000 vnđ"
             android:textAlignment="textEnd"
             android:textColor="#323231"
             android:textSize="@dimen/_12ssp" />

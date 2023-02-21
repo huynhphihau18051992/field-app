@@ -39,6 +39,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     var jobs: ArrayList<JobResponse> = arrayListOf()
     var filterStoreIds: ArrayList<String>? = null
     private var isLoading = false
+    private var isEndList = false
     private var pastVisiblesItems = 0
     private var visibleItemCount: Int = 0
     private var totalItemCount: Int = 0
@@ -104,7 +105,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                         totalItemCount = (layoutManager as LinearLayoutManager).getItemCount()
                         pastVisiblesItems =
                             (layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
-                        if (!isLoading) {
+                        if (!isLoading && !isEndList) {
                             if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
                                 isLoading = true
                                 skip = skip + 200
@@ -206,12 +207,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                         isLoading = false
                         pb_loading.visibility = View.GONE
                         it.data?.let {
-                            if (it.size == 0 && skip == 0) {
-                                txt_empty.visibility = View.VISIBLE
-                                recycler_view.visibility = View.GONE
+                            if (it.size == 0) {
+                                isEndList = true
                             } else {
-                                txt_empty.visibility = View.GONE
-                                recycler_view.visibility = View.VISIBLE
+                                isEndList = false
                                 jobs.addAll(it)
                                 jobAdapter?.addAll(it as ArrayList<JobResponse>)
                             }
@@ -270,6 +269,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         val endDate = getCurrentDateTime().toTimeString("yyyy-MM-dd") + "T23:59:00.000Z"
         jobAdapter?.clearAll()
         jobs?.clear()
+        isEndList = false
         skip = 0
         viewModel.getTodayJob(startDate, endDate, skip = skip)
     }

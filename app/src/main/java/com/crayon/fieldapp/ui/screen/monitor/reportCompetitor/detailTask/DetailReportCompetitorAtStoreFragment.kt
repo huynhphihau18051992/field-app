@@ -7,7 +7,10 @@ import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.TaskResponse
 import com.crayon.fieldapp.databinding.FragmentDetailReportCompetitorAtStoreBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
+import com.crayon.fieldapp.ui.screen.detailAttachment.image.ImageAdapter
 import com.crayon.fieldapp.ui.screen.detailTask.reportCompetitor.adapter.ReportCompetitorRVAdapter
+import com.crayon.fieldapp.ui.screen.imageDialog.ImageDialog
+import com.crayon.fieldapp.ui.screen.videoDialog.VideoDialog
 import com.crayon.fieldapp.utils.formatDate
 import com.crayon.fieldapp.utils.formatHour
 import com.crayon.fieldapp.utils.setSingleClick
@@ -34,6 +37,20 @@ class DetailReportCompetitorAtStoreFragment() :
         taskResponse = Gson().fromJson(task, TaskResponse::class.java)
         mCompetitorAdapter = ReportCompetitorRVAdapter(arrayListOf(), requireContext(), {
             // Item
+        }, onImageClick = { mMedia ->
+            if (mMedia.type == ImageAdapter.MEDIA_IMAGE) {
+                val imageDialog = ImageDialog(
+                    title = mMedia.note ?: "",
+                    imageUrl = mMedia.uri
+                )
+                imageDialog.show(childFragmentManager, imageDialog.tag)
+            } else {
+                val videoDialog = VideoDialog(
+                    title = mMedia.note ?: "",
+                    imageUrl = mMedia.uri
+                )
+                videoDialog.show(childFragmentManager, videoDialog.tag)
+            }
         })
     }
 

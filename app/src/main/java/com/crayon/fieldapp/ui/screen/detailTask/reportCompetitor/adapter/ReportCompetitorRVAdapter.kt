@@ -37,18 +37,18 @@ class ReportCompetitorRVAdapter constructor(
         holder.txtCustomerId.text = "Hoạt động " + (position + 1)
 
         data.brandName?.let {
-            holder.txtName.text = it
+            holder.txtName.text = it.replace("\"", "")
         }
 
         data.type?.let {
-            holder.txtType.text = it
+            holder.txtType.text = it.replace("\"", "")
         }
 
         data.createdAt?.let {
             holder.txtDate.text = formatHourAndDate(it)
         }
         data.note?.let {
-            holder.txtNote.text = it
+            holder.txtNote.text = it.replace("\"", "")
         }
 
         holder.cvImage1.visibility = View.GONE

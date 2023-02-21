@@ -76,7 +76,7 @@ class DetailCustomerRVAdapter constructor(
             holder.txtPhone.text = customerPhone
 
         } else if (holder is BillItemViewHolder) {
-            holder.txtBill.text = codeBill
+            holder.txtBill.text = codeBill.replace("\"", "")
             mImageAdapter = BillImageRVAdapter(images, context, onItemImageClick = {
                 onItemImageClick(it)
             })

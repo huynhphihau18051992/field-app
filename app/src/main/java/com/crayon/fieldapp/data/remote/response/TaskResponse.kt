@@ -13,7 +13,7 @@ data class TaskResponse(
     @SerializedName("job") val job: JobInfo? = null,
     @SerializedName("attendances") val attendances: ArrayList<Attendances>? = null,
     @SerializedName("attachments") val attachments: ArrayList<Attachments>? = null,
-    @SerializedName("opponents") val opponents: ArrayList<ReportOpponentResponse>? = null,
+    @SerializedName("report_opponents") val opponents: ArrayList<ReportOpponentResponse>? = null,
     @SerializedName("products") val products: ArrayList<Product> = arrayListOf(),
     @SerializedName("project_customer_bills") val customerBills: ArrayList<CustomerBillInfo> = arrayListOf(),
     @SerializedName("orders") val orders: ArrayList<OrderResponse> = arrayListOf(),

@@ -38,16 +38,16 @@ class ManageReportCompetitorRVAdapter constructor(
         data.opponents?.let {
             it.lastOrNull()?.let { opponents ->
                 opponents.brandName?.let {
-                    holder.txtName.text = it
+                    holder.txtName.text = it.replace("\"", "")
                 }
                 opponents.type?.let {
-                    holder.txtType.text = it
+                    holder.txtType.text = it.replace("\"", "")
                 }
                 opponents.createdAt?.let {
                     holder.txtDate.text = formatHourAndDate(it)
                 }
                 opponents.note?.let {
-                    holder.txtNote.text = it.toString()
+                    holder.txtNote.text = it.toString().replace("\"", "")
                 }
                 opponents.medias?.let { media ->
                     val options: RequestOptions = RequestOptions()
@@ -77,7 +77,7 @@ class ManageReportCompetitorRVAdapter constructor(
                                 .into(holder.cvImage1)
                             GlideApp.with(context).load(media.get(1).thumbnailUrl).apply(options)
                                 .into(holder.cvImage2)
-                            GlideApp.with(context).load(media.get(3).thumbnailUrl).apply(options)
+                            GlideApp.with(context).load(media.get(2).thumbnailUrl).apply(options)
                                 .into(holder.cvImage3)
                             holder.cvImage1.visibility = View.VISIBLE
                             holder.cvImage2.visibility = View.VISIBLE

@@ -58,7 +58,6 @@
             android:ellipsize="end"
             android:fontFamily="@font/inter_regular"
             android:maxLines="1"
-            android:text="Nước tương Maggi"
             android:textAlignment="textEnd"
             android:textColor="#323231"
             android:textSize="@dimen/_12ssp" />
@@ -92,7 +91,6 @@
             android:ellipsize="end"
             android:fontFamily="@font/inter_regular"
             android:maxLines="1"
-            android:text="Trưng bày POSM"
             android:textAlignment="textEnd"
             android:textColor="#323231"
             android:textSize="@dimen/_12ssp" />
@@ -121,12 +119,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/txt_date_title"
             android:ellipsize="end"
             android:fontFamily="@font/inter_regular"
             android:maxLines="1"
-            android:text="11:13 - 28/6/2022"
             android:textAlignment="textEnd"
             android:textColor="#323231"
             android:textSize="@dimen/_12ssp" />
@@ -160,7 +156,6 @@
             android:ellipsize="end"
             android:fontFamily="@font/inter_regular"
             android:maxLines="1"
-            android:text="Tặng khăn tắm cho khách"
             android:textAlignment="textEnd"
             android:textColor="#323231"
             android:textSize="@dimen/_12ssp" />
@@ -183,6 +178,7 @@
             android:layout_marginRight="@dimen/_8sdp"
             android:layout_weight="1"
             android:elevation="10dp"
+            android:visibility="gone"
             app:cardCornerRadius="@dimen/_8sdp">
 
             <ImageView
@@ -203,6 +199,7 @@
             android:layout_marginRight="@dimen/_8sdp"
             android:layout_weight="1"
             android:elevation="10dp"
+            android:visibility="gone"
             app:cardCornerRadius="@dimen/_8sdp">
 
             <ImageView
@@ -223,6 +220,7 @@
             android:layout_marginRight="@dimen/_8sdp"
             android:layout_weight="1"
             android:elevation="10dp"
+            android:visibility="gone"
             app:cardCornerRadius="@dimen/_8sdp">
 
             <ImageView
