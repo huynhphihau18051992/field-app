@@ -5,7 +5,8 @@
     android:background="@color/colorWhite"
     android:paddingLeft="@dimen/_14sdp"
     android:paddingTop="@dimen/_7sdp"
-    android:paddingRight="@dimen/_14sdp">
+    android:paddingRight="@dimen/_14sdp"
+    android:paddingBottom="@dimen/_7sdp">
 
     <TextView
         android:id="@+id/txtGift"
@@ -54,10 +55,4 @@
 
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/rl_number"
-        android:layout_marginTop="@dimen/_14sdp"
-        android:background="@color/colorGray" />
 </RelativeLayout>

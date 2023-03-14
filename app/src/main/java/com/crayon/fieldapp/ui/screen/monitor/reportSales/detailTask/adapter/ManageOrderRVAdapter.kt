@@ -40,15 +40,17 @@ class ManageOrderRVAdapter constructor(
                 holder.txtLoadMore.text = "Xem thêm " + (mListProduct.size - 1) + " sản phẩm"
             }
 
-            if (mListProduct.size >= 1) {
-                holder.txtProductName.text = mListProduct.get(0).name
-                holder.txtQuality.text = mListProduct.get(0).quantity.toString()
-            }
-
             val total = mListProduct.sumBy { it.price * it.quantity }
             val format = DecimalFormat("#,###")
             format.maximumFractionDigits = 0
+            if (mListProduct.size >= 1) {
+                holder.txtProductName.text = mListProduct.get(0).name
+                holder.txtQuality.text = mListProduct.get(0).quantity.toString()
+                val price = mListProduct.get(0).price
+                holder.txtPrice.text = format.format(price) + "vnd"
+            }
             holder.txtTotal.text = format.format(total) + "vnd"
+
         }
     }
 
@@ -56,6 +58,7 @@ class ManageOrderRVAdapter constructor(
         var txtOrderId: TextView
         var txtProductName: TextView
         var txtQuality: TextView
+        var txtPrice: TextView
         var txtTotal: TextView
         var txtLoadMore: TextView
         var imgEdit: ImageView
@@ -64,6 +67,7 @@ class ManageOrderRVAdapter constructor(
             txtOrderId = itemView.findViewById(R.id.txt_order_id)
             txtProductName = itemView.findViewById(R.id.txt_name)
             txtQuality = itemView.findViewById(R.id.txt_quality)
+            txtPrice = itemView.findViewById(R.id.txt_price)
             txtTotal = itemView.findViewById(R.id.txt_total)
             txtLoadMore = itemView.findViewById(R.id.txt_load_more)
             imgEdit = itemView.findViewById(R.id.img_edit)

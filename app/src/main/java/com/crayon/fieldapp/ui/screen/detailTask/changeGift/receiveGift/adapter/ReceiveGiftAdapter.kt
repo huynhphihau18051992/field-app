@@ -18,7 +18,8 @@ class ReceiveGiftAdapter constructor(
     val items: ArrayList<GiftResponse>,
     val context: Context,
     val onItemPlusListener: (gift: GiftResponse) -> Unit = { },
-    val onItemMinusListener: (gift: GiftResponse) -> Unit = { }
+    val onItemMinusListener: (gift: GiftResponse) -> Unit = { },
+    val onItemQuantityListener: (gift: GiftResponse) -> Unit = { }
 ) :
     RecyclerView.Adapter<ReceiveGiftAdapter.GroupViewHolder>(), Filterable {
     private val contactList: ArrayList<GiftResponse>
@@ -53,6 +54,10 @@ class ReceiveGiftAdapter constructor(
 
         holder.imgPlus?.setSingleClick {
             onItemPlusListener(data)
+        }
+
+        holder.txtNumber?.setSingleClick {
+            onItemQuantityListener(data)
         }
     }
 

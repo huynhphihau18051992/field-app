@@ -587,7 +587,7 @@ class TaskRepositoryImpl(
         taskId: String,
         request: ReceiveGiftRequest
     ): Resource<GetMessageResponse> {
-        val result = apiService.receiveGifts(
+        val result = apiService.importStoreGifts(
             taskId = taskId,
             request = request
         )

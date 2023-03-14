@@ -125,6 +125,38 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_14sdp"
             android:layout_marginTop="@dimen/_7sdp"
+            android:layout_marginRight="@dimen/_14sdp">
+
+            <TextView
+                android:id="@+id/txt_price_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_semi_bold"
+                android:text="Đơn giá: "
+                android:textColor="#8E8E8E"
+                android:textSize="@dimen/_12ssp" />
+
+            <TextView
+                android:id="@+id/txt_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/txt_price_title"
+                android:ellipsize="end"
+                android:fontFamily="@font/inter_regular"
+                android:maxLines="1"
+                android:textAlignment="textEnd"
+                android:textColor="#323231"
+                android:textSize="@dimen/_12ssp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_7sdp"
             android:layout_marginRight="@dimen/_14sdp"
             android:layout_marginBottom="@dimen/_7sdp">
 

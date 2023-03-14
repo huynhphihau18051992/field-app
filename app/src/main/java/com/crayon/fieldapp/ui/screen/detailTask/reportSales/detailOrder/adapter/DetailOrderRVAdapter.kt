@@ -41,12 +41,15 @@ class DetailOrderRVAdapter constructor(
         val format = DecimalFormat("#,###")
         format.maximumFractionDigits = 0
         holder.txtTotal.text = format.format(total) + "vnd"
+        val price = data.price
+        holder.txtPrice.text = format.format(price) + "vnd"
     }
 
     inner class GroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var txtOrderId: TextView
         var txtProductName: TextView
         var txtQuality: TextView
+        var txtPrice: TextView
         var txtTotal: TextView
         var txtLoadMore: TextView
 
@@ -54,6 +57,7 @@ class DetailOrderRVAdapter constructor(
             txtOrderId = itemView.findViewById(R.id.txt_order_id)
             txtProductName = itemView.findViewById(R.id.txt_name)
             txtQuality = itemView.findViewById(R.id.txt_quality)
+            txtPrice = itemView.findViewById(R.id.txt_price)
             txtTotal = itemView.findViewById(R.id.txt_total)
             txtLoadMore = itemView.findViewById(R.id.txt_load_more)
         }

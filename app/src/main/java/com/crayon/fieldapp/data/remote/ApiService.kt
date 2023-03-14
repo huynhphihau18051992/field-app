@@ -629,8 +629,8 @@ interface ApiService {
     ): GetMessageResponse
 
 
-    @POST("/pic/v1/tasks/{taskId}/receive-gifs")
-    suspend fun receiveGifts(
+    @POST("/pic/v1/tasks/{taskId}/import-store-gifts")
+    suspend fun importStoreGifts(
         @Path("taskId") taskId: String,
         @Body request: ReceiveGiftRequest
     ): GetMessageResponse

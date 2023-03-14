@@ -13,6 +13,7 @@ import com.crayon.fieldapp.data.remote.response.GiftResponse
 import com.crayon.fieldapp.databinding.FragmentImportGiftBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.receiveGift.adapter.ReceiveGiftAdapter
+import com.crayon.fieldapp.ui.screen.detailTask.changeGift.receiveGift.dialog.EditQuantityGiftDialog
 import com.crayon.fieldapp.utils.Status
 import com.crayon.fieldapp.utils.Utils
 import com.crayon.fieldapp.utils.setSingleClick
@@ -59,6 +60,12 @@ class ReceiveGiftFragment : BaseFragment<FragmentImportGiftBinding, ReceiveGiftV
             }, onItemPlusListener = { mGift ->
                 var quantity = mGift.selectQuantity + 1
                 mGiftAdapter.onUpdateQuantity(mGift, quantity)
+            }, onItemQuantityListener = { mGift ->
+                val dialog =
+                    EditQuantityGiftDialog(mGift, onUpdateQuantityClick = { mQuantity ->
+                        mGiftAdapter.onUpdateQuantity(mGift, mQuantity)
+                    })
+                dialog.show(requireActivity().supportFragmentManager, dialog.tag)
             })
         _projectId?.let {
             viewModel.fetchGifts(projectId = it)
@@ -72,14 +79,13 @@ class ReceiveGiftFragment : BaseFragment<FragmentImportGiftBinding, ReceiveGiftV
         }
 
         imb_ic_filter?.setSingleClick {
-            val note = edt_note.text.toString().trim()
             val gifts = mGiftAdapter.getSelectItems()
             if (gifts.size == 0) {
                 requireContext().showMessageDialog(message = "Vui lòng chọn quà tặng")
                 return@setSingleClick
             }
             _taskId?.let {
-                viewModel.receiveGift(taskId = it, gift = gifts, note = note)
+                viewModel.receiveGift(taskId = it, gift = gifts)
             }
         }
     }
