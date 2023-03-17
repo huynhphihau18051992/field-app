@@ -1,4 +1,4 @@
-package com.crayon.fieldapp.ui.screen.detailTask.changeGift.receiveGift.adapter
+package com.crayon.fieldapp.ui.screen.detailTask.changeGift.export.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
@@ -14,14 +13,12 @@ import com.crayon.fieldapp.data.remote.response.GiftResponse
 import com.crayon.fieldapp.utils.MStringUtils
 import com.crayon.fieldapp.utils.setSingleClick
 
-class ReceiveGiftAdapter constructor(
+class ExportGiftAdapter constructor(
     val items: ArrayList<GiftResponse>,
     val context: Context,
-    val onItemPlusListener: (gift: GiftResponse) -> Unit = { },
-    val onItemMinusListener: (gift: GiftResponse) -> Unit = { },
-    val onItemQuantityListener: (gift: GiftResponse) -> Unit = { }
+    val onItemListener: (gift: GiftResponse) -> Unit = { }
 ) :
-    RecyclerView.Adapter<ReceiveGiftAdapter.GroupViewHolder>(), Filterable {
+    RecyclerView.Adapter<ExportGiftAdapter.GroupViewHolder>(), Filterable {
     private val contactList: ArrayList<GiftResponse>
     private var contactListFiltered: ArrayList<GiftResponse>
 
@@ -32,7 +29,7 @@ class ReceiveGiftAdapter constructor(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroupViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.item_receive_gift, parent, false)
+        val view = inflater.inflate(R.layout.item_export_gift_title, parent, false)
         val holder = GroupViewHolder(view)
         return holder
     }
@@ -41,37 +38,29 @@ class ReceiveGiftAdapter constructor(
         val data = contactListFiltered[position]
         holder.tvGift.text = data.name
 
-        holder.txtNumber.text = data.quantityIn.toString()
-        holder.imgPlus.isEnabled = true
-        holder.imgMinus.isEnabled = true
-        holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_select_add))
-        holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_select_minus))
+        holder.txtImport.text = data.quantityIn.toString()
+        holder.txtConsume.text = data.quantityConsume.toString()
+        holder.txtRemainPlan.text = (data.quantityIn - data.quantityConsume).toString()
+        holder.txtRemainActual.text = data.quantityRemainActual.toString()
 
-
-        holder.imgMinus?.setSingleClick {
-            onItemMinusListener(data)
-        }
-
-        holder.imgPlus?.setSingleClick {
-            onItemPlusListener(data)
-        }
-
-        holder.txtNumber?.setSingleClick {
-            onItemQuantityListener(data)
+        holder.itemView?.setSingleClick {
+            onItemListener(data)
         }
     }
 
     inner class GroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvGift: TextView
-        var txtNumber: TextView
-        var imgPlus: ImageView
-        var imgMinus: ImageView
+        var txtRemainPlan: TextView
+        var txtRemainActual: TextView
+        var txtConsume: TextView
+        var txtImport: TextView
 
         init {
             tvGift = itemView.findViewById(R.id.txtGift)
-            imgMinus = itemView.findViewById(R.id.img_minus)
-            txtNumber = itemView.findViewById(R.id.txt_number)
-            imgPlus = itemView.findViewById(R.id.img_plus)
+            txtRemainPlan = itemView.findViewById(R.id.txt_remain_plan)
+            txtRemainActual = itemView.findViewById(R.id.txt_remain_actual)
+            txtConsume = itemView.findViewById(R.id.txt_consume)
+            txtImport = itemView.findViewById(R.id.txt_import)
         }
     }
 
@@ -87,7 +76,7 @@ class ReceiveGiftAdapter constructor(
     fun onUpdateQuantity(gift: GiftResponse, quantity: Int) {
         contactListFiltered.indexOfFirst { it.id.toString().equals(gift.id) }.let { index ->
             if (index != -1) {
-                contactListFiltered.get(index).quantityIn = quantity
+                contactListFiltered.get(index).quantityRemainActual = quantity
                 notifyItemChanged(index)
             }
         }
@@ -99,7 +88,7 @@ class ReceiveGiftAdapter constructor(
         notifyDataSetChanged()
     }
 
-    fun refresh(){
+    fun refresh() {
         contactListFiltered.clear()
         contactListFiltered.addAll(items)
         notifyDataSetChanged()

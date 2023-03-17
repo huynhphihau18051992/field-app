@@ -25,7 +25,3 @@ class ProjectGiftRequest(
     @field:SerializedName("quantity") var quantity: Int
 )
 
-class ImportStoreGiftsRequest(
-    @field:SerializedName("project_gift_id") var giftId: String,
-    @field:SerializedName("quantity_in") var quantity: Int
-)

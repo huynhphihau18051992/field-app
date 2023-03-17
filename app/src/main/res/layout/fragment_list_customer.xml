@@ -8,7 +8,7 @@
             type="com.crayon.fieldapp.ui.screen.monitor.changeGift.listCustomer.ListCustomerViewModel" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -34,7 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Tên dự án" />
+                    android:text="Khách hàng" />
 
             </LinearLayout>
 
@@ -68,10 +68,17 @@
             android:id="@+id/rv_members"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/rl_toolbar"
             android:layout_marginLeft="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginRight="@dimen/_8sdp" />
 
-    </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
 
 </layout>

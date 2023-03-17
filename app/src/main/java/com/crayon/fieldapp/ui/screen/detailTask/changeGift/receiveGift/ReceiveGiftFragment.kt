@@ -19,14 +19,7 @@ import com.crayon.fieldapp.utils.Utils
 import com.crayon.fieldapp.utils.setSingleClick
 import com.crayon.fieldapp.utils.showMessageDialog
 import com.example.moviedb.utils.getQueryTextChangeStateFlow
-import kotlinx.android.synthetic.main.dialog_filter_store.*
-import kotlinx.android.synthetic.main.fragment_add_order.*
 import kotlinx.android.synthetic.main.fragment_import_gift.*
-import kotlinx.android.synthetic.main.fragment_import_gift.imb_ic_back
-import kotlinx.android.synthetic.main.fragment_import_gift.imb_ic_filter
-import kotlinx.android.synthetic.main.fragment_import_gift.pb_loading
-import kotlinx.android.synthetic.main.fragment_import_gift.rv_product
-import kotlinx.android.synthetic.main.fragment_import_gift.sv_product
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.collect
@@ -52,13 +45,13 @@ class ReceiveGiftFragment : BaseFragment<FragmentImportGiftBinding, ReceiveGiftV
 
         mGiftAdapter =
             ReceiveGiftAdapter(arrayListOf(), requireContext(), onItemMinusListener = { mGift ->
-                var quantity = mGift.selectQuantity - 1
+                var quantity = mGift.quantityIn - 1
                 if (quantity < 0) {
                     quantity = 0
                 }
                 mGiftAdapter.onUpdateQuantity(mGift, quantity)
             }, onItemPlusListener = { mGift ->
-                var quantity = mGift.selectQuantity + 1
+                var quantity = mGift.quantityIn + 1
                 mGiftAdapter.onUpdateQuantity(mGift, quantity)
             }, onItemQuantityListener = { mGift ->
                 val dialog =
@@ -67,8 +60,8 @@ class ReceiveGiftFragment : BaseFragment<FragmentImportGiftBinding, ReceiveGiftV
                     })
                 dialog.show(requireActivity().supportFragmentManager, dialog.tag)
             })
-        _projectId?.let {
-            viewModel.fetchGifts(projectId = it)
+        _taskId?.let {
+            viewModel.fetchGifts(taskId = it)
         }
     }
 
@@ -103,7 +96,7 @@ class ReceiveGiftFragment : BaseFragment<FragmentImportGiftBinding, ReceiveGiftV
                     Status.SUCCESS -> {
                         pb_loading.visibility = View.GONE
                         it.data?.let {
-                            requireContext().showMessageDialog {
+                            requireContext().showMessageDialog(message = it) {
                                 findNavController().navigateUp()
                             }
                         }

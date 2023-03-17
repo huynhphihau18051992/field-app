@@ -78,6 +78,26 @@ interface ProjectRepository {
         bodyRequest: ListIdRequest
     ): LiveData<Resource<GetMessageResponse>>
 
+    suspend fun getProjectSummary(
+        agencyId: String,
+        projectId: String
+    ): Resource<ProjectSummaryResponse>
+
+    suspend fun getProjectSummaryCustomer(
+        agencyId: String,
+        projectId: String
+    ): Resource<ArrayList<CustomerResponse>>
+
+    suspend fun getProjectSummaryPromotion(
+        agencyId: String,
+        projectId: String
+    ): Resource<ArrayList<SummaryPromotionResponse>>
+
+    suspend fun getProjectSummaryGift(
+        agencyId: String,
+        projectId: String
+    ): Resource<ArrayList<SummaryGiftResponse>>
+
     /**
      * local job db functions
      */

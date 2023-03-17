@@ -69,6 +69,7 @@
             android:weightSum="3">
 
             <RelativeLayout
+                android:id="@+id/btn_customer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_8sdp"
@@ -103,13 +104,14 @@
                     android:layout_below="@+id/txt_customer_title"
                     android:layout_centerHorizontal="true"
                     android:fontFamily="@font/inter_regular"
-                    android:text="15 người"
+                    android:text="0 người"
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/_10ssp" />
 
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/btn_promotion"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_8sdp"
@@ -144,13 +146,14 @@
                     android:layout_below="@+id/txt_promotion_title"
                     android:layout_centerHorizontal="true"
                     android:fontFamily="@font/inter_regular"
-                    android:text="15 gói"
+                    android:text="0 gói"
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/_10ssp" />
 
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/btn_gift"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_8sdp"
@@ -185,7 +188,7 @@
                     android:layout_below="@+id/txt_gift_title"
                     android:layout_centerHorizontal="true"
                     android:fontFamily="@font/inter_regular"
-                    android:text="15 phần"
+                    android:text="0 phần"
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/_10ssp" />
 

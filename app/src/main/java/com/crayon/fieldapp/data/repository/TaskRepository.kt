@@ -260,9 +260,16 @@ interface TaskRepository {
     ): Resource<List<OrderResponse>>
 
 
-    suspend fun receiveGifts(
+    suspend fun importGifts(
         taskId: String,
         request: ReceiveGiftRequest
-    ): Resource<GetMessageResponse>
+    ): Resource<ArrayList<SummaryGiftResponse>>
 
+    suspend fun getConsumeGift(
+        taskId: String
+    ): Resource<ArrayList<GiftResponse>>
+
+    suspend fun getStoreGifts(
+        taskId: String
+    ): Resource<ArrayList<SummaryGiftResponse>>
 }

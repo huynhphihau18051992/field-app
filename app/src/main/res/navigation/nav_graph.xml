@@ -454,6 +454,18 @@
             android:id="@+id/action_list_changeGift_to_detail_changeGift"
             app:destination="@id/DetailChangeGiftFragment" />
 
+        <action
+            android:id="@+id/action_list_changeGift_to_listCustomer"
+            app:destination="@id/listCustomer" />
+
+        <action
+            android:id="@+id/action_list_changeGift_to_listPromotion"
+            app:destination="@id/listPromotion" />
+
+        <action
+            android:id="@+id/action_list_changeGift_to_listGift"
+            app:destination="@id/listGift" />
+
     </fragment>
 
     <fragment
@@ -513,6 +525,24 @@
             android:id="@+id/action_detail_changeGift_to_detail_customer"
             app:destination="@id/detailCustomerFragment" />
 
+    </fragment>
+
+    <fragment
+        android:id="@+id/listCustomer"
+        android:name="com.crayon.fieldapp.ui.screen.monitor.changeGift.listCustomer.ListCustomerFragment"
+        android:label="ListCustomerFragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/listPromotion"
+        android:name="com.crayon.fieldapp.ui.screen.monitor.changeGift.listPromotion.ListPromotionFragment"
+        android:label="ListPromotionFragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/listGift"
+        android:name="com.crayon.fieldapp.ui.screen.monitor.changeGift.listGift.ListGiftFragment"
+        android:label="ListGiftFragment">
     </fragment>
 
     <fragment

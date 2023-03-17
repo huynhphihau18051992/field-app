@@ -1,4 +1,4 @@
-package com.crayon.fieldapp.ui.screen.detailTask.changeGift.receiveGift.dialog
+package com.crayon.fieldapp.ui.screen.detailTask.changeGift.export.dialog
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -13,10 +13,10 @@ import com.crayon.fieldapp.data.remote.response.GiftResponse
 import com.crayon.fieldapp.ui.widgets.MoneyTextWatcher
 import com.crayon.fieldapp.ui.widgets.NumericKeyBoardTransformationMethod
 import com.crayon.fieldapp.utils.Utils
-import kotlinx.android.synthetic.main.dialog_edit_price.view.*
 import kotlinx.android.synthetic.main.dialog_edit_quantity.*
 
-class EditQuantityGiftDialog(
+
+class EditRemainGiftDialog(
     val gift: GiftResponse,
     val onUpdateQuantityClick: (Int) -> Unit = {}
 ) : DialogFragment() {
@@ -27,20 +27,6 @@ class EditQuantityGiftDialog(
         savedInstanceState: Bundle?
     ): View? =
         inflater.inflate(R.layout.dialog_edit_quantity, container, false).apply {
-            btn_cancel?.setOnClickListener {
-                this@EditQuantityGiftDialog.dismiss()
-            }
-
-            btn_update?.setOnClickListener {
-                val newPrice = edt_price?.text.toString()
-                onUpdateQuantityClick.invoke(newPrice.replace(",", "").toInt())
-                this@EditQuantityGiftDialog.dismiss()
-            }
-            edt_price?.addTextChangedListener(object : MoneyTextWatcher(edt_price) {
-
-            })
-
-            txt_product_name?.text = gift.name
         }
 
     override fun onStart() {
@@ -59,14 +45,19 @@ class EditQuantityGiftDialog(
             )
             dialog.edt_price?.transformationMethod = NumericKeyBoardTransformationMethod()
             btn_cancel?.setOnClickListener {
-                this@EditQuantityGiftDialog.dismiss()
+                this@EditRemainGiftDialog.dismiss()
             }
 
             btn_update?.setOnClickListener {
                 val newPrice = edt_price?.text.toString()
                 onUpdateQuantityClick.invoke(newPrice.replace(",", "").toInt())
-                this@EditQuantityGiftDialog.dismiss()
+                this@EditRemainGiftDialog.dismiss()
             }
+            edt_price?.addTextChangedListener(object : MoneyTextWatcher(edt_price) {
+
+            })
+            txt_product_name?.text = gift.name
+            txt_note?.text = "Số lượng tồn thực tế: "
         }
     }
 

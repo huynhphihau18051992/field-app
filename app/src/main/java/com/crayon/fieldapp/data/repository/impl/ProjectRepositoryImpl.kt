@@ -196,6 +196,40 @@ class ProjectRepositoryImpl(
         }.build().asLiveData()
     }
 
+    override suspend fun getProjectSummary(
+        agencyId: String,
+        projectId: String
+    ): Resource<ProjectSummaryResponse> {
+        val result = apiService.getProjectSummary(agencyId = agencyId, projectId = projectId)
+        return Resource.success(result)
+    }
+
+    override suspend fun getProjectSummaryCustomer(
+        agencyId: String,
+        projectId: String
+    ): Resource<ArrayList<CustomerResponse>> {
+        val result =
+            apiService.getProjectSummaryCustomer(agencyId = agencyId, projectId = projectId)
+        return Resource.success(result)
+    }
+
+    override suspend fun getProjectSummaryPromotion(
+        agencyId: String,
+        projectId: String
+    ): Resource<ArrayList<SummaryPromotionResponse>> {
+        val result =
+            apiService.getProjectSummaryPromotion(agencyId = agencyId, projectId = projectId)
+        return Resource.success(result)
+    }
+
+    override suspend fun getProjectSummaryGift(
+        agencyId: String,
+        projectId: String
+    ): Resource<ArrayList<SummaryGiftResponse>> {
+        val result = apiService.getProjectSummaryGift(agencyId = agencyId, projectId = projectId)
+        return Resource.success(result)
+    }
+
     override suspend fun getProjectListLocal(): List<Project>? {
         return projectDao.getProjects()
     }

@@ -629,11 +629,49 @@ interface ApiService {
     ): GetMessageResponse
 
 
+    // Nhập số lượng nhận, và số lượng còn lại cuối ca
     @POST("/pic/v1/tasks/{taskId}/import-store-gifts")
     suspend fun importStoreGifts(
         @Path("taskId") taskId: String,
         @Body request: ReceiveGiftRequest
-    ): GetMessageResponse
+    ): ArrayList<SummaryGiftResponse>
+
+    // Lấy số lượng quà đã phát
+    @GET("/pic/v1/tasks/{taskId}/store-gifts-summary")
+    suspend fun getConsumeGift(
+        @Path("taskId") taskId: String
+    ): ArrayList<GiftResponse>
+
+    // Lấy số số lượng in/out
+    @GET("/pic/v1/tasks/{taskId}/store-gifts")
+    suspend fun getStoreGiftsInOut(
+        @Path("taskId") taskId: String
+    ): ArrayList<SummaryGiftResponse>
+
+    @GET("/management/v1/projects/{projectId}/summary")
+    suspend fun getProjectSummary(
+        @Header("mts-agency-id") agencyId: String,
+        @Path("projectId") projectId: String
+    ): ProjectSummaryResponse
+
+    @GET("/management/v1/projects/{projectId}/summary/customer")
+    suspend fun getProjectSummaryCustomer(
+        @Header("mts-agency-id") agencyId: String,
+        @Path("projectId") projectId: String
+    ): ArrayList<CustomerResponse>
+
+    @GET("/management/v1/projects/{projectId}/summary/promotion-package")
+    suspend fun getProjectSummaryPromotion(
+        @Header("mts-agency-id") agencyId: String,
+        @Path("projectId") projectId: String
+    ): ArrayList<SummaryPromotionResponse>
+
+
+    @GET("/management/v1/projects/{projectId}/summary/gift")
+    suspend fun getProjectSummaryGift(
+        @Header("mts-agency-id") agencyId: String,
+        @Path("projectId") projectId: String
+    ): ArrayList<SummaryGiftResponse>
 
     /*
     * Tracking

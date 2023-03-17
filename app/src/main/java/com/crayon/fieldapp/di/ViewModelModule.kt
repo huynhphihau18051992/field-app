@@ -31,6 +31,7 @@ import com.crayon.fieldapp.ui.screen.detailProject.member.MemberProjectViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.base.DetailTaskViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.detailCustomer.DetailCustomerViewModel
+import com.crayon.fieldapp.ui.screen.detailTask.changeGift.export.ExportGiftViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.receiveGift.ReceiveGiftViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step1.InputNameViewModel
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step2.VerifyOtpStep2ViewModel
@@ -57,6 +58,9 @@ import com.crayon.fieldapp.ui.screen.monitor.attendance.detailTask.DetailAttenda
 import com.crayon.fieldapp.ui.screen.monitor.attendance.listTask.ListAttendanceAtStoreViewModel
 import com.crayon.fieldapp.ui.screen.monitor.changeGift.ManageChangeGiftViewModel
 import com.crayon.fieldapp.ui.screen.monitor.changeGift.detailTask.DetailChangeGiftAtStoreViewModel
+import com.crayon.fieldapp.ui.screen.monitor.changeGift.listCustomer.ListCustomerViewModel
+import com.crayon.fieldapp.ui.screen.monitor.changeGift.listGift.ListGiftViewModel
+import com.crayon.fieldapp.ui.screen.monitor.changeGift.listPromotion.ListPromotionViewModel
 import com.crayon.fieldapp.ui.screen.monitor.changeGift.listTask.ListChangeGiftAtStoreViewModel
 import com.crayon.fieldapp.ui.screen.monitor.employee.ManageEmployeeViewModel
 import com.crayon.fieldapp.ui.screen.monitor.employee.listGroupMember.ListGroupEmployeeViewModel
@@ -183,7 +187,7 @@ val viewModelModule = module {
     viewModel { ListReportCompetitorAtStoreViewModel(get(), get()) }
     viewModel { ListReportSalesAtStoreViewModel(get(), get()) }
     viewModel { ListReportTrackingAtStoreViewModel(get(), get()) }
-    viewModel { ListChangeGiftAtStoreViewModel(get(), get()) }
+    viewModel { ListChangeGiftAtStoreViewModel(get(), get(), get()) }
     viewModel { DetailReportCompetitorAtStoreViewModel(get(), get()) }
     viewModel { DetailReportSalesAtStoreViewModel(get(), get()) }
     viewModel { DetailReportTrackingAtStoreViewModel(get(), get()) }
@@ -194,4 +198,8 @@ val viewModelModule = module {
     viewModel { AddReportViewModel(get()) }
     viewModel { DetailCustomerViewModel(get(), get(), get()) }
     viewModel { ReceiveGiftViewModel(get()) }
+    viewModel { ListCustomerViewModel(get(), get()) }
+    viewModel { ListGiftViewModel(get(), get(), get()) }
+    viewModel { ListPromotionViewModel(get(), get(), get()) }
+    viewModel { ExportGiftViewModel(get()) }
 }

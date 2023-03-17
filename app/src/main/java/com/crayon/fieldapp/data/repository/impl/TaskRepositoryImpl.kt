@@ -583,13 +583,29 @@ class TaskRepositoryImpl(
         return Resource.success(result.data)
     }
 
-    override suspend fun receiveGifts(
+    override suspend fun importGifts(
         taskId: String,
         request: ReceiveGiftRequest
-    ): Resource<GetMessageResponse> {
+    ): Resource<ArrayList<SummaryGiftResponse>> {
         val result = apiService.importStoreGifts(
             taskId = taskId,
             request = request
+        )
+        return Resource.success(result)
+    }
+
+    override suspend fun getConsumeGift(
+        taskId: String
+    ): Resource<ArrayList<GiftResponse>> {
+        val result = apiService.getConsumeGift(
+            taskId = taskId
+        )
+        return Resource.success(result)
+    }
+
+    override suspend fun getStoreGifts(taskId: String): Resource<ArrayList<SummaryGiftResponse>> {
+        val result = apiService.getStoreGiftsInOut(
+            taskId = taskId
         )
         return Resource.success(result)
     }

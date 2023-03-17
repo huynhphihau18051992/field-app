@@ -20,7 +20,15 @@ import com.crayon.fieldapp.ui.screen.monitor.changeGift.listTask.adapter.ManageC
 import com.crayon.fieldapp.utils.Status
 import com.crayon.fieldapp.utils.setSingleClick
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.fragment_list_update_status_at_store.*
+import kotlinx.android.synthetic.main.fragment_list_change_gift_at_store.*
+import kotlinx.android.synthetic.main.fragment_list_update_status_at_store.btn_filter_store
+import kotlinx.android.synthetic.main.fragment_list_update_status_at_store.ic_select_date
+import kotlinx.android.synthetic.main.fragment_list_update_status_at_store.imb_ic_back
+import kotlinx.android.synthetic.main.fragment_list_update_status_at_store.pb_loading
+import kotlinx.android.synthetic.main.fragment_list_update_status_at_store.rv_members
+import kotlinx.android.synthetic.main.fragment_list_update_status_at_store.tv_title
+import kotlinx.android.synthetic.main.fragment_list_update_status_at_store.txt_filter_role_status
+import kotlinx.android.synthetic.main.fragment_list_update_status_at_store.txt_start_date
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import studio.phillip.yolo.utils.TimeFormatUtils
 import java.io.Serializable
@@ -73,6 +81,10 @@ class ListChangeGiftAtStoreFragment() :
             skip = 0,
             take = 20
         )
+        viewModel.getProjectSummary(
+            agencyId = agencyId.toString(),
+            projectId = projectId.toString()
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -86,6 +98,27 @@ class ListChangeGiftAtStoreFragment() :
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)
             ).show()
+        }
+
+        btn_customer?.setSingleClick {
+            findNavController().navigate(
+                R.id.action_list_changeGift_to_listCustomer,
+                bundleOf("agencyId" to agencyId.toString(), "projectId" to projectId.toString())
+            )
+        }
+
+        btn_promotion?.setSingleClick {
+            findNavController().navigate(
+                R.id.action_list_changeGift_to_listPromotion,
+                bundleOf("agencyId" to agencyId.toString(), "projectId" to projectId.toString())
+            )
+        }
+
+        btn_gift?.setSingleClick {
+            findNavController().navigate(
+                R.id.action_list_changeGift_to_listGift,
+                bundleOf("agencyId" to agencyId.toString(), "projectId" to projectId.toString())
+            )
         }
 
         btn_filter_store?.setSingleClick {
@@ -198,6 +231,26 @@ class ListChangeGiftAtStoreFragment() :
                         }
                         Status.ERROR -> {
                             mIsLoading = false
+                            pb_loading.visibility = View.GONE
+                        }
+                    }
+                }
+            })
+            summary.observe(viewLifecycleOwner, Observer {
+                it.getContentIfNotHandled()?.let {
+                    when (it.status) {
+                        Status.LOADING -> {
+                            pb_loading.visibility = View.VISIBLE
+                        }
+                        Status.SUCCESS -> {
+                            pb_loading.visibility = View.GONE
+                            it.data?.let {
+                                txt_num_customer?.text = it.totalCustomer.toString() + " người"
+                                txt_num_promotion?.text = it.totalPromotion.toString() + " gói"
+                                txt_gift_customer?.text = it.totalGift.toString() + " phần"
+                            }
+                        }
+                        Status.ERROR -> {
                             pb_loading.visibility = View.GONE
                         }
                     }

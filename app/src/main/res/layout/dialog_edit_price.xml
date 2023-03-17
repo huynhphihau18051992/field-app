@@ -82,7 +82,7 @@
         android:fontFamily="@font/inter_light"
         android:hint="Nhập giá hiện tại"
         android:imeOptions="actionNext"
-        android:inputType="numberDecimal"
+        android:inputType="numberPassword"
         android:maxLines="1"
         android:paddingLeft="@dimen/_10sdp"
         android:paddingTop="@dimen/_12ssp"
