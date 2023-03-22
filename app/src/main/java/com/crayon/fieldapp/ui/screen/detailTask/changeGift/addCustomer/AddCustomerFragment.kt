@@ -33,7 +33,13 @@ class AddCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewM
     private var _inputNameFragment: InputNameFragment? = null
     private var _verifyOtpFragment: VerifyOtpStep2Fragment? = null
     private var _inputBillFragment: InputBillFragment? = null
-    private var _selectPromotionFragment: SelectPromotionFragment? = null
+    private var _selectPromotionFragment: SelectPromotionFragment = SelectPromotionFragment({
+        findNavController().previousBackStackEntry?.savedStateHandle?.set(
+            "isNew",
+            true
+        )
+        findNavController().navigateUp()
+    })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,7 +86,6 @@ class AddCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewM
         _verifyOtpFragment?.arguments = bundleOf(
             "taskId" to _taskId
         )
-
         _inputBillFragment = InputBillFragment({
             _billId = it.id
             if (_isVerifyOtp) {
@@ -96,13 +101,7 @@ class AddCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewM
         _inputBillFragment?.arguments = bundleOf(
             "taskId" to _taskId
         )
-        _selectPromotionFragment = SelectPromotionFragment({
-            findNavController().previousBackStackEntry?.savedStateHandle?.set(
-                "isNew",
-                true
-            )
-            findNavController().navigateUp()
-        })
+
         _selectPromotionFragment?.arguments = bundleOf(
             "taskId" to _taskId,
             "projectId" to _projectId

@@ -188,7 +188,7 @@ class DetailCustomerFragment :
                         pb_loading.visibility = View.GONE
                         it.data?.let {
                             mDetailRVAdapter.addData(
-                                mImages = it.first.attachments?.map {
+                                mImages = it.first?.attachments?.map {
                                     MediaData(
                                         id = it.id.toString(),
                                         thumbnail = it.thumbnailUrl.toString(),
@@ -198,9 +198,9 @@ class DetailCustomerFragment :
                                         type = MediaAdapter.MEDIA_IMAGE
                                     )
                                 } as ArrayList<MediaData>,
-                                mPromotions = it.second.data as ArrayList<PromotionResponse>,
-                                mGift = it.third.data as ArrayList<GiftResponse>,
-                                mCodeBill = it.first.code_bill.toString()
+                                mPromotions = it.second?.data as ArrayList<PromotionResponse>,
+                                mGift = it.third?.data as ArrayList<GiftResponse>,
+                                mCodeBill = it.first?.code_bill.toString()
                             )
                         }
                     }

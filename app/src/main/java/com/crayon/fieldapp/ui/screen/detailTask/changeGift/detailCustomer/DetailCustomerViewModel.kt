@@ -22,8 +22,8 @@ class DetailCustomerViewModel(
 ) : BaseViewModel() {
 
     private val _customerBill =
-        MediatorLiveData<Event<Resource<Triple<DetailCustomerBillResponse, GetPromotionListResponse, GetGiftListResponse>>>>()
-    val customerBill: LiveData<Event<Resource<Triple<DetailCustomerBillResponse, GetPromotionListResponse, GetGiftListResponse>>>> get() = _customerBill
+        MediatorLiveData<Event<Resource<Triple<DetailCustomerBillResponse?, GetPromotionListResponse?, GetGiftListResponse?>>>>()
+    val customerBill: LiveData<Event<Resource<Triple<DetailCustomerBillResponse?, GetPromotionListResponse?, GetGiftListResponse?>>>> get() = _customerBill
     fun getCustomerBill(taskId: String, billId: String, projectId: String) {
         viewModelScope.launch {
             _customerBill.postValue(Event(Resource.loading(null)))
@@ -77,9 +77,9 @@ class DetailCustomerViewModel(
                     Event(
                         Resource.success(
                             Triple(
-                                bill.data!!,
-                                promotion.data!!,
-                                gifts.data!!
+                                bill.data,
+                                promotion.data,
+                                gifts.data
                             )
                         )
                     )

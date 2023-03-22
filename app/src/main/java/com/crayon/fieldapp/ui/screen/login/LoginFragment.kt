@@ -9,6 +9,7 @@ import com.crayon.fieldapp.R
 import com.crayon.fieldapp.databinding.FragmentLoginBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.screen.verifyOtp.VerifyOtpFragment
+import com.crayon.fieldapp.utils.Status
 import com.crayon.fieldapp.utils.setSingleClick
 import com.crayon.fieldapp.utils.showMessageDialog
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -37,13 +38,24 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
 
         viewModel.apply {
             isVerifySuccess.observe(viewLifecycleOwner, Observer {
-                if (it) {
-                    val bundel = bundleOf(
-                        "mode" to VerifyOtpFragment.VERIFY_LOGIN_MODE,
-                        "phone" to edt_phone.text.toString(),
-                        "password" to edt_pass.text.toString()
-                    )
-                    findNavController().navigate(R.id.to_verify, bundel)
+                it.getContentIfNotHandled()?.let {
+                    when (it.status) {
+                        Status.LOADING -> {
+                            showLoadingDialog()
+                        }
+                        Status.SUCCESS -> {
+                            dismissLLoadingDialog()
+                            val bundel = bundleOf(
+                                "mode" to VerifyOtpFragment.VERIFY_LOGIN_MODE,
+                                "phone" to edt_phone.text.toString(),
+                                "password" to edt_pass.text.toString()
+                            )
+                            findNavController().navigate(R.id.to_verify, bundel)
+                        }
+                        Status.ERROR -> {
+                            dismissLLoadingDialog()
+                        }
+                    }
                 }
             })
             phone.observe(viewLifecycleOwner, Observer {

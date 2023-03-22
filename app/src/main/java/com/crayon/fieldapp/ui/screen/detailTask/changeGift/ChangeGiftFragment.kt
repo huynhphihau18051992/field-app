@@ -140,7 +140,8 @@ class ChangeGiftFragment :
 
                 override fun onExport() {
                     findNavController().navigate(
-                        R.id.action_changeGiftFragment_to_exportGiftFragment, bundleOf(
+                        R.id.action_changeGiftFragment_to_exportGiftFragment,
+                        bundleOf(
                             "taskId" to taskId,
                             "projectId" to jobResponse?.project?.id.toString()
                         )

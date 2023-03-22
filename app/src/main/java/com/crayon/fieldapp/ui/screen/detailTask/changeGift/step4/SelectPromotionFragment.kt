@@ -1,6 +1,7 @@
 package com.crayon.fieldapp.ui.screen.detailTask.changeGift.step4
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,7 +30,7 @@ class SelectPromotionFragment(val onNextClick: () -> Unit = {}) :
     private var _products: ArrayList<ProductResponse> = arrayListOf()
     private var _billId: String? = null
 
-    private lateinit var mDetailRVAdapter: SelectPromotionRVAdapter
+    private var mDetailRVAdapter: SelectPromotionRVAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,11 +40,6 @@ class SelectPromotionFragment(val onNextClick: () -> Unit = {}) :
         _projectId?.let {
             viewModel.getListProductAndPromotions(it)
         }
-
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         mDetailRVAdapter = SelectPromotionRVAdapter(
             promotion = arrayListOf(),
             gifts = arrayListOf(),
@@ -56,7 +52,7 @@ class SelectPromotionFragment(val onNextClick: () -> Unit = {}) :
                 val dialog = SelectProductBottomSheetFragment(
                     items,
                     onSelectProductListener = { mProducts ->
-                        mDetailRVAdapter.addAllProduct(mPromotion, mProducts)
+                        mDetailRVAdapter?.addAllProduct(mPromotion, mProducts)
                     }, onUpdatePriceListener = { product, price ->
                         _products.indexOfFirst { _item ->
                             _item.id.toString().equals(product.id.toString())
@@ -74,23 +70,31 @@ class SelectPromotionFragment(val onNextClick: () -> Unit = {}) :
 
             })
 
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
         rv_page.apply {
             layoutManager = LinearLayoutManager(context)
             this.adapter = mDetailRVAdapter
         }
         btn_complete?.setSingleClick {
             Utils.hideKeyboard(requireActivity())
+            Log.d("AAAhttp", _billId.toString())
             if (_billId.isNullOrEmpty()) {
                 requireContext().showMessageDialog(title = "Không tìm thấy mã hóa đơn")
+                return@setSingleClick
             }
             if (taskId.isNullOrEmpty()) {
                 requireContext().showMessageDialog(title = "Không tìm thấy mã nhiệm vụ")
+                return@setSingleClick
             }
-            val request = mDetailRVAdapter.getSelectPromotions()
+            val request = mDetailRVAdapter?.getSelectPromotions()
             viewModel.addProductToBill(
                 taskId = taskId.toString(),
                 billId = _billId.toString(),
-                request = request
+                request = request!!
             )
         }
 
@@ -103,7 +107,7 @@ class SelectPromotionFragment(val onNextClick: () -> Unit = {}) :
                     Status.SUCCESS -> {
                         pb_loading.visibility = View.GONE
                         it.data?.let {
-                            mDetailRVAdapter.addItems(
+                            mDetailRVAdapter?.addItems(
                                 mPromotion = it.first as ArrayList<PromotionResponse>,
                                 mGift = it.third as ArrayList<GiftResponse>
                             )

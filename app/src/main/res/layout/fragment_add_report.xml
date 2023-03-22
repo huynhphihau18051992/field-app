@@ -205,7 +205,7 @@
                             </RelativeLayout>
 
                             <RelativeLayout
-                                android:id="@+id/btn_gallery"
+                                android:id="@+id/btn_video"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
@@ -213,11 +213,11 @@
                                 android:padding="@dimen/_8sdp">
 
                                 <ImageView
-                                    android:id="@+id/img_gallary"
+                                    android:id="@+id/img_video"
                                     android:layout_width="@dimen/_24sdp"
                                     android:layout_height="@dimen/_24sdp"
                                     android:layout_centerVertical="true"
-                                    android:src="@drawable/ic_gallery"
+                                    android:src="@drawable/ic_red_videocam"
                                     android:tint="@color/colorPrimary" />
 
 
@@ -226,9 +226,9 @@
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
                                     android:layout_marginLeft="@dimen/_8sdp"
-                                    android:layout_toRightOf="@+id/img_gallary"
+                                    android:layout_toRightOf="@+id/img_video"
                                     android:fontFamily="@font/inter_regular"
-                                    android:text="Tải ảnh"
+                                    android:text="Video"
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="@dimen/_12ssp" />
                             </RelativeLayout>

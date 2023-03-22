@@ -29,14 +29,12 @@ class ExportGiftViewModel(
                 result?.let { mList ->
                     gifts.addAll(mList.map {
                         GiftResponse(
-                            createdAt = it.gifts?.createdAt,
-                            updatedAt = it.gifts?.updatedAt,
-                            id = it.gifts?.id,
-                            name = it.gifts?.name,
+                            id = it.id,
+                            name = it.name,
                             quantityIn = it.quantityIn,
-                            quantityConsume = getQuantityOut(it.gifts?.id.toString(), giftsConsume),
+                            quantityConsume = getQuantityOut(it.id.toString(), giftsConsume),
                             quantityRemainPlan = it.quantityIn - getQuantityOut(
-                                it.gifts?.id.toString(),
+                                it.id.toString(),
                                 giftsConsume
                             ),
                             quantityRemainActual = it.quantityOut

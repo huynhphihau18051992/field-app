@@ -12,11 +12,11 @@ import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.TaskResponse
 import com.crayon.fieldapp.databinding.FragmentAddReportBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
+import com.crayon.fieldapp.ui.base.dialog.getPhoto.GetPhotoDialogFragment
 import com.crayon.fieldapp.ui.screen.detailAttachment.image.ImageAdapter
 import com.crayon.fieldapp.ui.screen.detailTask.adapter.MediaAdapter
 import com.crayon.fieldapp.ui.screen.detailTask.adapter.MediaData
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.step3.adapter.UploadMediaAdapter
-import com.crayon.fieldapp.ui.screen.detailTask.reportCompetitor.ReportCompetitorViewModel
 import com.crayon.fieldapp.ui.screen.imageDialog.ImageDialog
 import com.crayon.fieldapp.ui.screen.videoDialog.VideoDialog
 import com.crayon.fieldapp.utils.*
@@ -28,7 +28,8 @@ import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
-class AddReportFragment : BaseFragment<FragmentAddReportBinding, AddReportViewModel>() {
+class AddReportFragment : BaseFragment<FragmentAddReportBinding, AddReportViewModel>(),
+    GetPhotoDialogFragment.GetPhotoDialogListener {
 
     override val layoutId: Int = R.layout.fragment_add_report
     override val viewModel: AddReportViewModel by viewModel()
@@ -119,11 +120,13 @@ class AddReportFragment : BaseFragment<FragmentAddReportBinding, AddReportViewMo
         }
 
         btn_camera?.setSingleClick {
-            openCamera()
+            val dialog = GetPhotoDialogFragment()
+            dialog.setListener(this)
+            dialog.show(childFragmentManager, dialog.tag)
         }
 
-        btn_gallery?.setSingleClick {
-            openGallery()
+        btn_video?.setSingleClick {
+            openVideoCamera()
         }
 
         viewModel.createActivity.observe(viewLifecycleOwner, Observer {
@@ -172,6 +175,11 @@ class AddReportFragment : BaseFragment<FragmentAddReportBinding, AddReportViewMo
 
     private fun openCamera() {
         val bundle = bundleOf("isTakeImage" to true)
+        findNavController().navigate(R.id.action_global_CameraFragment, bundle)
+    }
+
+    private fun openVideoCamera() {
+        val bundle = bundleOf("isTakeVideo" to false)
         findNavController().navigate(R.id.action_global_CameraFragment, bundle)
     }
 
@@ -232,4 +240,11 @@ class AddReportFragment : BaseFragment<FragmentAddReportBinding, AddReportViewMo
         const val CODE_REQUEST_GALLERY = 1
     }
 
+    override fun selectFromGallery() {
+        openGallery()
+    }
+
+    override fun selectFromCamera() {
+        openCamera()
+    }
 }

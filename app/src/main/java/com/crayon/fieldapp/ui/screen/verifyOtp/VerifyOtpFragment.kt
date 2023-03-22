@@ -96,21 +96,35 @@ class VerifyOtpFragment : BaseFragment<FragmentVerifyOtpBinding, VerifyOtpViewMo
         super.onActivityCreated(savedInstanceState)
         viewModel.apply {
             isVerifySuccess.observe(viewLifecycleOwner, Observer {
-                if (it) {
-                    if (timer != null) {
-                        timer?.cancel()
-                    }
-                    if(mMode == VERIFY_LOGIN_MODE){
-                        findNavController().navigate(R.id.action_verify_to_main)
-                    } else {
-                        val bundel = bundleOf(
-                            "otp" to edt_otp.text.toString().trim(),
-                            "phone" to phone,
-                            "password" to password,
-                            "device_id" to device_id,
-                            "fcm_token" to fcm_token
-                        )
-                        findNavController().navigate(R.id.action_verify_to_resetPasswordFragment, bundel)
+                it.getContentIfNotHandled()?.let {
+                    when (it.status) {
+                        Status.LOADING -> {
+                            showLoadingDialog()
+                        }
+                        Status.SUCCESS -> {
+                            dismissLLoadingDialog()
+                            if (timer != null) {
+                                timer?.cancel()
+                            }
+                            if (mMode == VERIFY_LOGIN_MODE) {
+                                findNavController().navigate(R.id.action_verify_to_main)
+                            } else {
+                                val bundel = bundleOf(
+                                    "otp" to edt_otp.text.toString().trim(),
+                                    "phone" to phone,
+                                    "password" to password,
+                                    "device_id" to device_id,
+                                    "fcm_token" to fcm_token
+                                )
+                                findNavController().navigate(
+                                    R.id.action_verify_to_resetPasswordFragment,
+                                    bundel
+                                )
+                            }
+                        }
+                        Status.ERROR -> {
+                            dismissLLoadingDialog()
+                        }
                     }
                 }
             })
@@ -119,18 +133,17 @@ class VerifyOtpFragment : BaseFragment<FragmentVerifyOtpBinding, VerifyOtpViewMo
                 it.getContentIfNotHandled()?.let {
                     when (it.status) {
                         Status.LOADING -> {
-                            viewModel.showLoading()
+                            showLoadingDialog()
                         }
                         Status.SUCCESS -> {
+                            dismissLLoadingDialog()
                             requireContext().showMessageDialog(
                                 title = "Đã gửi lại mã OTP?"
                             )
                             timer?.start()
-                            viewModel.hideLoading()
-
                         }
                         Status.ERROR -> {
-                            viewModel.hideLoading()
+                            dismissLLoadingDialog()
                         }
                     }
                 }
@@ -140,18 +153,18 @@ class VerifyOtpFragment : BaseFragment<FragmentVerifyOtpBinding, VerifyOtpViewMo
                 it.getContentIfNotHandled()?.let {
                     when (it.status) {
                         Status.LOADING -> {
-                            viewModel.showLoading()
+                            showLoadingDialog()
                         }
                         Status.SUCCESS -> {
+                            dismissLLoadingDialog()
                             requireContext().showMessageDialog(
                                 title = "Đã gửi lại mã OTP?"
                             )
                             timer?.start()
-                            viewModel.hideLoading()
 
                         }
                         Status.ERROR -> {
-                            viewModel.hideLoading()
+                            dismissLLoadingDialog()
                         }
                     }
                 }

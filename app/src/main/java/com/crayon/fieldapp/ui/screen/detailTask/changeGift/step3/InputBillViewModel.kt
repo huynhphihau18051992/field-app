@@ -6,10 +6,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.viewModelScope
 import com.crayon.fieldapp.AppDispatchers
 import com.crayon.fieldapp.data.remote.request.ProjectProductRequest
-import com.crayon.fieldapp.data.remote.response.CustomerBillResponse
-import com.crayon.fieldapp.data.remote.response.DetailCustomerBillResponse
-import com.crayon.fieldapp.data.remote.response.GetMessageResponse
-import com.crayon.fieldapp.data.remote.response.TaskResponse
+import com.crayon.fieldapp.data.remote.response.*
 import com.crayon.fieldapp.data.repository.TaskRepository
 import com.crayon.fieldapp.ui.base.BaseViewModel
 import com.crayon.fieldapp.utils.BitmapUtils
@@ -27,8 +24,8 @@ class InputBillViewModel(
     private val dispatchers: AppDispatchers
 ) : BaseViewModel() {
 
-    private val _createCustomerBill = MediatorLiveData<Event<Resource<DetailCustomerBillResponse>>>()
-    val createCustomerBill: LiveData<Event<Resource<DetailCustomerBillResponse>>> get() = _createCustomerBill
+    private val _createCustomerBill = MediatorLiveData<Event<Resource<CreateCustomerBillResponse>>>()
+    val createCustomerBill: LiveData<Event<Resource<CreateCustomerBillResponse>>> get() = _createCustomerBill
     fun createCustomerBill(
         taskId: String,
         customerId: String,

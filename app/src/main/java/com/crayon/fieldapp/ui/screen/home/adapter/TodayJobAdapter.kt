@@ -50,7 +50,7 @@ class TodayJobAdapter constructor(
             holder.txt_am.setTypeface(holder.txt_am.getTypeface(), Typeface.BOLD)
             holder.itemView.isEnabled = true
         } else {
-            var threadhold_start = startTime - 30 * 60 * 1000 // truoc 30p
+            var threadhold_start = startTime - 60 * 60 * 1000 // truoc 1h
             if(currentTime >= threadhold_start) {
                 holder.txtStore.setTextColor(context.resources.getColor(R.color.colorAccent, null))
                 holder.txtProjectName.setTextColor(

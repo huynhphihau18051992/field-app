@@ -62,7 +62,7 @@ abstract class BaseViewModel : ViewModel(), KoinComponent {
                         HttpURLConnection.HTTP_UNAUTHORIZED -> {
                             refreshToken(appPrefs.getRefreshToken().toString())
                         }
-                        HttpURLConnection.HTTP_INTERNAL_ERROR -> {
+                        HttpURLConnection.HTTP_INTERNAL_ERROR, HttpURLConnection.HTTP_BAD_REQUEST -> {
                             errorMessage.value = baseException.serverErrorResponse?.message
                         }
                         else -> {
@@ -73,7 +73,7 @@ abstract class BaseViewModel : ViewModel(), KoinComponent {
                                 val errorTmpMessage = baseException.serverErrorResponse?.message
                                 if (errorTmpMessage.isNullOrEmpty()) {
                                     errorMessage.value =
-                                        "Chức năng này đang được bảo trì. Vui lòng liên hệ quản trị viên"
+                                        "Vui lòng thử lại"
                                 } else {
                                     errorMessage.value = errorTmpMessage
                                 }

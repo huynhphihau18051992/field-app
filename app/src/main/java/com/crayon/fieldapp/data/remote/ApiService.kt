@@ -581,11 +581,11 @@ interface ApiService {
     suspend fun createCustomerBill(
         @Path("taskId") taskId: String,
         @Path("customerId") customerId: String,
-        @Part("code_bill") codeBill: String,
+        @Part("code_bill") codeBill:  RequestBody? = null,
         @Part file1: MultipartBody.Part? = null,
         @Part file2: MultipartBody.Part? = null,
         @Part file3: MultipartBody.Part? = null
-    ): DetailCustomerBillResponse
+    ): CreateCustomerBillResponse
 
     @GET("/pic/v1/tasks/{id}/customer-bills")
     suspend fun getListCustomerBill(
@@ -634,7 +634,7 @@ interface ApiService {
     suspend fun importStoreGifts(
         @Path("taskId") taskId: String,
         @Body request: ReceiveGiftRequest
-    ): ArrayList<SummaryGiftResponse>
+    ): Any
 
     // Lấy số lượng quà đã phát
     @GET("/pic/v1/tasks/{taskId}/store-gifts-summary")
@@ -646,7 +646,7 @@ interface ApiService {
     @GET("/pic/v1/tasks/{taskId}/store-gifts")
     suspend fun getStoreGiftsInOut(
         @Path("taskId") taskId: String
-    ): ArrayList<SummaryGiftResponse>
+    ): ArrayList<GiftResponse>
 
     @GET("/management/v1/projects/{projectId}/summary")
     suspend fun getProjectSummary(

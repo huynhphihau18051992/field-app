@@ -23,19 +23,7 @@ class ReceiveGiftViewModel(
             _gifts.postValue(Event(Resource.loading(null)))
             try {
                 val result = taskRepository.getStoreGifts(taskId).data
-                val gifts = ArrayList<GiftResponse>()
-                result?.let { mList ->
-                    gifts.addAll(mList.map {
-                        GiftResponse(
-                            createdAt = it.gifts?.createdAt,
-                            updatedAt = it.gifts?.updatedAt,
-                            id = it.gifts?.id,
-                            name = it.gifts?.name,
-                            quantityIn = it.quantityIn
-                        )
-                    })
-                }
-                _gifts.postValue(Event(Resource.success(gifts)))
+                _gifts.postValue(Event(Resource.success(result)))
             } catch (e: Exception) {
                 _gifts.postValue(Event(Resource.error(Throwable(), null)))
                 onLoadFail(e)

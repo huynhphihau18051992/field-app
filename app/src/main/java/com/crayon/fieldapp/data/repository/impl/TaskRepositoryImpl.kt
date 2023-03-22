@@ -11,6 +11,7 @@ import com.crayon.fieldapp.utils.Resource
 import com.crayon.fieldapp.utils.getCurrentDateTime
 import com.crayon.fieldapp.utils.toTimeString
 import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.toRequestBody
 
 class TaskRepositoryImpl(
     private val apiService: ApiService,
@@ -354,11 +355,11 @@ class TaskRepositoryImpl(
         customerId: String,
         code_bill: String,
         file1: MultipartBody.Part
-    ): Resource<DetailCustomerBillResponse> {
+    ): Resource<CreateCustomerBillResponse> {
         val result = apiService.createCustomerBill(
             taskId = taskId,
             customerId = customerId,
-            codeBill = code_bill,
+            codeBill = code_bill.toRequestBody(),
             file1 = file1
         )
         return Resource.success(result)
@@ -370,11 +371,11 @@ class TaskRepositoryImpl(
         code_bill: String,
         file1: MultipartBody.Part,
         file2: MultipartBody.Part
-    ): Resource<DetailCustomerBillResponse> {
+    ): Resource<CreateCustomerBillResponse> {
         val result = apiService.createCustomerBill(
             taskId = taskId,
             customerId = customerId,
-            codeBill = code_bill,
+            codeBill = code_bill.toRequestBody(),
             file1 = file1,
             file2 = file2
         )
@@ -388,11 +389,11 @@ class TaskRepositoryImpl(
         file1: MultipartBody.Part,
         file2: MultipartBody.Part,
         file3: MultipartBody.Part
-    ): Resource<DetailCustomerBillResponse> {
+    ): Resource<CreateCustomerBillResponse> {
         val result = apiService.createCustomerBill(
             taskId = taskId,
             customerId = customerId,
-            codeBill = code_bill,
+            codeBill = code_bill.toRequestBody(),
             file1 = file1,
             file2 = file2,
             file3 = file3
@@ -586,7 +587,7 @@ class TaskRepositoryImpl(
     override suspend fun importGifts(
         taskId: String,
         request: ReceiveGiftRequest
-    ): Resource<ArrayList<SummaryGiftResponse>> {
+    ): Resource<Any> {
         val result = apiService.importStoreGifts(
             taskId = taskId,
             request = request
@@ -603,7 +604,7 @@ class TaskRepositoryImpl(
         return Resource.success(result)
     }
 
-    override suspend fun getStoreGifts(taskId: String): Resource<ArrayList<SummaryGiftResponse>> {
+    override suspend fun getStoreGifts(taskId: String): Resource<ArrayList<GiftResponse>> {
         val result = apiService.getStoreGiftsInOut(
             taskId = taskId
         )
