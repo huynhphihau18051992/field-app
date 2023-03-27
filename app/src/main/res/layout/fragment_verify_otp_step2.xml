@@ -46,7 +46,6 @@
                     android:id="@+id/txt_hint_otp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mã OTP được gửi đến số 0983813648"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_12ssp" />

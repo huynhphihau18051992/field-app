@@ -17,10 +17,10 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:paddingTop="@dimen/_8sdp"
-            android:paddingBottom="@dimen/_8sdp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_8sdp"
+            android:paddingBottom="@dimen/_8sdp">
 
             <CheckBox
                 android:id="@+id/cb_product"
@@ -54,7 +54,9 @@
                     android:layout_marginLeft="@dimen/_9sdp"
                     android:layout_marginRight="@dimen/_9sdp"
                     android:layout_toRightOf="@+id/img_minus"
+                    android:background="@drawable/bg_sv_rounded_filter"
                     android:fontFamily="@font/inter_regular"
+                    android:padding="@dimen/_8sdp"
                     android:text="0"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_12ssp" />

@@ -21,6 +21,7 @@ class PromotionRVAdapter constructor(
     val onItemMinusListener: (promotion: PromotionResponse) -> Unit = { },
     val onItemDeleteListener: (promotion: PromotionResponse) -> Unit = {},
     val onItemEditListener: (promotion: PromotionResponse) -> Unit = {},
+    val onItemQuantityListener: (promotion: PromotionResponse) -> Unit = {},
     val isEdit: Boolean = true
 ) :
     RecyclerView.Adapter<PromotionRVAdapter.GroupViewHolder>() {
@@ -54,12 +55,14 @@ class PromotionRVAdapter constructor(
             if (isEdit) {
                 holder.imgPlus.isEnabled = true
                 holder.imgMinus.isEnabled = true
+                holder.txtNumber.isEnabled = true
                 holder.cbProduct.isEnabled = true
                 holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_select_add))
                 holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_select_minus))
             } else {
                 holder.imgPlus.isEnabled = false
                 holder.imgMinus.isEnabled = false
+                holder.txtNumber.isEnabled = false
                 holder.cbProduct.isEnabled = false
                 holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_gray_add))
                 holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_minus))
@@ -117,6 +120,10 @@ class PromotionRVAdapter constructor(
 
         holder.imgPlus?.setSingleClick {
             onItemPlusListener(data)
+        }
+
+        holder.txtNumber?.setSingleClick {
+            onItemQuantityListener(data)
         }
     }
 

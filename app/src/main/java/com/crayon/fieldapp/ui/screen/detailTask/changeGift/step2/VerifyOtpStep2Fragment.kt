@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.TextView
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.databinding.FragmentVerifyOtpStep2Binding
 import com.crayon.fieldapp.ui.base.BaseFragment
-import com.crayon.fieldapp.ui.screen.detailTask.changeGift.ChangeGiftViewModel
+import com.crayon.fieldapp.ui.base.dialog.OtpFailedDialog
+import com.crayon.fieldapp.ui.base.dialog.OtpSuccessDialog
 import com.crayon.fieldapp.utils.Status
 import com.crayon.fieldapp.utils.Utils
 import com.crayon.fieldapp.utils.setSingleClick
@@ -35,14 +35,18 @@ class VerifyOtpStep2Fragment(val onNextClick: () -> Unit = {}) :
         super.onViewCreated(view, savedInstanceState)
 
         btn_resend?.visibility = View.VISIBLE
+        btn_resend?.isEnabled = false
+        btn_resend?.setTextColor(resources.getColor(R.color.colorGrayDisable, null))
 
         timer = startLoginTimer(txt_time, {
             btn_resend?.isEnabled = true
+            btn_resend?.setTextColor(resources.getColor(R.color.colorAccent, null))
             txt_time?.visibility = View.GONE
         }, {})
 
         btn_resend?.setSingleClick {
-            btn_resend?.isEnabled = false
+            btn_resend?.isClickable = false
+            btn_resend?.setTextColor(resources.getColor(R.color.colorGrayDisable, null))
             txt_time?.visibility = View.VISIBLE
             if (taskId != null && _phone != null) {
                 timer?.start()
@@ -76,10 +80,36 @@ class VerifyOtpStep2Fragment(val onNextClick: () -> Unit = {}) :
                         pb_loading.visibility = View.GONE
                         timer?.cancel()
                         it.data?.let {
-                            context?.showMessageDialog(message = it.message) {
+                            val dialog = OtpSuccessDialog({
                                 onNextClick.invoke()
-                            }
+                            })
+                            dialog.show(childFragmentManager, dialog.tag)
+
                         }
+                    }
+                    Status.ERROR -> {
+                        pb_loading.visibility = View.GONE
+                        val dialog = OtpFailedDialog({
+
+                        })
+                        dialog.show(childFragmentManager, dialog.tag)
+                    }
+                }
+            }
+        })
+
+        viewModel.resendOtpCustomer.observe(viewLifecycleOwner, Observer {
+            it.getContentIfNotHandled()?.let {
+                when (it.status) {
+                    Status.LOADING -> {
+                        pb_loading.visibility = View.VISIBLE
+                    }
+                    Status.SUCCESS -> {
+                        pb_loading.visibility = View.GONE
+                        requireContext().showMessageDialog(
+                            title = it.data?.message.toString()
+                        )
+                        timer?.start()
                     }
                     Status.ERROR -> {
                         pb_loading.visibility = View.GONE
@@ -87,7 +117,16 @@ class VerifyOtpStep2Fragment(val onNextClick: () -> Unit = {}) :
                 }
             }
         })
+    }
 
+    override fun onResume() {
+        super.onResume()
+        timer?.start()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        timer?.cancel()
     }
 
     fun startLoginTimer(
@@ -95,7 +134,7 @@ class VerifyOtpStep2Fragment(val onNextClick: () -> Unit = {}) :
         onFinish: () -> Unit,
         timeDown: (time: String) -> Unit
     ): CountDownTimer {
-        return object : CountDownTimer(120000, 1000L) {
+        return object : CountDownTimer(TIMER_RESEND_OTP, 1000L) {
             override fun onFinish() {
                 timeView?.text = "00 : 00"
                 onFinish.invoke()
@@ -127,10 +166,15 @@ class VerifyOtpStep2Fragment(val onNextClick: () -> Unit = {}) :
                     )
                 )
             }
-        }.start()
+        }
     }
 
-    fun setCustomerPhone(mPhone: String){
+    fun setCustomerPhone(mPhone: String) {
         this._phone = mPhone
+        txt_hint_otp?.text = "Mã OTP được gửi đến số " + this._phone
+    }
+
+    companion object {
+        const val TIMER_RESEND_OTP = 120000L
     }
 }

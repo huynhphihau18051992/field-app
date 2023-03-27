@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
@@ -17,6 +18,7 @@ import com.crayon.fieldapp.data.remote.response.GiftResponse
 import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.data.remote.response.PromotionResponse
 import com.crayon.fieldapp.ui.screen.detailTask.adapter.MediaData
+import com.crayon.fieldapp.ui.screen.detailTask.changeGift.receiveGift.dialog.EditQuantityGiftDialog
 import kotlinx.android.synthetic.main.item_bill_info.view.*
 import kotlinx.android.synthetic.main.item_customer_info.view.*
 import kotlinx.android.synthetic.main.item_gift_info.view.*
@@ -34,6 +36,7 @@ class DetailCustomerRVAdapter constructor(
     val onItemPromotionAddClick: (item: PromotionResponse) -> Unit = { },
     val onItemPromotionEditClick: (item: PromotionResponse) -> Unit = { },
     val onItemPromotionMinusClick: (item: PromotionResponse) -> Unit = { },
+    val onItemPromotionQuantityClick: (item: PromotionResponse) -> Unit = { },
     val onItemImageClick: (item: MediaData) -> Unit = { },
     val isEdit: Boolean = true
 ) :
@@ -104,6 +107,8 @@ class DetailCustomerRVAdapter constructor(
                     onItemPromotionMinusClick(mPromotion)
                 }, onItemEditListener = { mPromotion ->
                     onItemPromotionEditClick(mPromotion)
+                }, onItemQuantityListener = { mPromotion ->
+                    onItemPromotionQuantityClick(mPromotion)
                 }, isEdit = isEdit
             )
             holder.rvPromotion.apply {
@@ -132,6 +137,15 @@ class DetailCustomerRVAdapter constructor(
                     onItemPlusListener = { mGift ->
                         var quantity = mGift.selectQuantity + 1
                         mGiftRVAdapter.onUpdateQuantity(mGift, quantity)
+                    }, onItemQuantityListener = { mGift ->
+                        val dialog =
+                            EditQuantityGiftDialog(mGift, onUpdateQuantityClick = { mQuantity ->
+                                mGiftRVAdapter.onUpdateQuantity(mGift, mQuantity)
+                            })
+                        dialog.show(
+                            (context as FragmentActivity).supportFragmentManager,
+                            dialog.tag
+                        )
                     }, isEdit = isEdit
                 )
             (holder as GiftItemViewHolder).rvGift.apply {

@@ -12,6 +12,7 @@ import com.crayon.fieldapp.data.remote.response.ProductResponse
 import com.crayon.fieldapp.data.remote.response.PromotionResponse
 import com.crayon.fieldapp.databinding.FragmentDetailCustomerBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
+import com.crayon.fieldapp.ui.base.dialog.EditQuantityDialog
 import com.crayon.fieldapp.ui.screen.detailAttachment.image.ImageAdapter
 import com.crayon.fieldapp.ui.screen.detailTask.adapter.MediaAdapter
 import com.crayon.fieldapp.ui.screen.detailTask.adapter.MediaData
@@ -128,6 +129,11 @@ class DetailCustomerFragment :
                     )
                     videoDialog.show(childFragmentManager, videoDialog.tag)
                 }
+            }, onItemPromotionQuantityClick = { mPromotion ->
+                val dialog = EditQuantityDialog(mPromotion, {
+                    mDetailRVAdapter.updatePromotionQuantity(mPromotion, it)
+                })
+                dialog.show(childFragmentManager, dialog.tag)
             }
         )
 

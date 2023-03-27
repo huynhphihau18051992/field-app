@@ -86,12 +86,6 @@ class ChangeGiftFragment :
                             null
                         )
                     )
-                    ic_status?.setColorFilter(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.colorAccent
-                        ), android.graphics.PorterDuff.Mode.MULTIPLY
-                    )
                 } else {
                     txt_staus?.text = "Đã đóng"
                     txt_staus?.setTextColor(
@@ -99,12 +93,6 @@ class ChangeGiftFragment :
                             R.color.colorGray,
                             null
                         )
-                    )
-                    ic_status?.setColorFilter(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.colorAccent
-                        ), android.graphics.PorterDuff.Mode.MULTIPLY
                     )
                 }
             }

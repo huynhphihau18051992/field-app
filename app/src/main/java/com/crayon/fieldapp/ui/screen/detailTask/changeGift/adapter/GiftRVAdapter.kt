@@ -18,6 +18,7 @@ class GiftRVAdapter constructor(
     val onItemSelectedListener: (gift: GiftResponse, isChecked: Boolean) -> Unit = { i: GiftResponse, b: Boolean -> },
     val onItemPlusListener: (gift: GiftResponse) -> Unit = { },
     val onItemMinusListener: (gift: GiftResponse) -> Unit = { },
+    val onItemQuantityListener: (gift: GiftResponse) -> Unit = { },
     val isEdit: Boolean = true
 ) :
     RecyclerView.Adapter<GiftRVAdapter.GroupViewHolder>() {
@@ -39,12 +40,14 @@ class GiftRVAdapter constructor(
             if (isEdit) {
                 holder.imgPlus.isEnabled = true
                 holder.imgMinus.isEnabled = true
+                holder.txtNumber.isEnabled = true
                 holder.cvGift.isEnabled = true
                 holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_select_add))
                 holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_select_minus))
             } else {
                 holder.imgPlus.isEnabled = false
                 holder.imgMinus.isEnabled = false
+                holder.txtNumber.isEnabled = false
                 holder.cvGift.isEnabled = false
                 holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_gray_add))
                 holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_minus))
@@ -57,6 +60,7 @@ class GiftRVAdapter constructor(
             }
             holder.imgPlus.isEnabled = false
             holder.imgMinus.isEnabled = false
+            holder.txtNumber.isEnabled = false
             holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_gray_add))
             holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_minus))
         }
@@ -74,6 +78,9 @@ class GiftRVAdapter constructor(
             onItemPlusListener(data)
         }
 
+        holder.txtNumber?.setSingleClick {
+            onItemQuantityListener(data)
+        }
     }
 
     inner class GroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

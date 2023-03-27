@@ -2,7 +2,6 @@ package com.crayon.fieldapp.ui.screen.detailTask.reportSales
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -86,12 +85,6 @@ class ReportSalesFragment :
                             null
                         )
                     )
-                    ic_status?.setColorFilter(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.colorAccent
-                        ), android.graphics.PorterDuff.Mode.MULTIPLY
-                    )
                 } else {
                     txt_staus?.text = "Đã đóng"
                     txt_staus?.setTextColor(
@@ -99,12 +92,6 @@ class ReportSalesFragment :
                             R.color.colorGray,
                             null
                         )
-                    )
-                    ic_status?.setColorFilter(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.colorAccent
-                        ), android.graphics.PorterDuff.Mode.MULTIPLY
                     )
                 }
             }

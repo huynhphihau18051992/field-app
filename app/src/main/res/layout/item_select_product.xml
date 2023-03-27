@@ -95,7 +95,9 @@
                     android:layout_marginLeft="@dimen/_9sdp"
                     android:layout_marginRight="@dimen/_9sdp"
                     android:layout_toRightOf="@+id/img_minus"
+                    android:background="@drawable/bg_sv_rounded_filter"
                     android:fontFamily="@font/inter_regular"
+                    android:padding="@dimen/_8sdp"
                     android:text="0"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_12ssp" />

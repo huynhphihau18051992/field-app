@@ -40,7 +40,6 @@ class VerifyOtpStep2ViewModel(
                 _verifyCustomerOtp.postValue(Event(Resource.success(result.data)))
             } catch (e: Exception) {
                 _verifyCustomerOtp.postValue(Event(Resource.error(Throwable(), null)))
-                onLoadFail(e)
             }
         }
 

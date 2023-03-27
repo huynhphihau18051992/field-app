@@ -18,7 +18,8 @@ class SelectProductRVAdapter constructor(
     val onPriceClick: (ProductResponse) -> Unit = {},
     val onItemSelectClick: (item: ProductResponse, isChecked: Boolean) -> Unit = { productResponse: ProductResponse, b: Boolean -> },
     val onItemAddClick: (item: ProductResponse) -> Unit = { },
-    val onItemMinusClick: (item: ProductResponse) -> Unit = { }
+    val onItemMinusClick: (item: ProductResponse) -> Unit = { },
+    val onItemQuantityClick: (item: ProductResponse) -> Unit = { }
 ) :
     RecyclerView.Adapter<SelectProductRVAdapter.GroupViewHolder>(), Filterable {
 
@@ -56,11 +57,13 @@ class SelectProductRVAdapter constructor(
         if (data.isSelect) {
             holder.imgPlus.isEnabled = true
             holder.imgMinus.isEnabled = true
+            holder.txtNumber.isEnabled = true
             holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_select_add))
             holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_select_minus))
         } else {
             holder.imgPlus.isEnabled = false
             holder.imgMinus.isEnabled = false
+            holder.txtNumber.isEnabled = false
             holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_gray_add))
             holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_minus))
         }
@@ -77,6 +80,9 @@ class SelectProductRVAdapter constructor(
         }
         holder.imgMinus.setSingleClick {
             onItemMinusClick(data)
+        }
+        holder.txtNumber.setSingleClick {
+            onItemQuantityClick(data)
         }
 
     }

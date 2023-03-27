@@ -73,7 +73,7 @@ class AddCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewM
             _customerId = customer.id.toString()
             _customerPhone = customer.mobileNumber.toString()
             pagger.setCurrentItem(1, true)
-            stepper_indicator?.currentStep = 1
+//            stepper_indicator?.currentStep = 1
             _verifyOtpFragment?.setCustomerPhone(_customerPhone.toString())
             _inputBillFragment?.setCustomerId(_customerId.toString())
         })
@@ -81,7 +81,6 @@ class AddCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewM
 
         _verifyOtpFragment = VerifyOtpStep2Fragment({ ->
             pagger.setCurrentItem(2, true)
-            stepper_indicator?.currentStep = 2
         })
         _verifyOtpFragment?.arguments = bundleOf(
             "taskId" to _taskId
@@ -90,10 +89,8 @@ class AddCustomerFragment : BaseFragment<FragmentContactBinding, ChangeGiftViewM
             _billId = it.id
             if (_isVerifyOtp) {
                 pagger.setCurrentItem(3, true)
-                stepper_indicator?.currentStep = 3
             } else {
                 pagger.setCurrentItem(2, true)
-                stepper_indicator?.currentStep = 2
             }
             _selectPromotionFragment?.setBillId(_billId.toString())
 

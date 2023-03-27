@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.SearchView
-import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +15,7 @@ import com.crayon.fieldapp.databinding.FragmentAddOrderBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.screen.detailTask.reportSales.adapter.SelectProductRVAdapter
 import com.crayon.fieldapp.ui.screen.detailTask.reportSales.addOrder.dialog.EditPriceProductDialog
+import com.crayon.fieldapp.ui.screen.detailTask.reportSales.addOrder.dialog.EditQuantityProductDialog
 import com.crayon.fieldapp.utils.Status
 import com.crayon.fieldapp.utils.Utils
 import com.crayon.fieldapp.utils.setSingleClick
@@ -82,6 +82,12 @@ class AddOrderFragment : BaseFragment<FragmentAddOrderBinding, AddOrderViewModel
                         newQuantity = 1
                     }
                     mProductAdapter.updateQuantity(mProduct, newQuantity)
+                },
+                onItemQuantityClick = { mProduct ->
+                    val dialog = EditQuantityProductDialog(mProduct, {
+                        mProductAdapter.updateQuantity(mProduct, it)
+                    })
+                    dialog.show(childFragmentManager, dialog.tag)
                 }
             )
 

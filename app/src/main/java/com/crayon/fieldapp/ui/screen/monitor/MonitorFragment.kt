@@ -134,14 +134,14 @@ class MonitorFragment : BaseFragment<FragmentMonitorBinding, MonitorViewModel>()
                 R.color.bgReportCompetitor
             )
         )
-        menu.add(
-            GridMenu(
-                TRACKING,
-                R.drawable.icon_map,
-                resources.getString(R.string.txt_tracking),
-                R.color.bgTracking
-            )
-        )
+//        menu.add(
+//            GridMenu(
+//                TRACKING,
+//                R.drawable.icon_map,
+//                resources.getString(R.string.txt_tracking),
+//                R.color.bgTracking
+//            )
+//        )
         menu.add(
             GridMenu(
                 CHANGE_GIFT,

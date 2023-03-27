@@ -16,7 +16,6 @@
         android:ellipsize="end"
         android:fontFamily="@font/inter_semi_bold"
         android:maxLines="1"
-        android:text="Sữa chua Vinamilk"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/_14ssp" />
 

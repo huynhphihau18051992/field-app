@@ -5,6 +5,8 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AlertDialog
 import com.crayon.fieldapp.R
+import kotlinx.android.synthetic.main.dialog_otp_failed.*
+import kotlinx.android.synthetic.main.dialog_otp_success.*
 
 
 fun Context?.createLoadingDialog(
