@@ -27,7 +27,7 @@ class TermFragment : BaseFragment<FragmentTermBinding, TermViewModel>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        wb_content.loadUrl("file:///android_asset/terms.html")
+        wb_content.loadUrl("https://www.fieldapp.vn/policies")
 
     }
 }

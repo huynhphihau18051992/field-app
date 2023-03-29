@@ -1,19 +1,29 @@
 package com.crayon.fieldapp.ui.screen.detailTask.changeGift
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.crayon.fieldapp.data.local.pref.PrefHelper
 import com.crayon.fieldapp.data.remote.response.CustomerBillResponse
+import com.crayon.fieldapp.data.remote.response.Store
 import com.crayon.fieldapp.data.remote.response.TaskResponse
 import com.crayon.fieldapp.data.repository.TaskRepository
 import com.crayon.fieldapp.ui.base.BaseViewModel
+import com.crayon.fieldapp.ui.screen.detailTask.base.DetailTaskViewModel
+import com.crayon.fieldapp.ui.screen.detailTask.base.DetailTaskViewModel.Companion.MAX_VALID_DISTANT
 import com.crayon.fieldapp.utils.Event
 import com.crayon.fieldapp.utils.Resource
+import com.google.android.gms.maps.model.LatLng
+import com.google.maps.android.SphericalUtil
+import io.nlopez.smartlocation.SmartLocation
 import kotlinx.coroutines.launch
 
 class ChangeGiftViewModel(
-    val taskRepository: TaskRepository
+    private val context: Context,
+    val taskRepository: TaskRepository,
+    private val pref: PrefHelper
 ) : BaseViewModel() {
 
     val name = MutableLiveData<String>()
@@ -41,6 +51,7 @@ class ChangeGiftViewModel(
     val customers: LiveData<Event<Resource<List<CustomerBillResponse>>>> get() = _customers
     fun getListCustomer(taskId: String) {
         viewModelScope.launch {
+            fetchCurrentLocation()
             _customers.postValue(Event(Resource.loading(null)))
             try {
                 val result = taskRepository.getListCustomerBill(taskId)
@@ -66,5 +77,33 @@ class ChangeGiftViewModel(
             }
         }
     }
+
+    var currentLocation: LatLng = pref.getCurrentLocation()
+    var storeLocation: LatLng? = null
+    var strDistant = "0.0 Km"
+    fun verifyLocation(store: Store): Boolean {
+        storeLocation = LatLng(store.lat ?: 0.0, store.lng ?: 0.0)
+        val distant = SphericalUtil.computeDistanceBetween(currentLocation, storeLocation)
+        if (distant > MAX_VALID_DISTANT) {
+            if (distant > 1000) {
+                strDistant = Math.round(distant / 1000).toString() + "Km"
+            } else {
+                strDistant = Math.round(distant).toString() + "m"
+            }
+            return false
+        } else {
+            return true
+        }
+    }
+
+    fun fetchCurrentLocation() {
+        SmartLocation.with(context).location()
+            .oneFix()
+            .start {
+                pref.setCurrentLocation(LatLng(it.latitude, it.longitude))
+                currentLocation = LatLng(it.latitude, it.longitude)
+            }
+    }
+
 
 }

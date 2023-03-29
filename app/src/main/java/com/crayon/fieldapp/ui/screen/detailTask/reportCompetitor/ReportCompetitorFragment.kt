@@ -11,6 +11,7 @@ import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.JobResponse
 import com.crayon.fieldapp.databinding.FragmentReportCompetitorBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
+import com.crayon.fieldapp.ui.base.dialog.TimeKeepingDialog
 import com.crayon.fieldapp.ui.screen.detailTask.adapter.MediaAdapter
 import com.crayon.fieldapp.ui.screen.detailTask.reportCompetitor.adapter.ReportCompetitorRVAdapter
 import com.crayon.fieldapp.ui.screen.imageDialog.ImageDialog
@@ -104,10 +105,27 @@ class ReportCompetitorFragment :
         }
 
         btn_add_customer?.setSingleClick {
-            findNavController().navigate(
-                R.id.action_reportCompetitorFragment_to_addReportCompetitorFragment,
-                bundleOf("taskId" to taskId.toString())
-            )
+            jobResponse?.store?.let { store ->
+                if (viewModel.verifyLocation(store)) {
+                    findNavController().navigate(
+                        R.id.action_reportCompetitorFragment_to_addReportCompetitorFragment,
+                        bundleOf("taskId" to taskId.toString())
+                    )
+                } else {
+                    val dialog = TimeKeepingDialog()
+                    val bundle = Bundle()
+                    viewModel.currentLocation?.let {
+                        bundle.putDouble("current_lat", it.latitude)
+                        bundle.putDouble("current_long", it.longitude)
+
+                    }
+                    bundle.putDouble("store_lat", store.lat ?: 0.0)
+                    bundle.putDouble("store_long", store.lng ?: 0.0)
+                    bundle.putString("distant", viewModel.strDistant)
+                    dialog.arguments = bundle
+                    dialog.show(childFragmentManager, dialog.tag)
+                }
+            }
         }
 
         rv_customer.apply {

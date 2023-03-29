@@ -11,7 +11,7 @@ import com.crayon.fieldapp.databinding.FragmentReportTimeBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.screen.report.adapter.SimpleRVAdapter
 import com.crayon.fieldapp.ui.screen.report.adapter.TodayShiftRVAdapter
-import com.crayon.fieldapp.ui.widgets.CalendarView
+import com.crayon.fieldapp.ui.widgets.MtsCalendarView
 import com.crayon.fieldapp.utils.Status
 import com.crayon.fieldapp.utils.toTimeString
 import kotlinx.android.synthetic.main.fragment_report_time.*
@@ -53,7 +53,7 @@ class ReportByTimeFragment :
         rv_summary_shift.adapter = summaryShiftAdapter
 
 
-        calendar_view?.setEventHandler(object : CalendarView.EventHandler {
+        calendar_view?.setEventHandler(object : MtsCalendarView.EventHandler {
             override fun onMonthPress(cal: Calendar) {
                 calendar = cal
                 viewModel.getReportByTime(cal)

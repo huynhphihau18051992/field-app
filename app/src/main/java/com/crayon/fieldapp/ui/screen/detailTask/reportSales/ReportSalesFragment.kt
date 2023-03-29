@@ -11,6 +11,7 @@ import com.crayon.fieldapp.data.remote.response.JobResponse
 import com.crayon.fieldapp.data.remote.response.OrderResponse
 import com.crayon.fieldapp.databinding.FragmentReportSalesBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
+import com.crayon.fieldapp.ui.base.dialog.TimeKeepingDialog
 import com.crayon.fieldapp.ui.screen.detailTask.reportSales.adapter.OrderRVAdapter
 import com.crayon.fieldapp.utils.Status
 import com.crayon.fieldapp.utils.formatStartEndFullDate
@@ -102,10 +103,27 @@ class ReportSalesFragment :
         }
 
         btn_add_customer?.setSingleClick {
-            findNavController().navigate(
-                R.id.action_reportSalesFragment_to_addOrderFragment,
-                bundleOf("taskId" to taskId, "projectId" to jobResponse?.project?.id.toString())
-            )
+            jobResponse?.store?.let { store ->
+                if (viewModel.verifyLocation(store)) {
+                    findNavController().navigate(
+                        R.id.action_reportSalesFragment_to_addOrderFragment,
+                        bundleOf("taskId" to taskId, "projectId" to jobResponse?.project?.id.toString())
+                    )
+                } else {
+                    val dialog = TimeKeepingDialog()
+                    val bundle = Bundle()
+                    viewModel.currentLocation?.let {
+                        bundle.putDouble("current_lat", it.latitude)
+                        bundle.putDouble("current_long", it.longitude)
+
+                    }
+                    bundle.putDouble("store_lat", store.lat ?: 0.0)
+                    bundle.putDouble("store_long", store.lng ?: 0.0)
+                    bundle.putString("distant", viewModel.strDistant)
+                    dialog.arguments = bundle
+                    dialog.show(childFragmentManager, dialog.tag)
+                }
+            }
         }
     }
 

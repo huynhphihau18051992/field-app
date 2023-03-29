@@ -11,6 +11,7 @@ import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.CustomerResponse
 import com.crayon.fieldapp.data.remote.response.JobResponse
 import com.crayon.fieldapp.ui.base.BaseFragment
+import com.crayon.fieldapp.ui.base.dialog.TimeKeepingDialog
 import com.crayon.fieldapp.ui.screen.detailTask.changeGift.adapter.CustomerRVAdapter
 import com.crayon.fieldapp.utils.PopupMenu
 import com.crayon.fieldapp.utils.Status
@@ -103,15 +104,32 @@ class ChangeGiftFragment :
         }
 
         btn_add_customer?.setSingleClick {
-            val isVerifyOtp = jobResponse?.project?.isVerifyOtp ?: false
-            val projectId = jobResponse?.project?.id.toString()
-            findNavController().navigate(
-                R.id.action_changeGiftFragment_to_addCustomerFragment,
-                bundleOf(
-                    "taskId" to taskId, "isVerifyOtp" to isVerifyOtp,
-                    "projectId" to projectId
-                )
-            )
+            jobResponse?.store?.let { store ->
+                if (viewModel.verifyLocation(store)) {
+                    val isVerifyOtp = jobResponse?.project?.isVerifyOtp ?: false
+                    val projectId = jobResponse?.project?.id.toString()
+                    findNavController().navigate(
+                        R.id.action_changeGiftFragment_to_addCustomerFragment,
+                        bundleOf(
+                            "taskId" to taskId, "isVerifyOtp" to isVerifyOtp,
+                            "projectId" to projectId
+                        )
+                    )
+                } else {
+                    val dialog = TimeKeepingDialog()
+                    val bundle = Bundle()
+                    viewModel.currentLocation?.let {
+                        bundle.putDouble("current_lat", it.latitude)
+                        bundle.putDouble("current_long", it.longitude)
+
+                    }
+                    bundle.putDouble("store_lat", store.lat ?: 0.0)
+                    bundle.putDouble("store_long", store.lng ?: 0.0)
+                    bundle.putString("distant", viewModel.strDistant)
+                    dialog.arguments = bundle
+                    dialog.show(childFragmentManager, dialog.tag)
+                }
+            }
         }
 
         imb_ic_filter?.setSingleClick {

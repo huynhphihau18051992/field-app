@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+                                                        
+
+    
+
+                 
+                            
+                                                                          
+           
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" android:tag="layout/fragment_avatar_0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <RelativeLayout
+            android:id="@+id/rl_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/imb_ic_filter"
+                android:layout_toRightOf="@+id/imb_ic_back"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    style="@style/Toolbar_Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:tag="binding_1"                    
+                                                              />
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/imb_ic_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:background="@null"
+                android:padding="16dp"
+                android:src="@drawable/ic_back" />
+
+            <ImageButton
+                android:id="@+id/imb_ic_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:background="@null"
+                android:clickable="false"
+                android:padding="16dp"
+                android:src="@drawable/ic_save"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGrayLigth"
+            android:padding="16dp"
+            android:text="Ảnh đại diện"
+            android:textColor="@color/colorBlack" />
+
+        <RelativeLayout
+            android:id="@+id/rl_avatar"
+            style="@style/YogoProfileContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/img_ic_avatar"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
+            <TextView
+                android:id="@+id/tv_avatar"
+                style="@style/YogoProfileItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/ic_avatar_right"
+                android:layout_toRightOf="@+id/img_ic_avatar"
+                android:gravity="right"
+                android:text="Đổi ảnh đại diện" />
+
+            <ImageView
+                android:id="@+id/ic_avatar_right"
+                style="@style/YogoProfileItemValue.Image"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_arrow_right" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGrayLigth"
+            android:padding="16dp"
+            android:text="Ảnh toàn thân"
+            android:textColor="@color/colorBlack" />
+
+        <RelativeLayout
+            android:id="@+id/rl_body"
+            style="@style/YogoProfileContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/img_ic_body"
+                android:layout_width="100dp"
+                android:layout_height="150dp" />
+
+            <TextView
+                android:id="@+id/tv_body"
+                style="@style/YogoProfileItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/ic_body_right"
+                android:layout_toRightOf="@+id/img_ic_body"
+                android:gravity="right"
+                android:text="Đổi ảnh toàn thân" />
+
+            <ImageView
+                android:id="@+id/ic_body_right"
+                style="@style/YogoProfileItemValue.Image"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_arrow_right" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+         

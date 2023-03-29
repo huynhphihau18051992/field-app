@@ -27,7 +27,7 @@ class PrivacyFragment : BaseFragment<FragmentPrivacyBinding, PrivacyViewModel>()
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        wb_content.loadUrl("file:///android_asset/privacy.html")
+        wb_content.loadUrl("https://www.fieldapp.vn/policies")
 
     }
 }

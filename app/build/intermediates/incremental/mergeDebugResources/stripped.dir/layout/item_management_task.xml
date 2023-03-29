@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+                                                                   
+
+    
+
+                 
+                       
+                                                                           
+           
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp" android:tag="layout/item_management_task_0" xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <ImageView
+            android:id="@+id/cb_select"
+            android:layout_width="20dp"
+            android:layout_height="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_blue_minus" />
+
+        <TextView
+            android:id="@+id/txt_task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toLeftOf="@+id/img_remove"
+            android:layout_toRightOf="@+id/cb_select"
+            android:tag="binding_1"         
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/ic_remove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_black_trash" />
+    </RelativeLayout>
+
+         
+
+

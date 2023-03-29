@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txt_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/inter_semi_bold"
+            android:text="10:15"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_14ssp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/txt_time"
+            android:layout_marginLeft="@dimen/_14sdp"
+            android:layout_marginRight="@dimen/_14sdp"
+            android:background="#E9E9E9" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginRight="@dimen/_14sdp">
+
+        <ImageView
+            android:id="@+id/img_avatar"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/avatar_roud" />
+
+
+        <TextView
+            android:id="@+id/txt_err"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_toRightOf="@+id/img_avatar"
+            android:fontFamily="@font/inter_semi_bold"
+            android:text="Sai số khoảng khách"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp" />
+
+        <TextView
+            android:id="@+id/txt_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_err"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_toRightOf="@+id/img_avatar"
+            android:fontFamily="@font/inter_regular"
+            android:text="Vị trí của nhân viên cách cửa hàng là 500m"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp" />
+
+        <TextView
+            android:id="@+id/txt_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_note"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_toRightOf="@+id/img_avatar"
+            android:fontFamily="@font/inter_regular"
+            android:text="13.44345345, 105.3234234"
+            android:textColor="@color/blue_900"
+            android:textSize="@dimen/_12ssp" />
+
+
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="7dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@color/colorGrayLigth" />
+</LinearLayout>
+
+
+

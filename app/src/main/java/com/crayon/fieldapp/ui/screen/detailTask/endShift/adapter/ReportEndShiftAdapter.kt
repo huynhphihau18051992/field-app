@@ -1,5 +1,6 @@
 package com.crayon.fieldapp.ui.screen.detailTask.endShift.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
@@ -39,64 +40,64 @@ class ReportEndShiftAdapter constructor(
         }
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder.itemViewType == PROUDCT_TYPE) {
-            val data = items[position] as TaskResponse.Product
-            data.name?.let {
-                (holder as ProudctViewHolder).tv_product_name.text = it
-            }
-
-            (holder as ProudctViewHolder).edt_quality.addTextChangedListener(object : TextWatcher {
-                override fun afterTextChanged(s: Editable?) {
-                }
-
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (s.toString().length != 0) {
-                        (items.get(position) as TaskResponse.Product).quantity =
-                            s.toString().toInt()
-                    }
-                }
-
-            })
-        } else {
-            val data = items[position] as TaskResponse.Feedback
-            data.name?.let {
-                (holder as FeedbackViewHolder).tv_feedback_name.text = it
-            }
-
-            (holder as FeedbackViewHolder).edt_feedback.addTextChangedListener(object :
-                TextWatcher {
-                override fun afterTextChanged(s: Editable?) {
-
-                }
-
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (s.toString().length != 0) {
-                        (items.get(position) as TaskResponse.Feedback).description = s.toString()
-                    }
-                }
-
-            })
-        }
-    }
+//    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+//        if (holder.itemViewType == PROUDCT_TYPE) {
+//            val data = items[position] as TaskResponse.Product
+//            data.name?.let {
+//                (holder as ProudctViewHolder).tv_product_name.text = it
+//            }
+//
+//            (holder as ProudctViewHolder).edt_quality.addTextChangedListener(object : TextWatcher {
+//                override fun afterTextChanged(s: Editable?) {
+//                }
+//
+//                override fun beforeTextChanged(
+//                    s: CharSequence?,
+//                    start: Int,
+//                    count: Int,
+//                    after: Int
+//                ) {
+//
+//                }
+//
+//                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+//                    if (s.toString().length != 0) {
+//                        (items.get(position) as TaskResponse.Product).quantity =
+//                            s.toString().toInt()
+//                    }
+//                }
+//
+//            })
+//        } else {
+//            val data = items[position] as TaskResponse.Feedback
+//            data.name?.let {
+//                (holder as FeedbackViewHolder).tv_feedback_name.text = it
+//            }
+//
+//            (holder as FeedbackViewHolder).edt_feedback.addTextChangedListener(object :
+//                TextWatcher {
+//                override fun afterTextChanged(s: Editable?) {
+//
+//                }
+//
+//                override fun beforeTextChanged(
+//                    s: CharSequence?,
+//                    start: Int,
+//                    count: Int,
+//                    after: Int
+//                ) {
+//
+//                }
+//
+//                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+//                    if (s.toString().length != 0) {
+//                        (items.get(position) as TaskResponse.Feedback).description = s.toString()
+//                    }
+//                }
+//
+//            })
+//        }
+//    }
 
     inner class ProudctViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tv_product_name: TextView
@@ -155,6 +156,65 @@ class ReportEndShiftAdapter constructor(
     companion object {
         val PROUDCT_TYPE = 0
         val FEEDBACK_TYPE = 1
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, @SuppressLint("RecyclerView") position: Int) {
+        if (holder.itemViewType == PROUDCT_TYPE) {
+            val data = items[position] as TaskResponse.Product
+            data.name?.let {
+                (holder as ProudctViewHolder).tv_product_name.text = it
+            }
+
+            (holder as ProudctViewHolder).edt_quality.addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(s: Editable?) {
+                }
+
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    if (s.toString().length != 0) {
+                        (items.get(position) as TaskResponse.Product).quantity =
+                            s.toString().toInt()
+                    }
+                }
+
+            })
+        } else {
+            val data = items[position] as TaskResponse.Feedback
+            data.name?.let {
+                (holder as FeedbackViewHolder).tv_feedback_name.text = it
+            }
+
+            (holder as FeedbackViewHolder).edt_feedback.addTextChangedListener(object :
+                TextWatcher {
+                override fun afterTextChanged(s: Editable?) {
+
+                }
+
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    if (s.toString().length != 0) {
+                        (items.get(position) as TaskResponse.Feedback).description = s.toString()
+                    }
+                }
+
+            })
+        }
     }
 
 }

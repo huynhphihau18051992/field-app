@@ -177,13 +177,13 @@ val viewModelModule = module {
     viewModel { ManageReportSalesViewModel(get(), get(), get()) }
     viewModel { ManageReportTrackingViewModel(get(), get(), get()) }
     viewModel { ManageChangeGiftViewModel(get(), get(), get()) }
-    viewModel { ChangeGiftViewModel(get()) }
+    viewModel { ChangeGiftViewModel(get(), get(), get()) }
     viewModel { InputNameViewModel(get(), get()) }
     viewModel { VerifyOtpStep2ViewModel(get(), get()) }
     viewModel { InputBillViewModel(get(), get()) }
     viewModel { SelectPromotionViewModel(get(), get(), get()) }
-    viewModel { ReportCompetitorViewModel(get()) }
-    viewModel { ReportSalesViewModel(get()) }
+    viewModel { ReportCompetitorViewModel(get(), get(), get()) }
+    viewModel { ReportSalesViewModel(get(), get(), get()) }
     viewModel { ListReportCompetitorAtStoreViewModel(get(), get()) }
     viewModel { ListReportSalesAtStoreViewModel(get(), get()) }
     viewModel { ListReportTrackingAtStoreViewModel(get(), get()) }

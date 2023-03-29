@@ -91,17 +91,17 @@ class ListChangeGiftAtStoreFragment() :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ic_select_date.setSingleClick {
-//            DatePickerDialog(
-//                requireContext(),
-//                R.style.DatePickerTheme,
-//                dateSetListener,
-//                calendar.get(Calendar.YEAR),
-//                calendar.get(Calendar.MONTH),
-//                calendar.get(Calendar.DAY_OF_MONTH)
-//            ).show()
-            val datepicker = CustomDatePickerDialog(arrayListOf())
-            datepicker.setListener(this)
-            datepicker.show(childFragmentManager, datepicker.getTag())
+            DatePickerDialog(
+                requireContext(),
+                R.style.DatePickerTheme,
+                dateSetListener,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
+//            val datepicker = CustomDatePickerDialog(arrayListOf())
+//            datepicker.setListener(this)
+//            datepicker.show(childFragmentManager, datepicker.getTag())
         }
 
         btn_customer?.setSingleClick {
@@ -300,6 +300,14 @@ class ListChangeGiftAtStoreFragment() :
             take = 20
         )
     }
+
+    private val dateSetListener =
+        DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            calendar.set(Calendar.YEAR, year)
+            calendar.set(Calendar.MONTH, monthOfYear)
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            formatTime()
+        }
 
     override fun getDate(mCalendar: Calendar) {
         calendar = mCalendar
