@@ -1,5 +1,6 @@
 package com.crayon.fieldapp.di
 
+import com.crayon.fieldapp.ui.base.dialog.selectJobByDay.SelectDatePickerViewModel
 import com.crayon.fieldapp.ui.navigation.home_container.HomeContainerViewModel
 import com.crayon.fieldapp.ui.navigation.job_container.JobContainerViewModel
 import com.crayon.fieldapp.ui.navigation.notification_container.NotificationContainerViewModel
@@ -202,4 +203,5 @@ val viewModelModule = module {
     viewModel { ListGiftViewModel(get(), get(), get()) }
     viewModel { ListPromotionViewModel(get(), get(), get()) }
     viewModel { ExportGiftViewModel(get()) }
+    viewModel { SelectDatePickerViewModel(get(), get()) }
 }

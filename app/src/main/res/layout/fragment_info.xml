@@ -379,7 +379,6 @@
                                 android:layout_marginBottom="8dp"
                                 android:clickable="false"
                                 android:src="@drawable/no_image" />
-                            />
                         </RelativeLayout>
 
                         <TextView

@@ -16,6 +16,7 @@ import com.crayon.fieldapp.databinding.FragmentListAttendanceAtStoreBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.base.dialog.filterRole.FilterRoleDialog
 import com.crayon.fieldapp.ui.base.dialog.filterStore.model.ItemStore
+import com.crayon.fieldapp.ui.base.dialog.selectJobByDay.SelectDatePickerDialog
 import com.crayon.fieldapp.ui.screen.monitor.attendance.listTask.adapter.AttendanceAdapter
 import com.crayon.fieldapp.utils.Status
 import com.crayon.fieldapp.utils.setSingleClick
@@ -70,14 +71,15 @@ class ListAttendanceAtStoreFragment() :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ic_select_date.setSingleClick {
-            val datePickerDialog = DatePickerDialog(
-                requireContext(),
-                R.style.DatePickerTheme,
-                dateSetListener,
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH)
-            ).show()
+            val datepicker = SelectDatePickerDialog(
+                agencyId = agencyId.toString(),
+                projectId = projectId.toString(),
+                taskType = TaskType.TIME_KEEPING.value, itemClickListener = {
+                    calendar = it
+                    formatTime()
+                }
+            )
+            datepicker.show(childFragmentManager, datepicker.getTag())
         }
 
         tv_title.text = projectName
@@ -219,14 +221,6 @@ class ListAttendanceAtStoreFragment() :
             take = 20
         )
     }
-
-    private val dateSetListener =
-        DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-            calendar.set(Calendar.YEAR, year)
-            calendar.set(Calendar.MONTH, monthOfYear)
-            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-            formatTime()
-        }
 
     private fun loadMoreItem(skip: Int) {
         viewModel.getTaskByProject(

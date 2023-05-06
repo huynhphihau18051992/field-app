@@ -218,6 +218,7 @@ fun Date.getPreviousMonth(): Date {
     }
 }
 
+
 /**
  * get next month of this date
  */
@@ -249,4 +250,38 @@ fun Date.getNextDay(): Date {
         it.add(Calendar.DAY_OF_MONTH, 1)
         it.time
     }
+}
+
+fun Long.isToday(): Boolean {
+    val time = Calendar.getInstance()
+    time.timeInMillis = this
+    val now = Calendar.getInstance()
+    return now.get(Calendar.DATE) - time.get(Calendar.DATE) == 0
+}
+
+fun Long.isYesterday(): Boolean {
+    val time = Calendar.getInstance()
+    time.timeInMillis = this
+    val now = Calendar.getInstance()
+    return now.get(Calendar.DATE) - time.get(Calendar.DATE) == 1
+}
+
+fun Long.isPreviousDay(): Boolean {
+    val time = Calendar.getInstance()
+    time.timeInMillis = this
+    val now = Calendar.getInstance()
+    return now.get(Calendar.DATE) - time.get(Calendar.DATE) >= 1
+}
+
+fun Long.isNextDay(): Boolean {
+    val time = Calendar.getInstance()
+    time.timeInMillis = this
+    val now = Calendar.getInstance()
+    return now.get(Calendar.DATE) - time.get(Calendar.DATE) < 0
+}
+
+fun Long.isAM(): Boolean {
+    val time = Calendar.getInstance()
+    time.timeInMillis = this
+    return time.get(Calendar.AM_PM) == Calendar.AM
 }

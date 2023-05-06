@@ -1,6 +1,5 @@
 package com.crayon.fieldapp.ui.screen.monitor.updateStatus.listTask
 
-import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -16,6 +15,7 @@ import com.crayon.fieldapp.databinding.FragmentListUpdateStatusAtStoreBinding
 import com.crayon.fieldapp.ui.base.BaseFragment
 import com.crayon.fieldapp.ui.base.dialog.filterStore.FilterStoreDialog
 import com.crayon.fieldapp.ui.base.dialog.filterStore.model.ItemStore
+import com.crayon.fieldapp.ui.base.dialog.selectJobByDay.SelectDatePickerDialog
 import com.crayon.fieldapp.ui.screen.monitor.updateStatus.listTask.adapter.UpdateStatusAdapter
 import com.crayon.fieldapp.utils.Status
 import com.crayon.fieldapp.utils.setSingleClick
@@ -78,14 +78,15 @@ class ListUpdateStatusAtStoreFragment() :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ic_select_date.setSingleClick {
-            DatePickerDialog(
-                requireContext(),
-                R.style.DatePickerTheme,
-                dateSetListener,
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH)
-            ).show()
+            val datepicker = SelectDatePickerDialog(
+                agencyId = agencyId.toString(),
+                projectId = projectId.toString(),
+                taskType = TaskType.UPDATE_STATUS.value, itemClickListener = {
+                    calendar = it
+                    formatTime()
+                }
+            )
+            datepicker.show(childFragmentManager, datepicker.getTag())
         }
 
         btn_filter_store?.setSingleClick {
@@ -227,14 +228,6 @@ class ListUpdateStatusAtStoreFragment() :
             take = 20
         )
     }
-
-    private val dateSetListener =
-        DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-            calendar.set(Calendar.YEAR, year)
-            calendar.set(Calendar.MONTH, monthOfYear)
-            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-            formatTime()
-        }
 
     private fun loadMoreItem(skip: Int) {
         viewModel.getTaskByProject(

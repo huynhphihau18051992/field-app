@@ -2,6 +2,7 @@ package com.crayon.fieldapp.ui.screen.home.adapter
 
 import android.content.Context
 import android.graphics.Typeface
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.JobResponse
-import com.crayon.fieldapp.utils.formatHour
-import com.crayon.fieldapp.utils.toTimeLong
-import com.crayon.fieldapp.utils.toTimeString
+import com.crayon.fieldapp.utils.*
 import kotlinx.android.synthetic.main.item_job.view.*
 import java.util.*
 
@@ -25,69 +24,47 @@ class TodayJobAdapter constructor(
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.item_job, parent, false)
         val holder = JobViewHolder(view)
-        holder.itemView.setOnClickListener {
-            itemClickListener(items.get(holder.absoluteAdapterPosition))
-        }
         return holder
     }
 
     override fun onBindViewHolder(holder: JobViewHolder, position: Int) {
         val data = items[position]
-        val currentTime = Calendar.getInstance().timeInMillis
-        val startTime = data.startTime.toString().toTimeLong("yyyy-MM-dd'T'HH:mm") ?: 0
-        val endTime = data.endTime.toString().toTimeLong("yyyy-MM-dd'T'HH:mm") ?: 0
+        val now = Calendar.getInstance().timeInMillis
+        val startTimeJob = data.startTime.toString().toTimeLong("yyyy-MM-dd'T'HH:mm") ?: 0
 
-        if (currentTime > startTime) {
-            holder.txtStore.setTextColor(context.resources.getColor(R.color.colorAccent, null))
-            holder.txtProjectName.setTextColor(
-                context.resources.getColor(
-                    R.color.colorAccent,
-                    null
-                )
-            )
-            holder.txtTime.setTextColor(context.resources.getColor(R.color.colorAccent, null))
-            holder.txt_am.setTextColor(context.resources.getColor(R.color.colorAccent, null))
-            holder.txt_am.setTypeface(holder.txt_am.getTypeface(), Typeface.BOLD)
-            holder.itemView.isEnabled = true
-        } else {
-            var threadhold_start = startTime - 60 * 60 * 1000 // truoc 1h
-            if(currentTime >= threadhold_start) {
-                holder.txtStore.setTextColor(context.resources.getColor(R.color.colorAccent, null))
-                holder.txtProjectName.setTextColor(
-                    context.resources.getColor(
-                        R.color.colorAccent,
-                        null
-                    )
-                )
-                holder.txtTime.setTextColor(context.resources.getColor(R.color.colorAccent, null))
-                holder.txt_am.setTextColor(context.resources.getColor(R.color.colorAccent, null))
-                holder.txt_am.setTypeface(holder.txt_am.getTypeface(), Typeface.BOLD)
-                holder.itemView.isEnabled = true
+        if (startTimeJob.isToday()) {
+            var threadhold_start = startTimeJob - 60 * 60 * 1000 // truoc 1h
+            Log.d("AAAHAU",  "now:" + now + "/ threadhold_start: " + threadhold_start + "start: "+ startTimeJob)
+            if (now >= threadhold_start) {
+                enableJob(holder)
             } else {
-                holder.txtStore.setTextColor(context.resources.getColor(R.color.colorGray, null))
-                holder.txtProjectName.setTextColor(context.resources.getColor(R.color.colorGray, null))
-                holder.txtTime.setTextColor(context.resources.getColor(R.color.colorGray, null))
-                holder.txt_am.setTextColor(context.resources.getColor(R.color.colorGray, null))
-                holder.txt_am.setTypeface(holder.txt_am.getTypeface(), Typeface.NORMAL)
-                holder.itemView.isEnabled = false
+                disableJob(holder = holder, isClick = false)
+            }
+        } else {
+            if (startTimeJob.isPreviousDay()) {
+                disableJob(holder = holder, isClick = false)
+            } else {
+                disableJob(holder = holder, isClick = true)
             }
         }
-
-        data.store?.name.let {
+        data.store?.name?.let {
             holder.txtStore.text = it
         }
 
-        data.project?.name.let {
+        data.project?.name?.let {
             holder.txtProjectName.text = it
         }
-
         val start_date = formatHour(data.startTime.toString())
         val end_date = formatHour(data.endTime.toString())
         var timeAM = "Sáng"
-        if (startTime.toTimeString("yyyy-MM-dd aa")!!.contains("AM")) {
+        if (startTimeJob.isAM()) {
             timeAM = "Sáng"
         } else {
             timeAM = "Chiều"
+        }
+
+        holder.itemView.setOnClickListener {
+            itemClickListener(items.get(holder.absoluteAdapterPosition))
         }
 
         val shift = start_date.toString() + "-" + end_date
@@ -122,5 +99,33 @@ class TodayJobAdapter constructor(
     fun clearAll() {
         items.clear()
         notifyDataSetChanged()
+    }
+
+    private fun enableJob(holder: JobViewHolder) {
+        holder.txtStore.setTextColor(context.resources.getColor(R.color.colorAccent, null))
+        holder.txtProjectName.setTextColor(
+            context.resources.getColor(
+                R.color.colorAccent,
+                null
+            )
+        )
+        holder.txtTime.setTextColor(context.resources.getColor(R.color.colorAccent, null))
+        holder.txt_am.setTextColor(context.resources.getColor(R.color.colorAccent, null))
+        holder.txt_am.setTypeface(holder.txt_am.getTypeface(), Typeface.BOLD)
+        holder.itemView.isEnabled = true
+    }
+
+    private fun disableJob(holder: JobViewHolder, isClick: Boolean) {
+        holder.txtStore.setTextColor(context.resources.getColor(R.color.colorGray, null))
+        holder.txtProjectName.setTextColor(
+            context.resources.getColor(
+                R.color.colorGray,
+                null
+            )
+        )
+        holder.txtTime.setTextColor(context.resources.getColor(R.color.colorGray, null))
+        holder.txt_am.setTextColor(context.resources.getColor(R.color.colorGray, null))
+        holder.txt_am.setTypeface(holder.txt_am.getTypeface(), Typeface.NORMAL)
+        holder.itemView.isEnabled = isClick
     }
 }

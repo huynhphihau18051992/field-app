@@ -37,6 +37,20 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
     private var totalItemCount: Int = 0
     private var skip: Int = 0
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // 2020-08-27T00:00:00.000Z
+        val startDate = getCurrentDateTime().toTimeString("yyyy-MM-dd") + "T00:00:00.000Z"
+        val endDate = getCurrentDateTime().toTimeString("yyyy-MM-dd") + "T23:59:00.000Z"
+        viewModel.getTodayJob(startDate, endDate, skip)
+        jobAdapter = TodayJobAdapter(
+            arrayListOf(),
+            requireContext(),
+            itemClickListener = { toJobDetail(it.id.toString()) }
+        )
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         calendar.setOnDateChangeListener(this)
@@ -51,12 +65,6 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
             findNavController().navigateUp()
         }
 
-        jobAdapter = TodayJobAdapter(
-            arrayListOf(),
-            requireContext(),
-            itemClickListener = { toJobDetail(it.id.toString()) }
-        )
-
         rv_jobs.apply {
             layoutManager = LinearLayoutManager(context)
             this.adapter = jobAdapter
@@ -66,7 +74,8 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
                     if (dy > 0) { //check for scroll down
                         visibleItemCount = (layoutManager as LinearLayoutManager).getChildCount()
                         totalItemCount = (layoutManager as LinearLayoutManager).getItemCount()
-                        pastVisiblesItems = (layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+                        pastVisiblesItems =
+                            (layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
                         if (!mIsLoading) {
                             if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
                                 mIsLoading = true
@@ -103,10 +112,6 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
                 }
 
             })
-            // 2020-08-27T00:00:00.000Z
-            val startDate = getCurrentDateTime().toTimeString("yyyy-MM-dd") + "T00:00:00.000Z"
-            val endDate = getCurrentDateTime().toTimeString("yyyy-MM-dd") + "T23:59:00.000Z"
-            getTodayJob(startDate, endDate, skip)
         }
     }
 
