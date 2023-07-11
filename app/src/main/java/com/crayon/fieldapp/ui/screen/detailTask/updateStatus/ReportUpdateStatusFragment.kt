@@ -385,23 +385,35 @@ class ReportUpdateStatusFragment :
     }
 
     private fun openCamera() {
-        val bundle = bundleOf("isTakeImage" to true)
-        findNavController().navigate(R.id.action_global_CameraFragment, bundle)
+        if (newImageAdapter.itemCount >= 3) {
+            context?.showMessageDialog("Bạn chỉ được chụp tối đa 3 tấm")
+        } else {
+            val bundle = bundleOf("isTakeImage" to true)
+            findNavController().navigate(R.id.action_global_CameraFragment, bundle)
+        }
     }
 
     private fun openGallery() {
-        val intent = Intent()
-        intent.type = "image/*"
-        intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(
-            Intent.createChooser(intent, "Select Picture"),
-            DetailTaskFragment.CODE_REQUEST_GALLERY
-        )
+        if (newImageAdapter.itemCount >= 3) {
+            context?.showMessageDialog("Bạn chỉ được chụp tối đa 3 tấm")
+        } else {
+            val intent = Intent()
+            intent.type = "image/*"
+            intent.action = Intent.ACTION_GET_CONTENT
+            startActivityForResult(
+                Intent.createChooser(intent, "Select Picture"),
+                DetailTaskFragment.CODE_REQUEST_GALLERY
+            )
+        }
     }
 
     private fun openVideoCamera() {
-        val bundle = bundleOf("isTakeVideo" to false)
-        findNavController().navigate(R.id.action_global_CameraFragment, bundle)
+        if (newImageAdapter.itemCount >= 3) {
+            context?.showMessageDialog("Bạn chỉ được chụp tối đa 3 tấm")
+        } else {
+            val bundle = bundleOf("isTakeVideo" to false)
+            findNavController().navigate(R.id.action_global_CameraFragment, bundle)
+        }
     }
 
     private fun isTakeImageOnlyFromCamera(taskType: Int): Boolean {

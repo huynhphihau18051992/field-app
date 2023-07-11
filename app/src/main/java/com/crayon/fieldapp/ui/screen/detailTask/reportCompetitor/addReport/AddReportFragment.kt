@@ -120,9 +120,13 @@ class AddReportFragment : BaseFragment<FragmentAddReportBinding, AddReportViewMo
         }
 
         btn_camera?.setSingleClick {
-            val dialog = GetPhotoDialogFragment()
-            dialog.setListener(this)
-            dialog.show(childFragmentManager, dialog.tag)
+            if (updateImageAdapter.itemCount >= 3) {
+                context?.showMessageDialog("Bạn chỉ được chụp tối đa 3 tấm")
+            } else {
+                val dialog = GetPhotoDialogFragment()
+                dialog.setListener(this)
+                dialog.show(childFragmentManager, dialog.tag)
+            }
         }
 
         btn_video?.setSingleClick {
@@ -174,23 +178,36 @@ class AddReportFragment : BaseFragment<FragmentAddReportBinding, AddReportViewMo
     }
 
     private fun openCamera() {
-        val bundle = bundleOf("isTakeImage" to true)
-        findNavController().navigate(R.id.action_global_CameraFragment, bundle)
+        if (updateImageAdapter.itemCount >= 3) {
+            context?.showMessageDialog("Bạn chỉ được chụp tối đa 3 tấm")
+        } else {
+            val bundle = bundleOf("isTakeImage" to true)
+            findNavController().navigate(R.id.action_global_CameraFragment, bundle)
+        }
     }
 
     private fun openVideoCamera() {
-        val bundle = bundleOf("isTakeVideo" to false)
-        findNavController().navigate(R.id.action_global_CameraFragment, bundle)
+        if (updateImageAdapter.itemCount >= 3) {
+            context?.showMessageDialog("Bạn chỉ được chụp tối đa 3 video")
+        } else {
+            val bundle = bundleOf("isTakeVideo" to false)
+            findNavController().navigate(R.id.action_global_CameraFragment, bundle)
+        }
     }
 
     private fun openGallery() {
-        val intent = Intent()
-        intent.type = "image/*"
-        intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(
-            Intent.createChooser(intent, "Select Picture"),
-            CODE_REQUEST_GALLERY
-        )
+        if (updateImageAdapter.itemCount >= 3) {
+            context?.showMessageDialog("Bạn chỉ được chụp tối đa 3 video")
+        } else {
+            val intent = Intent()
+            intent.type = "image/*"
+            intent.action = Intent.ACTION_GET_CONTENT
+            startActivityForResult(
+                Intent.createChooser(intent, "Select Picture"),
+                CODE_REQUEST_GALLERY
+            )
+        }
+
     }
 
     private fun showImage(url: String) {
