@@ -1,12 +1,16 @@
 package com.crayon.fieldapp.ui.screen.detailTask.changeGift.adapter
 
 import android.content.Context
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.GiftResponse
@@ -18,7 +22,6 @@ class GiftRVAdapter constructor(
     val onItemSelectedListener: (gift: GiftResponse, isChecked: Boolean) -> Unit = { i: GiftResponse, b: Boolean -> },
     val onItemPlusListener: (gift: GiftResponse) -> Unit = { },
     val onItemMinusListener: (gift: GiftResponse) -> Unit = { },
-    val onItemQuantityListener: (gift: GiftResponse) -> Unit = { },
     val isEdit: Boolean = true
 ) :
     RecyclerView.Adapter<GiftRVAdapter.GroupViewHolder>() {
@@ -35,19 +38,36 @@ class GiftRVAdapter constructor(
         holder.cvGift.text = data.name
 
         holder.cvGift.isChecked = data.isSelect
-        holder.txtNumber.text = data.selectQuantity.toString()
+        holder.edtNumber.setText(data.selectQuantity.toString())
+        holder.edtNumber.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                p0?.let { mQuantity ->
+                    mQuantity.toString().toIntOrNull()?.let {
+                        data.selectQuantity = it
+                    }
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+
+        })
         if (data.isSelect) {
             if (isEdit) {
                 holder.imgPlus.isEnabled = true
                 holder.imgMinus.isEnabled = true
-                holder.txtNumber.isEnabled = true
+                holder.edtNumber.isEnabled = true
                 holder.cvGift.isEnabled = true
                 holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_select_add))
                 holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_select_minus))
             } else {
                 holder.imgPlus.isEnabled = false
                 holder.imgMinus.isEnabled = false
-                holder.txtNumber.isEnabled = false
+                holder.edtNumber.isEnabled = false
                 holder.cvGift.isEnabled = false
                 holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_gray_add))
                 holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_minus))
@@ -60,7 +80,7 @@ class GiftRVAdapter constructor(
             }
             holder.imgPlus.isEnabled = false
             holder.imgMinus.isEnabled = false
-            holder.txtNumber.isEnabled = false
+            holder.edtNumber.isEnabled = false
             holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_gray_add))
             holder.imgMinus.setImageDrawable(context.getDrawable(R.drawable.ic_minus))
         }
@@ -77,22 +97,18 @@ class GiftRVAdapter constructor(
         holder.imgPlus?.setSingleClick {
             onItemPlusListener(data)
         }
-
-        holder.txtNumber?.setSingleClick {
-            onItemQuantityListener(data)
-        }
     }
 
     inner class GroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var cvGift: CheckBox
-        var txtNumber: TextView
+        var edtNumber: EditText
         var imgPlus: ImageView
         var imgMinus: ImageView
 
         init {
             cvGift = itemView.findViewById(R.id.cb_product)
             imgMinus = itemView.findViewById(R.id.img_minus)
-            txtNumber = itemView.findViewById(R.id.txt_number)
+            edtNumber = itemView.findViewById(R.id.txt_number)
             imgPlus = itemView.findViewById(R.id.img_plus)
         }
     }

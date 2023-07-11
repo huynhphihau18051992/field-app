@@ -138,14 +138,7 @@ class DetailCustomerRVAdapter constructor(
                         var quantity = mGift.selectQuantity + 1
                         mGiftRVAdapter.onUpdateQuantity(mGift, quantity)
                     }, onItemQuantityListener = { mGift ->
-                        val dialog =
-                            EditQuantityGiftDialog(mGift, onUpdateQuantityClick = { mQuantity ->
-                                mGiftRVAdapter.onUpdateQuantity(mGift, mQuantity)
-                            })
-                        dialog.show(
-                            (context as FragmentActivity).supportFragmentManager,
-                            dialog.tag
-                        )
+
                     }, isEdit = isEdit
                 )
             (holder as GiftItemViewHolder).rvGift.apply {
