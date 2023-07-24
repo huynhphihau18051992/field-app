@@ -198,35 +198,63 @@ class ProjectRepositoryImpl(
 
     override suspend fun getProjectSummary(
         agencyId: String,
-        projectId: String
+        projectId: String,
+        startTime: String?,
+        endTime: String?
     ): Resource<ProjectSummaryResponse> {
-        val result = apiService.getProjectSummary(agencyId = agencyId, projectId = projectId)
+        val result = apiService.getProjectSummary(
+            agencyId = agencyId,
+            projectId = projectId,
+            startTime = startTime,
+            endTime = endTime
+        )
         return Resource.success(result)
     }
 
     override suspend fun getProjectSummaryCustomer(
         agencyId: String,
-        projectId: String
+        projectId: String,
+        startTime: String?,
+        endTime: String?
     ): Resource<ArrayList<CustomerResponse>> {
         val result =
-            apiService.getProjectSummaryCustomer(agencyId = agencyId, projectId = projectId)
+            apiService.getProjectSummaryCustomer(
+                agencyId = agencyId,
+                projectId = projectId,
+                startTime = startTime,
+                endTime = endTime
+            )
         return Resource.success(result)
     }
 
     override suspend fun getProjectSummaryPromotion(
         agencyId: String,
-        projectId: String
+        projectId: String,
+        startTime: String?,
+        endTime: String?
     ): Resource<ArrayList<SummaryPromotionResponse>> {
         val result =
-            apiService.getProjectSummaryPromotion(agencyId = agencyId, projectId = projectId)
+            apiService.getProjectSummaryPromotion(
+                agencyId = agencyId,
+                projectId = projectId,
+                startTime = startTime,
+                endTime = endTime
+            )
         return Resource.success(result)
     }
 
     override suspend fun getProjectSummaryGift(
         agencyId: String,
-        projectId: String
+        projectId: String,
+        startTime: String?,
+        endTime: String?
     ): Resource<ArrayList<SummaryGiftResponse>> {
-        val result = apiService.getProjectSummaryGift(agencyId = agencyId, projectId = projectId)
+        val result = apiService.getProjectSummaryGift(
+            agencyId = agencyId,
+            projectId = projectId,
+            startTime = startTime,
+            endTime = endTime
+        )
         return Resource.success(result)
     }
 

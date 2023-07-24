@@ -137,8 +137,6 @@ class DetailCustomerRVAdapter constructor(
                     onItemPlusListener = { mGift ->
                         var quantity = mGift.selectQuantity + 1
                         mGiftRVAdapter.onUpdateQuantity(mGift, quantity)
-                    }, onItemQuantityListener = { mGift ->
-
                     }, isEdit = isEdit
                 )
             (holder as GiftItemViewHolder).rvGift.apply {

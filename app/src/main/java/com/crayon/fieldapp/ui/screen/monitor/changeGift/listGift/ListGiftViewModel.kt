@@ -21,7 +21,7 @@ class ListGiftViewModel(
 
     private val _summary = MediatorLiveData<Event<Resource<List<GiftResponse>>>>()
     val summary: LiveData<Event<Resource<List<GiftResponse>>>> get() = _summary
-    fun getProjectSummary(agencyId: String, projectId: String) =
+    fun getProjectSummary(agencyId: String, projectId: String,  startDate: String, endDate: String) =
         viewModelScope.launch(dispatchers.main) {
             _summary.postValue(Event(Resource.loading(null)))
             withContext(dispatchers.io) {
@@ -29,7 +29,9 @@ class ListGiftViewModel(
                     val giftResult = taskRepository.getGiftList(projectId = projectId).data?.data
                     val result = projectRepository.getProjectSummaryGift(
                         agencyId = agencyId,
-                        projectId = projectId
+                        projectId = projectId,
+                        startTime = startDate,
+                        endTime = endDate
                     ).data
                     val gits = ArrayList<GiftResponse>()
                     giftResult?.let {

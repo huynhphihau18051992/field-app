@@ -80,22 +80,30 @@ interface ProjectRepository {
 
     suspend fun getProjectSummary(
         agencyId: String,
-        projectId: String
+        projectId: String,
+        startTime: String? = null,
+        endTime: String? = null
     ): Resource<ProjectSummaryResponse>
 
     suspend fun getProjectSummaryCustomer(
         agencyId: String,
-        projectId: String
+        projectId: String,
+        startTime: String? = null,
+        endTime: String? = null
     ): Resource<ArrayList<CustomerResponse>>
 
     suspend fun getProjectSummaryPromotion(
         agencyId: String,
-        projectId: String
+        projectId: String,
+        startTime: String? = null,
+        endTime: String? = null
     ): Resource<ArrayList<SummaryPromotionResponse>>
 
     suspend fun getProjectSummaryGift(
         agencyId: String,
-        projectId: String
+        projectId: String,
+        startTime: String? = null,
+        endTime: String? = null
     ): Resource<ArrayList<SummaryGiftResponse>>
 
     /**

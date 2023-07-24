@@ -651,26 +651,34 @@ interface ApiService {
     @GET("/management/v1/projects/{projectId}/summary")
     suspend fun getProjectSummary(
         @Header("mts-agency-id") agencyId: String,
-        @Path("projectId") projectId: String
+        @Path("projectId") projectId: String,
+        @Query("start_time") startTime: String? = null,
+        @Query("end_time") endTime: String? = null
     ): ProjectSummaryResponse
 
     @GET("/management/v1/projects/{projectId}/summary/customer")
     suspend fun getProjectSummaryCustomer(
         @Header("mts-agency-id") agencyId: String,
-        @Path("projectId") projectId: String
+        @Path("projectId") projectId: String,
+        @Query("start_time") startTime: String? = null,
+        @Query("end_time") endTime: String? = null
     ): ArrayList<CustomerResponse>
 
     @GET("/management/v1/projects/{projectId}/summary/promotion-package")
     suspend fun getProjectSummaryPromotion(
         @Header("mts-agency-id") agencyId: String,
-        @Path("projectId") projectId: String
+        @Path("projectId") projectId: String,
+        @Query("start_time") startTime: String? = null,
+        @Query("end_time") endTime: String? = null
     ): ArrayList<SummaryPromotionResponse>
 
 
     @GET("/management/v1/projects/{projectId}/summary/gift")
     suspend fun getProjectSummaryGift(
         @Header("mts-agency-id") agencyId: String,
-        @Path("projectId") projectId: String
+        @Path("projectId") projectId: String,
+        @Query("start_time") startTime: String? = null,
+        @Query("end_time") endTime: String? = null
     ): ArrayList<SummaryGiftResponse>
 
     /*

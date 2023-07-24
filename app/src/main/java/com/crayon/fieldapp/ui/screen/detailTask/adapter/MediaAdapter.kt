@@ -174,6 +174,10 @@ class MediaAdapter constructor(
         this.mListener = listener
     }
 
+    fun contains(newImage: String): Boolean{
+        return items.map { it.id }.contains(newImage)
+    }
+
     companion object {
         const val MEDIA_IMAGE = 0
         const val MEDIA_VIDEO = 1

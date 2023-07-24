@@ -106,7 +106,9 @@ class ReportUpdateStatusFragment :
         super.onActivityCreated(savedInstanceState)
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<String>("url")
             ?.observe(viewLifecycleOwner, Observer { result ->
-                showImage(result)
+                if (!newImageAdapter.contains(result)) {
+                    showImage(result)
+                }
             })
         viewModel.task.observe(viewLifecycleOwner, Observer {
             it.getContentIfNotHandled()?.let {

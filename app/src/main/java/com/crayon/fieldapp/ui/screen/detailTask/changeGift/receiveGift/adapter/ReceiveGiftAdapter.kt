@@ -1,24 +1,25 @@
 package com.crayon.fieldapp.ui.screen.detailTask.changeGift.receiveGift.adapter
 
 import android.content.Context
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.crayon.fieldapp.R
 import com.crayon.fieldapp.data.remote.response.GiftResponse
 import com.crayon.fieldapp.utils.MStringUtils
 import com.crayon.fieldapp.utils.setSingleClick
 
+
 class ReceiveGiftAdapter constructor(
     val items: ArrayList<GiftResponse>,
     val context: Context,
-    val onItemPlusListener: (gift: GiftResponse) -> Unit = { },
-    val onItemMinusListener: (gift: GiftResponse) -> Unit = { },
+    val onItemPlusListener: (gift: GiftResponse, position: Int) -> Unit = { g: GiftResponse, p: Int -> },
+    val onItemMinusListener: (gift: GiftResponse, position: Int) -> Unit = { g: GiftResponse, p: Int -> },
     val onItemQuantityListener: (gift: GiftResponse) -> Unit = { }
 ) :
     RecyclerView.Adapter<ReceiveGiftAdapter.GroupViewHolder>(), Filterable {
@@ -41,7 +42,7 @@ class ReceiveGiftAdapter constructor(
         val data = contactListFiltered[position]
         holder.tvGift.text = data.name
 
-        holder.txtNumber.text = data.quantityIn.toString()
+        holder.edtNumber.setText(data.quantityIn.toString())
         holder.imgPlus.isEnabled = true
         holder.imgMinus.isEnabled = true
         holder.imgPlus.setImageDrawable(context.getDrawable(R.drawable.ic_select_add))
@@ -49,28 +50,43 @@ class ReceiveGiftAdapter constructor(
 
 
         holder.imgMinus?.setSingleClick {
-            onItemMinusListener(data)
+            onItemMinusListener(data, position)
         }
 
         holder.imgPlus?.setSingleClick {
-            onItemPlusListener(data)
+            onItemPlusListener(data, position)
         }
 
-        holder.txtNumber?.setSingleClick {
-            onItemQuantityListener(data)
-        }
+        holder.edtNumber.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                s?.let {
+                    if(!s.toString().isNullOrBlank()){
+                        contactListFiltered.get(holder.absoluteAdapterPosition).quantityIn = s.toString().toInt()
+                    }
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+        })
+
     }
 
-    inner class GroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class GroupViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
         var tvGift: TextView
-        var txtNumber: TextView
+        var edtNumber: EditText
         var imgPlus: ImageView
         var imgMinus: ImageView
 
         init {
             tvGift = itemView.findViewById(R.id.txtGift)
             imgMinus = itemView.findViewById(R.id.img_minus)
-            txtNumber = itemView.findViewById(R.id.txt_number)
+            edtNumber = itemView.findViewById(R.id.txt_number)
             imgPlus = itemView.findViewById(R.id.img_plus)
         }
     }
@@ -84,13 +100,9 @@ class ReceiveGiftAdapter constructor(
         notifyDataSetChanged()
     }
 
-    fun onUpdateQuantity(gift: GiftResponse, quantity: Int) {
-        contactListFiltered.indexOfFirst { it.id.toString().equals(gift.id) }.let { index ->
-            if (index != -1) {
-                contactListFiltered.get(index).quantityIn = quantity
-                notifyItemChanged(index)
-            }
-        }
+    fun onUpdateQuantity(gift: GiftResponse, quantity: Int, position: Int) {
+        contactListFiltered.get(position).quantityIn = quantity
+        notifyItemChanged(position)
     }
 
     fun addAll(mGift: ArrayList<GiftResponse>) {
@@ -99,7 +111,7 @@ class ReceiveGiftAdapter constructor(
         notifyDataSetChanged()
     }
 
-    fun refresh(){
+    fun refresh() {
         contactListFiltered.clear()
         contactListFiltered.addAll(items)
         notifyDataSetChanged()

@@ -1,9 +1,12 @@
 package com.crayon.fieldapp.ui.screen.detailTask.changeGift.export.adapter
 
 import android.content.Context
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Filter
 import android.widget.Filterable
 import android.widget.TextView
@@ -41,24 +44,42 @@ class ExportGiftAdapter constructor(
         holder.txtImport.text = data.quantityIn.toString()
         holder.txtConsume.text = data.quantityConsume.toString()
         holder.txtRemainPlan.text = (data.quantityIn - data.quantityConsume).toString()
-        holder.txtRemainActual.text = data.quantityRemainActual.toString()
+        holder.edtRemainActual.setText(data.quantityRemainActual.toString())
 
         holder.itemView?.setSingleClick {
             onItemListener(data)
         }
+
+        holder.edtRemainActual.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                s?.let {
+                    if (!s.toString().isNullOrBlank()) {
+                        contactListFiltered.get(holder.absoluteAdapterPosition).quantityRemainActual =
+                            s.toString().toInt()
+                    }
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+        })
     }
 
     inner class GroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvGift: TextView
         var txtRemainPlan: TextView
-        var txtRemainActual: TextView
+        var edtRemainActual: EditText
         var txtConsume: TextView
         var txtImport: TextView
 
         init {
             tvGift = itemView.findViewById(R.id.txtGift)
             txtRemainPlan = itemView.findViewById(R.id.txt_remain_plan)
-            txtRemainActual = itemView.findViewById(R.id.txt_remain_actual)
+            edtRemainActual = itemView.findViewById(R.id.edt_remain_actual)
             txtConsume = itemView.findViewById(R.id.txt_consume)
             txtImport = itemView.findViewById(R.id.txt_import)
         }

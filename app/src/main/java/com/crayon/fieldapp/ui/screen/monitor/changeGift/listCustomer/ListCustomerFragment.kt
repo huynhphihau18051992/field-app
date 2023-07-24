@@ -28,12 +28,16 @@ class ListCustomerFragment() :
     override val viewModel: ListCustomerViewModel by viewModel()
     var agencyId: String? = null
     var projectId: String? = null
+    var startDate: String? = null
+    var endDate: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         agencyId = requireArguments().get("agencyId").toString()
         projectId = requireArguments().get("projectId").toString()
+        startDate = requireArguments().get("startDate").toString()
+        endDate = requireArguments().get("endDate").toString()
 
         mAdapter = CustomerRVAdapter(
             arrayListOf(),
@@ -43,7 +47,9 @@ class ListCustomerFragment() :
         )
         viewModel.getProjectSummary(
             agencyId = agencyId.toString(),
-            projectId = projectId.toString()
+            projectId = projectId.toString(),
+            startDate = startDate.toString(),
+            endDate = endDate.toString()
         )
     }
 

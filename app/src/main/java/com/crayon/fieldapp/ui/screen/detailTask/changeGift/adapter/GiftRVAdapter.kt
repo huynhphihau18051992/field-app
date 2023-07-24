@@ -22,6 +22,7 @@ class GiftRVAdapter constructor(
     val onItemSelectedListener: (gift: GiftResponse, isChecked: Boolean) -> Unit = { i: GiftResponse, b: Boolean -> },
     val onItemPlusListener: (gift: GiftResponse) -> Unit = { },
     val onItemMinusListener: (gift: GiftResponse) -> Unit = { },
+    val onItemQuantityListener: (gift: GiftResponse) -> Unit = {},
     val isEdit: Boolean = true
 ) :
     RecyclerView.Adapter<GiftRVAdapter.GroupViewHolder>() {

@@ -71,14 +71,30 @@ class ListChangeGiftAtStoreViewModel(
 
     private val _summary = MediatorLiveData<Event<Resource<ProjectSummaryResponse>>>()
     val summary: LiveData<Event<Resource<ProjectSummaryResponse>>> get() = _summary
-    fun getProjectSummary(agencyId: String, projectId: String) =
+    fun getProjectSummary(agencyId: String, projectId: String, date: Calendar) =
         viewModelScope.launch(dispatchers.main) {
             _summary.postValue(Event(Resource.loading(null)))
             withContext(dispatchers.io) {
                 try {
+                    val start_date = TimeFormatUtils.getDate(
+                        date.get(Calendar.YEAR),
+                        date.get(Calendar.MONTH),
+                        date.get(Calendar.DATE),
+                        0,
+                        0
+                    )!!.toTimeString("yyyy-MM-dd") + "T00:00:00.000Z"
+                    val end_date = TimeFormatUtils.getDate(
+                        date.get(Calendar.YEAR),
+                        date.get(Calendar.MONTH),
+                        date.get(Calendar.DATE),
+                        23,
+                        59
+                    )!!.toTimeString("yyyy-MM-dd") + "T23:59:00.000Z"
                     val result = projectRepository.getProjectSummary(
                         agencyId = agencyId,
-                        projectId = projectId
+                        projectId = projectId,
+                        startTime = start_date,
+                        endTime = end_date
                     )
                     _summary.postValue(Event(Resource.success(result.data)))
                 } catch (e: Exception) {

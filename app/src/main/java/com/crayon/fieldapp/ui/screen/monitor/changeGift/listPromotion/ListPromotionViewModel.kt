@@ -22,7 +22,7 @@ class ListPromotionViewModel(
 
     private val _summary = MediatorLiveData<Event<Resource<List<PromotionResponse>>>>()
     val summary: LiveData<Event<Resource<List<PromotionResponse>>>> get() = _summary
-    fun getProjectSummary(agencyId: String, projectId: String) =
+    fun getProjectSummary(agencyId: String, projectId: String, startDate: String, endDate: String) =
         viewModelScope.launch(dispatchers.main) {
             _summary.postValue(Event(Resource.loading(null)))
             withContext(dispatchers.io) {

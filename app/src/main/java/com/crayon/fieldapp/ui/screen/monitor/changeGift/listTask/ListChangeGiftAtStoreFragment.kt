@@ -1,6 +1,5 @@
 package com.crayon.fieldapp.ui.screen.monitor.changeGift.listTask
 
-import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -20,6 +19,7 @@ import com.crayon.fieldapp.ui.base.dialog.selectJobByDay.SelectDatePickerDialog
 import com.crayon.fieldapp.ui.screen.monitor.changeGift.listTask.adapter.ManageChangeGiftRVAdapter
 import com.crayon.fieldapp.utils.Status
 import com.crayon.fieldapp.utils.setSingleClick
+import com.crayon.fieldapp.utils.toTimeString
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_list_change_gift_at_store.*
 import kotlinx.android.synthetic.main.fragment_list_update_status_at_store.btn_filter_store
@@ -84,7 +84,8 @@ class ListChangeGiftAtStoreFragment() :
         )
         viewModel.getProjectSummary(
             agencyId = agencyId.toString(),
-            projectId = projectId.toString()
+            projectId = projectId.toString(),
+            date = calendar
         )
     }
 
@@ -104,23 +105,76 @@ class ListChangeGiftAtStoreFragment() :
         }
 
         btn_customer?.setSingleClick {
+            val start_date = TimeFormatUtils.getDate(
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DATE),
+                0,
+                0
+            )!!.toTimeString("yyyy-MM-dd") + "T00:00:00.000Z"
+            val end_date = TimeFormatUtils.getDate(
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DATE),
+                23,
+                59
+            )!!.toTimeString("yyyy-MM-dd") + "T23:59:00.000Z"
             findNavController().navigate(
                 R.id.action_list_changeGift_to_listCustomer,
-                bundleOf("agencyId" to agencyId.toString(), "projectId" to projectId.toString())
+                bundleOf(
+                    "agencyId" to agencyId.toString(), "projectId" to projectId.toString(),
+                    "startDate" to start_date, "endDate" to end_date
+                )
             )
         }
 
         btn_promotion?.setSingleClick {
+            val start_date = TimeFormatUtils.getDate(
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DATE),
+                0,
+                0
+            )!!.toTimeString("yyyy-MM-dd") + "T00:00:00.000Z"
+            val end_date = TimeFormatUtils.getDate(
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DATE),
+                23,
+                59
+            )!!.toTimeString("yyyy-MM-dd") + "T23:59:00.000Z"
             findNavController().navigate(
                 R.id.action_list_changeGift_to_listPromotion,
-                bundleOf("agencyId" to agencyId.toString(), "projectId" to projectId.toString())
+                bundleOf(
+                    "agencyId" to agencyId.toString(), "projectId" to projectId.toString(),
+                    "startDate" to start_date, "endDate" to end_date
+                )
             )
         }
 
         btn_gift?.setSingleClick {
+            val start_date = TimeFormatUtils.getDate(
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DATE),
+                0,
+                0
+            )!!.toTimeString("yyyy-MM-dd") + "T00:00:00.000Z"
+            val end_date = TimeFormatUtils.getDate(
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DATE),
+                23,
+                59
+            )!!.toTimeString("yyyy-MM-dd") + "T23:59:00.000Z"
             findNavController().navigate(
                 R.id.action_list_changeGift_to_listGift,
-                bundleOf("agencyId" to agencyId.toString(), "projectId" to projectId.toString())
+                bundleOf(
+                    "agencyId" to agencyId.toString(),
+                    "projectId" to projectId.toString(),
+                    "startDate" to start_date,
+                    "endDate" to end_date
+                )
             )
         }
 
@@ -285,6 +339,11 @@ class ListChangeGiftAtStoreFragment() :
             date = calendar,
             skip = skip,
             take = 20
+        )
+        viewModel.getProjectSummary(
+            agencyId = agencyId.toString(),
+            projectId = projectId.toString(),
+            date = calendar
         )
     }
 

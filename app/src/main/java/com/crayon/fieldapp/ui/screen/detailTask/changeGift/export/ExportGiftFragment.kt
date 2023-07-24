@@ -46,11 +46,11 @@ class ExportGiftFragment : BaseFragment<FragmentExportGiftBinding, ExportGiftVie
 
         mGiftAdapter =
             ExportGiftAdapter(arrayListOf(), requireContext(), onItemListener = { mGift ->
-                val dialog =
-                    EditRemainGiftDialog(mGift, onUpdateQuantityClick = { mQuantity ->
-                        mGiftAdapter.onUpdateQuantity(mGift, mQuantity)
-                    })
-                dialog.show(requireActivity().supportFragmentManager, dialog.tag)
+//                val dialog =
+//                    EditRemainGiftDialog(mGift, onUpdateQuantityClick = { mQuantity ->
+//                        mGiftAdapter.onUpdateQuantity(mGift, mQuantity)
+//                    })
+//                dialog.show(requireActivity().supportFragmentManager, dialog.tag)
             })
         _taskId?.let {
             viewModel.fetchGifts(taskId = it)

@@ -44,21 +44,21 @@ class ReceiveGiftFragment : BaseFragment<FragmentImportGiftBinding, ReceiveGiftV
         _taskId = requireArguments()?.getString("taskId")
 
         mGiftAdapter =
-            ReceiveGiftAdapter(arrayListOf(), requireContext(), onItemMinusListener = { mGift ->
+            ReceiveGiftAdapter(arrayListOf(), requireContext(), onItemMinusListener = { mGift, position ->
                 var quantity = mGift.quantityIn - 1
                 if (quantity < 0) {
                     quantity = 0
                 }
-                mGiftAdapter.onUpdateQuantity(mGift, quantity)
-            }, onItemPlusListener = { mGift ->
+                mGiftAdapter.onUpdateQuantity(mGift, quantity, position)
+            }, onItemPlusListener = { mGift, position ->
                 var quantity = mGift.quantityIn + 1
-                mGiftAdapter.onUpdateQuantity(mGift, quantity)
+                mGiftAdapter.onUpdateQuantity(mGift, quantity, position)
             }, onItemQuantityListener = { mGift ->
-                val dialog =
-                    EditQuantityGiftDialog(mGift, onUpdateQuantityClick = { mQuantity ->
-                        mGiftAdapter.onUpdateQuantity(mGift, mQuantity)
-                    })
-                dialog.show(requireActivity().supportFragmentManager, dialog.tag)
+//                val dialog =
+//                    EditQuantityGiftDialog(mGift, onUpdateQuantityClick = { mQuantity ->
+//                        mGiftAdapter.onUpdateQuantity(mGift, mQuantity, position)
+//                    })
+//                dialog.show(requireActivity().supportFragmentManager, dialog.tag)
             })
         _taskId?.let {
             viewModel.fetchGifts(taskId = it)
