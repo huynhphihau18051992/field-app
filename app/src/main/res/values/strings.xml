@@ -1,0 +1,514 @@
+<resources>
+    <string name="app_name">Field App</string>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyCNOT6mTANnQnlWtl0omSQ1viKIAQiUyUw
+    </string>
+
+    <string-array name="stepLabels">
+        <item>Điền \n thông tin</item>
+        <item>Xác thực \n OTP</item>
+        <item>Ảnh \n hoá đơn</item>
+        <item>Gói \n khuyến mãi</item>
+    </string-array>
+
+    <string-array name="stepLabelsWithoutOTP">
+        <item>Điền \n thông tin</item>
+        <item>Ảnh \n hoá đơn</item>
+        <item>Gói \n khuyến mãi</item>
+    </string-array>
+
+    <string-array name="arr_activity">
+        <item>Sampling</item>
+        <item>Inline</item>
+        <item>Hoạt náo</item>
+        <item>Trưng bày POSM</item>
+        <item>Khác</item>
+    </string-array>
+
+    <!--Login Start-->
+    <string name="txt_login_sign_in">Đăng nhập</string>
+    <string name="txt_login_reset_pass">Đổi mật khẩu</string>
+    <string name="txt_login_forgot">Quên mật khẩu?</string>
+    <string name="txt_login_sign_up">Đăng kí</string>
+    <string name="txt_login_legal_description">Đăng nhập đồng nghĩa với việc bạn đã đồng ý với các %s và %s của chúng tôi</string>
+    <string name="txt_login_terms_and_conditions">Điều khoản</string>
+    <string name="txt_login_privacy_policy">Chính sách quyền riêng</string>
+    <string name="txt_login_blueId">Email</string>
+    <string name="txt_login_blueId_hint">Nhập địa chỉ Email của bạn</string>
+    <string name="txt_login_phone">Số điện thoại</string>Đ
+    <string name="txt_login_phone_hint">Nhập số điện thoại của bạn</string>
+    <string name="txt_login_reset_pass_hint">Nhập số điện thoại đăng kí để đổi mật khẩu mới</string>
+    <string name="txt_login_passwrod_hint">Nhập mật khẩu của bạn</string>
+    <string name="txt_retrive_password_hint">Nhập số điên thoại để nhận mã xác minh</string>
+    <string name="txt_calling_to_number">Mã xác thực đang được gửi đến số điện thoại đăng nhập</string>
+    <string name="txt_input_otp_hint">Nhập mã OTP đã gửi đến số điện thoại đăng nhập</string>
+    <string name="txt_login_or">Hoặc</string>
+    <!--Login End-->
+
+
+    <!--Profile Start-->
+    <string name="txt_profile_phone">Số điện thoại</string>
+    <string name="txt_my_profile">Hồ sơ của tôi</string>
+    <string name="txt_gender">Giới tính</string>
+    <string name="txt_tax">Mã số thuế</string>
+    <string name="txt_bank">Tài khoản ngân hàng</string>
+    <string name="txt_height">Chiều cao</string>
+    <string name="txt_weight">Cân nặng</string>
+    <string name="txt_image_full_body">Ảnh toàn thân</string>
+    <string name="txt_image_id_front">Ảnh CMND mặt trước</string>
+    <string name="txt_image_id_back">Ảnh CMND mặt sau</string>
+    <string name="txt_id">Số CMND</string>
+    <string name="select_gallery">Chọn ảnh thư viện</string>
+    <string name="select_camera">Chụp ảnh</string>
+    <!--Profile End-->
+
+    <!--Setting Start-->
+    <string name="txt_setting">Cài đặt</string>
+    <string name="txt_setting_account">Tài khoản</string>
+    <string name="txt_setting_phone">Số điện thoại</string>
+    <string name="txt_setting_pass">Mật khẩu tài khoản</string>
+    <string name="txt_setting_phone_status_not_link">Không được liên kết</string>
+    <string name="txt_setting_preferences">Sở thích</string>
+    <string name="txt_setting_video_call">Thiết lập gọi Video</string>
+    <string name="txt_setting_notification">Thông báo</string>
+    <string name="txt_set_notification">Thiết lập Thông báo</string>
+    <string name="txt_setting_message_request">Hộp tin nhắn từ người lạ</string>
+    <string name="txt_setting_sound">Âm thanh</string>
+    <string name="txt_setting_vibrate">Rung</string>
+    <string name="txt_setting_unit_system">Hệ thống đơn vị</string>
+    <string name="txt_setting_unit_system_met">Mét</string>
+    <string name="txt_setting_unit_system_ft">Fit</string>
+    <string name="txt_setting_language">Ngôn ngữ</string>
+    <string name="txt_setting_map">Bản đồ</string>
+    <string name="txt_setting_image_size">Kích thước hình ảnh</string>
+    <string name="txt_setting_language_viet">Tiếng Việt</string>
+    <string name="txt_setting_privacy">Riêng tư</string>
+    <string name="txt_setting_not_show">Ẩn người và nhóm theo dõi tôi</string>
+    <string name="txt_setting_clear_cache">Làm sạch bộ nhớ Cache</string>
+    <string name="txt_setting_clear_chat_history">Xoá lịch sử trò chuyện</string>
+    <string name="txt_setting_support">Hổ trợ</string>
+    <string name="txt_setting_support_help">Trợ giúp FAQ</string>
+    <string name="txt_setting_support_group">Hổ trợ nhóm</string>
+    <string name="txt_setting_support_customer">Dịch vụ khách hàng</string>
+    <string name="txt_setting_support_report_bug">Phản hồi</string>
+    <string name="txt_setting_about">Về chúng tôi</string>
+    <string name="txt_setting_about_terms">Quy tắc sử dụng</string>
+    <string name="txt_setting_about_privacy">Chính sách riêng tư</string>
+    <string name="txt_setting_about_term_live">Điều khoản LIVE</string>
+    <string name="txt_setting_about_website">Trang web của chúng tôi</string>
+    <string name="txt_setting_logout">Đăng xuất</string>
+    <string name="txt_setting_contact">Liên hệ</string>
+    <string name="txt_setting_version">Phiên bản 2.3.5</string>
+    <string name="txt_setting_delete_account">Xoá tài khoản</string>
+    <!--Setting End-->
+
+    <!--Following Start-->
+    <string name="txt_following">Theo dõi</string>
+    <string name="txt_following_sort">Sắp xếp</string>
+    <string name="txt_following_online">Online</string>
+    <string name="txt_following_absence">Không có mặt</string>
+    <!--Following End-->
+
+
+    <!--Friend Start-->
+    <string name="txt_new_friend">Người mới</string>
+    <string name="txt_view_all">Xem toàn bộ</string>
+    <string name="txt_near">Gần đây</string>
+    <string name="txt_popular">Phổ biến</string>
+    <string name="txt_other">Khác</string>
+    <!--Friend End-->
+
+    <!--Group Start-->
+    <string name="txt_create_group">Tạo</string>
+    <string name="txt_my_group">Nhóm của tôi</string>
+    <string name="txt_social">Xã hội</string>
+    <string name="txt_sport">Sport</string>
+    <string name="txt_food">Ẩm thực</string>
+    <string name="txt_fashion">Thời trang</string>
+    <string name="txt_game">Game</string>mới
+    <string name="txt_film">Phim</string>
+    <string name="txt_career">Sự nghiệp</string>
+    <string name="txt_local_group">Nhóm địa phương</string>
+    <string name="txt_new_group">Nhóm mới</string>
+    <string name="txt_join_group">Tham gia</string>
+    <string name="txt_created_group">Nhóm đã tạo</string>
+    <string name="txt_joined_group">Nhóm đã tham gia</string>
+    <string name="txt_near_group">Gần đây</string>
+    <string name="txt_pop_group">Phổ biến</string>
+    <!--Group End-->
+
+    <!--User Start-->
+    <string name="txt_all_people">Mọi Người</string>
+    <string name="txt_group">Nhóm</string>
+    <!--User End-->
+
+
+    <!--Channel Start-->
+    <string name="txt_message_box">Hộp thoại</string>
+    <string name="txt_notification">Thông báo</string>
+    <!--Channel End-->
+
+    <!--Time Line Start-->
+    <string name="txt_line">Dòng</string>
+    <string name="txt_discovery">Khám phá</string>
+    <!--Time Line  End-->
+
+    <!--LiveStream Start-->
+    <string name="txt_live">Live</string>
+    <!--LiveStream End-->
+
+
+    <!--Setting Start-->
+    <string name="txt_clear_cache_content">Thời gian cần thiết để làm sạch bộ nhớ cache dựa vào kích thước của tập tin bộ nhớ cache. Làm ơn hãy kiên nhẫn</string>
+    <string name="btn_clear_cache">Xoá</string>
+    <string name="btn_cancel">Huỷ bỏ</string>
+    <string name="btn_save">Lưu</string>
+    <string name="btn_confirm">Xác nhận</string>
+    <string name="btn_clear_history_content">Làm sạch tất cả?</string>
+    <string name="txt_delete_account_content">Rất tiếc khi bạn không sử dụng nữa. Để Yolo phát triển tốt hơn nữa, bạn hãy cho chúng tôi biết lý do bạn muốn xoá.</string>
+    <string name="txt_delete_account_note">Tài khoản sẽ được xoá trong vòng 7 ngày. Trong thời gian này tài khoản của bạn sẽ ở trạng thái ẩn. Trong vòng 7 ngày nếu bản đổi ý, bạn có thể kích hoạt lại tài khoản. </string>
+    <string name="txt_reason_found_lover">Đã tìm thấy nửa kia.</string>
+    <string name="txt_reason_found_better_app">Tìm thấy app tốt hơn</string>
+    <string name="txt_reason_found_app_not_good"> Yolo chưa được như kỳ vọng</string>
+    <string name="txt_reason_not_found_lovers">Yolo không có người tôi thích</string>
+    <string name="txt_reason_others"> Lý do khác</string>
+    <string name="txt_unit_cm">cm/kg</string>
+    <string name="txt_unit_ft">fg/lb</string>
+    <string name="txt_notification_preview">Xem trước</string>
+    <string name="txt_notification_show_preview_text">Hiện thị tin nhắn duyệt trước</string>
+    <string name="txt_push_notification_when">Thông báo cho tôi khi</string>
+    <string name="txt_new_followers">Có người theo dõi mới</string>
+    <string name="txt_mention_reply">Nhắc nhở và trả lời</string>
+    <string name="txt_new_comments">Bình luận mới</string>
+    <string name="txt_comments">Bình luận</string>
+    <string name="txt_input_comments">Nhập bình luận</string>
+    <string name="txt_someone_live">Những người mà tôi theo dõi đang live</string>
+    <string name="txt_anyone">Bất cứ ai</string>
+    <string name="txt_notificaiton_following">Người đang theo dõi</string>
+    <string name="txt_off">Tắt</string>
+    <string name="txt_person_can_call">Người có thể gọi cho bạn</string>
+    <string name="txt_friend">Bạn bè</string>
+    <string name="txt_ring">Chuông</string>
+    <string name="txt_nobody">Không ai</string>
+    <string name="txt_current_pass">Nhập mật khẩu hiện tại của bạn</string>
+    <string name="txt_new_pass">Nhập mật khẩu mới</string>
+    <string name="txt_confirm_pass">Xác nhận mật khẩu mới</string>
+    <string name="txt_add">Thêm ...</string>
+    <!--Setting End-->
+
+
+    <!--Message Start-->
+    <string name="txt_remark">Đặt chú thích</string>
+    <string name="txt_setting_message">Thiết lập trò chuyện</string>
+    <string name="txt_unblock_private_photo"> Mở khoá ảnh riêng tư</string>
+    <string name="txt_disable_sound">Tắt tiếng</string>
+    <string name="txt_clear_chat_history">Xoá lịch sử trò chuyện</string>
+    <string name="txt_block">Chặn</string>
+    <string name="txt_report"> Báo cáo</string>
+    <string name="txt_miss_call">Cuộc gọi nhỡ</string>
+    <string name="txt_voice_call">Cuộc gọi thoại</string>
+    <string name="txt_video_call">Cuộc gọi Video</string>
+    <string name="txt_recall">Gọi lại</string>
+    <!--Message End-->
+
+    <!--Notification -->
+    <string name="txt_notfi_followed">đã theo dõi bạn</string>
+    <string name="txt_notfi_like_photo"> 3 người khác đã thích ảnh của bạn</string>
+    <string name="txt_sent">Đã gửi</string>
+    <string name="txt_received">Đã nhận</string>
+    <string name="txt_create_notification">Tạo thông báo</string>
+    <string name="txt_receiver">Người nhận thông báo</string>
+    <string name="txt_title">Tiêu đề</string>
+    <string name="txt_input_title">Nhập tiêu đề</string>
+    <string name="txt_content">Nội dung</string>
+    <string name="txt_input_content">Nhập nội dung</string>
+    <string name="txt_skip">Bỏ qua</string>
+    <string name="txt_send">Gủi</string>
+    <string name="txt_sent_notification">Gủi thông báo</string>
+
+    <!--LiveStream Start-->
+    <string name="txt_miss_livestream">Bạn đã bỏ lỡ Live của bạn bè</string>
+    <string name="txt_top_popular_person">Bảng xếp hạng người nổi tiếng</string>
+    <string name="txt_country">Nước và khu vực</string>
+    <string name="txt_live_popular">Phổ biến</string>
+    <!--Live End-->
+
+
+    <!--Facebook start-->
+    <string name="facebook_app_id">288622901867301</string>
+    <string name="fb_login_protocol_scheme">fb288622901867301</string>
+    <!--Facebook end-->
+
+    <!--Home start-->
+    <string name="txt_to_do_task">Việc hôm nay</string>
+    <string name="txt_search_hint">Chức danh hoặc từ khóa</string>
+    <!--Home End-->
+
+    <!--Job-->
+    <string name="txt_job_desc">Nội dung công việc</string>
+    <string name="txt_input_job_desc">Nhập nội dung công việc</string>
+    <string name="txt_job_requirement">Yêu cầu chuyên môn</string>
+    <string name="txt_job_info">Thông tin công việc</string>
+    <string name="txt_company_info">Hồ sơ công ty</string>
+    <string name="txt_job_benefit">Phúc lợi</string>
+    <string name="txt_save_job">Lưu</string>
+    <string name="txt_completed">Đã đóng</string>
+    <string name="txt_in_progress">Đang chạy</string>
+    <string name="txt_upcoming">Sắp chạy</string>
+    <string name="txt_messsage">Tin nhắn</string>
+    <string name="txt_apply_job">Ứng tuyển</string>
+    <string name="txt_saved_job">Đã lưu</string>
+    <string name="txt_applied_job">Đã ứng tuyển</string>
+    <string name="txt_view">Xem</string>
+    <string name="txt_show_company_desc">Xem mô tả</string>
+    <string name="txt_hide_company_desc">Giấu mô tả</string>
+    <string name="txt_example">VNG là công ty Internet và công nghệ hàng đầu Việt Nam. VNG có khoảng 2000 kỹ sư và nhân viên hoạt động trong lĩnh vực phát triển và phát hành game, nội dung số và giải trí trực tuyến, liên kết cộng đồng, phần mềm và tiện ích, sản phẩm về cổng thanh toán... Với tinh thần đón nhận thách thức cùng tầm nhìn dài hạn, VNG sẽ tiếp tục đóng góp cho cộng đồng những sản phẩm Internet và công nghệ thiết thực. Trên con đường kiến tạo những lợi ích cho cộng đồng, VNG sẵn sàng trao cơ hội cho các tài năng trẻ thể hiện khả năng sáng tạo và sức mạnh tri thức của mình. </string>
+    <string name="txt_job_type">Loại công việc</string>
+    <string name="txt_choose_job_type">Chọn loại công việc</string>
+    <string name="txt_branch">Ngành hàng</string>
+    <string name="txt_choose_branch">Chọn ngành hàng</string>
+    <string name="txt_program_name">Tên chương trình</string>
+    <string name="txt_input_program_name">Nhập tên chương trình</string>
+    <string name="txt_label_name">Tên nhãn hàng</string>
+    <string name="txt_input_label_name">Nhập tên nhãn hàng</string>
+    <string name="txt_start_date">Ngày bắt đầu</string>
+    <string name="txt_end_date">Ngày kết thúc</string>
+    <string name="txt_person_in_charge">Người thực hiện</string>
+    <string name="txt_person_in_following">Người theo dõi</string>
+    <string name="txt_list_store_address">Danh sách cửa hàng</string>
+    <string name="txt_choose">Chọn</string>
+    <string name="txt_direction">Chỉ đường</string>
+    <string name="txt_selected_store">Cửa hàng đã chọn</string>
+    <string name="txt_store">Cửa hàng</string>
+    <string name="txt_select_all">Chọn tất cả</string>
+    <string name="txt_new_job">Thêm công việc mới</string>
+    <string name="txt_new_store">Tạo cửa hàng mới</string>
+    <string name="txt_list_member">Thành viên dự án</string>
+    <string name="txt_detail_project">Chi tiết dự án</string>
+    <string name="txt_detail_job">Chi tiết Công việc</string>
+    <string name="txt_progress">Tiến độ</string>
+    <string name="txt_status">Trạng thái</string>
+    <string name="txt_note">Ghi chú</string>
+    <string name="txt_input_note">Nhập ghi chú</string>
+    <string name="txt_take_picture">Chụp ảnh</string>
+    <string name="txt_close">Đóng</string>
+
+
+    <!--Menu Grid Text-->
+    <string name="txt_timekeeping">Chấm công</string>
+    <string name="txt_sales">Bán hàng</string>
+    <string name="txt_competitor">Đối thủ</string>
+    <string name="txt_tracking">Định vị</string>
+    <string name="txt_change_gift">Đổi quà</string>
+    <string name="txt_update_status">Tình hình</string>
+    <string name="txt_manage_timekeeping">Quản lý Chấm công</string>
+    <string name="txt_application">Đơn từ</string>
+    <string name="txt_manage_application">Quản lý đơn từ</string>
+    <string name="txt_report_check_in">Báo cáo</string>
+    <string name="txt_calendar">Lịch biểu</string>
+    <string name="txt_task">Công việc</string>
+    <string name="txt_monitoring">Giám sát</string>
+    <string name="txt_location">Vị trí</string>
+    <string name="txt_project">Dự án</string>
+    <string name="txt_annual_leave">Ngày phép</string>
+    <string name="txt_location_employee">Vị trí nhân viên</string>
+    <string name="txt_list_employee">Danh sách nhân viên</string>
+    <string name="txt_profile_employee">Hồ sơ nhân viên</string>
+    <string name="txt_employee">Nhân viên</string>
+
+
+    <!--Check In/Out-->
+    <string name="txt_check_in_note">Bạn chưa chấm công vào hôm nay</string>
+    <string name="txt_check_in">Check In</string>
+    <string name="txt_check_out">Check Out</string>
+    <string name="txt_did_check_in">Đã chấm công</string>
+    <string name="txt_not_check_in">Chưa chấm công</string>
+    <string name="txt_day_off">Xin nghỉ</string>
+
+    <!--SimpleItem-->
+    <string name="txt_approved_application">Đã duyệt</string>
+    <string name="txt_wait_approve_application">Chờ duyệt</string>
+    <string name="txt_reject_approve_application">Không duyệt</string>
+
+    <!--Report-->
+    <string name="txt_work_day">Ngày công</string>
+    <string name="txt_work_anual">Ngày phép</string>
+    <string name="txt_late_hour">Đi muộn</string>
+    <string name="txt_leave_earl_hour">Về sớm</string>
+    <string name="txt_over_time_hour">Làm thêm</string>
+    <string name="txt_business_day">Công tác</string>
+
+    <!--Job type-->
+    <string-array name="job_type">
+        <item>@string/txt_choose_job_type</item>
+        <item>Xác nhận nhận hàng</item>
+        <item>Lắp đặt</item>
+        <item>Báo cáo khách hàng</item>
+        <item>Báo cáo cập nhật tình hình</item>
+        <item>Báo cáo đối thủ</item>
+        <item>Kiểm tra cửa hàng</item>
+        <item>Báo cáo hư hỏng</item>
+        <item>Kết thúc dự án vào tháo gỡ</item>
+        <item>Báo cáo vi phạm của đối tác</item>
+        <item>Báo cáo cuối ca</item>
+        <item>Kiểm đếm</item>
+        <item>Cập nhật giá</item>
+        <item>Chấm công</item>
+        <item>Báo cáo hoàn thành sửa chửa</item>
+        <item>Array Item Three</item>
+    </string-array>
+
+    <!--Brand -->
+    <string-array name="job_brand">
+        <item>@string/txt_choose_branch</item>
+        <item>Array Item Two</item>
+        <item>Array Item Three</item>
+    </string-array>
+
+    <!--Job Status-->
+    <string-array name="job_status">
+        <item>Chưa thực hiện</item>
+        <item>Đang thực hiện</item>
+        <item>Hoàn thành</item>
+        <item>Tạm dừng</item>
+        <item>Hủy</item>
+    </string-array>
+
+    <string-array name="attendance_status">
+        <item>Tất cả</item>
+        <item>Đã chấm công</item>
+        <item>Chưa châm công</item>
+        <item>Đến muộn</item>
+        <item>Về sớm</item>
+    </string-array>
+
+    <!--Job Role-->
+    <string-array name="job_role">
+        <item>FO</item>
+        <item>SS</item>
+        <item>PG</item>
+        <item>PB</item>
+        <item>MC</item>
+        <item>CHEF</item>
+        <item>HELPER</item>
+        <item>FS</item>
+        <item>TL</item>
+        <item>RL</item>
+    </string-array>
+
+    <!--Dialog -->
+    <string name="txt_all">Tất cả</string>
+    <string name="txt_job_completed">Công việc đã hoàn thành</string>
+    <string name="txt_job_late">Công việc quá hạn</string>
+    <string name="txt_job_doing">Công việc đang thực hiện</string>
+    <string name="txt_filter_annual_leave">Đơn xin nghỉ phép</string>
+    <string name="txt_filter_day_off">Đơn xin vắng mặt</string>
+    <string name="txt_filter_over_time">Đơn xin tăng ca</string>
+    <string name="txt_filter_business">Đơn xin công tác</string>
+    <string name="txt_filter_trans_shift">Đơn xin đổi ca</string>
+    <string name="txt_filter_project">Lọc theo dự án</string>
+    <string name="txt_filter_venue">Lọc theo địa điểm</string>
+
+
+    <string name="txt_monday">Thứ 2</string>
+    <string name="txt_tuesday">Thứ 3</string>
+    <string name="txt_wednesday">Thứ 4</string>
+    <string name="txt_thursday">Thứ 5</string>
+    <string name="txt_friday">Thứ 6</string>
+    <string name="txt_saturday">Thứ 7</string>
+    <string name="txt_sunday">Chủ nhật</string>
+
+    <string name="txt_filter_label">Theo nhãn hàng</string>
+    <string name="txt_filter_company">Theo công ty</string>
+    <string name="txt_filter_time">Theo thời gian</string>
+
+    <!--User Type -->
+    <string name="txt_director">Giảm đốc</string>
+    <string name="txt_manager">Admin</string>
+    <string name="txt_team_leader">Trưởng nhóm</string>
+    <string name="txt_team_employee">Nhân viên</string>
+    <string name="txt_admin">Admin</string>
+
+    <!--User Role -->
+    <string name="txt_fo">Field Operator</string>
+    <string name="txt_ss">Store Supervisor</string>
+    <string name="txt_pg">Promotion Girl</string>
+    <string name="txt_pb">Promotion Boy</string>
+    <string name="txt_mc">MC</string>
+    <string name="txt_chef">Chef</string>
+    <string name="txt_helper">Helper</string>
+    <string name="txt_fs">Field Supervisor</string>
+    <string name="txt_tl">Team Leader</string>
+    <string name="txt_rl">Regional Leader</string>
+
+
+    <!--Notification Content-->
+    <string name="txt_notification_add_employee">%s đã đề xuất thêm %s vào công ty</string>
+    <string name="txt_notification_invite_employee">%s đã mời %s vào công ty</string>
+    <string name="txt_notification_remove_employee">%s đã đề xuất xoá %s khỏi công ty</string>
+    <string name="txt_notification_accept_add_employee">%s đã chấp nhận việc thêm %s vào công ty</string>
+    <string name="txt_notification_accept_remove_employee">%s đã chấp nhận việc xóa %s khỏi công ty</string>
+    <string name="txt_notification_reject_add_employee">%s đã từ chối việc thêm %s vào công ty</string>
+    <string name="txt_notification_reject_remove_employee">%s đã từ chối việc xoá %s khỏi công ty</string>
+    <string name="txt_notification_added_employee">%s đã chấp nhận bạn vào làm việc tại công ty</string>
+    <string name="txt_notification_create_project">%s đã tạo dự án</string>
+    <string name="txt_notification_approve_project">%s đã chấp nhận dự án của bạn</string>
+    <string name="txt_notification_reject_project">%s đã từ chối dự án của bạn</string>
+    <string name="txt_notification_add_member_project">%s đã thêm % vào dự án %s</string>
+    <string name="txt_notification_remove_member_project">%s đã xoá % vào dự án %s</string>
+    <string name="txt_notification_added_member_project">Bạn đã được % vào dự án %s</string>
+    <string name="txt_notification_removed_member_project">%s đã xoá bạn khỏi dự án %s</string>
+    <string name="txt_notification_task_check_list_full">%s đã nhận đủ dụng cụ</string>
+    <string name="txt_notification_task_check_list_apart">%s đã nhận một phần dụng cụ</string>
+    <string name="txt_notification_task_complete">%s đã hoàn thành việc %s</string>
+    <string name="txt_notification_task_update">%s đã cập nhận tình hình</string>
+    <string name="txt_notification_task_report_damage">%s đã báo cáo hư hại trong dự án %s</string>
+    <string name="txt_notification_task_report_damage_complete">%s đã hoàn thành việc sửa chửa hư hại trong dự án %s</string>
+    <string name="txt_notification_task_report_project_complete">%s đã báo cáo kết thúc dự án %s</string>
+    <string name="txt_notification_task_report_violation">%s đã báo cáo vi phạm trong dự án %s</string>
+
+    <string name="txt_invalid_distant">Vị trí của bạn cách vị trí khu vực là %s</string>
+
+    <string name="txt_summary_date">Thống kê từ ngày %s đến ngày %s</string>
+    <string name="txt_summary_hour">Tổng số giờ làm: %s</string>
+    <string name="txt_summary_shift">Tổng số ca làm: %d ca</string>
+    <string name="txt_summary_invalid_shift">Số ca trễ: %d ca</string>
+    <string name="txt_summary_project">Số dự án: %d dự án</string>
+    <string name="txt_timekeeping_date">Ngày <b>%s</b> làm %d ca</string>
+
+
+    <!--User Role -->
+    <string name="txt_error_get_image">Đã có lỗi xảy ra, vui lòng thử lại</string>
+
+    <!--error message-->
+    <string name="no_internet_connection">Vui lòng kết nối Internet</string>
+    <string name="connect_timeout">Connect Timeout</string>
+    <string name="force_update_app">Please update app</string>
+    <string name="server_maintain_message">Server maintain, please try again later</string>
+
+    <!--main screen-->
+    <string name="main_tab_popular">POPULAR</string>
+    <string name="main_tab_top_rated">TOP RATED</string>
+    <string name="main_tab_favorite">FAVORITE</string>
+    <string name="main_tab_profile">PROFILE</string>
+    <string name="main_tab_tv">TV</string>
+
+    <!--login-->
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_button_login">Login</string>
+
+    <string name="ok">OK</string>
+    <string name="summary">Summary</string>
+
+
+    <string name="capture_button">Capture</string>
+    <string name="torch_button">Torch</string>
+    <string name="photo">Photo</string>
+    <string name="video">Video</string>
+
+    // FCM
+    <string name="default_notification_channel_id">"MTS ver2 ChannelId"</string>
+    <string name="fcm_message">"Media Tracking System"</string>
+</resources>

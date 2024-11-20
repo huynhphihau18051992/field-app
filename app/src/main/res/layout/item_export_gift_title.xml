@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:paddingLeft="@dimen/_14sdp"
+    android:paddingTop="@dimen/_7sdp"
+    android:paddingRight="@dimen/_14sdp"
+    android:paddingBottom="@dimen/_7sdp">
+
+    <TextView
+        android:id="@+id/txtGift"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/rl_number"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_12ssp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/txt_import"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/_4sdp"
+            android:textAlignment="center"
+            android:textColor="@color/colorGreen"
+            android:textSize="@dimen/_10ssp" />
+
+        <TextView
+            android:id="@+id/txt_consume"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/txt_import"
+            android:padding="@dimen/_4sdp"
+            android:textAlignment="center"
+            android:textColor="@color/colorYello"
+            android:textSize="@dimen/_10ssp" />
+
+        <TextView
+            android:id="@+id/txt_remain_plan"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/txt_consume"
+            android:padding="@dimen/_4sdp"
+            android:textAlignment="center"
+            android:textColor="@color/blue_900"
+            android:textSize="@dimen/_10ssp" />
+
+        <EditText
+            android:id="@+id/edt_remain_actual"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/txt_remain_plan"
+            android:background="@drawable/bg_sv_rounded_filter"
+            android:inputType="number"
+            android:padding="@dimen/_8sdp"
+            android:imeOptions="actionDone"
+            android:textAlignment="center"
+            android:textColor="@color/blue_900"
+            android:textSize="@dimen/_10ssp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
